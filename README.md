@@ -45,6 +45,7 @@ How it is used in [chirp](https://chirp.sh)
 
 ```r
 library(shiny)
+library(waiter)
 
 ui <- navbarPage(
   "example",
