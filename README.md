@@ -6,10 +6,18 @@ Loading screens for Shiny; programatically show and hide a full page loading scr
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("JohnCoene/chirp")
+remotes::install_github("JohnCoene/waiter")
 ```
 
+## How to
+
+1. Place `use_waiter` anywhere in your UI.
+2. Programatically call `show_waiter`
+3. Don't forget to programatically hide the loading screen with `hide_waiter`
+
 ## Example
+
+Basic example could be like this.
 
 ``` r
 library(shiny)
@@ -22,13 +30,8 @@ ui <- fluidPage(
 
 server <- function(input, output, session){
   observeEvent(input$show, {
-    show_waiter(
-      tagList(
-        spin_fading_circles(),
-        "Loading ..."
-      )
-    )
-    Sys.sleep(3)
+    show_waiter(spin_fading_circles())
+    Sys.sleep(4)
     hide_waiter()
   })
 }
@@ -36,3 +39,36 @@ server <- function(input, output, session){
 if(interactive()) shinyApp(ui, server)
 ```
 
+How it is used in [chirp](https://chirp.sh)
+
+```r
+library(shiny)
+
+ui <- navbarPage(
+  "example",
+  id = "tabs",
+    header = list(
+        tags$style("nav{display:none;}")
+    ),
+  tabPanel(
+    "home",
+    use_waiter(),
+    actionButton("switch", "Go to networks tab")
+  ),
+  tabPanel(
+    "networks",
+    h3("Hello!")
+  )
+)
+
+server <- function(input, output, session){
+  observeEvent(input$switch, {
+    show_waiter(spin_folding_cube())
+    Sys.sleep(5)
+    updateTabsetPanel(session = session, inputId = "tabs", selected = "networks")
+    hide_waiter()
+  })
+}
+
+shinyApp(ui, server)
+```
