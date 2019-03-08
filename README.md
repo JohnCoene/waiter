@@ -15,6 +15,8 @@ remotes::install_github("JohnCoene/waiter")
 2. Programatically call `show_waiter`
 3. Don't forget to programatically hide the loading screen with `hide_waiter`
 
+See `?spinners` for a list of all the spinners.
+
 ## Example
 
 Basic example could be like this.
@@ -63,7 +65,12 @@ ui <- navbarPage(
 
 server <- function(input, output, session){
   observeEvent(input$switch, {
-    show_waiter(spin_folding_cube())
+    show_waiter(
+      tagList(
+        spin_folding_cube(),
+        "Loading ..."
+      )
+    )
     Sys.sleep(5)
     updateTabsetPanel(session = session, inputId = "tabs", selected = "networks")
     hide_waiter()
