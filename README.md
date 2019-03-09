@@ -2,6 +2,8 @@
 
 Loading screens for Shiny; programatically show and hide a full page loading screen, comes with multiple spinners.
 
+![](waiter.gif)
+
 ## Installation
 
 ``` r
