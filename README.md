@@ -1,3 +1,5 @@
+[![Travis build status](https://travis-ci.org/JohnCoene/waiter.svg?branch=master)](https://travis-ci.org/JohnCoene/waiter)
+
 # waiter
 
 Loading screens for Shiny; programatically show and hide a full page loading screen, comes with multiple spinners.
