@@ -1,10 +1,10 @@
 [![Travis build status](https://travis-ci.org/JohnCoene/waiter.svg?branch=master)](https://travis-ci.org/JohnCoene/waiter)
 
+<img src="man/figures/logo.png" align = "right" height = "170px" />
+
 # waiter
 
 Loading screens for Shiny; programatically show and hide a full page loading screen, comes with multiple spinners.
-
-![](waiter.gif)
 
 ## Installation
 
@@ -44,6 +44,8 @@ server <- function(input, output, session){
 
 if(interactive()) shinyApp(ui, server)
 ```
+
+![](waiter.gif)
 
 How it is used in [chirp](https://chirp.sh)
 
