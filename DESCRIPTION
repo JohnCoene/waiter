@@ -1,12 +1,13 @@
 Package: waiter
 Title: Loading Screen for 'Shiny'
 Version: 0.0.1
+Date: 2019-03-10
 Authors@R: 
     person(given = "John",
            family = "Coene",
            role = c("aut", "cre"),
-           email = "first.last@example.com")
-Description: Loading screens for Shiny.
+           email = "jcoenep@gmail.com")
+Description: Full screen splash loading screens for 'Shiny'.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
