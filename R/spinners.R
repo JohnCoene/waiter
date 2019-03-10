@@ -1,11 +1,15 @@
 #' Spinners
 #'
 #' Spinkit spinners to use with \code{\link{show_waiter}}.
+#'
+#' @details You can browse the spinners with \code{browse_spinners}.
+#'
+#' @examples if(interactive()) browse_spinners()
 #' 
 #' @name spinners
 #' @export
 spin_rotating_plane <- function(){
-  div(class = "spinner")
+  div(class = "rotating-plane")
 }
 
 #' @rdname spinners
@@ -44,7 +48,7 @@ spin_folding_cube <- function(){
 #' @export
 spin_double_bounce <- function(){
   div(
-    class = "spinner",
+    class = "double-bouncer",
     div(class = "double-bounce1"),
     div(class = "double-bounce2")
   )
@@ -54,7 +58,7 @@ spin_double_bounce <- function(){
 #' @export
 spin_wave <- function(){
   div(
-    class = "spinner",
+    class = "waver",
     div(class = "rect1"),
     div(class = "rect2"),
     div(class = "rect3"),
@@ -67,7 +71,7 @@ spin_wave <- function(){
 #' @export
 spin_wandering_cubes <- function(){
   div(
-    class = "spinner",
+    class = "wandering-cubes",
     div(class = "cube1"),
     div(class = "cube2")
   )
@@ -76,14 +80,14 @@ spin_wandering_cubes <- function(){
 #' @rdname spinners
 #' @export
 spin_pulse <- function(){
-  div(class = "spinner")
+  div(class = "pulser")
 }
 
 #' @rdname spinners
 #' @export
 spin_chasing_dots <- function(){
   div(
-    class = "spinner",
+    class = "chasing-dots",
     div(class = "dot1"),
     div(class = "dot2")
   )
@@ -93,7 +97,7 @@ spin_chasing_dots <- function(){
 #' @export
 spin_three_bounce <- function(){
   div(
-    class = "spinner",
+    class = "three-bounce",
     div(class = "bounce1"),
     div(class = "bounce2"),
     div(class = "bounce3")
@@ -137,3 +141,8 @@ spin_cube_grid <- function(){
   )
 }
 
+#' @rdname spinners
+#' @export
+browse_spinners <- function() {
+	shiny::runApp(appDir = system.file("examples", package = 'waiter', mustWork = TRUE))
+}

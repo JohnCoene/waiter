@@ -9,7 +9,7 @@
 \usage{
 use_waiter()
 
-show_waiter(html = "", color = "#f46d3b", logo = "")
+show_waiter(html = "", color = "#333e48", logo = "")
 
 hide_waiter()
 }

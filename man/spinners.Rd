@@ -13,6 +13,7 @@
 \alias{spin_three_bounce}
 \alias{spin_circle}
 \alias{spin_cube_grid}
+\alias{browse_spinners}
 \title{Spinners}
 \usage{
 spin_rotating_plane()
@@ -36,7 +37,16 @@ spin_three_bounce()
 spin_circle()
 
 spin_cube_grid()
+
+browse_spinners()
 }
 \description{
 Spinkit spinners to use with \code{\link{show_waiter}}.
+}
+\details{
+You can browse the spinners with \code{browse_spinners}.
+}
+\examples{
+if(interactive()) browse_spinners()
+
 }

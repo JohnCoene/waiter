@@ -21,6 +21,12 @@ remotes::install_github("JohnCoene/waiter")
 
 See `?spinners` for a list of all the spinners.
 
+## Spinners
+
+See the [demo](https://shiny.john-coene.com/waiter) or browse locally with: `waiter::browse_spinners()`
+
+![](waiter.gif)
+
 ## Example
 
 Basic example could be like this.
@@ -44,8 +50,6 @@ server <- function(input, output, session){
 
 if(interactive()) shinyApp(ui, server)
 ```
-
-![](waiter.gif)
 
 How it is used in [chirp](https://chirp.sh)
 

@@ -57,7 +57,7 @@ use_waiter <- function(){
 
 #' @rdname waiter
 #' @export
-show_waiter <- function(html = "", color = "#f46d3b", logo = ""){
+show_waiter <- function(html = "", color = "#333e48", logo = ""){
   opts <- list(
     html = as.character(html),
     color = color,
