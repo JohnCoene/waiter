@@ -23,7 +23,7 @@ See `?spinners` for a list of all the spinners.
 
 ## Spinners
 
-See the [demo](https://shiny.john-coene.com/waiter) or browse locally with: `waiter::browse_spinners()`
+Browse the spinners locally with: `waiter::browse_spinners()`
 
 ![](waiter.gif)
 
