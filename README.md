@@ -25,7 +25,7 @@ See `?spinners` for a list of all the spinners.
 
 Browse the spinners locally with: `waiter::browse_spinners()`
 
-![](waiter.gif)
+![](man/figures/waiter.gif)
 
 ## Example
 
