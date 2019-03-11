@@ -43,7 +43,7 @@ ui <- fluidPage(
 server <- function(input, output, session){
   observeEvent(input$show, {
     show_waiter(spin_fading_circles())
-    Sys.sleep(4)
+    Sys.sleep(3) # do something that takes time
     hide_waiter()
   })
 }
@@ -51,7 +51,7 @@ server <- function(input, output, session){
 if(interactive()) shinyApp(ui, server)
 ```
 
-How it is used in [chirp.sh](https://chirp.sh)
+How it is used in [chirp.sh](https://chirp.sh), where it is used in combination with [pushbar](https://github.com/JohnCoene/pushbar) to get rid of the navbar alltogether.
 
 ```r
 library(shiny)
@@ -76,14 +76,21 @@ ui <- navbarPage(
 
 server <- function(input, output, session){
   observeEvent(input$switch, {
+
+    # show loading
     show_waiter(
       tagList(
         spin_folding_cube(),
         span("Loading ...", style = "color:white;")
       )
     )
-    Sys.sleep(5)
+    # long~ish computation
+    Sys.sleep(3)
+
+    # send to "hidden" tab
     updateTabsetPanel(session = session, inputId = "tabs", selected = "networks")
+
+    # hide loading
     hide_waiter()
   })
 }
