@@ -51,7 +51,7 @@ server <- function(input, output, session){
 if(interactive()) shinyApp(ui, server)
 ```
 
-How it is used in [chirp](https://chirp.sh)
+How it is used in [chirp.sh](https://chirp.sh)
 
 ```r
 library(shiny)
