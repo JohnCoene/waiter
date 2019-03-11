@@ -79,7 +79,7 @@ server <- function(input, output, session){
     show_waiter(
       tagList(
         spin_folding_cube(),
-        "Loading ..."
+        span("Loading ...", style = "color:white;")
       )
     )
     Sys.sleep(5)
