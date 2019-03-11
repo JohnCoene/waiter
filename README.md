@@ -61,11 +61,12 @@ ui <- navbarPage(
   "example",
   id = "tabs",
     header = list(
-        tags$style("nav{display:none;}")
+        tags$style("nav{display:none;}") # hide navbar
     ),
   tabPanel(
     "home",
     use_waiter(),
+    br(),
     actionButton("switch", "Go to networks tab")
   ),
   tabPanel(
