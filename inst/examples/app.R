@@ -1,4 +1,5 @@
 library(shiny)
+library(waiter)
 
 ui <- fluidPage(
 	use_waiter(),
