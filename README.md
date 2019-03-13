@@ -29,7 +29,7 @@ Browse the spinners locally with: `waiter::browse_spinners()`
 
 ![](man/figures/waiter.gif)
 
-## Example
+## Examples
 
 Basic example could be like this.
 
@@ -53,7 +53,9 @@ server <- function(input, output, session){
 if(interactive()) shinyApp(ui, server)
 ```
 
-Show on loading screen on app launch.
+Show on loading screen on app launch. The loading screen will launch prior to anything, even the Shiny session, thereby avoiding having content flash before the loading screen actually appears. See the example below.
+
+Though this function is not programatically launched it still has to be hidden with `hide_waiter`. Ensure you place `show_waiter_on_load` _after_ `use_waiter`.
 
 ```r
 library(shiny)
@@ -73,7 +75,7 @@ server <- function(input, output, session){
 if(interactive()) shinyApp(ui, server)
 ```
 
-In [chirp.sh](https://chirp.sh), where it is used in combination with [pushbar](https://github.com/JohnCoene/pushbar) to get rid of the navbar alltogether.
+How it is used in [chirp.sh](https://chirp.sh), where it is combined with [pushbar](https://github.com/JohnCoene/pushbar) to get rid of the navbar alltogether.
 
 ```r
 library(shiny)
