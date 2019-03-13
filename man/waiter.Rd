@@ -4,12 +4,15 @@
 \alias{waiter}
 \alias{use_waiter}
 \alias{show_waiter}
+\alias{show_waiter_on_load}
 \alias{hide_waiter}
 \title{Waiter}
 \usage{
 use_waiter()
 
 show_waiter(html = "", color = "#333e48", logo = "")
+
+show_waiter_on_load(html = "", color = "#333e48", logo = "")
 
 hide_waiter()
 }
@@ -23,15 +26,28 @@ hide_waiter()
 \description{
 Programatically show and hide loading screens.
 }
+\section{Functions}{
+
+\itemize{
+ \item{\code{use_waiter}: waiter dependencies to include anywhere in your UI but ideally at the top.}
+ \item{\code{show_waiter_on_load}: Show a waiter on page load, before the session is even loaded, include in UI \emph{after} \code{use_waiter}.}
+ \item{\code{show_waiter}: Show waiting screen}
+ \item{\code{hide_waiter}: Hide any waiting screen}
+}
+}
+
 \examples{
 library(shiny)
 
 ui <- fluidPage(
-  use_waiter(),
+  use_waiter(), # dependencies
+  show_waiter_on_load(spin_fading_circles()), # shows before anything else 
   actionButton("show", "Show loading for 5 seconds")
 )
 
 server <- function(input, output, session){
+  hide_waiter() # will hide *on_load waiter
+ 
   observeEvent(input$show, {
     show_waiter(
       tagList(

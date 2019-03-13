@@ -3,6 +3,7 @@ library(waiter)
 
 ui <- fluidPage(
 	use_waiter(),
+	show_waiter_on_load(spin_fading_circles()),
 	div(
 		class = "container",
 		style = "margin-top:400px;",
@@ -34,6 +35,7 @@ ui <- fluidPage(
 )
 
 server <- function(input, output, session) {
+	hide_waiter()
   observeEvent(input$trigger, {
 
 		spinner <- eval(parse(text = paste0(input$spinner, "()")))

@@ -3,6 +3,7 @@
 export(browse_spinners)
 export(hide_waiter)
 export(show_waiter)
+export(show_waiter_on_load)
 export(spin_chasing_dots)
 export(spin_circle)
 export(spin_cube_grid)
