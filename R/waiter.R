@@ -51,7 +51,7 @@ use_waiter <- function(){
         rel="stylesheet",
         type="text/css"
       ),
-      tags$script("var window.loading_screen;"),
+      tags$script("window.loading_screen;"),
       tags$link(
         href = "waiter-assets/spinkit.css",
         rel="stylesheet",
