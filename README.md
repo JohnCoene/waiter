@@ -16,8 +16,10 @@ remotes::install_github("JohnCoene/waiter")
 ## How to
 
 1. Place `use_waiter` anywhere in your UI.
-2. Programatically call `show_waiter`
-3. Don't forget to programatically hide the loading screen with `hide_waiter`
+2. Programatically call `show_waiter`.
+3. Don't forget to programatically hide the loading screen with `hide_waiter`.
+
+You can also place `show_waiter_on_load` in your UI, _below_ `use_waiter` in order to show a loading screen prior to the `session` loads, this splash screen is not programatically triggered but is also hidden with `hide_waiter`.
 
 See `?spinners` for a list of all the spinners.
 
@@ -37,7 +39,7 @@ library(waiter)
  
 ui <- fluidPage(
   use_waiter(),
-  actionButton("show", "Show loading for 5 seconds")
+  actionButton("show", "Show loading for 3 seconds")
 )
 
 server <- function(input, output, session){
@@ -51,7 +53,27 @@ server <- function(input, output, session){
 if(interactive()) shinyApp(ui, server)
 ```
 
-How it is used in [chirp.sh](https://chirp.sh), where it is used in combination with [pushbar](https://github.com/JohnCoene/pushbar) to get rid of the navbar alltogether.
+Show on loading screen on app launch.
+
+```r
+library(shiny)
+library(waiter)
+ 
+ui <- fluidPage(
+  use_waiter(),
+  show_waiter_on_load(spin_fading_circles()), # show on load
+  h3("Content you will only see after loading screen has disappeared")
+)
+
+server <- function(input, output, session){
+  Sys.sleep(5) # do something that takes time
+  hide_waiter()
+}
+
+if(interactive()) shinyApp(ui, server)
+```
+
+In [chirp.sh](https://chirp.sh), where it is used in combination with [pushbar](https://github.com/JohnCoene/pushbar) to get rid of the navbar alltogether.
 
 ```r
 library(shiny)
