@@ -12,5 +12,6 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports:
-    shiny
+    shiny,
+    magrittr
 RoxygenNote: 6.1.1

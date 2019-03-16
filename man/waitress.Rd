@@ -3,30 +3,35 @@
 \name{waitress}
 \alias{waitress}
 \alias{use_waitress}
-\alias{init_waitress}
+\alias{call_waitress}
 \alias{start_waitress}
 \alias{set_waitress}
 \alias{auto_waitress}
 \alias{increase_waitress}
 \alias{end_waitress}
+\alias{options_waitress}
 \title{Waitress}
 \usage{
 use_waitress()
 
-init_waitress(id = NULL)
+call_waitress(dom = NULL)
 
-start_waitress()
+start_waitress(waitress)
 
-set_waitress(percent)
+set_waitress(waitress, percent)
 
-auto_waitress(percent, ms)
+auto_waitress(waitress, percent, ms)
 
-increase_waitress(percent)
+increase_waitress(waitress, percent)
 
-end_waitress()
+end_waitress(waitress)
+
+options_waitress(waitress, ...)
 }
 \arguments{
-\item{id}{Element id, if \code{NULL} then the waitress is applied to the whole screen.}
+\item{dom}{Element selector to apply the waitress to, if \code{NULL} then the waitress is applied to the whole screen.}
+
+\item{waitress}{An object of class waitress as returned by \code{call_waitress}}
 
 \item{percent}{Percentage to set or increase.}
 
@@ -38,9 +43,13 @@ Programatically show and hide loading screens.
 \section{Functions}{
 
 \itemize{
- \item{\code{use_waitress}: Dependencies for waitress to include anywhere in your UI but ideally at the top.}
- \item{\code{init_waitress}: Initialise waitress.}
- \item{\code{hide_waiter}: Hide any waiting screen.}
+ \item{\code{use_waitress}: Dependencies for waitress, to include anywhere in your UI but ideally at the top.}
+ \item{\code{call_waitress}: Initialise.}
+ \item{\code{start_waitress}: Start.}
+ \item{\code{set_waitress}: Set at specific percentage.}
+ \item{\code{auto_waitress}: Auto increment.}
+ \item{\code{increase_waitress}: Increase.}
+ \item{\code{end_waitress}: End.}
 }
 }
 
@@ -49,19 +58,15 @@ library(shiny)
 
 ui <- fluidPage(
   use_waitress(), # dependencies
-  actionButton("init", "Initialise"),
   sliderInput("set", "percentage", 1, 100, step = 5, value = 1)
 )
 
 server <- function(input, output, session){
  
-  observeEvent(input$init, {
-    init_waitress() 
-    start_waitress() 
-  })
+  w1 <- call_waitress() # call a waitress
 
   observeEvent(input$set, {
-    set_waitress(input$set)
+    set_waitress(w, input$set)
   })
 }
 
