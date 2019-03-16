@@ -17,7 +17,7 @@
 #'  \item{\code{set_waitress}: Set at specific percentage.}
 #'  \item{\code{auto_waitress}: Auto increment.}
 #'  \item{\code{increase_waitress}: Increase.}
-#'  \item{\code{end_waitress}: End.}
+#'  \item{\code{hide_waitress}: End.}
 #'  \item{\code{browse_waitresses}: Browse waitresses.}
 #' }
 #'  
@@ -44,7 +44,7 @@
 #' @import shiny
 #' @name waitress
 #' @export
-use_waitress <- function(color = "#3498db"){
+use_waitress <- function(color = "#b84f3e"){
   singleton(
     tags$head(
 			tags$script("window.waitress = [];"),
@@ -176,7 +176,7 @@ increase_waitress <- function(waitress, percent){
 
 #' @rdname waitress
 #' @export
-end_waitress <- function(waitress){
+hide_waitress <- function(waitress){
 
 	if(missing(waitress))
 		stop("missing waitress")

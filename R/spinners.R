@@ -144,5 +144,12 @@ spin_cube_grid <- function(){
 #' @rdname spinners
 #' @export
 browse_spinners <- function() {
+	.Deprecated("browse_waiters")
+	shiny::runApp(appDir = system.file("spinners", package = 'waiter', mustWork = TRUE))
+}
+
+#' @rdname spinners
+#' @export
+browse_waiters <- function() {
 	shiny::runApp(appDir = system.file("spinners", package = 'waiter', mustWork = TRUE))
 }

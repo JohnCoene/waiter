@@ -52,7 +52,7 @@ server <- function(input, output, session){
 
 		Sys.sleep(3.5)
 
-		w %>% end_waitress()
+		w %>% hide_waitress()
 	})
 
 	w_line <- call_waitress("#line", theme = "line")
@@ -78,10 +78,10 @@ server <- function(input, output, session){
 			auto_waitress(5, 150)
 
 		Sys.sleep(3.5)
-		end_waitress(w_overlay)
-		end_waitress(w_line)
-		end_waitress(w_opacity)
-		end_waitress(w_percent)
+		hide_waitress(w_overlay)
+		hide_waitress(w_line)
+		hide_waitress(w_opacity)
+		hide_waitress(w_percent)
 
 		return(runif(50))
 	})

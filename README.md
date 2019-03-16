@@ -23,6 +23,8 @@ remotes::install_github("JohnCoene/waiter")
 
 ## How to
 
+### Waiter
+
 1. Place `use_waiter` anywhere in your UI.
 2. Programatically call `show_waiter`.
 3. Don't forget to programatically hide the loading screen with `hide_waiter`.
@@ -31,11 +33,24 @@ Since version `0.0.2` you can also place `show_waiter_on_load` in your UI, _belo
 
 See `?spinners` for a list of all the spinners.
 
+### Waitress
+
+1. Place `use_waitress` anywhere in your UI.
+2. Set up the waitress in your server with `call_waitress`.
+3. Programatically call `set_waitress`, `increase_waitress`, and `auto_waitress`.
+4. Don't forget to programatically hide the loading screen with `hide_waitress`.
+
 ## Spinners
 
-Browse the spinners locally with: `waiter::browse_spinners()`
+Browse the spinners locally with: `waiter::browse_waiters()`
 
 ![](man/figures/waiter.gif)
+
+## Waitress
+
+Browse waitresses locally with: `waiter::browse_waitresses()`
+
+![](man/figures/waitress.gif)
 
 ## Examples
 

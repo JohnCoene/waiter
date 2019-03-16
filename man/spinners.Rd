@@ -14,6 +14,7 @@
 \alias{spin_circle}
 \alias{spin_cube_grid}
 \alias{browse_spinners}
+\alias{browse_waiters}
 \title{Spinners}
 \usage{
 spin_rotating_plane()
@@ -39,6 +40,8 @@ spin_circle()
 spin_cube_grid()
 
 browse_spinners()
+
+browse_waiters()
 }
 \description{
 Spinkit spinners to use with \code{\link{show_waiter}}.

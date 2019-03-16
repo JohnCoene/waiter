@@ -8,11 +8,11 @@
 \alias{set_waitress}
 \alias{auto_waitress}
 \alias{increase_waitress}
-\alias{end_waitress}
+\alias{hide_waitress}
 \alias{browse_waitresses}
 \title{Waitress}
 \usage{
-use_waitress(color = "#3498db")
+use_waitress(color = "#b84f3e")
 
 call_waitress(dom = NULL, theme = c("line", "overlay",
   "overlay-radius", "overlay-opacity", "overlay-percent"))
@@ -25,7 +25,7 @@ auto_waitress(waitress, percent, ms)
 
 increase_waitress(waitress, percent)
 
-end_waitress(waitress)
+hide_waitress(waitress)
 
 browse_waitresses()
 }
@@ -54,7 +54,7 @@ Programatically show and hide loading screens.
  \item{\code{set_waitress}: Set at specific percentage.}
  \item{\code{auto_waitress}: Auto increment.}
  \item{\code{increase_waitress}: Increase.}
- \item{\code{end_waitress}: End.}
+ \item{\code{hide_waitress}: End.}
  \item{\code{browse_waitresses}: Browse waitresses.}
 }
 }
