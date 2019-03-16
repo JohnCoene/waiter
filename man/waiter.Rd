@@ -31,8 +31,8 @@ Programatically show and hide loading screens.
 \itemize{
  \item{\code{use_waiter}: waiter dependencies to include anywhere in your UI but ideally at the top.}
  \item{\code{show_waiter_on_load}: Show a waiter on page load, before the session is even loaded, include in UI \emph{after} \code{use_waiter}.}
- \item{\code{show_waiter}: Show waiting screen}
- \item{\code{hide_waiter}: Hide any waiting screen}
+ \item{\code{show_waiter}: Show waiting screen.}
+ \item{\code{hide_waiter}: Hide any waiting screen.}
 }
 }
 

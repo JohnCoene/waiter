@@ -10,8 +10,8 @@
 #' \itemize{
 #'  \item{\code{use_waiter}: waiter dependencies to include anywhere in your UI but ideally at the top.}
 #'  \item{\code{show_waiter_on_load}: Show a waiter on page load, before the session is even loaded, include in UI \emph{after} \code{use_waiter}.}
-#'  \item{\code{show_waiter}: Show waiting screen}
-#'  \item{\code{hide_waiter}: Hide any waiting screen}
+#'  \item{\code{show_waiter}: Show waiting screen.}
+#'  \item{\code{hide_waiter}: Hide any waiting screen.}
 #' }
 #' 
 #' @examples
@@ -47,21 +47,21 @@ use_waiter <- function(){
   singleton(
     tags$head(
       tags$link(
-        href = "waiter-assets/please-wait.css",
+        href = "waiter-assets/waiter/please-wait.css",
         rel="stylesheet",
         type="text/css"
       ),
       tags$script("window.loading_screen;"),
       tags$link(
-        href = "waiter-assets/spinkit.css",
+        href = "waiter-assets/waiter/spinkit.css",
         rel="stylesheet",
         type="text/css"
       ),
       tags$script(
-        src = "waiter-assets/please-wait.min.js"
+        src = "waiter-assets/waiter/please-wait.min.js"
       ),
       tags$script(
-        src = "waiter-assets/custom.js"
+        src = "waiter-assets/waiter/custom.js"
       )
     )
   )
