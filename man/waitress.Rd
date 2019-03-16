@@ -9,6 +9,7 @@
 \alias{auto_waitress}
 \alias{increase_waitress}
 \alias{end_waitress}
+\alias{browse_waitresses}
 \title{Waitress}
 \usage{
 use_waitress(color = "#3498db")
@@ -25,6 +26,8 @@ auto_waitress(waitress, percent, ms)
 increase_waitress(waitress, percent)
 
 end_waitress(waitress)
+
+browse_waitresses()
 }
 \arguments{
 \item{color}{Color of waitress.}
@@ -52,6 +55,7 @@ Programatically show and hide loading screens.
  \item{\code{auto_waitress}: Auto increment.}
  \item{\code{increase_waitress}: Increase.}
  \item{\code{end_waitress}: End.}
+ \item{\code{browse_waitresses}: Browse waitresses.}
 }
 }
 

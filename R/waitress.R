@@ -18,6 +18,7 @@
 #'  \item{\code{auto_waitress}: Auto increment.}
 #'  \item{\code{increase_waitress}: Increase.}
 #'  \item{\code{end_waitress}: End.}
+#'  \item{\code{browse_waitresses}: Browse waitresses.}
 #' }
 #'  
 #' @examples
@@ -186,4 +187,10 @@ end_waitress <- function(waitress){
   .check_session(session)
   session$sendCustomMessage("waitress-end", opts)
 	invisible(waitress)
+}
+
+#' @rdname waitress
+#' @export
+browse_waitresses <- function() {
+	shiny::runApp(appDir = system.file("waitress", package = 'waiter', mustWork = TRUE))
 }
