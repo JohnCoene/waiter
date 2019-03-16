@@ -40,7 +40,9 @@ See `?spinners` for a list of all the spinners.
 3. Programatically call `set_waitress`, `increase_waitress`, and `auto_waitress`.
 4. Don't forget to programatically hide the loading screen with `hide_waitress`.
 
-## Spinners
+## Demos
+
+### Waiter
 
 Browse the spinners locally with: `waiter::browse_waiters()`
 
