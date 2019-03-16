@@ -5,6 +5,8 @@ Shiny.addCustomMessageHandler('waitress-init', function(opts) {
 	else
 		prog = progressJs();
 
+	prog = prog.setOptions(opts.options);
+
 	window.waitress[opts.name] = prog;
 });
 
@@ -26,8 +28,4 @@ Shiny.addCustomMessageHandler('waitress-increase', function(opts) {
 
 Shiny.addCustomMessageHandler('waitress-end', function(opts) {
 	window.waitress[opts.name].end();
-});
-
-Shiny.addCustomMessageHandler('waitress-options', function(opts) {
-	window.waitress[opts.name].setOptions(opts.options);
 });

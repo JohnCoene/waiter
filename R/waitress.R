@@ -3,9 +3,11 @@
 #' Programatically show and hide loading screens.
 #' 
 #' @param dom Element selector to apply the waitress to, if \code{NULL} then the waitress is applied to the whole screen.
+#' @param color Color of waitress.
 #' @param percent Percentage to set or increase.
 #' @param ms Milliseconds between each \code{percent} increase.
-#' @param waitress An object of class waitress as returned by \code{call_waitress}
+#' @param waitress An object of class waitress as returned by \code{call_waitress}.
+#' @param theme A valid theme, see function usage.
 #' 
 #' @section Functions:
 #' \itemize{
@@ -22,13 +24,14 @@
 #' library(shiny)
 #' 
 #' ui <- fluidPage(
-#'   use_waitress(), # dependencies
+#'   use_waitress("red"), # dependencies
 #'   sliderInput("set", "percentage", 1, 100, step = 5, value = 1)
 #' )
 #' 
 #' server <- function(input, output, session){
 #'  
-#'   w1 <- call_waitress() # call a waitress
+#'   w1 <- call_waitress() %>%  # call a waitress
+#'     start_waitress()
 #' 
 #'   observeEvent(input$set, {
 #'     set_waitress(w, input$set)
@@ -40,7 +43,7 @@
 #' @import shiny
 #' @name waitress
 #' @export
-use_waitress <- function(){
+use_waitress <- function(color = "#3498db"){
   singleton(
     tags$head(
 			tags$script("window.waitress = [];"),
@@ -52,6 +55,13 @@ use_waitress <- function(){
       tags$script(
         src = "waiter-assets/waitress/progress.min.js"
       ),
+			tags$style(
+				paste0(".progressjs-theme-blue .progressjs-inner{background-color:", color, ";}"),
+				paste0(".progressjs-theme-blueOverlay .progressjs-inner{background-color:", color, ";}"),
+				paste0(".progressjs-theme-blueOverlayRadius .progressjs-inner{background-color:", color, ";}"),
+				paste0(".progressjs-theme-blueOverlayRadiusHalfOpacity .progressjs-inner{background-color:", color, ";}"),
+				paste0(".progressjs-theme-blueOverlayRadiusWithPercentBar .progressjs-inner{background-color:", color, ";}")
+			),
       tags$script(
         src = "waiter-assets/waitress/custom.js"
       )
@@ -61,14 +71,23 @@ use_waitress <- function(){
 
 #' @rdname waitress
 #' @export
-call_waitress <- function(dom = NULL){
+call_waitress <- function(dom = NULL, theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent")){
 
 	name <- .random_name()
+
+	theme <- match.arg(theme)
+	overlay <- ifelse(grepl("overlay", theme), TRUE, FALSE)
+	theme <- .theme2js(theme)
 	
   opts <- list(
     id = dom,
-		name = name
+		name = name,
+		options = list(
+			theme = theme,
+			overlayMode = overlay
+		)
   )
+
   session <- shiny::getDefaultReactiveDomain()
   .check_session(session)
   session$sendCustomMessage("waitress-init", opts)
@@ -166,19 +185,5 @@ end_waitress <- function(waitress){
   session <- shiny::getDefaultReactiveDomain()
   .check_session(session)
   session$sendCustomMessage("waitress-end", opts)
-}
-
-#' @rdname waitress
-#' @export
-options_waitress <- function(waitress, ...){
-
-	if(missing(waitress))
-		stop("missing waitress")
-	
-  opts <- list(name = waitress$name, options = list(...))
-
-  session <- shiny::getDefaultReactiveDomain()
-  .check_session(session)
-  session$sendCustomMessage("waitress-options", opts)
 	invisible(waitress)
 }

@@ -9,12 +9,12 @@
 \alias{auto_waitress}
 \alias{increase_waitress}
 \alias{end_waitress}
-\alias{options_waitress}
 \title{Waitress}
 \usage{
-use_waitress()
+use_waitress(color = "#3498db")
 
-call_waitress(dom = NULL)
+call_waitress(dom = NULL, theme = c("line", "overlay",
+  "overlay-radius", "overlay-opacity", "overlay-percent"))
 
 start_waitress(waitress)
 
@@ -25,13 +25,15 @@ auto_waitress(waitress, percent, ms)
 increase_waitress(waitress, percent)
 
 end_waitress(waitress)
-
-options_waitress(waitress, ...)
 }
 \arguments{
+\item{color}{Color of waitress.}
+
 \item{dom}{Element selector to apply the waitress to, if \code{NULL} then the waitress is applied to the whole screen.}
 
-\item{waitress}{An object of class waitress as returned by \code{call_waitress}}
+\item{theme}{A valid theme, see function usage.}
+
+\item{waitress}{An object of class waitress as returned by \code{call_waitress}.}
 
 \item{percent}{Percentage to set or increase.}
 
@@ -57,13 +59,14 @@ Programatically show and hide loading screens.
 library(shiny)
 
 ui <- fluidPage(
-  use_waitress(), # dependencies
+  use_waitress("red"), # dependencies
   sliderInput("set", "percentage", 1, 100, step = 5, value = 1)
 )
 
 server <- function(input, output, session){
  
-  w1 <- call_waitress() # call a waitress
+  w1 <- call_waitress() \%>\%  # call a waitress
+    start_waitress()
 
   observeEvent(input$set, {
     set_waitress(w, input$set)
