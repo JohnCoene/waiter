@@ -6,13 +6,19 @@
 
 Loading screens for Shiny; programatically show and hide partial or full page loading screens, comes with multiple spinners.
 
+* [Features](#features)
+* [Installation](#installation)
+* [How-to](#how-to)
+* [Demos](#demos)
+* [Examples](#examples)
+
 ## Features
 
 The {waiter} package has evolved since version `0.0.1` and now includes:
 
-* A waiter
-* A waitress
-* A butler
+* A waiter, splash loading screens.
+* A waitress, loading bars on on elements or whole screen.
+* A butler, configurable loading bar.
 
 ## Installation
 
