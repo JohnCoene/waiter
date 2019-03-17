@@ -6,7 +6,7 @@
 
 Loading screens for Shiny; programatically show and hide partial or full page loading screens, comes with multiple spinners.
 
-# Features
+## Features
 
 The {waiter} package has evolved since version `0.0.1` and now includes:
 
