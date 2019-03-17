@@ -7,7 +7,7 @@ ui <- fluidPage(
 	div(
 		class = "container",
 		style = "margin-top:400px;",
-		fluidPage(
+		fluidRow(
 			column(3, sliderInput("seconds", "Seconds", min = 3, max = 7, value = 4, width = "100%")),
 			column(
 				3,
