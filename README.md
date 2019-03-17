@@ -66,6 +66,8 @@ You can, optionally, configure the butler with `config_butler`.
 
 ## Demos
 
+The demos below are also on the [website](https://shiny.john-coene.com/waiter/).
+
 ### waiter
 
 Browse the spinners locally with `waiter::browse_waiters()`
