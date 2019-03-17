@@ -21,7 +21,7 @@ ui <- navbarPage(
 		),
 		div(
 			class = "container",
-			style = "margin-top:5%;text-align:center;",
+			style = "margin-top:3%;text-align:center;",
 			br(),
 			br(),
 			br(),
@@ -90,6 +90,12 @@ ui <- navbarPage(
 				icon("code", class = "fa-3x"),
 				target = "_blank",
 				href = "https://github.com/JohnCoene/waiter"
+			),
+			br(),
+			br(),
+			br(),
+			code(
+				"install.packages('waiter')"
 			)
 		)
 	),
@@ -133,15 +139,16 @@ ui <- navbarPage(
 		"waitress",
 		br(),
 		fluidRow(
-			column(1, 
+			column(
+				5, 
 				actionButton("waitress_back", "", icon("arrow-left"), class = "btn-danger")
 			),
 			column(3, h2("waitress themes")),
 			column(
-				3, actionButton("render", "Render plots", class = "btn-default")
+				2, actionButton("render", "Render plots", class = "btn-default")
 			),
 			column(
-				3, actionButton("fullpage", "Render page", class = "btn-default")
+				2, actionButton("fullpage", "Render page", class = "btn-default")
 			)
 		),
 		fluidRow(
