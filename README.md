@@ -301,11 +301,11 @@ ui <- fluidPage(
 server <- function(input, output){
 
 	observeEvent(input$show,{
-					show_butler()
+		show_butler()
 	})
 
 	observeEvent(input$hide,{
-					hide_butler()
+		hide_butler()
 	})
 
 }
@@ -339,11 +339,11 @@ server <- function(input, output){
 	)
 
 	observeEvent(input$show,{
-					show_butler()
+		show_butler()
 	})
 
 	observeEvent(input$hide,{
-					hide_butler()
+		hide_butler()
 	})
 
 }
