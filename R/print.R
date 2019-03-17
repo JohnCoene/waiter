@@ -8,3 +8,8 @@ print.waitress <- function(x, ...) {
 
 	print(x, ...)
 }
+
+#' @export
+print.butler <- function(x, ...) {
+	print("A butler theme", ...)
+}
