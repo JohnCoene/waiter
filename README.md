@@ -6,6 +6,14 @@
 
 Loading screens for Shiny; programatically show and hide partial or full page loading screens, comes with multiple spinners.
 
+# Features
+
+The {waiter} package has evolved since version `0.0.1` and now includes:
+
+* A waiter
+* A waitress
+* A butler
+
 ## Installation
 
 Stable version from CRAN:
@@ -42,19 +50,31 @@ See `?spinners` for a list of all the spinners.
 
 See `?waitress` for the documentation.
 
+### butler
+
+1. Place `use_butler` anywhere in your UI.
+2. Call `show_butler` in your server.
+3. Don't forget to programatically hide the loading screen with `hide_butler`.
+
+You can, optionally, configure the butler with `config_butler`.
+
 ## Demos
 
-### Waiter
+### waiter
 
-Browse the spinners locally with: `waiter::browse_waiters()`
+Browse the spinners locally with `waiter::browse_waiters()`
 
 ![](man/figures/waiter.gif)
 
-## Waitress
+### waitress
 
-Browse waitresses locally with: `waiter::browse_waitresses()`
+Browse waitresses locally with `waiter::browse_waitresses()`
 
 ![](man/figures/waitress.gif)
+
+### butler
+
+![](man/figures/butler.gif)
 
 ## Examples
 
@@ -250,6 +270,74 @@ server <- function(input, output){
 			auto_waitress(percent = 5, ms = 150) # increase by 5 percent every 150 milliseconds
 		Sys.sleep(3.5)
 		hide_waitress(waitress)
+	})
+
+}
+
+shinyApp(ui, server)
+```
+
+### butler
+
+Basic example.
+
+```r
+library(shiny)
+library(butler)
+
+ui <- fluidPage(
+	use_butler(),
+	br(),
+	actionButton("show", "show butler"),
+	actionButton("hide", "hide butler")
+)
+
+server <- function(input, output){
+
+	observeEvent(input$show,{
+					show_butler()
+	})
+
+	observeEvent(input$hide,{
+					hide_butler()
+	})
+
+}
+
+shinyApp(ui, server)
+```
+
+You can configure the butler to look differently.
+
+```r
+library(shiny)
+library(butler)
+
+ui <- fluidPage(
+	use_butler(),
+	br(),
+	br(),
+	actionButton("show", "show butler"),
+	actionButton("hide", "hide butler")
+)
+
+server <- function(input, output){
+
+	config_butler(
+		thickness = 10,
+		colors = list(
+			"0" = "red",
+			".4" = "white",
+			"1" = "blue"
+		)
+	)
+
+	observeEvent(input$show,{
+					show_butler()
+	})
+
+	observeEvent(input$hide,{
+					hide_butler()
 	})
 
 }
