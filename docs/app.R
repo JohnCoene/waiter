@@ -11,7 +11,7 @@ ui <- navbarPage(
 	tabPanel(
 		"home",
 		use_waiter(),
-		use_waitress(color = "#A98960"),
+		use_waitress(color = "#A98960", percent_color = "#333333"),
 		use_butler(),
 		show_waiter_on_load(
 			tagList(

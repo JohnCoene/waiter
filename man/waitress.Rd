@@ -10,7 +10,7 @@
 \title{Waitress}
 \format{An object of class \code{R6ClassGenerator} of length 24.}
 \usage{
-use_waitress(color = "#b84f3e")
+use_waitress(color = "#b84f3e", percent_color = "#333333")
 
 Waitress
 
@@ -20,7 +20,8 @@ call_waitress(dom = NULL, theme = c("line", "overlay",
 browse_waitresses()
 }
 \arguments{
-\item{color}{Color of waitress.}
+\item{color, percent_color}{Color of waitress and color of percent text shown when 
+\code{theme} is set to \code{overlay-percentß}.}
 
 \item{dom}{Element selector to apply the waitress to, if \code{NULL} then the waitress is applied to the whole screen.}
 

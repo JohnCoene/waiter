@@ -3,7 +3,8 @@
 #' Programatically show and hide loading screens.
 #' 
 #' @param dom Element selector to apply the waitress to, if \code{NULL} then the waitress is applied to the whole screen.
-#' @param color Color of waitress.
+#' @param color,percent_color Color of waitress and color of percent text shown when 
+#' \code{theme} is set to \code{overlay-percentß}.
 #' @param theme A valid theme, see function usage.
 #' 
 #' @section Functions:
@@ -54,7 +55,7 @@
 #' @import shiny
 #' @name waitress
 #' @export
-use_waitress <- function(color = "#b84f3e"){
+use_waitress <- function(color = "#b84f3e", percent_color = "#333333"){
   singleton(
     tags$head(
 			tags$script("window.waitress = [];"),
@@ -71,7 +72,8 @@ use_waitress <- function(color = "#b84f3e"){
 				paste0(".progressjs-theme-blueOverlay .progressjs-inner{background-color:", color, ";}"),
 				paste0(".progressjs-theme-blueOverlayRadius .progressjs-inner{background-color:", color, ";}"),
 				paste0(".progressjs-theme-blueOverlayRadiusHalfOpacity .progressjs-inner{background-color:", color, ";}"),
-				paste0(".progressjs-theme-blueOverlayRadiusWithPercentBar .progressjs-inner{background-color:", color, ";}")
+				paste0(".progressjs-theme-blueOverlayRadiusWithPercentBar .progressjs-inner{background-color:", color, ";}"),
+				paste0(".progressjs-percent{color:", percent_color, ";}")
 			),
       tags$script(
         src = "waiter-assets/waitress/custom.js"
