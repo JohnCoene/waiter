@@ -18,7 +18,9 @@ The {waiter} package has evolved since version `0.0.1` and now includes:
 
 * A waiter, splash loading screens.
 * A waitress, loading bars on on elements or whole screen.
-* A butler, configurable loading bar.
+* A butler, infinite loading bar.
+
+You can see the difference between each member of staff [here](https://shiny.john-coene.com/waiter/).
 
 ## Installation
 
