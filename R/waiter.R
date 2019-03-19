@@ -57,6 +57,11 @@ use_waiter <- function(){
         rel="stylesheet",
         type="text/css"
       ),
+      tags$link(
+        href = "waiter-assets/waiter/css-spinners.css",
+        rel="stylesheet",
+        type="text/css"
+      ),
       tags$script(
         src = "waiter-assets/waiter/please-wait.min.js"
       ),

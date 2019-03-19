@@ -13,6 +13,14 @@
 \alias{spin_three_bounce}
 \alias{spin_circle}
 \alias{spin_cube_grid}
+\alias{spin_circles}
+\alias{spin_dual_ring}
+\alias{spin_heart}
+\alias{spin_ellipsis}
+\alias{spin_facebook}
+\alias{spin_hourglass}
+\alias{spin_ring}
+\alias{spin_ripple}
 \alias{browse_spinners}
 \alias{browse_waiters}
 \title{Spinners}
@@ -38,6 +46,22 @@ spin_three_bounce()
 spin_circle()
 
 spin_cube_grid()
+
+spin_circles()
+
+spin_dual_ring()
+
+spin_heart()
+
+spin_ellipsis()
+
+spin_facebook()
+
+spin_hourglass()
+
+spin_ring()
+
+spin_ripple()
 
 browse_spinners()
 

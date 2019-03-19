@@ -143,13 +143,80 @@ spin_cube_grid <- function(){
 
 #' @rdname spinners
 #' @export
+spin_circles <- function(){
+	div(class = "lds-circle")
+}
+
+#' @rdname spinners
+#' @export
+spin_dual_ring <- function(){
+	div(class = "lds-dual-ring")
+}
+
+#' @rdname spinners
+#' @export
+spin_heart <- function(){
+	div(class = "lds-heart",
+		div()
+	)
+}
+
+#' @rdname spinners
+#' @export
+spin_ellipsis <- function(){
+	div(class = "lds-ellipsis",
+		div(),
+		div(),
+		div(),
+		div()
+	)
+}
+
+#' @rdname spinners
+#' @export
+spin_facebook <- function(){
+	div(class = "lds-facebook",
+		div(),
+		div(),
+		div()
+	)
+}
+
+#' @rdname spinners
+#' @export
+spin_hourglass <- function(){
+	div(class = "lds-hourglass")
+}
+
+#' @rdname spinners
+#' @export
+spin_ring <- function(){
+	div(class = "lds-ring",
+		div(),
+		div(),
+		div(),
+		div()
+	)
+}
+
+#' @rdname spinners
+#' @export
+spin_ripple <- function(){
+	div(class = "lds-ripple",
+		div(),
+		div()
+	)
+}
+
+#' @rdname spinners
+#' @export
 browse_spinners <- function() {
 	.Deprecated("browse_waiters")
-	shiny::runApp(appDir = system.file("spinners", package = 'waiter', mustWork = TRUE))
+	shiny::runApp(appDir = system.file("waiter", package = 'waiter', mustWork = TRUE))
 }
 
 #' @rdname spinners
 #' @export
 browse_waiters <- function() {
-	shiny::runApp(appDir = system.file("spinners", package = 'waiter', mustWork = TRUE))
+	shiny::runApp(appDir = system.file("waiter", package = 'waiter', mustWork = TRUE))
 }
