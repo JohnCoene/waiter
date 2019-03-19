@@ -4,23 +4,33 @@
 #' 
 #' @param dom Element selector to apply the waitress to, if \code{NULL} then the waitress is applied to the whole screen.
 #' @param color Color of waitress.
-#' @param percent Percentage to set or increase.
-#' @param ms Milliseconds between each \code{percent} increase.
-#' @param waitress An object of class waitress as returned by \code{call_waitress}.
 #' @param theme A valid theme, see function usage.
 #' 
 #' @section Functions:
 #' \itemize{
 #'  \item{\code{use_waitress}: Dependencies for waitress, to include anywhere in your UI but ideally at the top.}
-#'  \item{\code{call_waitress}: Initialise.}
-#'  \item{\code{start_waitress}: Start.}
-#'  \item{\code{set_waitress}: Set at specific percentage.}
-#'  \item{\code{auto_waitress}: Auto increment.}
-#'  \item{\code{increase_waitress}: Increase.}
-#'  \item{\code{hide_waitress}: End.}
+#'  \item{\code{call_waitress}: Initialise, returns an object of class waitress.}
 #'  \item{\code{browse_waitresses}: Browse waitresses.}
 #' }
-#'  
+#' 
+#' @section Methods:
+#' \itemize{
+#'  \item{\code{start}: Start.}
+#'  \item{\code{set}: Set at specific percentage, takes \code{percent} parameter.}
+#'  \item{\code{auto}: Auto increment at given intervals, takes \code{percent} and \code{ms} parameters.}
+#'  \item{\code{increase}: Increase by a certain percentage, takes \code{percent} parameter.}
+#'  \item{\code{hide}: Hide the waitress.}
+#' }
+#' 
+#' @section Parameters:
+#' \itemize{
+#'   \item{\code{percent}: Percentage to set or increase.}
+#'   \item{\code{ms}: Milliseconds between each \code{percent} increase.}
+#' }
+#' 
+#' @details You can pipe the methods with \code{$}. 
+#' \code{Waitress$new()} and \code{call_waitress()} are equivalent.
+#' 
 #' @examples
 #' library(shiny)
 #' 
@@ -31,11 +41,11 @@
 #' 
 #' server <- function(input, output, session){
 #'  
-#'   w1 <- call_waitress() %>%  # call a waitress
-#'     start_waitress()
-#' 
+#'   w <- Waitress()$  # call a waitress
+#'   	start() # start waitress
+#' 	 
 #'   observeEvent(input$set, {
-#'     set_waitress(w, input$set)
+#'     w$set(input$set) # set at percentage
 #'   })
 #' }
 #' 
@@ -72,121 +82,93 @@ use_waitress <- function(color = "#b84f3e"){
 
 #' @rdname waitress
 #' @export
+Waitress <- R6::R6Class(
+	"waitress",
+	public = list(
+		initialize = function(dom = NULL, theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent")){
+
+			name <- .random_name()
+
+			theme <- match.arg(theme)
+			overlay <- ifelse(grepl("overlay", theme), TRUE, FALSE)
+			theme <- .theme2js(theme)
+
+			private$.name <- name
+			private$.theme <- theme
+			private$.overlay <- overlay
+			private$.dom <- dom
+
+			opts <- list(
+				id = dom,
+				name = name,
+				options = list(
+					theme = theme,
+					overlayMode = overlay
+				)
+			)
+
+			private$get_session()
+			private$.session$sendCustomMessage("waitress-init", opts)
+		},
+		finalize = function(){
+			opts <- list(name = private$.name)
+			private$get_session()
+			private$.session$sendCustomMessage("waitress-end", opts)
+		},
+		start = function(){
+			opts <- list(name = private$.name)
+			private$get_session()
+			private$.session$sendCustomMessage("waitress-start", opts)
+			invisible(self)
+		},
+		set = function(percent){
+			opts <- list(name = private$.name, percent = percent)
+			private$get_session()
+			private$.session$sendCustomMessage("waitress-set", opts)
+			invisible(self)
+		},
+		auto = function(percent, ms){
+			opts <- list(name = private$.name, percent = percent, ms = ms)
+			private$get_session()
+			private$.session$sendCustomMessage("waitress-auto", opts)
+			invisible(self)
+		},
+		increase = function(percent){
+			opts <- list(name = private$.name, percent = percent)
+			private$get_session()
+			private$.session$sendCustomMessage("waitress-increase", opts)
+			invisible(self)
+		},
+		hide = function(){
+			opts <- list(name = private$.name)
+			private$get_session()
+			private$.session$sendCustomMessage("waitress-end", opts)
+			invisible(self)
+		},
+		print = function(...){
+			if(!is.null(private$.dom))
+				print(paste("A waitress applied to", private$.dom))
+			else
+				print("A waitress applied to the whole page")
+		}
+	),
+	private = list(
+		.name = NULL,
+		.theme = NULL,
+		.overlay = NULL,
+		.dom = NULL,
+		.session = NULL,
+		get_session = function(){
+			private$.session <- shiny::getDefaultReactiveDomain()
+			.check_session(private$.session)
+		}
+	)
+)
+
+#' @rdname waitress
+#' @export
 call_waitress <- function(dom = NULL, theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent")){
-
-	name <- .random_name()
-
-	theme <- match.arg(theme)
-	overlay <- ifelse(grepl("overlay", theme), TRUE, FALSE)
-	theme <- .theme2js(theme)
-	
-  opts <- list(
-    id = dom,
-		name = name,
-		options = list(
-			theme = theme,
-			overlayMode = overlay
-		)
-  )
-
-  session <- shiny::getDefaultReactiveDomain()
-  .check_session(session)
-  session$sendCustomMessage("waitress-init", opts)
-
-	.construct_waitress(opts)
-}
-
-#' @rdname waitress
-#' @export
-start_waitress <- function(waitress){
-
-	if(missing(waitress))
-		stop("missing waitress")
-	
-  opts <- list(name = waitress$name)
-  session <- shiny::getDefaultReactiveDomain()
-  .check_session(session)
-  session$sendCustomMessage("waitress-start", opts)
-	invisible(waitress)
-}
-
-#' @rdname waitress
-#' @export
-set_waitress <- function(waitress, percent){
-
-	if(missing(waitress))
-		stop("missing waitress")
-
-	if(missing(percent))
-		stop("missing percent", call. = FALSE)
-	
-  opts <- list(
-		percent = percent,
-		name = waitress$name
-	)
-
-  session <- shiny::getDefaultReactiveDomain()
-  .check_session(session)
-  session$sendCustomMessage("waitress-set", opts)
-	invisible(waitress)
-}
-
-#' @rdname waitress
-#' @export
-auto_waitress <- function(waitress, percent, ms){
-
-	if(missing(waitress))
-		stop("missing waitress")
-
-	if(missing(percent) || missing(ms))
-		stop("missing percent or ms", call. = FALSE)
-	
-  opts <- list(
-		name = waitress$name,
-		percent = percent,
-		ms = ms
-	)
-
-  session <- shiny::getDefaultReactiveDomain()
-  .check_session(session)
-  session$sendCustomMessage("waitress-auto", opts)
-	invisible(waitress)
-}
-
-#' @rdname waitress
-#' @export
-increase_waitress <- function(waitress, percent){
-
-	if(missing(waitress))
-		stop("missing waitress")
-
-	if(missing(percent))
-		stop("missing percent", call. = FALSE)
-	
-  opts <- list(
-		name = waitress$name,
-		percent = percent
-	)
-
-  session <- shiny::getDefaultReactiveDomain()
-  .check_session(session)
-  session$sendCustomMessage("waitress-increase", opts)
-	invisible(waitress)
-}
-
-#' @rdname waitress
-#' @export
-hide_waitress <- function(waitress){
-
-	if(missing(waitress))
-		stop("missing waitress")
-	
-  opts <- list(name = waitress$name)
-
-  session <- shiny::getDefaultReactiveDomain()
-  .check_session(session)
-  session$sendCustomMessage("waitress-end", opts)
-	invisible(waitress)
+	Waitress$new(dom, theme)
 }
 
 #' @rdname waitress

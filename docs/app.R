@@ -245,16 +245,15 @@ server <- function(input, output, session) {
   })
 
 	# waitress
-	w <- call_waitress(theme = "overlay-percent")
+	w <- Waitress$new(theme = "overlay-percent")
 
 	observeEvent(input$fullpage, {
-		w %>% 
-			start_waitress() %>% 
-			auto_waitress(5, 150)
+		w$start() 
+		w$auto(5, 150)
 
 		Sys.sleep(3.5)
 
-		w %>% hide_waitress()
+		w$hide()
 	})
 
 	w_line <- call_waitress("#line", theme = "line")
@@ -263,27 +262,23 @@ server <- function(input, output, session) {
 	w_percent <- call_waitress("#percent", theme = "overlay-percent")
 
 	data <- eventReactive(input$render, {
-		w_overlay %>% 
-			start_waitress() %>% 
-			auto_waitress(5, 150)
+		w_overlay$start() 
+		w_overlay$auto(5, 150)
 
-		w_line %>% 
-			start_waitress() %>% 
-			auto_waitress(5, 150)
+		w_line$start() 
+		w_line$auto(5, 150)
 
-		w_opacity %>% 
-			start_waitress() %>% 
-			auto_waitress(5, 150)
+		w_opacity$start() 
+		w_opacity$auto(5, 150)
 
-		w_percent %>% 
-			start_waitress() %>% 
-			auto_waitress(5, 150)
+		w_percent$start() 
+		w_percent$auto(5, 150)
 
 		Sys.sleep(3.5)
-		hide_waitress(w_overlay)
-		hide_waitress(w_line)
-		hide_waitress(w_opacity)
-		hide_waitress(w_percent)
+		w_overlay$hide()
+		w_line$hide()
+		w_opacity$hide()
+		w_percent$hide()
 
 		return(runif(50))
 	})

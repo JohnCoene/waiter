@@ -1,6 +1,6 @@
 Package: waiter
 Title: Loading Screen for 'Shiny'
-Version: 0.0.3
+Version: 0.0.4
 Date: 2019-03-17
 Authors@R: 
     person(given = "John",
@@ -12,6 +12,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports:
+    R6,
     shiny,
     magrittr
 RoxygenNote: 6.1.1

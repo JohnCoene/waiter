@@ -51,10 +51,12 @@ See `?spinners` for a list of all the spinners.
 
 ### Waitress
 
+Note that the waitress is a reference class.
+
 1. Place `use_waitress` anywhere in your UI.
-2. Set up the waitress in your server with `call_waitress`.
-3. Programatically call `set_waitress`, `increase_waitress`, and `auto_waitress`.
-4. Don't forget to programatically hide the loading screen with `hide_waitress`.
+2. Set up the waitress in your server with `call_waitress` or `Waitress$new()`.
+3. Programatically call the `set`, `increase`, and `auto` _methods_.
+4. Don't forget to programatically hide the loading screen with the `hide` _method_.
 
 See `?waitress` for the documentation.
 
@@ -184,7 +186,7 @@ shinyApp(ui, server)
 
 ### waitress
 
-The waitress can be applied to a specific element or the whole page. Note that `call_waitress` takes a CSS selector, so if you want to apply it to a plot use `#plotId`.
+The waitress can be applied to a specific element or the whole page. Note that `call_waitress` and `Waitress$new()` takes a CSS selector, so if you want to apply it to a plot use `#plotId`.
 
 ```r
 library(shiny)
@@ -200,18 +202,18 @@ server <- function(input, output){
 	waitress <- call_waitress("#plot") # call the waitress
 
 	output$plot <- renderPlot({
-		start_waitress(waitress) # start the waitress
+		waitress$start() # start the waitress
 
 		dat <- vector()
 
 		for(i in 1:10){
-			increase_waitress(waitress, 10) # increase by 10%
-			Sys.sleep(.5)
+			waitress$increase(10) # increase by 10%
+			Sys.sleep(.3)
 			dat <- c(dat, sample(1:100, 1))
 		}
 
 		hist(dat)
-		hide_waitress(waitress) # hide when done
+		waitress$hide() # hide when done
 	})
 
 }
@@ -239,18 +241,18 @@ server <- function(input, output){
 	waitress <- call_waitress("nav", theme = "overlay") # call the waitress
 
 	output$plot <- renderPlot({
-		start_waitress(waitress) # start the waitress
+		waitress$start() # start the waitress
 
 		dat <- vector()
 
 		for(i in 1:10){
-			increase_waitress(waitress, 10) # increase by 10%
+			waitress$increase(10) # increase by 10%
 			Sys.sleep(.5)
 			dat <- c(dat, sample(1:100, 1))
 		}
 
 		hist(dat)
-		hide_waitress(waitress) # hide when done
+		waitress$hide() # hide when done
 	})
 
 }
@@ -272,14 +274,14 @@ ui <- fluidPage(
 
 server <- function(input, output){
 
-	waitress <- call_waitress(theme = "overlay-percent") # call the waitress
+	waitress <- Waitress$new(theme = "overlay-percent") # call the waitress
 
 	observeEvent(input$load, {
-		waitress %>%
-			start_waitress() %>%  
-			auto_waitress(percent = 5, ms = 150) # increase by 5 percent every 150 milliseconds
+		waitress$
+			start()$
+			auto(percent = 5, ms = 150) # increase by 5 percent every 150 milliseconds
 		Sys.sleep(3.5)
-		hide_waitress(waitress)
+		waitress$hide()
 	})
 
 }

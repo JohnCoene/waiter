@@ -1,3 +1,5 @@
+globalVariables("private")
+
 #' return random string
 .random_name <- function() {
 	letters <- LETTERS %>% 
@@ -8,11 +10,6 @@
 		sample() 
 
 	paste0(letters, numbers, collapse = "")
-}
-
-# construct waitress object
-.construct_waitress <- function(l) {
-	structure(l, class = c("waitress", "list"))
 }
 
 .theme2js <- function(x){
