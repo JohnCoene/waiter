@@ -149,12 +149,10 @@ Waiter <- R6::R6Class(
       )
       private$get_session()
       private$.session$sendCustomMessage("waiter-show", opts)
-      invisible(self)
     },
     hide = function(){
       private$get_session()
       private$.session$sendCustomMessage("waiter-hide", list())
-      invisible(self)
     },
 		print = function(...){
 		  print("A waiter")
