@@ -1,4 +1,5 @@
 #include <Rcpp.h>
+#include <cstdlib>
 using namespace Rcpp;
 
 // This is a simple example of exporting a C++ function to R. You can
@@ -14,26 +15,16 @@ using namespace Rcpp;
 // [[Rcpp::export]]
 String themes_to_js(String x) {
   String y;
-  if(x == "line"){
-    y = "blue";
-  } else if(x == "overlay"){
+  if(x == "overlay"){
     y = "blueOverlay";
   } else if(x == "overlay-radius"){
     y = "blueOverlayRadius";
   } else if(x == "overlay-opacity"){
     y = "blueOverlayRadiusHalfOpacity";
-  } else if(x == "overlay-percent"){
+  } else if (x == "overlay-percent"){
     y = "blueOverlayRadiusWithPercentBar";
-  }
+  } else {
+    y = "blue";
+  } 
   return y;
 }
-
-
-// You can include R code blocks in C++ files processed with sourceCpp
-// (useful for testing and development). The R code will be automatically 
-// run after the compilation.
-//
-
-/*** R
-themes_to_js("line")
-*/
