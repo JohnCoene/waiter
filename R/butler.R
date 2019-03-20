@@ -14,6 +14,12 @@
 #'  \item{\code{hide_butler}: Hide butler.}
 #'  \item{\code{config_butler}: Configure the butler.}
 #' }
+#' 
+#' @section Class:
+#' Arguments passed to \code{config_butler} are passed to the initialisation method \code{new}.
+#' \itemize{
+#'   \item{\code{Butler}: initiatlise a Butler.} 
+#' }
 #'
 #' @examples
 #' library(shiny)
@@ -87,3 +93,47 @@ config_butler <- function(thickness = 5, colors = list("0" = "red", ".3" = "blue
   .check_session(session)
   session$sendCustomMessage("butler-config", opts)
 }
+
+#' @rdname butler
+#' @export
+Butler <- R6::R6Class(
+  "butler",
+  public = list(
+    initialize = function(
+      thickness = 5, 
+      colors = list("0" = "red", ".3" = "blue", "1" = "green"),
+	    shadow_blur = 5, 
+      shadow_color = "rgba(0, 0, 0, .5)"){
+
+      private$.thickness <- thickness
+      private$.colors <- colors
+      private$.shadow_blur <- shadow_blur
+      private$.shadow_color <- shadow_color
+
+      private$get_session()
+      private$.session$sendCustomMessage("butler-config", opts)
+    },
+    finalize = function(){
+      public$hide()
+    },
+    show = function(){
+      private$get_session()
+      private$.session$sendCustomMessage("butler-show", list())
+    },
+    hide = function(){
+      private$get_session()
+      private$.session$sendCustomMessage("butler-hide", list())
+    }
+  ),
+  private = list(
+    .thickness = 5,
+    .colors = list("0" = "red", ".3" = "blue", "1" = "green"),
+    .shadow_blur = 5,
+    .shadow_color = "rgba(0, 0, 0, .5)",
+    .session = NULL,
+		get_session = function(){
+			private$.session <- shiny::getDefaultReactiveDomain()
+			.check_session(private$.session)
+		}
+  )
+)

@@ -3,6 +3,8 @@
 S3method(print,butler)
 S3method(print,waitress)
 export("%>%")
+export(Butler)
+export(Waiter)
 export(Waitress)
 export(browse_spinners)
 export(browse_waiters)

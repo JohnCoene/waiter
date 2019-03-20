@@ -14,6 +14,12 @@
 #'  \item{\code{hide_waiter}: Hide any waiting screen.}
 #' }
 #' 
+#' @section Class:
+#' Arguments passed to \code{show_waiter} are passed to the initialisation method \code{new}.
+#' \itemize{
+#'   \item{\code{Waiter}: initiatlise a Waiter.} 
+#' }
+#' 
 #' @examples
 #' library(shiny)
 #' 
@@ -25,7 +31,7 @@
 #' 
 #' server <- function(input, output, session){
 #'   hide_waiter() # will hide *on_load waiter
-#'  
+#'   
 #'   observeEvent(input$show, {
 #'     show_waiter(
 #'       tagList(
@@ -75,8 +81,11 @@ use_waiter <- function(){
 #' @rdname waiter
 #' @export
 show_waiter <- function(html = "", color = "#333e48", logo = ""){
+  html <- as.character(html)
+  html <- gsub("\n", "", html)
+
   opts <- list(
-    html = as.character(html),
+    html = html,
     color = color,
     logo = logo
   )
@@ -116,7 +125,49 @@ hide_waiter <- function(){
   session$sendCustomMessage("waiter-hide", list())
 }
 
-.check_session <- function(x){
-  if(is.null(x))
-    stop("invalid session, run this function inside your Shiny server.")
-}
+#' @rdname waiter
+#' @export
+Waiter <- R6::R6Class(
+  "waiter",
+  public = list(
+    initialize = function(html = "", color = "#333e48", logo = ""){
+      html <- as.character(html)
+      html <- gsub("\n", "", html)
+
+      private$.html <- html
+      private$.color <- color
+      private$.logo <- logo
+    },
+    finalize = function(){
+      public$hide()
+    },
+    show = function(){
+      opts <- list(
+        html = private$.html,
+        color = private$.color,
+        logo = private$.logo
+      )
+      private$get_session()
+      private$.session$sendCustomMessage("waiter-show", opts)
+      invisible(self)
+    },
+    hide = function(){
+      private$get_session()
+      private$.session$sendCustomMessage("waiter-hide", list())
+      invisible(self)
+    },
+		print = function(...){
+		  print("A waiter")
+		}
+  ),
+  private = list(
+    .html = "",
+    .color = "#333e48",
+    .logo = "",
+    .session = NULL,
+		get_session = function(){
+			private$.session <- shiny::getDefaultReactiveDomain()
+			.check_session(private$.session)
+		}
+  )
+)

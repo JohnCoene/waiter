@@ -156,7 +156,8 @@ spin_dual_ring <- function(){
 #' @rdname spinners
 #' @export
 spin_heart <- function(){
-	div(class = "lds-heart",
+	div(
+    class = "lds-heart",
 		div()
 	)
 }
@@ -164,7 +165,8 @@ spin_heart <- function(){
 #' @rdname spinners
 #' @export
 spin_ellipsis <- function(){
-	div(class = "lds-ellipsis",
+	div(
+    class = "lds-ellipsis",
 		div(),
 		div(),
 		div(),
@@ -175,7 +177,8 @@ spin_ellipsis <- function(){
 #' @rdname spinners
 #' @export
 spin_facebook <- function(){
-	div(class = "lds-facebook",
+	div(
+    class = "lds-facebook",
 		div(),
 		div(),
 		div()
@@ -191,7 +194,8 @@ spin_hourglass <- function(){
 #' @rdname spinners
 #' @export
 spin_ring <- function(){
-	div(class = "lds-ring",
+	div(
+    class = "lds-ring",
 		div(),
 		div(),
 		div(),
@@ -202,7 +206,8 @@ spin_ring <- function(){
 #' @rdname spinners
 #' @export
 spin_ripple <- function(){
-	div(class = "lds-ripple",
+	div(
+    class = "lds-ripple",
 		div(),
 		div()
 	)

@@ -25,3 +25,7 @@ globalVariables("private")
 		"blueOverlayRadiusWithPercentBar"
 }
 
+.check_session <- function(x){
+  if(is.null(x))
+    stop("invalid session, run this function inside your Shiny server.")
+}
