@@ -14,5 +14,8 @@ LazyData: true
 Imports:
     R6,
     shiny,
-    magrittr
+    magrittr,
+    Rcpp
 RoxygenNote: 6.1.1
+LinkingTo: 
+    Rcpp

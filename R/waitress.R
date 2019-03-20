@@ -42,7 +42,8 @@
 #' 
 #' server <- function(input, output, session){
 #'  
-#'   w <- Waitress()$  # call a waitress
+#'   w <- Waitress$
+#'    new()$  # call a waitress
 #'   	start() # start waitress
 #' 	 
 #'   observeEvent(input$set, {
@@ -93,7 +94,7 @@ Waitress <- R6::R6Class(
 
 			theme <- match.arg(theme)
 			overlay <- ifelse(grepl("overlay", theme), TRUE, FALSE)
-			theme <- .theme2js(theme)
+			theme <- themes_to_js(theme)
 
 			private$.name <- name
 			private$.theme <- theme

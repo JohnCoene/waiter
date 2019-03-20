@@ -5,3 +5,6 @@
 waiter.gif
 .gitattributes
 docs
+^.*\.Rproj$
+^\.Rproj\.user$
+.vscode

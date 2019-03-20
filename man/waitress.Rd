@@ -72,7 +72,8 @@ ui <- fluidPage(
 
 server <- function(input, output, session){
  
-  w <- Waitress()$  # call a waitress
+  w <- Waitress$
+   new()$  # call a waitress
   	start() # start waitress
 	 
   observeEvent(input$set, {
