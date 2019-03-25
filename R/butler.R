@@ -113,9 +113,6 @@ Butler <- R6::R6Class(
       private$get_session()
       private$.session$sendCustomMessage("butler-config", opts)
     },
-    finalize = function(){
-      public$hide()
-    },
     show = function(){
       private$get_session()
       private$.session$sendCustomMessage("butler-show", list())
