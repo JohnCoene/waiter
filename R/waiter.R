@@ -5,6 +5,7 @@
 #' @param html HTML content of waiter, generally a spinner, see \code{\link{spinners}}.
 #' @param color Background color of loading screen.
 #' @param logo Logo to display.
+#' @param id Id of element to hide.
 #' 
 #' @section Functions:
 #' \itemize{
@@ -12,6 +13,7 @@
 #'  \item{\code{show_waiter_on_load}: Show a waiter on page load, before the session is even loaded, include in UI \emph{after} \code{use_waiter}.}
 #'  \item{\code{show_waiter}: Show waiting screen.}
 #'  \item{\code{hide_waiter}: Hide any waiting screen.}
+#'  \item{\code{hide_waiter_on_drawn}: Hide any waiting screen when the output is drawn, useful for outputs that take a long time to draw, \emph{use in \code{ui}}.}
 #' }
 #' 
 #' @section Class:
@@ -113,6 +115,27 @@ show_waiter_on_load <- function(html = "", color = "#333e48", logo = ""){
       HTML(
         paste0("<script>document.addEventListener('DOMContentLoaded', function() {", script, "});</script>")
       )
+    )
+  )
+}
+
+#' @rdname waiter
+#' @export
+hide_waiter_on_drawn <- function(id){
+  if(missing(id))
+    stop("Missing id", call. = FALSE)
+  
+  script <- paste0(
+    '$(document).on("shiny:value", function(event) {
+      if (event.target.id === "', id,'") {
+        window.loading_screen.finish();
+      }
+    });'
+  )
+
+  singleton(
+    tags$head(
+      tags$script(script)
     )
   )
 }
