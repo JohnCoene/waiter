@@ -1,6 +1,6 @@
 [![Travis build status](https://travis-ci.org/JohnCoene/waiter.svg?branch=master)](https://travis-ci.org/JohnCoene/waiter)
 
-<img src="man/figures/logo.png" align = "right" height = "170px" />
+<img src="./man/figures/logo.png" align = "right" height = "170px" />
 
 # waiter
 
@@ -76,17 +76,17 @@ The demos below are also on the [website](https://shiny.john-coene.com/waiter/).
 
 Browse the spinners locally with `waiter::browse_waiters()`
 
-![](man/figures/waiter.gif)
+![](./man/figures/waiter.gif)
 
 ### waitress
 
 Browse waitresses locally with `waiter::browse_waitresses()`
 
-![](man/figures/waitress.gif)
+![](./man/figures/waitress.gif)
 
 ### butler
 
-![](man/figures/butler.gif)
+![](./man/figures/butler.gif)
 
 ## Examples
 

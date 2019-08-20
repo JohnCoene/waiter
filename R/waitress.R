@@ -113,11 +113,6 @@ Waitress <- R6::R6Class(
 			private$get_session()
 			private$.session$sendCustomMessage("waitress-init", opts)
 		},
-		finalize = function(){
-			opts <- list(name = private$.name)
-			private$get_session()
-			private$.session$sendCustomMessage("waitress-end", opts)
-		},
 		start = function(){
 			opts <- list(name = private$.name)
 			private$get_session()
