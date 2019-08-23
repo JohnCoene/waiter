@@ -18,6 +18,9 @@
 \alias{spin_squares}
 \alias{spin_cube_grid}
 \alias{spin_circles}
+\alias{spin_orbiter}
+\alias{spin_pixel}
+\alias{spin_flower}
 \alias{spin_dual_ring}
 \alias{spin_heart}
 \alias{spin_ellipsis}
@@ -60,6 +63,12 @@ spin_squares()
 spin_cube_grid()
 
 spin_circles()
+
+spin_orbiter()
+
+spin_pixel()
+
+spin_flower()
 
 spin_dual_ring()
 

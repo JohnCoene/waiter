@@ -138,7 +138,10 @@ ui <- navbarPage(
               "Rotate" = "spin_rotate",
               "Squares" = "spin_squares",
               "Solar" = "spin_solar",
-              "Orbit" = "spin_orbit"
+              "Orbit" = "spin_orbit",
+              "Flower" = "spin_flower",
+              "Pixel" = "spin_pixel",
+              "Orbiter" = "spin_orbiter"
 						)
 					)
 				),

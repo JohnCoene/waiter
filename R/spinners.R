@@ -218,6 +218,42 @@ spin_circles <- function(){
 
 #' @rdname spinners
 #' @export
+spin_orbiter <- function(){
+	div(
+    class = "orbiter-spinner",
+    div(
+      class = "orbiter",
+      class = "orbiter",
+      class = "orbiter"
+    )
+  )
+}
+
+#' @rdname spinners
+#' @export
+spin_pixel <- function(){
+	div(class = "pixel-spinner", div(class = "pixel-spinner-inner"))
+}
+
+#' @rdname spinners
+#' @export
+spin_flower <- function(){
+	div(
+    class = "flower-spinner",
+    div(
+      class = "dots-container",
+      div(
+        class = "bigger-dot",
+        div(
+          class = "smaller-dot"
+        )
+      )
+    )
+  )
+}
+
+#' @rdname spinners
+#' @export
 spin_dual_ring <- function(){
 	div(class = "lds-dual-ring")
 }
