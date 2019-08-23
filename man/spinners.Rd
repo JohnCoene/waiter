@@ -12,6 +12,10 @@
 \alias{spin_chasing_dots}
 \alias{spin_three_bounce}
 \alias{spin_circle}
+\alias{spin_rotate}
+\alias{spin_solar}
+\alias{spin_orbit}
+\alias{spin_squares}
 \alias{spin_cube_grid}
 \alias{spin_circles}
 \alias{spin_dual_ring}
@@ -44,6 +48,14 @@ spin_chasing_dots()
 spin_three_bounce()
 
 spin_circle()
+
+spin_rotate()
+
+spin_solar()
+
+spin_orbit()
+
+spin_squares()
 
 spin_cube_grid()
 

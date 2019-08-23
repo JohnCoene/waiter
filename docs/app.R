@@ -134,7 +134,11 @@ ui <- navbarPage(
 							"Ellipsis" = "spin_ellipsis",
 							"Facebook" = "spin_hourglass",
 							"Ring" = "spin_ring",
-							"Ripple" = "spin_ripple"
+							"Ripple" = "spin_ripple",
+              "Rotate" = "spin_rotate",
+              "Squares" = "spin_squares",
+              "Solar" = "spin_solar",
+              "Orbit" = "spin_orbit"
 						)
 					)
 				),

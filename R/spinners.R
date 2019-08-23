@@ -126,6 +126,75 @@ spin_circle <- function(){
 
 #' @rdname spinners
 #' @export
+spin_rotate <- function(){
+  div(
+    class = "spinner-box",
+    div(
+      class = "circle-border",
+      div(class = "circle-core")
+    )
+  )
+}
+
+#' @rdname spinners
+#' @export
+spin_solar <- function(){
+  div(
+    class = "spinner-box",
+    div(
+      class = "earth-orbit orbit",
+      div(
+        class = "planet earth"
+      ),
+      div(
+        class = "venus-orbit orbit",
+        div(
+          class = "planet venus"
+        ),
+        div(
+          class = "mercury-orbit orbit",
+          div(
+            class = "planet mercury"
+          ),
+          div(class = "sun")
+        )
+      )
+    )
+  )
+}
+
+#' @rdname spinners
+#' @export
+spin_orbit <- function(){
+  div(
+    class = "spinner-box",
+    div(class = "blue-orbit leo"),
+    div(class = "green-orbit leo"),
+    div(class = "red-orbit leo"),
+    div(class = "white-orbit w1 leo"),
+    div(class = "white-orbit w2 leo"),
+    div(class = "white-orbit w3 leo")
+  )
+}
+
+#' @rdname spinners
+#' @export
+spin_squares <- function(){
+  div(
+    class = "spinner-box",
+    div(
+      class = "configure-border-1",
+      div(class = "configure-core")
+    ),
+    div(
+      class = "configure-border-2",
+      div(class = "configure-core")
+    )
+  )
+}
+
+#' @rdname spinners
+#' @export
 spin_cube_grid <- function(){
   div(
     class = "sk-cube-grid",
