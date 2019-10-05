@@ -11,6 +11,7 @@ Loading screens for Shiny; programatically show and hide partial or full page lo
 * [How-to](#how-to)
 * [Demo](https://shiny.john-coene.com/waiter/)
 * [Examples](#examples)
+* [Credit](#credit)
 
 ## Features
 
