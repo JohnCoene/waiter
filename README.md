@@ -356,3 +356,12 @@ server <- function(input, output){
 
 shinyApp(ui, server)
 ```
+
+## Credit
+
+Underlying CSS and JavaScript libraries that enable waiter:
+
+- [Please Wait](https://github.com/Pathgather/please-wait)
+- [Spinkit CSS](https://tobiasahlin.com/spinkit/)
+- [Topbar](https://github.com/buunguyen/topbar)
+- [Progress.js](https://usablica.github.io/progress.js/)
