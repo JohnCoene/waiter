@@ -99,6 +99,16 @@ config_butler <- function(thickness = 5, colors = list("0" = "red", ".3" = "blue
 Butler <- R6::R6Class(
   "butler",
   public = list(
+#' @details
+#' Create a butler.
+#' 
+#' @param thickness Thickness of the bar.
+#' @param colors List of gradient color stops used to draw the progress bar.
+#' @param shadow_blur Shadow blur size.
+#' @param shadow_color Shadow color.
+#' 
+#' @examples
+#' \dontrun{Butler$new()}
     initialize = function(
       thickness = 5, 
       colors = list("0" = "red", ".3" = "blue", "1" = "green"),
@@ -113,10 +123,20 @@ Butler <- R6::R6Class(
       private$get_session()
       private$.session$sendCustomMessage("butler-config", opts)
     },
+#' @details
+#' Show the butler.
+#' 
+#' @examples
+#' \dontrun{Butler$new()$show()}
     show = function(){
       private$get_session()
       private$.session$sendCustomMessage("butler-show", list())
     },
+#' @details
+#' Hide the butler.
+#' 
+#' @examples
+#' \dontrun{Butler$new()$show()$hide()}
     hide = function(){
       private$get_session()
       private$.session$sendCustomMessage("butler-hide", list())

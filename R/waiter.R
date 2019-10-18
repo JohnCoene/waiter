@@ -6,6 +6,8 @@
 #' @param color Background color of loading screen.
 #' @param logo Logo to display.
 #' @param id Id of element to hide.
+#' @param include_js Whether to include the Javascript dependencies, only
+#' set to \code{FALSE} if you use \code{\link{show_waiter_on_load}}.
 #' 
 #' @section Functions:
 #' \itemize{
@@ -51,7 +53,7 @@
 #' @import shiny
 #' @name waiter
 #' @export
-use_waiter <- function(){
+use_waiter <- function(include_js = TRUE){
   singleton(
     tags$head(
       tags$link(
@@ -70,9 +72,10 @@ use_waiter <- function(){
         rel="stylesheet",
         type="text/css"
       ),
-      tags$script(
-        src = "waiter-assets/waiter/please-wait.min.js"
-      ),
+      if(include_js)
+        tags$script(
+          src = "waiter-assets/waiter/please-wait.min.js"
+        ),
       tags$script(
         src = "waiter-assets/waiter/custom.js"
       )
@@ -110,12 +113,11 @@ show_waiter_on_load <- function(html = "", color = "#333e48", logo = ""){
     });"
   )
 
-  singleton(
-    tags$head(
-      HTML(
-        paste0("<script>document.addEventListener('DOMContentLoaded', function() {", script, "});</script>")
-      )
-    )
+  tagList(
+    tags$script(
+      src = "waiter-assets/waiter/please-wait.min.js"
+    ),
+    HTML(paste0("<script>", script, "</script>"))
   )
 }
 
@@ -153,6 +155,15 @@ hide_waiter <- function(){
 Waiter <- R6::R6Class(
   "waiter",
   public = list(
+#' @details
+#' Create a waiter.
+#' 
+#' @param html HTML content of waiter, generally a spinner, see \code{\link{spinners}}.
+#' @param color Background color of loading screen.
+#' @param logo Logo to display.
+#' 
+#' @examples
+#' \dontrun{Waiter$new()}
     initialize = function(html = "", color = "#333e48", logo = ""){
       html <- as.character(html)
       html <- gsub("\n", "", html)
@@ -161,9 +172,13 @@ Waiter <- R6::R6Class(
       private$.color <- color
       private$.logo <- logo
     },
+#' @details
+#' Hide the waiter.
     finalize = function(){
       public$hide()
     },
+#' @details
+#' Show the waiter.
     show = function(){
       opts <- list(
         html = private$.html,
@@ -173,11 +188,15 @@ Waiter <- R6::R6Class(
       private$get_session()
       private$.session$sendCustomMessage("waiter-show", opts)
     },
+#' @details
+#' Hide the waiter.
     hide = function(){
       private$get_session()
       private$.session$sendCustomMessage("waiter-hide", list())
     },
-		print = function(...){
+#' @details
+#' print the waiter
+		print = function(){
 		  print("A waiter")
 		}
   ),

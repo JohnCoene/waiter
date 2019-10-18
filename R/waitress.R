@@ -2,32 +2,10 @@
 #' 
 #' Programatically show and hide loading screens.
 #' 
-#' @param dom Element selector to apply the waitress to, if \code{NULL} then the waitress is applied to the whole screen.
 #' @param color,percent_color Color of waitress and color of percent text shown when 
-#' \code{theme} is set to \code{overlay-percentß}.
+#' \code{theme} is set to \code{overlay-percent}.
+#' @param dom Element selector to apply the waitress to, if \code{NULL} then the waitress is applied to the whole screen.
 #' @param theme A valid theme, see function usage.
-#' 
-#' @section Functions:
-#' \itemize{
-#'  \item{\code{use_waitress}: Dependencies for waitress, to include anywhere in your UI but ideally at the top.}
-#'  \item{\code{call_waitress}: Initialise, returns an object of class waitress.}
-#'  \item{\code{browse_waitresses}: Browse waitresses.}
-#' }
-#' 
-#' @section Methods:
-#' \itemize{
-#'  \item{\code{start}: Start.}
-#'  \item{\code{set}: Set at specific percentage, takes \code{percent} parameter.}
-#'  \item{\code{auto}: Auto increment at given intervals, takes \code{percent} and \code{ms} parameters.}
-#'  \item{\code{increase}: Increase by a certain percentage, takes \code{percent} parameter.}
-#'  \item{\code{hide}: Hide the waitress.}
-#' }
-#' 
-#' @section Parameters:
-#' \itemize{
-#'   \item{\code{percent}: Percentage to set or increase.}
-#'   \item{\code{ms}: Milliseconds between each \code{percent} increase.}
-#' }
 #' 
 #' @details You can pipe the methods with \code{$}. 
 #' \code{Waitress$new()} and \code{call_waitress()} are equivalent.
@@ -88,6 +66,16 @@ use_waitress <- function(color = "#b84f3e", percent_color = "#333333"){
 Waitress <- R6::R6Class(
 	"waitress",
 	public = list(
+#' @details
+#' Create a waitress.
+#' 
+#' @param dom Element selector to apply the waitress to, if \code{NULL} then the waitress is applied to the whole screen.
+#' @param color,percent_color Color of waitress and color of percent text shown when 
+#' \code{theme} is set to \code{overlay-percent}.
+#' @param theme A valid theme, see function usage.
+#' 
+#' @examples
+#' \dontrun{Waitress$new("#plot")}
 		initialize = function(dom = NULL, theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent")){
 
 			name <- .random_name()
@@ -113,37 +101,74 @@ Waitress <- R6::R6Class(
 			private$get_session()
 			private$.session$sendCustomMessage("waitress-init", opts)
 		},
+#' @details
+#' Start the waitress.
+#' 
+#' @examples
+#' \dontrun{Waitress$new("#plot")$start()}
 		start = function(){
 			opts <- list(name = private$.name)
 			private$get_session()
 			private$.session$sendCustomMessage("waitress-start", opts)
 			invisible(self)
 		},
+#' @details
+#' Set the waitress to a specific percentage.
+#' 
+#' @param percent Percentage to set waitress to.
+#' 
+#' @examples
+#' \dontrun{Waitress$new("#plot")$set(20)}
 		set = function(percent){
 			opts <- list(name = private$.name, percent = percent)
 			private$get_session()
 			private$.session$sendCustomMessage("waitress-set", opts)
 			invisible(self)
 		},
+#' @details
+#' Automatically strat and end the waitress.
+#' 
+#' @param percent Percentage to set waitress to.
+#' @param ms Number of Milliseconds
+#' 
+#' @examples
+#' \dontrun{Waitress$new("#plot")$auto(20, 2000)}
 		auto = function(percent, ms){
 			opts <- list(name = private$.name, percent = percent, ms = ms)
 			private$get_session()
 			private$.session$sendCustomMessage("waitress-auto", opts)
 			invisible(self)
 		},
+#' @details
+#' Increase the waitress by a percentage.
+#' 
+#' @param percent Percentage to increase waitress to.
+#' 
+#' @examples
+#' \dontrun{Waitress$new("#plot")$increase(30)}
 		increase = function(percent){
 			opts <- list(name = private$.name, percent = percent)
 			private$get_session()
 			private$.session$sendCustomMessage("waitress-increase", opts)
 			invisible(self)
 		},
+#' @details
+#' Hide the waitress.
+#' 
+#' @examples
+#' \dontrun{Waitress$new("#plot")$hide()}
 		hide = function(){
 			opts <- list(name = private$.name)
 			private$get_session()
 			private$.session$sendCustomMessage("waitress-end", opts)
 			invisible(self)
 		},
-		print = function(...){
+#' @details
+#' Print the waitress.
+#' 
+#' @examples
+#' \dontrun{Waitress$new("#plot")$hide()}
+		print = function(){
 			if(!is.null(private$.dom))
 				print(paste("A waitress applied to", private$.dom))
 			else

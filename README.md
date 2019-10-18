@@ -115,22 +115,24 @@ server <- function(input, output, session){
 if(interactive()) shinyApp(ui, server)
 ```
 
-Since version `0.0.2` you can show on loading screen on app launch. The loading screen will launch prior to anything, even the Shiny session, thereby avoiding having content flash before the loading screen actually appears. See the example below.
+Since version `0.0.4` you can show on loading screen on app launch. The loading screen will launch prior to anything, even the Shiny session. Note that in `0.0.4` some content flashed before the loader appeared, this has been fixed in `0.0.5`.
 
-Though this function is not programatically launched it still has to be hidden with `hide_waiter`. Ensure you place `show_waiter_on_load` _after_ `use_waiter`.
+Though this function is not programatically launched it still has to be hidden with `hide_waiter`. Ensure you place `show_waiter_on_load` after `use_waiter` and at _the very end of your UI_, also set `include_js` to `FALSE`, in `use_waiter`.
 
 ```r
 library(shiny)
 library(waiter)
+
+Sy.sleep(1)
  
 ui <- fluidPage(
-  use_waiter(),
-  show_waiter_on_load(spin_fading_circles()), # show on load
-  h3("Content you will only see after loading screen has disappeared")
+  use_waiter(include_js = FALSE), # do not include js
+  h3("Content you will only see after loading screen has disappeared"),
+	show_waiter_on_load(spin_fading_circles()) # place at the bottom
 )
 
 server <- function(input, output, session){
-  Sys.sleep(5) # do something that takes time
+  Sys.sleep(3) # do something that takes time
   hide_waiter()
 }
 
