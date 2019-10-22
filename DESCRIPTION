@@ -15,4 +15,4 @@ Imports:
     R6,
     shiny,
     magrittr
-RoxygenNote: 6.1.1
+RoxygenNote: 6.1.99.9001
