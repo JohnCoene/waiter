@@ -7,6 +7,7 @@
 \alias{show_waiter_on_load}
 \alias{hide_waiter_on_drawn}
 \alias{hide_waiter}
+\alias{update_waiter}
 \alias{Waiter}
 \title{Waiter}
 \usage{
@@ -19,6 +20,8 @@ show_waiter_on_load(html = "", color = "#333e48", logo = "")
 hide_waiter_on_drawn(id)
 
 hide_waiter()
+
+update_waiter(html = "")
 }
 \arguments{
 \item{include_js}{Whether to include the Javascript dependencies, only
@@ -94,6 +97,7 @@ if(interactive()) shinyApp(ui, server)
 \item \href{#method-finalize}{\code{Waiter$finalize()}}
 \item \href{#method-show}{\code{Waiter$show()}}
 \item \href{#method-hide}{\code{Waiter$hide()}}
+\item \href{#method-update_waiter}{\code{Waiter$update_waiter()}}
 \item \href{#method-print}{\code{Waiter$print()}}
 }
 }
@@ -161,6 +165,25 @@ Show the waiter.
 
 \subsection{Details}{
 Hide the waiter.
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-update_waiter"></a>}}
+\subsection{Method \code{update_waiter()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Waiter$update_waiter(html = "")}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{html}}{HTML content of waiter, generally a spinner, see \code{\link{spinners}}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+Update the waiter's html content.
 }
 
 }

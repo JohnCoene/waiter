@@ -187,6 +187,33 @@ server <- function(input, output, session){
 shinyApp(ui, server)
 ```
 
+You can, since version `0.0.6` update the `html` of the waiting screen while it's loading.
+
+```r
+library(shiny)
+library(waiter)
+ 
+ui <- fluidPage(
+  use_waiter(),
+  actionButton("show", "Show loading with updates")
+)
+
+server <- function(input, output, session){
+  observeEvent(input$show, {
+    show_waiter(span("Initialisation", style = "color:white;"))
+		Sys.sleep(2)
+		for(i in 1:5){
+			HTML <- span(paste("Loading #", i, "of 5"), style = "color:white;z-index:999;")
+			update_waiter(html = HTML)
+			Sys.sleep(2)
+		}
+    hide_waiter()
+  })
+}
+
+if(interactive()) shinyApp(ui, server)
+```
+
 ### waitress
 
 The waitress can be applied to a specific element or the whole page. Note that `call_waitress` and `Waitress$new()` takes a CSS selector, so if you want to apply it to a plot use `#plotId`.

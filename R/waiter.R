@@ -152,6 +152,16 @@ hide_waiter <- function(){
 
 #' @rdname waiter
 #' @export
+update_waiter <- function(html = ""){
+  html <- as.character(html)
+  html <- gsub("\n", "", html)
+  session <- shiny::getDefaultReactiveDomain()
+  .check_session(session)
+  session$sendCustomMessage("waiter-update", list(html = html))
+}
+
+#' @rdname waiter
+#' @export
 Waiter <- R6::R6Class(
   "waiter",
   public = list(
@@ -193,6 +203,15 @@ Waiter <- R6::R6Class(
     hide = function(){
       private$get_session()
       private$.session$sendCustomMessage("waiter-hide", list())
+    },
+#' @details
+#' Update the waiter's html content.
+#' @param html HTML content of waiter, generally a spinner, see \code{\link{spinners}}.
+    update_waiter = function(html = ""){
+      html <- as.character(html)
+      html <- gsub("\n", "", html)
+      private$get_session()
+      private$.session$sendCustomMessage("waiter-update", list(html = html))
     },
 #' @details
 #' print the waiter

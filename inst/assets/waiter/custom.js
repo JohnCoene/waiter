@@ -6,6 +6,10 @@ Shiny.addCustomMessageHandler('waiter-show', function(opts) {
   });
 });
 
+Shiny.addCustomMessageHandler('waiter-update', function(opts) {
+  window.loading_screen.updateLoadingHtml(opts.html, true);
+});
+
 Shiny.addCustomMessageHandler('waiter-hide', function(opts) {
   window.loading_screen.finish();
 });
