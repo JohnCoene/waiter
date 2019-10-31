@@ -201,12 +201,12 @@ ui <- fluidPage(
 server <- function(input, output, session){
   observeEvent(input$show, {
     show_waiter(span("Initialisation", style = "color:white;"))
-		Sys.sleep(2)
-		for(i in 1:5){
-			HTML <- span(paste("Loading #", i, "of 5"), style = "color:white;z-index:999;")
-			update_waiter(html = HTML)
-			Sys.sleep(2)
-		}
+    Sys.sleep(2)
+    for(i in 1:5){
+      HTML <- span(paste("Loading #", i, "of 5"), style = "color:white;z-index:999;")
+      update_waiter(html = HTML)
+      Sys.sleep(2)
+    }
     hide_waiter()
   })
 }
