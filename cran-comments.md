@@ -7,4 +7,4 @@
 
 0 errors | 0 warnings | 1 note
 
-* Added a biunch of new functions
+* Added a bunch of new functions
