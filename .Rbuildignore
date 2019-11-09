@@ -8,3 +8,4 @@ docs
 ^.*\.Rproj$
 ^\.Rproj\.user$
 .vscode
+FUNDING.yml
