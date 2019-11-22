@@ -320,6 +320,90 @@ spin_ripple <- function(){
 
 #' @rdname spinners
 #' @export
+spin_1 <- function(){
+  div(
+    class = "container--box",
+    div(
+      class = "box",
+      div(
+        class = "spinner spinner--1"
+      )
+    )
+  )
+}
+
+#' @rdname spinners
+#' @export
+spin_2 <- function(){
+  div(
+    class = "container--box",
+    div(
+      class = "box",
+      div(
+        class = "spinner spinner--2"
+      )
+    )
+  )
+}
+
+#' @rdname spinners
+#' @export
+spin_3 <- function(){
+  div(
+    class = "container--box",
+    div(
+      class = "box",
+      div(
+        class = "spinner spinner--3"
+      )
+    )
+  )
+}
+
+#' @rdname spinners
+#' @export
+spin_4 <- function(){
+  div(
+    class = "container--box",
+    div(
+      class = "box",
+      div(
+        class = "spinner spinner--4"
+      )
+    )
+  )
+}
+
+#' @rdname spinners
+#' @export
+spin_5 <- function(){
+  div(
+    class = "container--box",
+    div(
+      class = "box",
+      div(
+        class = "spinner spinner--5"
+      )
+    )
+  )
+}
+
+#' @rdname spinners
+#' @export
+spin_6 <- function(){
+  div(
+    class = "container--box",
+    div(
+      class = "box",
+      div(
+        class = "spinner spinner--6"
+      )
+    )
+  )
+}
+
+#' @rdname spinners
+#' @export
 browse_spinners <- function() {
 	.Deprecated("browse_waiters")
 	shiny::runApp(appDir = system.file("waiter", package = 'waiter', mustWork = TRUE))

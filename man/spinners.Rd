@@ -28,6 +28,12 @@
 \alias{spin_hourglass}
 \alias{spin_ring}
 \alias{spin_ripple}
+\alias{spin_1}
+\alias{spin_2}
+\alias{spin_3}
+\alias{spin_4}
+\alias{spin_5}
+\alias{spin_6}
 \alias{browse_spinners}
 \alias{browse_waiters}
 \title{Spinners}
@@ -83,6 +89,18 @@ spin_hourglass()
 spin_ring()
 
 spin_ripple()
+
+spin_1()
+
+spin_2()
+
+spin_3()
+
+spin_4()
+
+spin_5()
+
+spin_6()
 
 browse_spinners()
 

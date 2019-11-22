@@ -141,7 +141,13 @@ ui <- navbarPage(
               "Orbit" = "spin_orbit",
               "Flower" = "spin_flower",
               "Pixel" = "spin_pixel",
-              "Orbiter" = "spin_orbiter"
+              "Orbiter" = "spin_orbiter",
+							"1" = "spin_1",
+							"2" = "spin_2",
+							"3" = "spin_3",
+							"4" = "spin_4",
+							"5" = "spin_5",
+							"6" = "spin_6"
 						)
 					)
 				),

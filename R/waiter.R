@@ -72,6 +72,11 @@ use_waiter <- function(include_js = TRUE){
         rel="stylesheet",
         type="text/css"
       ),
+      tags$link(
+        href = "waiter-assets/waiter/devloop.css",
+        rel="stylesheet",
+        type="text/css"
+      ),
       if(include_js)
         tags$script(
           src = "waiter-assets/waiter/please-wait.min.js"
