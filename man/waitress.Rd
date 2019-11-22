@@ -106,6 +106,7 @@ if(interactive()) shinyApp(ui, server)
 \item \href{#method-increase}{\code{Waitress$increase()}}
 \item \href{#method-hide}{\code{Waitress$hide()}}
 \item \href{#method-print}{\code{Waitress$print()}}
+\item \href{#method-clone}{\code{Waitress$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
@@ -285,5 +286,21 @@ Print the waitress.
 
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\subsection{Method \code{clone()}}{
+The objects of this class are cloneable with this method.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Waitress$clone(deep = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{deep}}{Whether to make a deep clone.}
+}
+\if{html}{\out{</div>}}
+}
 }
 }

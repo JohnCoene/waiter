@@ -101,6 +101,7 @@ if(interactive()) shinyApp(ui, server)
 \item \href{#method-new}{\code{Butler$new()}}
 \item \href{#method-show}{\code{Butler$show()}}
 \item \href{#method-hide}{\code{Butler$hide()}}
+\item \href{#method-clone}{\code{Butler$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
@@ -180,5 +181,21 @@ Hide the butler.
 
 }
 
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-clone"></a>}}
+\subsection{Method \code{clone()}}{
+The objects of this class are cloneable with this method.
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Butler$clone(deep = FALSE)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{deep}}{Whether to make a deep clone.}
+}
+\if{html}{\out{</div>}}
+}
 }
 }

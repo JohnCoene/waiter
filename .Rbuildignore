@@ -9,3 +9,4 @@ docs
 ^\.Rproj\.user$
 .vscode
 FUNDING.yml
+test.R
