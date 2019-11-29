@@ -69,6 +69,13 @@ See `?waitress` for the documentation.
 
 You can, optionally, configure the butler with `config_butler`.
 
+### hostess
+
+1. Place `use_hostess` anywhere in your UI.
+2. Place a `hostess_loader` where you want the bar to show.
+3. Call `Hostess$new()` in your server to launch the hostess.
+4. Increase the hostess with `Hostess$set`.
+
 ## Demos
 
 The demos below are also on the [website](https://shiny.john-coene.com/waiter/).
@@ -128,7 +135,7 @@ Sy.sleep(1)
 ui <- fluidPage(
   use_waiter(include_js = FALSE), # do not include js
   h3("Content you will only see after loading screen has disappeared"),
-	show_waiter_on_load(spin_fading_circles()) # place at the bottom
+  show_waiter_on_load(spin_fading_circles()) # place at the bottom
 )
 
 server <- function(input, output, session){
@@ -223,27 +230,27 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-	use_waitress(),
-	plotOutput("plot", width = 400)
+  use_waitress(),
+  plotOutput("plot", width = 400)
 )
 
 server <- function(input, output){
-
-	waitress <- call_waitress("#plot") # call the waitress
-
-	output$plot <- renderPlot({
-		waitress$start() # start the waitress
-
-		dat <- vector()
-
-		for(i in 1:10){
-			waitress$increase(10) # increase by 10%
-			Sys.sleep(.3)
-			dat <- c(dat, sample(1:100, 1))
-		}
-
-		hist(dat)
-		waitress$hide() # hide when done
+  
+  waitress <- call_waitress("#plot") # call the waitress
+  
+  output$plot <- renderPlot({
+    waitress$start() # start the waitress
+    
+    dat <- vector()
+    
+    for(i in 1:10){
+      waitress$increase(10) # increase by 10%
+      Sys.sleep(.3)
+      dat <- c(dat, sample(1:100, 1))
+    }
+    
+    hist(dat)
+    waitress$hide() # hide when done
 	})
 
 }
@@ -258,31 +265,31 @@ library(shiny)
 library(waiter)
 
 ui <- navbarPage(
-	"Waitress on nav",
-	tabPanel(
-		"home",
-		use_waitress(),
-		plotOutput("plot")
-	)
+  "Waitress on nav",
+  tabPanel(
+    "home",
+    use_waitress(),
+    plotOutput("plot")
+    )
 )
 
 server <- function(input, output){
-
-	waitress <- call_waitress("nav", theme = "overlay") # call the waitress
-
-	output$plot <- renderPlot({
-		waitress$start() # start the waitress
-
-		dat <- vector()
-
-		for(i in 1:10){
-			waitress$increase(10) # increase by 10%
-			Sys.sleep(.5)
-			dat <- c(dat, sample(1:100, 1))
-		}
-
-		hist(dat)
-		waitress$hide() # hide when done
+  
+  waitress <- call_waitress("nav", theme = "overlay") # call the waitress
+  
+  output$plot <- renderPlot({
+    waitress$start() # start the waitress
+    
+    dat <- vector()
+    
+    for(i in 1:10){
+      waitress$increase(10) # increase by 10%
+      Sys.sleep(.5)
+      dat <- c(dat, sample(1:100, 1))
+    }
+    
+    hist(dat)
+    waitress$hide() # hide when done
 	})
 
 }
@@ -297,21 +304,21 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-	use_waitress(color = "#7F7FFF"),
-	h2("waitress on entire page"),
-	actionButton("load", "load")
+  use_waitress(color = "#7F7FFF"),
+  h2("waitress on entire page"),
+  actionButton("load", "load")
 )
 
 server <- function(input, output){
-
-	waitress <- Waitress$new(theme = "overlay-percent") # call the waitress
-
-	observeEvent(input$load, {
-		waitress$
-			start()$
-			auto(percent = 5, ms = 150) # increase by 5 percent every 150 milliseconds
-		Sys.sleep(3.5)
-		waitress$hide()
+  
+  waitress <- Waitress$new(theme = "overlay-percent") # call the waitress
+  
+  observeEvent(input$load, {
+    waitress$
+      start()$
+      auto(percent = 5, ms = 150) # increase by 5 percent every 150 milliseconds
+      Sys.sleep(3.5)
+    waitress$hide()
 	})
 
 }
@@ -328,21 +335,21 @@ library(shiny)
 library(butler)
 
 ui <- fluidPage(
-	use_butler(),
-	br(),
-	actionButton("show", "show butler"),
-	actionButton("hide", "hide butler")
+  use_butler(),
+  br(),
+  actionButton("show", "show butler"),
+  actionButton("hide", "hide butler")
 )
 
 server <- function(input, output){
-
-	observeEvent(input$show,{
-		show_butler()
-	})
-
-	observeEvent(input$hide,{
-		hide_butler()
-	})
+  
+  observeEvent(input$show,{
+    show_butler()
+  })
+  
+  observeEvent(input$hide,{
+    hide_butler()
+  })
 
 }
 
@@ -356,31 +363,30 @@ library(shiny)
 library(butler)
 
 ui <- fluidPage(
-	use_butler(),
-	br(),
-	br(),
-	actionButton("show", "show butler"),
-	actionButton("hide", "hide butler")
+  use_butler(),
+  br(), br(),
+  actionButton("show", "show butler"),
+  actionButton("hide", "hide butler")
 )
 
 server <- function(input, output){
-
-	config_butler(
-		thickness = 10,
-		colors = list(
-			"0" = "red",
-			".4" = "white",
-			"1" = "blue"
-		)
+  
+  config_butler(
+    thickness = 10,
+    colors = list(
+      "0" = "red",
+      ".4" = "white",
+      "1" = "blue"
+    )
 	)
-
-	observeEvent(input$show,{
-		show_butler()
-	})
-
-	observeEvent(input$hide,{
-		hide_butler()
-	})
+  
+  observeEvent(input$show,{
+    show_butler()
+  })
+  
+  observeEvent(input$hide,{
+    hide_butler()
+  })
 
 }
 
@@ -400,20 +406,20 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-	use_hostess(), # include dependencies
-	hostess_loader("load", with_waiter = FALSE)
+  use_hostess(), # include dependencies
+  hostess_loader("load", with_waiter = FALSE)
 )
 
 server <- function(input, output){
-
-	# initialise
-	hostess <- Hostess$new("load")
-
-	# increment
-	for(i in 1:10){
-		Sys.sleep(runif(1)) # random sleep
-		hostess$set(i * 10)
-	}
+  
+  # initialise
+  hostess <- Hostess$new("load")
+  
+  # increment
+  for(i in 1:10){
+    Sys.sleep(runif(1)) # random sleep
+    hostess$set(i * 10)
+  }
 }
 
 shinyApp(ui, server)
@@ -426,24 +432,23 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-	use_waiter(),
-	use_hostess(),
-	show_waiter_on_load(
-		color = "black",
-		hostess_loader("loader", preset = "bubble")
-	)
+  use_waiter(),
+  use_hostess(),
+  show_waiter_on_load(
+    color = "black",
+    hostess_loader("loader", preset = "bubble")
+  )
 )
 
 server <- function(input, output){
+  hostess <- Hostess$new("loader")
 
-	# without
-	hostess <- Hostess$new("loader")
-	for(i in 1:10){
-		Sys.sleep(runif(1))
-		hostess$set(i * 10)
-	}
-	hide_waiter()
-
+  for(i in 1:10){
+    Sys.sleep(runif(1))
+    hostess$set(i * 10)
+  }
+  
+  hide_waiter()
 }
 
 shinyApp(ui, server)
