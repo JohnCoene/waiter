@@ -96,6 +96,10 @@ Browse waitresses locally with `waiter::browse_waitresses()`
 
 ![](./man/figures/butler.gif)
 
+### hostess
+
+![](./man/figures/hostess.gif)
+
 ## Examples
 
 ### waiter
