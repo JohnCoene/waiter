@@ -71,10 +71,14 @@ You can, optionally, configure the butler with `config_butler`.
 
 ### hostess
 
+Note the hostess can work with the waiter, see examples.
+
 1. Place `use_hostess` anywhere in your UI.
 2. Place a `hostess_loader` where you want the bar to show.
 3. Call `Hostess$new()` in your server to launch the hostess.
 4. Increase the hostess with `Hostess$set`.
+
+See `?hostess` for the documentation.
 
 ## Demos
 
