@@ -1,6 +1,6 @@
 Package: waiter
 Title: Loading Screen for 'Shiny'
-Version: 0.0.6
+Version: 0.0.7
 Date: 2019-11-06
 Authors@R: 
     person(given = "John",
@@ -15,4 +15,4 @@ Imports:
     R6,
     shiny,
     magrittr
-RoxygenNote: 7.0.0
+RoxygenNote: 7.0.1

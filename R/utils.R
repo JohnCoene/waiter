@@ -30,3 +30,8 @@ themes_to_js <- function(x) {
     "blue"
   } 
 }
+
+hostess_presets <- c(
+  "line", "fan", "circle", "bubble", "rainbow",
+  "energy", "stripe", "text"
+)

@@ -387,6 +387,70 @@ server <- function(input, output){
 shinyApp(ui, server)
 ```
 
+## Hostess
+
+The hostess is an addition of version `0.0.7` (currently only on Github), because why limit yourself to a waiter when you can have both a waiter and a hostess.
+
+The hostess can be used on its own but you likely will want to use it with the waiter. The hostess brings loading bars to the loading screen: reflect the progress made in the back end.
+
+Initialise the hostess with `Hostess$new()` to which you pass the id of the `hostess_loader` you use, then increment it with the `set` method.
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+	use_hostess(), # include dependencies
+	hostess_loader("load", with_waiter = FALSE)
+)
+
+server <- function(input, output){
+
+	# initialise
+	hostess <- Hostess$new("load")
+
+	# increment
+	for(i in 1:10){
+		Sys.sleep(runif(1)) # random sleep
+		hostess$set(i * 10)
+	}
+}
+
+shinyApp(ui, server)
+```
+
+You can of course use it together with `waiter` by playing the `hostess_spinner` in the `show_waiter*` function.
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+	use_waiter(),
+	use_hostess(),
+	show_waiter_on_load(
+		color = "black",
+		hostess_loader("loader", preset = "bubble")
+	)
+)
+
+server <- function(input, output){
+
+	# without
+	hostess <- Hostess$new("loader")
+	for(i in 1:10){
+		Sys.sleep(runif(1))
+		hostess$set(i * 10)
+	}
+	hide_waiter()
+
+}
+
+shinyApp(ui, server)
+```
+
+The Hostess is powered by [loadinBar.js](https://loading.io/progress/) which comes with tons of styling options to pass to `hostess_loader`, check them out!
+
 ## Credit
 
 Underlying CSS and JavaScript libraries that enable waiter:
@@ -395,3 +459,4 @@ Underlying CSS and JavaScript libraries that enable waiter:
 - [Spinkit CSS](https://tobiasahlin.com/spinkit/)
 - [Topbar](https://github.com/buunguyen/topbar)
 - [Progress.js](https://usablica.github.io/progress.js/)
+- [loading.io](https://loading.io/progress/)
