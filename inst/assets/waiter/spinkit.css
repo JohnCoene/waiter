@@ -1,3 +1,11 @@
+body > .inner {
+  display: none;
+}
+
+body.pg-loaded > .inner {
+  display: block;
+}
+
 .rotating-plane {
   width: 40px;
   height: 40px;

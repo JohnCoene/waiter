@@ -16,7 +16,8 @@ ui <- navbarPage(
     use_hostess(),
 		show_waiter_on_load(
 			tagList(
-				spin_wandering_cubes(),
+				spin_heart(),
+        br(),
 				span(style = "color:white;", "Loading waiter...")
 			)
 		),
@@ -116,6 +117,7 @@ ui <- navbarPage(
 	tabPanel(
 		"waiter",
 		br(),
+    uiOutput("stewardDeps"),
 		actionButton("waiter_back", "", icon("arrow-left"), class = "btn-danger"),
 		div(
 			class = "container",
@@ -124,7 +126,7 @@ ui <- navbarPage(
 			br(),
 			br(),
 			fluidRow(
-				column(3, sliderInput("seconds", "Seconds", min = 3, max = 7, value = 4, width = "100%")),
+				column(2, sliderInput("seconds", "Seconds", min = 3, max = 7, value = 4, width = "100%")),
 				column(
 					3,
 					selectInput(
@@ -165,7 +167,8 @@ ui <- navbarPage(
 					)
 				),
 				column(3, textInput("text", "Text", "Loading...", width = "100%")),
-				column(3, br(), actionButton("trigger", "Show", width = "100%"))
+        column(2, br(), checkboxInput("steward", "Use the steward", value = FALSE)),
+				column(2, br(), actionButton("trigger", "Show", width = "100%"))
 			)
 		)
 	),
@@ -294,6 +297,15 @@ server <- function(input, output, session) {
 	observeEvent(input$hostess_back, {
     updateTabsetPanel(session, "tabs", selected = "home")
 	})
+
+	# steward
+  output$stewardDeps <- renderUI({
+    req(input$trigger)
+    if(input$steward)
+      use_steward(c("#333e48", "#e94f3d", "#5c6670"), speed = 20)
+    else
+      span()
+  })
 
 	# waiter
   observeEvent(input$trigger, {
