@@ -4,7 +4,7 @@
 
 # waiter
 
-Loading screens for Shiny; programatically show and hide partial or full page loading screens, comes with multiple spinners.
+Loading screens for Shiny; programmatically show and hide partial or full page loading screens with spinners or loading bars.
 
 * [Features](#features)
 * [Installation](#installation)

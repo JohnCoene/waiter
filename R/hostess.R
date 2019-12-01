@@ -6,6 +6,7 @@
 #' @param value Value to set, between \code{0} and \code{100}.
 #' @param preset A loading bar preset, see section below.
 #' @param text_color The color of the loading text.
+#' @param class CSS class.
 #' @param with_waiter Set to \code{FALSE} if used without \code{waiter}.
 #' @param ... Any other other advanced options to pass to the loaded
 #' see the \href{official documentation}{https://loading.io/progress/}.
@@ -50,17 +51,16 @@ use_hostess <- function(){
 
 #' @rdname hostess
 #' @export
-hostess_loader <- function(id, preset = NULL, text_color = "#FFFFFF", with_waiter = TRUE, ...){
-  if(missing(id))
-    stop("Missing `id`", call. = FALSE)
+hostess_loader <- function(id = "hostess", preset = NULL, text_color = "#FFFFFF", with_waiter = TRUE, class = "", ...){
+  if(id == "hostess")
+    warning("Using default `id`", call. = FALSE)
 
   if(!is.null(preset))
     if(!preset %in% hostess_presets)
       stop("Invalid preset, see `?hostess_spinner` for valid values", call. = FALSE)
 
-  class <- ""
   if(with_waiter)
-    class <- "hostess-center"
+    class <- paste(class, "hostess-center")
 
   style <- paste0("color:", text_color, ";")
   
@@ -69,9 +69,9 @@ hostess_loader <- function(id, preset = NULL, text_color = "#FFFFFF", with_waite
 
 #' @rdname hostess
 #' @export
-hostess_init <- function(id){
-  if(missing(id))
-    stop("Missing `id`", call. = FALSE)
+hostess_init <- function(id = "hostess"){
+  if(id == "hostess")
+    warning("Using default `id`", call. = FALSE)
 
   session <- shiny::getDefaultReactiveDomain()
   .check_session(session)
@@ -81,9 +81,9 @@ hostess_init <- function(id){
 
 #' @rdname hostess
 #' @export
-hostess_set <- function(id, value){
-  if(missing(id) || missing(value))
-    stop("Missing `id` or `value`", call. = FALSE)
+hostess_set <- function(id = "hostess", value){
+  if(id == "hostess")
+    warning("Using default `id`", call. = FALSE)
 
   session <- shiny::getDefaultReactiveDomain()
   .check_session(session)
@@ -103,9 +103,9 @@ Hostess <- R6::R6Class(
 #' 
 #' @examples
 #' \dontrun{Hostess$new("mySpinner")}
-    initialize = function(id){
-      if(missing(id))
-        stop("Missing `id`", call. = FALSE)
+    initialize = function(id = "hostess"){
+      if(id == "hostess")
+        warning("Using default `id`", call. = FALSE)
 
       session <- shiny::getDefaultReactiveDomain()
       .check_session(session)

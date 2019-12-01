@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700|Ubuntu+Mono&display=swap');
+
+:root {
+  --base-font-size: 14px;
+  --theme-color   : #333e48;
+  --base-background-color: #f7fff7;
+  --base-font-family: 'Quicksand', sans-serif;
+  --copycode-background: #333e48;
+  --code-font-family:'Ubuntu Mono', monospace;
+}

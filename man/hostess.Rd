@@ -12,16 +12,17 @@
 use_hostess()
 
 hostess_loader(
-  id,
+  id = "hostess",
   preset = NULL,
   text_color = "#FFFFFF",
   with_waiter = TRUE,
+  class = "",
   ...
 )
 
-hostess_init(id)
+hostess_init(id = "hostess")
 
-hostess_set(id, value)
+hostess_set(id = "hostess", value)
 }
 \arguments{
 \item{id}{Id of hostess (valid CSS).}
@@ -31,6 +32,8 @@ hostess_set(id, value)
 \item{text_color}{The color of the loading text.}
 
 \item{with_waiter}{Set to \code{FALSE} if used without \code{waiter}.}
+
+\item{class}{CSS class.}
 
 \item{...}{Any other other advanced options to pass to the loaded
 see the \href{official documentation}{https://loading.io/progress/}.}
@@ -80,7 +83,7 @@ Add hostess dependencies.
 \if{html}{\out{<a id="method-new"></a>}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Hostess$new(id)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Hostess$new(id = "hostess")}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
