@@ -14,6 +14,7 @@ The following staff members will help you keep your clients waiting:
 * A butler - infinite loading bar.
 * A hostess - customizable loading bars.
 * A steward - animate the waiter's backgrounds. 
+* A garcon - animate images. 
 
 ## Installation
 
@@ -61,3 +62,4 @@ The underlying CSS and JavaScript libraries that enable waiter:
 - [Topbar](https://github.com/buunguyen/topbar)
 - [Progress.js](https://usablica.github.io/progress.js/)
 - [loading.io](https://loading.io/progress/)
+- [loadGo](http://franverona.com/loadgo/)

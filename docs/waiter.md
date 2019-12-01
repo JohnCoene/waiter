@@ -202,3 +202,42 @@ shinyApp(ui, server)
 ```
 
 ![](_assets/img/waiter-hostess.gif)
+
+
+### With garçon
+
+Then again don't forget to add the dependency by placing `use_garcon` in the UI. Initialise the garçon then add progress by setting the percentage with the `set` method where you select the image to animate by passing its id.
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  use_garcon(),
+  use_waiter(),
+  show_waiter_on_load(
+    tags$img(
+      src="https://waiter.john-coene.com/_assets/img/logo.png", 
+      height=200, 
+      id = "myImage"
+    )
+  )
+)
+
+server <- function(input, output){
+  g <- Garcon$new("myImage", filter = "opacity")
+
+  for(i in 1:10){
+    Sys.sleep(runif(1))
+    g$set(i * 10)
+  }
+
+  hide_waiter()
+}
+
+shinyApp(ui, server)
+```
+
+![](_assets/img/waiter-garcon.gif)
+
+There are a number of filters available.
