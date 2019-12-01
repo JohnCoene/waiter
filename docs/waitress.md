@@ -13,7 +13,7 @@ Note that the waitress is a reference class.
 
 See `?waitress` for the documentation.
 
-> [!WARNING]
+> [!TIP]
 > Make sure you include the dependencies with `use_waitress`.
 
 ## Examples

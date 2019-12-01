@@ -10,7 +10,7 @@ The butler is ideal when you cannot assess loading time, the butler is technical
 
 You can, optionally, configure the butler with `config_butler`.
 
-> [!WARNING]
+> [!TIP]
 > Make sure you include the dependencies with `use_butler`.
 
 ## Examples

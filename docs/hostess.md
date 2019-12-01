@@ -15,7 +15,7 @@ Note the hostess can work with the waiter, see examples.
 
 See `?hostess` for the documentation.
 
-> [!WARNING]
+> [!TIP]
 > Make sure you include the dependencies with `use_hostess`.
 
 ## Examples

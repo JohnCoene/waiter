@@ -1,10 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand:400,700|Ubuntu+Mono&display=swap');
 
+nav, a{
+  color: #333e48;
+}
+
 :root {
   --base-font-size: 14px;
   --theme-color   : #333e48;
   --base-background-color: #f7fff7;
   --base-font-family: 'Quicksand', sans-serif;
-  --copycode-background: #333e48;
+  --copycode-background: #f7fff7;
+  --copycode-color: #333e48;
   --code-font-family:'Ubuntu Mono', monospace;
+  --cover-background-color: #697682;
+  --cover-color: #f7fff7;
+  --cover-background-mask-color: #697682;
+  --cover-button-border: 1px solid #f7fff7;
+  --cover-button-color: #f7fff7;
+  --cover-heading-color: #f7fff7;
 }

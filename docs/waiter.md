@@ -10,7 +10,7 @@ The waiter lets you show splash loading screens.
 
 The waiter works hand-in-hand with the `steward` and the `hostess`. The former will let you animate the background of your loading screen while the latter will let you show loading bars on the loading screen.
 
-> [!WARNING]
+> [!TIP]
 > Make sure you include the dependencies with `use_waiter`.
 
 ## Examples
@@ -44,6 +44,9 @@ shinyApp(ui, server)
 ### On Load
 
 Since version `0.0.4` you can show on loading screen on app launch. The loading screen will launch prior to anything, even the Shiny session. Note that in `0.0.4` some content flashed before the loader appeared, this has been fixed in `0.0.5`.
+
+> [!NOTE]
+> You can have multiple waiters but only one active at a time.
 
 Though this function is not programatically launched it still has to be hidden with `hide_waiter`. Ensure you place `show_waiter_on_load` after `use_waiter` and at _the very end of your UI_, also set `include_js` to `FALSE`, in `use_waiter`.
 

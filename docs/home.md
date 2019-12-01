@@ -7,7 +7,7 @@ Loading screens for Shiny; programmatically show and hide partial or full page l
 
 ## The Staff
 
-The package includes:
+The following staff members will help you keep your clients waiting:
 
 * A waiter - splash loading screens.
 * A waitress - loading bars on on elements or whole screen.
@@ -17,18 +17,31 @@ The package includes:
 
 ## Installation
 
-Stable version from CRAN:
+Install the stable version from [CRAN](https://CRAN.R-project.org/package=waiter):
 
 ```r
 install.packages("waiter")
 ```
 
-Development version from Github: 
+Install the development version from Github with `remotes` or `devtools`: 
+
+<!-- tabs:start -->
+
+#### **remotes**
 
 ``` r
-# install.packages("remotes")
+install.packages("remotes")
 remotes::install_github("JohnCoene/waiter")
 ```
+
+#### **devtools**
+
+``` r
+install.packages("devtools")
+devtools::install_github("JohnCoene/waiter")
+```
+
+<!-- tabs:end -->
 
 ## Support
 
