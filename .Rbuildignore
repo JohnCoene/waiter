@@ -11,3 +11,4 @@ docs
 FUNDING.yml
 test.R
 demo
+^appveyor\.yml$
