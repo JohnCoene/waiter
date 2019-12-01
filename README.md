@@ -8,3 +8,5 @@
 Loading screens for Shiny; programmatically show and hide partial or full page loading screens with spinners or loading bars.
 
 The documentation of the package has moved to the [website](https://waiter.john-coene.com).
+
+![](docs/_assets/img/waiter-home.gif)
