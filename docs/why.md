@@ -1,6 +1,6 @@
 # Why Waiter?
 
-This is not meant to be a self-ingratiating piece on how great a package waiter is, rather this delves into the reasons for its creation and the advantages waiter brings both the user and developers.
+This is not meant to be a self-ingratiating piece (but judging by the length of it it's at least pompous) on how great a package waiter is, rather this delves into the reasons for its creation and the advantages waiter brings both the user and developers.
 
 The first advantage that waiter brings to Shiny is fairly simple, there is currently no other package that provides these functionalities.
 
