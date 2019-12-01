@@ -30,6 +30,14 @@ Development version from Github:
 remotes::install_github("JohnCoene/waiter")
 ```
 
+## Support
+
+If you find this useful, please consider supporting waiter on Github.
+
+<!-- Place this tag in your head or just before your close body tag. -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+<!-- Place this tag where you want the button to render. -->
+<a class="github-button" href="https://github.com/sponsors/JohnCoene" data-icon="octicon-heart" aria-label="Sponsor @JohnCoene on GitHub">Sponsor</a> <a class="github-button" href="https://github.com/JohnCoene/waiter" data-icon="octicon-star" data-show-count="true" aria-label="Star JohnCoene/waiter on GitHub">Star</a>
 ## Credit
 
 The underlying CSS and JavaScript libraries that enable waiter:
