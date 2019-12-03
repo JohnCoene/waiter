@@ -9,7 +9,7 @@
 #' @param class CSS class.
 #' @param with_waiter Set to \code{FALSE} if used without \code{waiter}.
 #' @param ... Any other other advanced options to pass to the loaded
-#' see the \href{official documentation}{https://loading.io/progress/}.
+#' see the \href{https://loading.io/progress/}{official documentation}.
 #' 
 #' @section Presets:
 #' \itemize{

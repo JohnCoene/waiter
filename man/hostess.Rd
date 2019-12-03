@@ -36,7 +36,7 @@ hostess_set(id = "hostess", value)
 \item{class}{CSS class.}
 
 \item{...}{Any other other advanced options to pass to the loaded
-see the \href{official documentation}{https://loading.io/progress/}.}
+see the \href{https://loading.io/progress/}{official documentation}.}
 
 \item{value}{Value to set, between \code{0} and \code{100}.}
 }
