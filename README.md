@@ -44,7 +44,7 @@ server <- function(input, output, session){
 shinyApp(ui, server)
 ```
 
-![](man/figures//waiter.gif)
+![](man/figures//waiter-basic.gif)
 
 ## Get it
 
