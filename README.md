@@ -4,7 +4,7 @@
 
 # waiter
 
-Loading screens for Shiny; programmatically show and hide partial or full page loading screens with spinners or loading bars.
+Loading screens for Shiny
 
 [![Travis build status](https://travis-ci.org/JohnCoene/waiter.svg?branch=master)](https://travis-ci.org/JohnCoene/waiter)
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/JohnCoene/waiter?branch=master&svg=true)](https://ci.appveyor.com/project/JohnCoene/waiter)
@@ -12,6 +12,8 @@ Loading screens for Shiny; programmatically show and hide partial or full page l
 [Website](https://waiter.john-coene.com) | [Demo](https://shiny.john-coene.com/waiter/) | [Get Started](https://waiter.john-coene.com/#/waiter)
 
 </div>
+
+The waiter lets you programmatically show and hide partial or full page loading screens with spinners or loading bars to keep your users patiently waiting as you load or compute fancy things.
 
 ## Example
 
