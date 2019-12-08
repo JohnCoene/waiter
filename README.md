@@ -17,7 +17,11 @@ The waiter lets you programmatically show and hide partial or full page loading 
 
 ## Example
 
-Below is a simple example of an application that uses waiter, consult the [website](https://waiter.john-coene.com) for more.
+Below are simple examples of an applications that use the package, consult the [website](https://waiter.john-coene.com) for more.
+
+## Waiter
+
+To use the waiter:
 
 1. Include `use_waiter` in your UI.
 2. Trigger `show_waiter` to show the waiting screen.
@@ -29,6 +33,7 @@ library(waiter)
 
 ui <- fluidPage(
   use_waiter(), # include dependencies
+  show_waiter_on_load(),
   actionButton("show", "Show loading for 3 seconds")
 )
 
@@ -51,6 +56,89 @@ shinyApp(ui, server)
 ```
 
 ![](man/figures//waiter-basic.gif)
+
+The waiter includes more options to customise the spinner, the background, show the waiter on load, etc.
+
+### Waitress
+
+To use the waitress:
+
+1. Include `use_waitress` in your UI.
+2. Initialise a waitress from the `Waitress` object with the `new` method.
+3. You must then call the `start`.
+4. On the waitress object use the `increase` method to increase the progress bar.
+5. Use the `hide` method when done.
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  use_waitress(),
+  p("App content")
+)
+
+server <- function(input, output){
+
+  # call the waitress
+  waitress <- Waitress$
+    new(theme = "overlay-percent")$
+    start() # start
+
+  for(i in 1:10){
+    waitress$increase(10) # increase by 10%
+    Sys.sleep(.3)
+  }
+
+  # hide when it's done
+  waitress$hide() 
+
+}
+
+shinyApp(ui, server)
+```
+
+![](man/figures//waitress-basic.gif)
+
+There are more options to the waitress, you can have it overlay any element (such as the navbar), automagically increment it, etc.
+
+### Butler
+
+If you want a loading bar similar to the waitress above but cannot determine wait time.
+
+1. Include `use_butler` in your UI.
+2. Start the progress bar with `show_butler`.
+3. Hide the butler with `hide_waiter`.
+
+```r
+library(shiny)
+library(butler)
+
+ui <- fluidPage(
+  use_butler(),
+  br(),
+  actionButton("show", "show butler"),
+  actionButton("hide", "hide butler")
+)
+
+server <- function(input, output){
+
+  observeEvent(input$show,{
+    show_butler()
+  })
+
+  observeEvent(input$hide,{
+    hide_butler()
+  })
+
+}
+
+shinyApp(ui, server)
+```
+
+You can further customise the butler.
+
+![](man/figures//butler-basic.gif)
 
 ## Get it
 
