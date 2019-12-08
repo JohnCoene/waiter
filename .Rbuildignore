@@ -12,3 +12,4 @@ FUNDING.yml
 test.R
 demo
 ^appveyor\.yml$
+^CODE_OF_CONDUCT\.md$
