@@ -1,15 +1,24 @@
 Shiny.addCustomMessageHandler('waiter-show', function(opts) {
-  window.loading_screen = pleaseWait({
-    logo: opts.logo,
-    backgroundColor: opts.color,
-    loadingHtml: opts.html
-  });
+  if(opts.id)
+    show_waiter(opts.id, opts.html, opts.color);
+  else
+    window.loading_screen = pleaseWait({
+      logo: opts.logo,
+      backgroundColor: opts.color,
+      loadingHtml: opts.html
+    });
 });
 
 Shiny.addCustomMessageHandler('waiter-update', function(opts) {
-  window.loading_screen.updateLoadingHtml(opts.html, true);
+  if(opts.id)
+    update_waiter(opts.id, opts.html);
+  else
+    window.loading_screen.updateLoadingHtml(opts.html, true);
 });
 
 Shiny.addCustomMessageHandler('waiter-hide', function(opts) {
-  window.loading_screen.finish();
+  if(opts.id)
+    hide_waiter(opts.id)
+  else
+    window.loading_screen.finish();
 });

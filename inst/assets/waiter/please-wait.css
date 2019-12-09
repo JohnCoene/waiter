@@ -1,3 +1,21 @@
+/* Custom */
+.waiter-overlay{
+  text-align: center;
+  z-index:999;
+  color: white;
+}
+
+.waiter-overlay-content{
+  width: 70px;
+  text-align: center;
+  height: 40px;
+  position: absolute;
+  right: 50%;
+  margin-right: -35px;
+  top: 50%;
+  margin-top: -20px;
+}
+
 /* Hide flash */
 body > .inner {
   display: none;
