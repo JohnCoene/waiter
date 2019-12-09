@@ -136,9 +136,9 @@ server <- function(input, output){
 shinyApp(ui, server)
 ```
 
-You can further customise the butler.
-
 ![](man/figures//butler-basic.gif)
+
+You can further customise the butler, the bar thicknes, color, etc.
 
 ## Get it
 
