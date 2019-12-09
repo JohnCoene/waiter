@@ -17,7 +17,7 @@ The waiter lets you programmatically show and hide partial or full page loading 
 
 ## Examples
 
-Below are simple examples of an applications that use the package, consult the [website](https://waiter.john-coene.com) for more.
+Below are simple examples of applications that use the package, consult the [website](https://waiter.john-coene.com) for more.
 
 ## Waiter
 
