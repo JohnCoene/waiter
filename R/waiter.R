@@ -5,7 +5,7 @@
 #' @param html HTML content of waiter, generally a spinner, see \code{\link{spinners}}.
 #' @param color Background color of loading screen.
 #' @param logo Logo to display.
-#' @param id Id of element to hide.
+#' @param id Id of element to hide or element on which to show waiter over.
 #' @param include_js Whether to include the Javascript dependencies, only
 #' set to \code{FALSE} if you use \code{\link{show_waiter_on_load}}.
 #' 
@@ -82,6 +82,9 @@ use_waiter <- function(include_js = TRUE){
           src = "waiter-assets/waiter/please-wait.min.js"
         ),
       tags$script(
+        src = "waiter-assets/waiter/waiter.js"
+      ),
+      tags$script(
         src = "waiter-assets/waiter/custom.js"
       )
     )
@@ -90,11 +93,12 @@ use_waiter <- function(include_js = TRUE){
 
 #' @rdname waiter
 #' @export
-show_waiter <- function(html = "", color = "#333e48", logo = ""){
+show_waiter <- function(html = "", color = "#333e48", logo = "", id = NULL){
   html <- as.character(html)
   html <- gsub("\n", "", html)
 
   opts <- list(
+    id = id,
     html = html,
     color = color,
     logo = logo
@@ -149,23 +153,34 @@ hide_waiter_on_drawn <- function(id){
 
 #' @rdname waiter
 #' @export
-hide_waiter <- function(){
+hide_waiter <- function(id = NULL){
   session <- shiny::getDefaultReactiveDomain()
   .check_session(session)
-  session$sendCustomMessage("waiter-hide", list())
+  session$sendCustomMessage("waiter-hide", list(id = id))
 }
 
 #' @rdname waiter
 #' @export
-update_waiter <- function(html = ""){
+update_waiter <- function(html = "", id = NULL){
+  if(is.character(html))
+    html <- span(html)
   html <- as.character(html)
   html <- gsub("\n", "", html)
   session <- shiny::getDefaultReactiveDomain()
   .check_session(session)
-  session$sendCustomMessage("waiter-update", list(html = html))
+  session$sendCustomMessage("waiter-update", list(html = html, id = id))
 }
 
-#' @rdname waiter
+#' Waiter R6 Class
+#' 
+#' Create waiter to then show. hide or update its content.
+#' 
+#' @details
+#' Create an object to show a waiting screen on either the entire application
+#' or just a portion of the app by specifying the \code{id}. Then \code{show},
+#' then \code{hide} or meanwhile \code{update} the content of the waiter. 
+#' 
+#' @name waiterClass
 #' @export
 Waiter <- R6::R6Class(
   "waiter",
@@ -176,13 +191,16 @@ Waiter <- R6::R6Class(
 #' @param html HTML content of waiter, generally a spinner, see \code{\link{spinners}}.
 #' @param color Background color of loading screen.
 #' @param logo Logo to display.
+#' @param id Id of element on which to overlay the waiter, if \code{NULL} the waiter is
+#' applied to the entire body.
 #' 
 #' @examples
 #' \dontrun{Waiter$new()}
-    initialize = function(html = "", color = "#333e48", logo = ""){
+    initialize = function(html = "", color = "#333e48", logo = "", id = NULL){
       html <- as.character(html)
       html <- gsub("\n", "", html)
 
+      private$.id <- id
       private$.html <- html
       private$.color <- color
       private$.logo <- logo
@@ -196,6 +214,7 @@ Waiter <- R6::R6Class(
 #' Show the waiter.
     show = function(){
       opts <- list(
+        id = private$.id,
         html = private$.html,
         color = private$.color,
         logo = private$.logo
@@ -207,7 +226,7 @@ Waiter <- R6::R6Class(
 #' Hide the waiter.
     hide = function(){
       private$get_session()
-      private$.session$sendCustomMessage("waiter-hide", list())
+      private$.session$sendCustomMessage("waiter-hide", list(id = private$.id))
     },
 #' @details
 #' Update the waiter's html content.
@@ -216,18 +235,22 @@ Waiter <- R6::R6Class(
       html <- as.character(html)
       html <- gsub("\n", "", html)
       private$get_session()
-      private$.session$sendCustomMessage("waiter-update", list(html = html))
+      private$.session$sendCustomMessage("waiter-update", list(html = html, id = private$.id))
     },
 #' @details
 #' print the waiter
 		print = function(){
-		  print("A waiter")
+      if(!is.null(private$.id))
+		    cat("A waiter on", private$.id, "\n")
+      else
+        cat("A waiter\n")
 		}
   ),
   private = list(
     .html = "",
     .color = "#333e48",
     .logo = "",
+    .id = NULL,
     .session = NULL,
 		get_session = function(){
 			private$.session <- shiny::getDefaultReactiveDomain()
