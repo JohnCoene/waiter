@@ -15,7 +15,7 @@ Loading screens for Shiny
 
 The waiter lets you programmatically show and hide partial or full page loading screens with spinners or loading bars to keep your users patiently waiting as you load or compute fancy things.
 
-## Example
+## Examples
 
 Below are simple examples of an applications that use the package, consult the [website](https://waiter.john-coene.com) for more.
 
