@@ -141,6 +141,11 @@ Butler <- R6::R6Class(
       private$.session$sendCustomMessage("butler-show", list())
     },
 #' @details
+#' print the butler
+		print = function(){
+      cat("A butler\n")
+		},
+#' @details
 #' Hide the butler.
 #' 
 #' @examples

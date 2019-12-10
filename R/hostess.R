@@ -127,6 +127,11 @@ Hostess <- R6::R6Class(
       private$.id <- id
     },
 #' @details
+#' print the hostess
+		print = function(){
+      cat("A hostess on", private$.id, "\n")
+		},
+#' @details
 #' Set the hostess loading bar.
 #' 
 #' @param value Value to set, between \code{0} and \code{100}.

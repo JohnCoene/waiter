@@ -36,6 +36,7 @@ the application.
 \itemize{
 \item \href{#method-new}{\code{Butler$new()}}
 \item \href{#method-show}{\code{Butler$show()}}
+\item \href{#method-print}{\code{Butler$print()}}
 \item \href{#method-hide}{\code{Butler$hide()}}
 \item \href{#method-clone}{\code{Butler$clone()}}
 }
@@ -95,6 +96,18 @@ Show the butler.
 }
 \if{html}{\out{</div>}}
 
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-print"></a>}}
+\subsection{Method \code{print()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Butler$print()}\if{html}{\out{</div>}}
+}
+
+\subsection{Details}{
+print the butler
 }
 
 }

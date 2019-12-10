@@ -1,5 +1,7 @@
 #' Garcon
 #' 
+#' Create a garcon to aniamte images on the waiter.
+#' 
 #' @name garcon
 #' @export
 use_garcon <- function(){
@@ -83,6 +85,11 @@ Garcon <- R6::R6Class(
     destroy = function() {
       private$.session$sendCustomMessage("garcon-destroy", list(image = private$.image))
     },
+#' @details
+#' print the garcon
+		print = function(){
+      cat("A garcon\n")
+		},
 #' @details
 #' Stop the garçon to.
 #' 

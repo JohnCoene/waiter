@@ -40,6 +40,7 @@ Create and attendant.
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-start}{\code{Attendant$start()}}
+\item \href{#method-print}{\code{Attendant$print()}}
 \item \href{#method-stop}{\code{Attendant$stop()}}
 \item \href{#method-clone}{\code{Attendant$clone()}}
 }
@@ -61,6 +62,18 @@ Start the attendant.
 }
 \if{html}{\out{</div>}}
 
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-print"></a>}}
+\subsection{Method \code{print()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Attendant$print()}\if{html}{\out{</div>}}
+}
+
+\subsection{Details}{
+print the attendant
 }
 
 }

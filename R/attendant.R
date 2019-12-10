@@ -72,6 +72,11 @@ Attendant <- R6::R6Class(
       invisible(self)
     },
 #' @details
+#' print the attendant
+		print = function(){
+      cat("An attendant\n")
+		},
+#' @details
 #' Stop the attendant.
 #' 
 #' @examples

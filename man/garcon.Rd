@@ -9,7 +9,7 @@
 use_garcon()
 }
 \description{
-Garcon
+Create a garcon to aniamte images on the waiter.
 }
 \examples{
 
@@ -50,6 +50,7 @@ Garcon
 \item \href{#method-set}{\code{Garcon$set()}}
 \item \href{#method-reset}{\code{Garcon$reset()}}
 \item \href{#method-destroy}{\code{Garcon$destroy()}}
+\item \href{#method-print}{\code{Garcon$print()}}
 \item \href{#method-stop}{\code{Garcon$stop()}}
 \item \href{#method-clone}{\code{Garcon$clone()}}
 }
@@ -168,6 +169,18 @@ Kill the garçon to.
 }
 \if{html}{\out{</div>}}
 
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-print"></a>}}
+\subsection{Method \code{print()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Garcon$print()}\if{html}{\out{</div>}}
+}
+
+\subsection{Details}{
+print the garcon
 }
 
 }
