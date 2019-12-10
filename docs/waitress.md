@@ -8,8 +8,8 @@ Note that the waitress is a reference class.
 
 1. Place `use_waitress` anywhere in your UI.
 2. Set up the waitress in your server with `call_waitress` or `Waitress$new()`.
-3. Programatically call the `set`, `increase`, and `auto` methods.
-4. Don't forget to programatically hide the loading screen with the `hide` method.
+3. Programatically call the `set`, `inc`, and `auto` methods.
+4. Don't forget to programatically hide the loading screen with the `close` method.
 
 See `?waitress` for the documentation.
 
@@ -41,13 +41,13 @@ server <- function(input, output){
     dat <- vector()
     
     for(i in 1:10){
-      waitress$increase(10) # increase by 10%
+      waitress$inc(10) # increase by 10%
       Sys.sleep(.3)
       dat <- c(dat, sample(1:100, 1))
     }
     
     hist(dat)
-    waitress$hide() # hide when done
+    waitress$close() # hide when done
 	})
 
 }
@@ -84,13 +84,13 @@ server <- function(input, output){
     dat <- vector()
     
     for(i in 1:10){
-      waitress$increase(10) # increase by 10%
+      waitress$inc(10) # increase by 10%
       Sys.sleep(.5)
       dat <- c(dat, sample(1:100, 1))
     }
     
     hist(dat)
-    waitress$hide() # hide when done
+    waitress$close() # hide when done
 	})
 
 }
