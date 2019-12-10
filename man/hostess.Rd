@@ -15,9 +15,10 @@ hostess_loader(
   id = "hostess",
   preset = NULL,
   text_color = "#FFFFFF",
-  with_waiter = TRUE,
+  center_page = TRUE,
   class = "",
-  ...
+  ...,
+  with_waiter
 )
 
 hostess_init(id = "hostess")
@@ -31,12 +32,16 @@ hostess_set(id = "hostess", value)
 
 \item{text_color}{The color of the loading text.}
 
-\item{with_waiter}{Set to \code{FALSE} if used without \code{waiter}.}
+\item{center_page}{By default the hostess is centered in the middle
+of the screen, ideal when using it with waiter full screen, set to 
+\code{FALSE} to prevent that.}
 
 \item{class}{CSS class.}
 
 \item{...}{Any other other advanced options to pass to the loaded
 see the \href{https://loading.io/progress/}{official documentation}.}
+
+\item{with_waiter}{Deprecate in favour of \code{center_page}.}
 
 \item{value}{Value to set, between \code{0} and \code{100}.}
 }
