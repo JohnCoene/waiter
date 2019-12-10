@@ -1,26 +1,18 @@
 function get_offset(element) {
   var elementPosition = {};
 
-  if (element.tagName.toLowerCase() === 'body') {
-    //set width
-    elementPosition.width = element.clientWidth;
-    //set height
-    elementPosition.height = element.clientHeight;
-  } else {
-    //set width
-    elementPosition.width = element.offsetWidth;
-    //set height
-    elementPosition.height = element.offsetHeight;
-  }
+  //set width
+  elementPosition.width = element.offsetWidth;
+  //set height
+  elementPosition.height = element.offsetHeight;
 
   //calculate element top and left
-  var _x = 0;
-  var _y = 0;
-  while (element && !isNaN(element.offsetLeft) && !isNaN(element.offsetTop)) {
-    _x += element.offsetLeft;
-    _y += element.offsetTop;
-    element = element.offsetParent;
-  }
+  var _x = element.offsetLeft;
+  var _y = element.offsetTop;
+  if(isNaN(_x))
+    _x = 0;
+  if(isNaN(_y))
+    _y = 0;
   //set top
   elementPosition.top = _y;
   //set left
@@ -55,6 +47,7 @@ function show_waiter(id, html, color){
     console.log("waiter on", id, "already exists");
     return;
   }
+  hide_recalculate(id);
 
   // create overlay
   var overlay = document.createElement("DIV");
@@ -102,8 +95,22 @@ function update_waiter(id, html){
   var overlay = dom.getElementsByClassName("waiter-overlay-content");
 
   if(overlay.length > 0)
-  overlay[0].innerHTML = html;
+    overlay[0].innerHTML = html;
   else
     console.log("no waiter on", id);
   
+}
+
+function hide_recalculate(id){
+  var css = '#' + id + '.recalculating {opacity: 1.0 !important; }',
+      head = document.head || document.getElementsByTagName('head')[0],
+      style = document.createElement('style');
+
+  style.type = 'text/css';
+  if (style.styleSheet){
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+  head.appendChild(style);
 }
