@@ -60,7 +60,7 @@ hostess_loader <- function(id = "hostess", preset = NULL, text_color = "#FFFFFF"
 
   # will remove at > 0.1.0
   if(!missing(with_waiter)){
-    warning("The `with_waiter` argument is deprecated in favour of `center_page`.")
+    .Deprecated("center_page", package = "waiter", "The `with_waiter` argument is deprecated in favour of `center_page`.")
     
     # don't break stuff...
     if(is.logical(with_waiter))
