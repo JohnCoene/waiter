@@ -11,7 +11,9 @@ use_waitress(color = "#b84f3e", percent_color = "#333333")
 
 call_waitress(
   selector = NULL,
-  theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent")
+  theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent"),
+  min = 0,
+  max = 100
 )
 
 browse_waitresses()
@@ -23,6 +25,9 @@ browse_waitresses()
 \item{selector}{Element selector to apply the waitress to, if \code{NULL} then the waitress is applied to the whole screen.}
 
 \item{theme}{A valid theme, see function usage.}
+
+\item{min, max}{Minimum and maximum representing the starting and ending
+points of the progress bar.}
 }
 \description{
 Programatically show and hide loading bars.

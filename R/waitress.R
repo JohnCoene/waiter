@@ -6,6 +6,8 @@
 #' \code{theme} is set to \code{overlay-percent}.
 #' @param selector Element selector to apply the waitress to, if \code{NULL} then the waitress is applied to the whole screen.
 #' @param theme A valid theme, see function usage.
+#' @param min,max Minimum and maximum representing the starting and ending
+#' points of the progress bar.
 #' 
 #' @details You can pipe the methods with \code{$}. 
 #' \code{Waitress$new()} and \code{call_waitress()} are equivalent.
@@ -64,8 +66,9 @@ use_waitress <- function(color = "#b84f3e", percent_color = "#333333"){
 
 #' @rdname waitress
 #' @export
-call_waitress <- function(selector = NULL, theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent")){
-	Waitress$new(selector, theme)
+call_waitress <- function(selector = NULL, theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent"),
+	min = 0, max = 100){
+	Waitress$new(selector, theme, min, max)
 }
 
 #' @rdname waitress
@@ -92,10 +95,13 @@ Waitress <- R6::R6Class(
 #' @param color,percent_color Color of waitress and color of percent text shown when 
 #' \code{theme} is set to \code{overlay-percent}.
 #' @param theme A valid theme, see function usage.
+#' @param min,max Minimum and maximum representing the starting and ending
+#' points of the progress bar.
 #' 
 #' @examples
 #' \dontrun{Waitress$new("#plot")}
-		initialize = function(selector = NULL, theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent")){
+		initialize = function(selector = NULL, theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent"),
+		min = 0, max = 100){
 
 			name <- .random_name()
 
@@ -107,6 +113,8 @@ Waitress <- R6::R6Class(
 			private$.theme <- theme
 			private$.overlay <- overlay
 			private$.dom <- selector
+			private$.min <- min
+			private$.max <- max
 
 			opts <- list(
 				id = selector,
@@ -135,11 +143,11 @@ Waitress <- R6::R6Class(
 #' @details
 #' Set the waitress to a specific percentage.
 #' 
-#' @param percent Percentage to set waitress to.
+#' @param value Value to set waitress to.
 #' 
 #' @examples
 #' \dontrun{Waitress$new("#plot")$set(20)}
-		set = function(percent){
+		set = function(value){
 			private$get_session()
 
 			if(!private$.started){
@@ -148,19 +156,22 @@ Waitress <- R6::R6Class(
 				private$.session$sendCustomMessage("waitress-start", opts)
 			}
 
-			opts <- list(name = private$.name, percent = percent)
+			# rescale from min - max to 0 - 100
+			value <- private$rescale(value)
+
+			opts <- list(name = private$.name, percent = value)
 			private$.session$sendCustomMessage("waitress-set", opts)
 			invisible(self)
 		},
 #' @details
-#' Automatically strat and end the waitress.
+#' Automatically start and end the waitress.
 #' 
-#' @param percent Percentage to set waitress to.
+#' @param value Value to set waitress to.
 #' @param ms Number of Milliseconds
 #' 
 #' @examples
 #' \dontrun{Waitress$new("#plot")$auto(20, 2000)}
-		auto = function(percent, ms){
+		auto = function(value, ms){
 			private$get_session()
 
 			if(!private$.started){
@@ -169,7 +180,10 @@ Waitress <- R6::R6Class(
 				private$.session$sendCustomMessage("waitress-start", opts)
 			}
 
-			opts <- list(name = private$.name, percent = percent, ms = ms)
+			# rescale from min - max to 0 - 100
+			value <- private$rescale(value)
+
+			opts <- list(name = private$.name, percent = value, ms = ms)
 			private$.session$sendCustomMessage("waitress-auto", opts)
 			invisible(self)
 		},
@@ -189,11 +203,11 @@ Waitress <- R6::R6Class(
 #' @details
 #' Increase the waitress by a percentage.
 #' 
-#' @param percent Percentage to increase waitress to.
+#' @param value Value to increase waitress to.
 #' 
 #' @examples
 #' \dontrun{Waitress$new("#plot")$inc(30)}
-		inc = function(percent){
+		inc = function(value){
 			private$get_session()
 			
 			if(!private$.started){
@@ -202,7 +216,10 @@ Waitress <- R6::R6Class(
 				private$.session$sendCustomMessage("waitress-start", opts)
 			}
 
-			opts <- list(name = private$.name, percent = percent)
+			# rescale from min - max to 0 - 100
+			value <- private$rescale(value)
+
+			opts <- list(name = private$.name, percent = value)
 			private$.session$sendCustomMessage("waitress-increase", opts)
 			invisible(self)
 		},
@@ -247,6 +264,11 @@ Waitress <- R6::R6Class(
 		.dom = NULL,
 		.session = NULL,
 		.started = FALSE,
+		.min = 0,
+		.max = 100,
+		rescale = function(value){
+			floor(((value-private$.min)/(private$.max - private$.min)) * 100)
+		},
 		get_session = function(){
 			private$.session <- shiny::getDefaultReactiveDomain()
 			.check_session(private$.session)

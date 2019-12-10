@@ -73,7 +73,9 @@ its percentage, then hide it when done.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waitress$new(
   selector = NULL,
-  theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent")
+  theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent"),
+  min = 0,
+  max = 100
 )}\if{html}{\out{</div>}}
 }
 
@@ -84,6 +86,9 @@ its percentage, then hide it when done.
 if \code{NULL} then the waitress is applied to the whole screen.}
 
 \item{\code{theme}}{A valid theme, see function usage.}
+
+\item{\code{min, max}}{Minimum and maximum representing the starting and ending
+points of the progress bar.}
 
 \item{\code{color, percent_color}}{Color of waitress and color of percent text shown when 
 \code{theme} is set to \code{overlay-percent}.}
@@ -127,13 +132,13 @@ Start the waitress.
 \if{html}{\out{<a id="method-set"></a>}}
 \subsection{Method \code{set()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Waitress$set(percent)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Waitress$set(value)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{percent}}{Percentage to set waitress to.}
+\item{\code{value}}{Value to set waitress to.}
 }
 \if{html}{\out{</div>}}
 }
@@ -154,20 +159,20 @@ Set the waitress to a specific percentage.
 \if{html}{\out{<a id="method-auto"></a>}}
 \subsection{Method \code{auto()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Waitress$auto(percent, ms)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Waitress$auto(value, ms)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{percent}}{Percentage to set waitress to.}
+\item{\code{value}}{Value to set waitress to.}
 
 \item{\code{ms}}{Number of Milliseconds}
 }
 \if{html}{\out{</div>}}
 }
 \subsection{Details}{
-Automatically strat and end the waitress.
+Automatically start and end the waitress.
 }
 
 \subsection{Examples}{
@@ -203,13 +208,13 @@ Increase the waitress by a percentage.
 \if{html}{\out{<a id="method-inc"></a>}}
 \subsection{Method \code{inc()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Waitress$inc(percent)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Waitress$inc(value)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{percent}}{Percentage to increase waitress to.}
+\item{\code{value}}{Value to increase waitress to.}
 }
 \if{html}{\out{</div>}}
 }

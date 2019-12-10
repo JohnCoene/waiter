@@ -58,7 +58,7 @@ shinyApp(ui, server)
 
 ### Selector
 
-Because the waitress takes a selector, we can apply it to different parts of the page, using a class or any other selector, like the `nav`.
+Because the waitress takes a selector, we can apply it to different parts of the page, using a class or any other selector, like the `nav`. Note that you can set the range of the progress bar when you initialise it, you are not limited to percentages.
 
 ```r
 library(shiny)
@@ -75,14 +75,15 @@ ui <- navbarPage(
 
 server <- function(input, output){
   
-  waitress <- call_waitress("nav", theme = "overlay") # call the waitress
+  # now waitress ranges from 0 to 100
+  waitress <- Waitress$new("nav", theme = "overlay", min = 0, max = 10)
   
   output$plot <- renderPlot({
     
     dat <- vector()
     
     for(i in 1:10){
-      waitress$inc(10) # increase by 10%
+      waitress$inc(1) # increase by 10%
       Sys.sleep(.5)
       dat <- c(dat, sample(1:100, 1))
     }
