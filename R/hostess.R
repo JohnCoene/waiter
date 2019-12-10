@@ -8,9 +8,9 @@
 #' @param text_color The color of the loading text.
 #' @param class CSS class.
 #' @param with_waiter Deprecate in favour of \code{center_page}.
-#' @param center_page By default the hostess is centered in the middle
-#' of the screen, ideal when using it with waiter full screen, set to 
-#' \code{FALSE} to prevent that.
+#' @param center_page By default the hostess is \emph{not} centered in the middle
+#' of the screen, centering in the middle of the page is however ideal when using 
+#' it with waiter full screen, for the latter set to \code{TRUE}.
 #' @param ... Any other other advanced options to pass to the loaded
 #' see the \href{https://loading.io/progress/}{official documentation}.
 #' 
@@ -54,7 +54,8 @@ use_hostess <- function(){
 
 #' @rdname hostess
 #' @export
-hostess_loader <- function(id = "hostess", preset = NULL, text_color = "#FFFFFF", center_page = TRUE, class = "", ..., with_waiter){
+hostess_loader <- function(id = "hostess", preset = NULL, text_color = "#FFFFFF", center_page = FALSE, class = "", ..., with_waiter){
+
   if(id == "hostess")
     warning("Using default `id`", call. = FALSE)
 
@@ -115,14 +116,13 @@ Hostess <- R6::R6Class(
 #' 
 #' @examples
 #' \dontrun{Hostess$new("mySpinner")}
-    initialize = function(id = "hostess"){
-      if(id == "hostess")
-        warning("Using default `id`", call. = FALSE)
+    initialize = function(id = NULL){
+      if(is.null(id))
+        id <- .random_name()
 
       session <- shiny::getDefaultReactiveDomain()
       .check_session(session)
       private$.session <- session
-
       private$.id <- id
     },
 #' @details
@@ -157,6 +157,21 @@ Hostess <- R6::R6Class(
       opts <- list(id = private$.id, value = value)
       private$.session$sendCustomMessage("hostess-set", opts)
       invisible(self)
+    },
+#' @details
+#' Create a hostess loading bar.
+#' @param value Value to set, between \code{0} and \code{100}.
+#' @param preset A loading bar preset, see section below.
+#' @param text_color The color of the loading text.
+#' @param class CSS class.
+#' @param with_waiter Deprecate in favour of \code{center_page}.
+#' @param center_page By default the hostess is centered in the middle
+#' of the screen, ideal when using it with waiter full screen, set to 
+#' \code{FALSE} to prevent that.
+#' @param ... Any other other advanced options to pass to the loaded
+#' see the \href{https://loading.io/progress/}{official documentation}.
+    loader = function(preset = NULL, text_color = "#FFFFFF", center_page = FALSE, class = "", ...){
+      hostess_loader(id = private$.id, preset = preset, text_color = text_color, center_page = center_page, class = class, ...)
     }
   ),
   private = list(

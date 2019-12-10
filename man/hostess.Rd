@@ -15,7 +15,7 @@ hostess_loader(
   id = "hostess",
   preset = NULL,
   text_color = "#FFFFFF",
-  center_page = TRUE,
+  center_page = FALSE,
   class = "",
   ...,
   with_waiter
@@ -32,9 +32,9 @@ hostess_set(id = "hostess", value)
 
 \item{text_color}{The color of the loading text.}
 
-\item{center_page}{By default the hostess is centered in the middle
-of the screen, ideal when using it with waiter full screen, set to 
-\code{FALSE} to prevent that.}
+\item{center_page}{By default the hostess is \emph{not} centered in the middle
+of the screen, centering in the middle of the page is however ideal when using 
+it with waiter full screen, for the latter set to \code{TRUE}.}
 
 \item{class}{CSS class.}
 
@@ -83,6 +83,7 @@ Add hostess dependencies.
 \item \href{#method-start}{\code{Hostess$start()}}
 \item \href{#method-print}{\code{Hostess$print()}}
 \item \href{#method-set}{\code{Hostess$set()}}
+\item \href{#method-loader}{\code{Hostess$loader()}}
 \item \href{#method-clone}{\code{Hostess$clone()}}
 }
 }
@@ -90,7 +91,7 @@ Add hostess dependencies.
 \if{html}{\out{<a id="method-new"></a>}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Hostess$new(id = "hostess")}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Hostess$new(id = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -161,6 +162,46 @@ Set the hostess loading bar.
 }
 \if{html}{\out{</div>}}
 
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-loader"></a>}}
+\subsection{Method \code{loader()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Hostess$loader(
+  preset = NULL,
+  text_color = "#FFFFFF",
+  center_page = FALSE,
+  class = "",
+  ...
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{preset}}{A loading bar preset, see section below.}
+
+\item{\code{text_color}}{The color of the loading text.}
+
+\item{\code{center_page}}{By default the hostess is centered in the middle
+of the screen, ideal when using it with waiter full screen, set to 
+\code{FALSE} to prevent that.}
+
+\item{\code{class}}{CSS class.}
+
+\item{\code{...}}{Any other other advanced options to pass to the loaded
+see the \href{https://loading.io/progress/}{official documentation}.}
+
+\item{\code{value}}{Value to set, between \code{0} and \code{100}.}
+
+\item{\code{with_waiter}}{Deprecate in favour of \code{center_page}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+Create a hostess loading bar.
 }
 
 }

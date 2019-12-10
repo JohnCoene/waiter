@@ -20,6 +20,8 @@ See `?hostess` for the documentation.
 
 ## Examples
 
+### Standalone
+
 Initialise the hostess with `Hostess$new()` to which you pass the id of the `hostess_loader` you are using, then increment it with the `set` method. 
 
 ```r
@@ -47,6 +49,8 @@ shinyApp(ui, server)
 ```
 
 ![](_assets/img/hostess.gif)
+
+### Waiter
 
 You can of course use it together with `waiter` by playing the `hostess_spinner` in the `show_waiter*` function. Note that when used with the full page waiter one should set `center_page` to `TRUE` to center the loader.
 
@@ -84,5 +88,36 @@ shinyApp(ui, server)
 ```
 
 ![](_assets/img/hostess-adv.gif)
+
+If you want to show the waiting screen from the server (rather than on load as shown above) you can create the loader from the `Hostess` object, which is much more convenient.
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  use_waiter(),
+  use_hostess(),
+  h1("Some content")
+)
+
+server <- function(input, output){
+  hostess <- Hostess$new("loader")
+
+  # to not have the screen flash bright white
+  Sys.sleep(1)
+
+  waiter_show(html = hostess$loader(center_page = TRUE))
+
+  for(i in 1:10){
+    Sys.sleep(runif(1) / 2)
+    hostess$set(i * 10)
+  }
+  
+  waiter_hide()
+}
+
+shinyApp(ui, server)
+```
 
 The Hostess is powered by [loadinBar.js](https://loading.io/progress/) which comes with tons of styling options to pass to `hostess_loader`, check them out!
