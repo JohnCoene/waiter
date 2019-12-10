@@ -5,7 +5,7 @@
 \alias{Waiter}
 \title{Waiter R6 Class}
 \description{
-Create waiter to then show. hide or update its content.
+Create a waiter to then show, hide or update its content.
 }
 \details{
 Create an object to show a waiting screen on either the entire application
