@@ -94,7 +94,15 @@ config_butler <- function(thickness = 5, colors = list("0" = "red", ".3" = "blue
   session$sendCustomMessage("butler-config", opts)
 }
 
-#' @rdname butler
+#' Butler R6 Class
+#' 
+#' Create a butler.
+#' 
+#' @details
+#' Create an object to show a loading bar to display at the top of 
+#' the application.
+#' 
+#' @name butlerClass
 #' @export
 Butler <- R6::R6Class(
   "butler",
