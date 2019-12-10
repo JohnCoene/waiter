@@ -14,7 +14,7 @@ use_steward <- function(colors = c("#ee7752", "#e73c7e", "#23a6d5", "#23d5ab"),
   colors <- paste0(colors, collapse = ", ")
   
   css <- paste0("
-.pg-loading-inner{
+.pg-loading-inner, waiter-overlay{
 	width: 100%;
 	height: 100vh;
   background: linear-gradient(", angle, "deg, ", colors, ");
