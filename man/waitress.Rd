@@ -3,7 +3,6 @@
 \name{waitress}
 \alias{waitress}
 \alias{use_waitress}
-\alias{Waitress}
 \alias{call_waitress}
 \alias{browse_waitresses}
 \title{Waitress}
@@ -11,7 +10,7 @@
 use_waitress(color = "#b84f3e", percent_color = "#333333")
 
 call_waitress(
-  dom = NULL,
+  selector = NULL,
   theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent")
 )
 
@@ -21,12 +20,12 @@ browse_waitresses()
 \item{color, percent_color}{Color of waitress and color of percent text shown when 
 \code{theme} is set to \code{overlay-percent}.}
 
-\item{dom}{Element selector to apply the waitress to, if \code{NULL} then the waitress is applied to the whole screen.}
+\item{selector}{Element selector to apply the waitress to, if \code{NULL} then the waitress is applied to the whole screen.}
 
 \item{theme}{A valid theme, see function usage.}
 }
 \description{
-Programatically show and hide loading screens.
+Programatically show and hide loading bars.
 }
 \details{
 You can pipe the methods with \code{$}. 
@@ -53,254 +52,4 @@ server <- function(input, output, session){
 
 if(interactive()) shinyApp(ui, server)
  
-
-## ------------------------------------------------
-## Method `Waitress$new`
-## ------------------------------------------------
-
-\dontrun{Waitress$new("#plot")}
-
-## ------------------------------------------------
-## Method `Waitress$start`
-## ------------------------------------------------
-
-\dontrun{Waitress$new("#plot")$start()}
-
-## ------------------------------------------------
-## Method `Waitress$set`
-## ------------------------------------------------
-
-\dontrun{Waitress$new("#plot")$set(20)}
-
-## ------------------------------------------------
-## Method `Waitress$auto`
-## ------------------------------------------------
-
-\dontrun{Waitress$new("#plot")$auto(20, 2000)}
-
-## ------------------------------------------------
-## Method `Waitress$increase`
-## ------------------------------------------------
-
-\dontrun{Waitress$new("#plot")$increase(30)}
-
-## ------------------------------------------------
-## Method `Waitress$hide`
-## ------------------------------------------------
-
-\dontrun{Waitress$new("#plot")$hide()}
-
-## ------------------------------------------------
-## Method `Waitress$print`
-## ------------------------------------------------
-
-\dontrun{Waitress$new("#plot")$hide()}
-}
-\section{Methods}{
-\subsection{Public methods}{
-\itemize{
-\item \href{#method-new}{\code{Waitress$new()}}
-\item \href{#method-start}{\code{Waitress$start()}}
-\item \href{#method-set}{\code{Waitress$set()}}
-\item \href{#method-auto}{\code{Waitress$auto()}}
-\item \href{#method-increase}{\code{Waitress$increase()}}
-\item \href{#method-hide}{\code{Waitress$hide()}}
-\item \href{#method-print}{\code{Waitress$print()}}
-\item \href{#method-clone}{\code{Waitress$clone()}}
-}
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\subsection{Method \code{new()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Waitress$new(
-  dom = NULL,
-  theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent")
-)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{dom}}{Element selector to apply the waitress to, if \code{NULL} then the waitress is applied to the whole screen.}
-
-\item{\code{theme}}{A valid theme, see function usage.}
-
-\item{\code{color, percent_color}}{Color of waitress and color of percent text shown when 
-\code{theme} is set to \code{overlay-percent}.}
-}
-\if{html}{\out{</div>}}
-}
-\subsection{Details}{
-Create a waitress.
-}
-
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{\dontrun{Waitress$new("#plot")}
-}
-\if{html}{\out{</div>}}
-
-}
-
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-start"></a>}}
-\subsection{Method \code{start()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Waitress$start()}\if{html}{\out{</div>}}
-}
-
-\subsection{Details}{
-Start the waitress.
-}
-
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{\dontrun{Waitress$new("#plot")$start()}
-}
-\if{html}{\out{</div>}}
-
-}
-
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-set"></a>}}
-\subsection{Method \code{set()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Waitress$set(percent)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{percent}}{Percentage to set waitress to.}
-}
-\if{html}{\out{</div>}}
-}
-\subsection{Details}{
-Set the waitress to a specific percentage.
-}
-
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{\dontrun{Waitress$new("#plot")$set(20)}
-}
-\if{html}{\out{</div>}}
-
-}
-
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-auto"></a>}}
-\subsection{Method \code{auto()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Waitress$auto(percent, ms)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{percent}}{Percentage to set waitress to.}
-
-\item{\code{ms}}{Number of Milliseconds}
-}
-\if{html}{\out{</div>}}
-}
-\subsection{Details}{
-Automatically strat and end the waitress.
-}
-
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{\dontrun{Waitress$new("#plot")$auto(20, 2000)}
-}
-\if{html}{\out{</div>}}
-
-}
-
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-increase"></a>}}
-\subsection{Method \code{increase()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Waitress$increase(percent)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{percent}}{Percentage to increase waitress to.}
-}
-\if{html}{\out{</div>}}
-}
-\subsection{Details}{
-Increase the waitress by a percentage.
-}
-
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{\dontrun{Waitress$new("#plot")$increase(30)}
-}
-\if{html}{\out{</div>}}
-
-}
-
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-hide"></a>}}
-\subsection{Method \code{hide()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Waitress$hide()}\if{html}{\out{</div>}}
-}
-
-\subsection{Details}{
-Hide the waitress.
-}
-
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{\dontrun{Waitress$new("#plot")$hide()}
-}
-\if{html}{\out{</div>}}
-
-}
-
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-print"></a>}}
-\subsection{Method \code{print()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Waitress$print()}\if{html}{\out{</div>}}
-}
-
-\subsection{Details}{
-Print the waitress.
-}
-
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{\dontrun{Waitress$new("#plot")$hide()}
-}
-\if{html}{\out{</div>}}
-
-}
-
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\subsection{Method \code{clone()}}{
-The objects of this class are cloneable with this method.
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Waitress$clone(deep = FALSE)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{deep}}{Whether to make a deep clone.}
-}
-\if{html}{\out{</div>}}
-}
-}
 }

@@ -1,10 +1,10 @@
 #' Waitress
 #' 
-#' Programatically show and hide loading screens.
+#' Programatically show and hide loading bars.
 #' 
 #' @param color,percent_color Color of waitress and color of percent text shown when 
 #' \code{theme} is set to \code{overlay-percent}.
-#' @param dom Element selector to apply the waitress to, if \code{NULL} then the waitress is applied to the whole screen.
+#' @param selector Element selector to apply the waitress to, if \code{NULL} then the waitress is applied to the whole screen.
 #' @param theme A valid theme, see function usage.
 #' 
 #' @details You can pipe the methods with \code{$}. 
@@ -61,7 +61,25 @@ use_waitress <- function(color = "#b84f3e", percent_color = "#333333"){
   )
 }
 
+
 #' @rdname waitress
+#' @export
+call_waitress <- function(selector = NULL, theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent")){
+	Waitress$new(selector, theme)
+}
+
+#' @rdname waitress
+#' @export
+browse_waitresses <- function() {
+	shiny::runApp(appDir = system.file("waitress", package = 'waiter', mustWork = TRUE))
+}
+
+#' Waitress R6 Class
+#' 
+#' Create a waitress (progress bar) and programmatically set or increase 
+#' its percentage, then hide it when done. 
+#' 
+#' @name waitressClass
 #' @export
 Waitress <- R6::R6Class(
 	"waitress",
@@ -69,14 +87,15 @@ Waitress <- R6::R6Class(
 #' @details
 #' Create a waitress.
 #' 
-#' @param dom Element selector to apply the waitress to, if \code{NULL} then the waitress is applied to the whole screen.
+#' @param selector Element selector to apply the waitress to, 
+#' if \code{NULL} then the waitress is applied to the whole screen.
 #' @param color,percent_color Color of waitress and color of percent text shown when 
 #' \code{theme} is set to \code{overlay-percent}.
 #' @param theme A valid theme, see function usage.
 #' 
 #' @examples
 #' \dontrun{Waitress$new("#plot")}
-		initialize = function(dom = NULL, theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent")){
+		initialize = function(selector = NULL, theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent")){
 
 			name <- .random_name()
 
@@ -87,10 +106,10 @@ Waitress <- R6::R6Class(
 			private$.name <- name
 			private$.theme <- theme
 			private$.overlay <- overlay
-			private$.dom <- dom
+			private$.dom <- selector
 
 			opts <- list(
-				id = dom,
+				id = selector,
 				name = name,
 				options = list(
 					theme = theme,
@@ -170,9 +189,9 @@ Waitress <- R6::R6Class(
 #' \dontrun{Waitress$new("#plot")$hide()}
 		print = function(){
 			if(!is.null(private$.dom))
-				print(paste("A waitress applied to", private$.dom))
+				cat("A waitress applied to", private$.dom, "\n")
 			else
-				print("A waitress applied to the whole page")
+				cat("A waitress applied to the whole page\n")
 		}
 	),
 	private = list(
@@ -187,15 +206,3 @@ Waitress <- R6::R6Class(
 		}
 	)
 )
-
-#' @rdname waitress
-#' @export
-call_waitress <- function(dom = NULL, theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent")){
-	Waitress$new(dom, theme)
-}
-
-#' @rdname waitress
-#' @export
-browse_waitresses <- function() {
-	shiny::runApp(appDir = system.file("waitress", package = 'waiter', mustWork = TRUE))
-}
