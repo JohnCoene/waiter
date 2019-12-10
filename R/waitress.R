@@ -159,20 +159,20 @@ Waitress <- R6::R6Class(
 			invisible(self)
 		},
 #' @details
+#' Deprecated in favour of \code{inc} method.
 #' Increase the waitress by a percentage.
 #' 
 #' @param percent Percentage to increase waitress to.
-#' 
-#' @examples
-#' \dontrun{Waitress$new("#plot")$increase(30)}
 		increase = function(percent){
+			# remove > 0.1.0
+			.Deprecated("inc", package = "waiter", "The `increase` method has been deprecated in favour of `inc`")
 			opts <- list(name = private$.name, percent = percent)
 			private$get_session()
 			private$.session$sendCustomMessage("waitress-increase", opts)
 			invisible(self)
 		},
 #' @details
-#' Increase the waitress by a percentage, identical to \code{increase} method.
+#' Increase the waitress by a percentage.
 #' 
 #' @param percent Percentage to increase waitress to.
 #' 
@@ -185,18 +185,18 @@ Waitress <- R6::R6Class(
 			invisible(self)
 		},
 #' @details
+#' Deprecated in favour of \code{close} method.
 #' Hide the waitress.
-#' 
-#' @examples
-#' \dontrun{Waitress$new("#plot")$hide()}
 		hide = function(){
+			# remove > 0.1.0
+			.Deprecated("inc", package = "waiter", "The `hide` method has been deprecated in favour of `close`")
 			opts <- list(name = private$.name)
 			private$get_session()
 			private$.session$sendCustomMessage("waitress-end", opts)
 			invisible(self)
 		},
 #' @details
-#' Close the waitress, identical to \code{hide} method.
+#' Close the waitress.
 #' 
 #' @examples
 #' \dontrun{Waitress$new("#plot")$close()}

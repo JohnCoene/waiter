@@ -35,22 +35,10 @@ its percentage, then hide it when done.
 \dontrun{Waitress$new("#plot")$auto(20, 2000)}
 
 ## ------------------------------------------------
-## Method `Waitress$increase`
-## ------------------------------------------------
-
-\dontrun{Waitress$new("#plot")$increase(30)}
-
-## ------------------------------------------------
 ## Method `Waitress$inc`
 ## ------------------------------------------------
 
 \dontrun{Waitress$new("#plot")$inc(30)}
-
-## ------------------------------------------------
-## Method `Waitress$hide`
-## ------------------------------------------------
-
-\dontrun{Waitress$new("#plot")$hide()}
 
 ## ------------------------------------------------
 ## Method `Waitress$close`
@@ -206,15 +194,8 @@ Automatically strat and end the waitress.
 \if{html}{\out{</div>}}
 }
 \subsection{Details}{
+Deprecated in favour of \code{inc} method.
 Increase the waitress by a percentage.
-}
-
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{\dontrun{Waitress$new("#plot")$increase(30)}
-}
-\if{html}{\out{</div>}}
-
 }
 
 }
@@ -233,7 +214,7 @@ Increase the waitress by a percentage.
 \if{html}{\out{</div>}}
 }
 \subsection{Details}{
-Increase the waitress by a percentage, identical to \code{increase} method.
+Increase the waitress by a percentage.
 }
 
 \subsection{Examples}{
@@ -253,15 +234,8 @@ Increase the waitress by a percentage, identical to \code{increase} method.
 }
 
 \subsection{Details}{
+Deprecated in favour of \code{close} method.
 Hide the waitress.
-}
-
-\subsection{Examples}{
-\if{html}{\out{<div class="r example copy">}}
-\preformatted{\dontrun{Waitress$new("#plot")$hide()}
-}
-\if{html}{\out{</div>}}
-
 }
 
 }
@@ -273,7 +247,7 @@ Hide the waitress.
 }
 
 \subsection{Details}{
-Close the waitress, identical to \code{hide} method.
+Close the waitress.
 }
 
 \subsection{Examples}{
