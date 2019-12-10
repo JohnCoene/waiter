@@ -20,7 +20,7 @@ See `?hostess` for the documentation.
 
 ## Examples
 
-Initialise the hostess with `Hostess$new()` to which you pass the id of the `hostess_loader` you are using, then increment it with the `set` method. Note that when used without the waiter one should set `with_waiter` to `FALSE`.
+Initialise the hostess with `Hostess$new()` to which you pass the id of the `hostess_loader` you are using, then increment it with the `set` method. Note that when used without the full page waiter one should set `center_page` to `FALSE`.
 
 ```r
 library(shiny)
@@ -28,7 +28,7 @@ library(waiter)
 
 ui <- fluidPage(
   use_hostess(), # include dependencies
-  hostess_loader("load", with_waiter = FALSE)
+  hostess_loader("load", center_page = FALSE)
 )
 
 server <- function(input, output){
