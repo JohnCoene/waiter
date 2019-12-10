@@ -15,17 +15,11 @@
 #' 
 #' @section Functions:
 #' \itemize{
-#'  \item{\code{use_waiter}: waiter dependencies to include anywhere in your UI but ideally at the top.}
-#'  \item{\code{show_waiter_on_load}: Show a waiter on page load, before the session is even loaded, include in UI \emph{after} \code{use_waiter}.}
-#'  \item{\code{show_waiter}: Show waiting screen.}
-#'  \item{\code{hide_waiter}: Hide any waiting screen.}
-#'  \item{\code{hide_waiter_on_drawn}: Hide any waiting screen when the output is drawn, useful for outputs that take a long time to draw, \emph{use in \code{ui}}.}
-#' }
-#' 
-#' @section Class:
-#' Arguments passed to \code{show_waiter} are passed to the initialisation method \code{new}.
-#' \itemize{
-#'   \item{\code{Waiter}: initiatlise a Waiter.} 
+#'  \item{\code{use_waiter} and \code{waiter_use}: waiter dependencies to include anywhere in your UI but ideally at the top.}
+#'  \item{\code{waiter_show_on_load}: Show a waiter on page load, before the session is even loaded, include in UI \emph{after} \code{use_waiter}.}
+#'  \item{\code{waiter_show}: Show waiting screen.}
+#'  \item{\code{waiter_hide}: Hide any waiting screen.}
+#'  \item{\code{waiter_hide_on_drawn}: Hide any waiting screen when the output is drawn, useful for outputs that take a long time to draw, \emph{use in \code{ui}}.}
 #' }
 #' 
 #' @examples
@@ -33,22 +27,22 @@
 #' 
 #' ui <- fluidPage(
 #'   use_waiter(), # dependencies
-#'   show_waiter_on_load(spin_fading_circles()), # shows before anything else 
+#'   waiter_show_on_load(spin_fading_circles()), # shows before anything else 
 #'   actionButton("show", "Show loading for 5 seconds")
 #' )
 #' 
 #' server <- function(input, output, session){
-#'   hide_waiter() # will hide *on_load waiter
+#'   waiter_hide() # will hide *on_load waiter
 #'   
 #'   observeEvent(input$show, {
-#'     show_waiter(
+#'     waiter_show(
 #'       tagList(
 #'         spin_fading_circles(),
 #'         "Loading ..."
 #'       )
 #'     )
 #'     Sys.sleep(3)
-#'     hide_waiter()
+#'     waiter_hide()
 #'   })
 #' }
 #' 
@@ -97,8 +91,37 @@ use_waiter <- function(include_js = TRUE){
 
 #' @rdname waiter
 #' @export
+waiter_use <- use_waiter
+
+#' @rdname waiter
+#' @export
 show_waiter <- function(html = "", color = "#333e48", logo = "", id = NULL, 
   hide_on_drawn = FALSE){
+  .Deprecated("waiter_show", package = "waiter")
+
+  html <- as.character(html)
+  html <- gsub("\n", "", html)
+
+  if(hide_on_drawn && is.null(id))
+    stop("Cannot `hide_on_drawn` when `id` is not specified")
+
+  opts <- list(
+    id = id,
+    html = html,
+    color = color,
+    logo = logo,
+    hide_on_drawn
+  )
+  session <- shiny::getDefaultReactiveDomain()
+  .check_session(session)
+  session$sendCustomMessage("waiter-show", opts)
+}
+
+#' @rdname waiter
+#' @export
+waiter_show <- function(html = "", color = "#333e48", logo = "", id = NULL, 
+  hide_on_drawn = FALSE){
+  
   html <- as.character(html)
   html <- gsub("\n", "", html)
 
@@ -120,6 +143,31 @@ show_waiter <- function(html = "", color = "#333e48", logo = "", id = NULL,
 #' @rdname waiter
 #' @export
 show_waiter_on_load <- function(html = "", color = "#333e48", logo = ""){
+  .Deprecated("waiter_show_on_load", package = "waiter")
+
+  html <- as.character(html)
+  html <- gsub("\n", "", html)
+
+  script <- paste0(
+    "window.loading_screen = pleaseWait({
+      logo: '", as.character(logo), "',
+      backgroundColor: '", color, "',
+      loadingHtml: '", html, "'
+    });"
+  )
+
+  tagList(
+    tags$script(
+      src = "waiter-assets/waiter/please-wait.min.js"
+    ),
+    HTML(paste0("<script>", script, "</script>"))
+  )
+}
+
+#' @rdname waiter
+#' @export
+waiter_show_on_load <- function(html = "", color = "#333e48", logo = ""){
+  
   html <- as.character(html)
   html <- gsub("\n", "", html)
 
@@ -142,6 +190,29 @@ show_waiter_on_load <- function(html = "", color = "#333e48", logo = ""){
 #' @rdname waiter
 #' @export
 hide_waiter_on_drawn <- function(id){
+  .Deprecated("waiter_hide_on_drawn", package = "waiter")
+
+  if(missing(id))
+    stop("Missing id", call. = FALSE)
+  
+  script <- paste0(
+    '$(document).on("shiny:value", function(event) {
+      if (event.target.id === "', id,'") {
+        window.loading_screen.finish();
+      }
+    });'
+  )
+
+  singleton(
+    tags$head(
+      tags$script(script)
+    )
+  )
+}
+
+#' @rdname waiter
+#' @export
+waiter_hide_on_drawn <- function(id){
   if(missing(id))
     stop("Missing id", call. = FALSE)
   
@@ -163,6 +234,15 @@ hide_waiter_on_drawn <- function(id){
 #' @rdname waiter
 #' @export
 hide_waiter <- function(id = NULL){
+  .Deprecated("waiter_hide", package = "waiter")
+  session <- shiny::getDefaultReactiveDomain()
+  .check_session(session)
+  session$sendCustomMessage("waiter-hide", list(id = id))
+}
+
+#' @rdname waiter
+#' @export
+waiter_hide <- function(id = NULL){
   session <- shiny::getDefaultReactiveDomain()
   .check_session(session)
   session$sendCustomMessage("waiter-hide", list(id = id))
@@ -171,6 +251,19 @@ hide_waiter <- function(id = NULL){
 #' @rdname waiter
 #' @export
 update_waiter <- function(html = "", id = NULL){
+  .Deprecated("waiter_update", package = "waiter")
+  if(is.character(html))
+    html <- span(html)
+  html <- as.character(html)
+  html <- gsub("\n", "", html)
+  session <- shiny::getDefaultReactiveDomain()
+  .check_session(session)
+  session$sendCustomMessage("waiter-update", list(html = html, id = id))
+}
+
+#' @rdname waiter
+#' @export
+waiter_update <- function(html = "", id = NULL){
   if(is.character(html))
     html <- span(html)
   html <- as.character(html)

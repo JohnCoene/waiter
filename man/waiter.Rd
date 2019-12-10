@@ -3,14 +3,22 @@
 \name{waiter}
 \alias{waiter}
 \alias{use_waiter}
+\alias{waiter_use}
 \alias{show_waiter}
+\alias{waiter_show}
 \alias{show_waiter_on_load}
+\alias{waiter_show_on_load}
 \alias{hide_waiter_on_drawn}
+\alias{waiter_hide_on_drawn}
 \alias{hide_waiter}
+\alias{waiter_hide}
 \alias{update_waiter}
+\alias{waiter_update}
 \title{Waiter}
 \usage{
 use_waiter(include_js = TRUE)
+
+waiter_use(include_js = TRUE)
 
 show_waiter(
   html = "",
@@ -20,13 +28,29 @@ show_waiter(
   hide_on_drawn = FALSE
 )
 
+waiter_show(
+  html = "",
+  color = "#333e48",
+  logo = "",
+  id = NULL,
+  hide_on_drawn = FALSE
+)
+
 show_waiter_on_load(html = "", color = "#333e48", logo = "")
+
+waiter_show_on_load(html = "", color = "#333e48", logo = "")
 
 hide_waiter_on_drawn(id)
 
+waiter_hide_on_drawn(id)
+
 hide_waiter(id = NULL)
 
+waiter_hide(id = NULL)
+
 update_waiter(html = "", id = NULL)
+
+waiter_update(html = "", id = NULL)
 }
 \arguments{
 \item{include_js}{Whether to include the Javascript dependencies, only
@@ -51,19 +75,11 @@ Programatically show and hide loading screens.
 \section{Functions}{
 
 \itemize{
- \item{\code{use_waiter}: waiter dependencies to include anywhere in your UI but ideally at the top.}
- \item{\code{show_waiter_on_load}: Show a waiter on page load, before the session is even loaded, include in UI \emph{after} \code{use_waiter}.}
- \item{\code{show_waiter}: Show waiting screen.}
- \item{\code{hide_waiter}: Hide any waiting screen.}
- \item{\code{hide_waiter_on_drawn}: Hide any waiting screen when the output is drawn, useful for outputs that take a long time to draw, \emph{use in \code{ui}}.}
-}
-}
-
-\section{Class}{
-
-Arguments passed to \code{show_waiter} are passed to the initialisation method \code{new}.
-\itemize{
-  \item{\code{Waiter}: initiatlise a Waiter.} 
+ \item{\code{use_waiter} and \code{waiter_use}: waiter dependencies to include anywhere in your UI but ideally at the top.}
+ \item{\code{waiter_show_on_load}: Show a waiter on page load, before the session is even loaded, include in UI \emph{after} \code{use_waiter}.}
+ \item{\code{waiter_show}: Show waiting screen.}
+ \item{\code{waiter_hide}: Hide any waiting screen.}
+ \item{\code{waiter_hide_on_drawn}: Hide any waiting screen when the output is drawn, useful for outputs that take a long time to draw, \emph{use in \code{ui}}.}
 }
 }
 
@@ -72,22 +88,22 @@ library(shiny)
 
 ui <- fluidPage(
   use_waiter(), # dependencies
-  show_waiter_on_load(spin_fading_circles()), # shows before anything else 
+  waiter_show_on_load(spin_fading_circles()), # shows before anything else 
   actionButton("show", "Show loading for 5 seconds")
 )
 
 server <- function(input, output, session){
-  hide_waiter() # will hide *on_load waiter
+  waiter_hide() # will hide *on_load waiter
   
   observeEvent(input$show, {
-    show_waiter(
+    waiter_show(
       tagList(
         spin_fading_circles(),
         "Loading ..."
       )
     )
     Sys.sleep(3)
-    hide_waiter()
+    waiter_hide()
   })
 }
 
