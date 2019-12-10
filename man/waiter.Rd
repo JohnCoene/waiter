@@ -41,7 +41,9 @@ set to \code{FALSE} if you use \code{\link{show_waiter_on_load}}.}
 \item{id}{Id of element to hide or element on which to show waiter over.}
 
 \item{hide_on_drawn}{Set to \code{TRUE} to automatically hide the waiter
-when the plot in \code{id} is drawn.}
+when the plot in \code{id} is drawn. Note the latter will only work with
+shiny plots, tables, htmlwidgets, etc. but will not work with arbitrary
+elements.}
 }
 \description{
 Programatically show and hide loading screens.

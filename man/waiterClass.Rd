@@ -58,7 +58,9 @@ then \code{hide} or meanwhile \code{update} the content of the waiter.
 applied to the entire body.}
 
 \item{\code{hide_on_drawn}}{Set to \code{TRUE} to automatically hide the waiter
-when the plot in \code{id} is drawn.}
+when the plot in \code{id} is drawn. Note the latter will only work with
+shiny plots, tables, htmlwidgets, etc. but will not work with arbitrary
+elements.}
 }
 \if{html}{\out{</div>}}
 }

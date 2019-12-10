@@ -7,7 +7,9 @@
 #' @param logo Logo to display.
 #' @param id Id of element to hide or element on which to show waiter over.
 #' @param hide_on_drawn Set to \code{TRUE} to automatically hide the waiter
-#' when the plot in \code{id} is drawn.
+#' when the plot in \code{id} is drawn. Note the latter will only work with
+#' shiny plots, tables, htmlwidgets, etc. but will not work with arbitrary
+#' elements.
 #' @param include_js Whether to include the Javascript dependencies, only
 #' set to \code{FALSE} if you use \code{\link{show_waiter_on_load}}.
 #' 
@@ -201,7 +203,9 @@ Waiter <- R6::R6Class(
 #' @param id Id of element on which to overlay the waiter, if \code{NULL} the waiter is
 #' applied to the entire body.
 #' @param hide_on_drawn Set to \code{TRUE} to automatically hide the waiter
-#' when the plot in \code{id} is drawn.
+#' when the plot in \code{id} is drawn. Note the latter will only work with
+#' shiny plots, tables, htmlwidgets, etc. but will not work with arbitrary
+#' elements.
 #' 
 #' @examples
 #' \dontrun{Waiter$new()}
