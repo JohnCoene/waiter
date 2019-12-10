@@ -19,6 +19,7 @@
 #'  \item{\code{waiter_show_on_load}: Show a waiter on page load, before the session is even loaded, include in UI \emph{after} \code{use_waiter}.}
 #'  \item{\code{waiter_show}: Show waiting screen.}
 #'  \item{\code{waiter_hide}: Hide any waiting screen.}
+#'  \item{\code{waiter_update}: Update the content \code{html} of the waiting screen.}
 #'  \item{\code{waiter_hide_on_drawn}: Hide any waiting screen when the output is drawn, useful for outputs that take a long time to draw, \emph{use in \code{ui}}.}
 #' }
 #' 
@@ -119,7 +120,7 @@ show_waiter <- function(html = "", color = "#333e48", logo = "", id = NULL,
 
 #' @rdname waiter
 #' @export
-waiter_show <- function(html = "", color = "#333e48", logo = "", id = NULL, 
+waiter_show <- function(id = NULL, html = "", color = "#333e48", logo = "", 
   hide_on_drawn = FALSE){
   
   html <- as.character(html)
@@ -263,7 +264,7 @@ update_waiter <- function(html = "", id = NULL){
 
 #' @rdname waiter
 #' @export
-waiter_update <- function(html = "", id = NULL){
+waiter_update <- function(id = NULL, html = ""){
   if(is.character(html))
     html <- span(html)
   html <- as.character(html)
@@ -302,7 +303,7 @@ Waiter <- R6::R6Class(
 #' 
 #' @examples
 #' \dontrun{Waiter$new()}
-    initialize = function(html = "", color = "#333e48", logo = "", id = NULL, 
+    initialize = function(id = NULL, html = "", color = "#333e48", logo = "", 
       hide_on_drawn = FALSE){
       html <- as.character(html)
       html <- gsub("\n", "", html)

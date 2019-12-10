@@ -37,10 +37,10 @@ then \code{hide} or meanwhile \code{update} the content of the waiter.
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waiter$new(
+  id = NULL,
   html = "",
   color = "#333e48",
   logo = "",
-  id = NULL,
   hide_on_drawn = FALSE
 )}\if{html}{\out{</div>}}
 }
@@ -48,14 +48,14 @@ then \code{hide} or meanwhile \code{update} the content of the waiter.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
+\item{\code{id}}{Id of element on which to overlay the waiter, if \code{NULL} the waiter is
+applied to the entire body.}
+
 \item{\code{html}}{HTML content of waiter, generally a spinner, see \code{\link{spinners}}.}
 
 \item{\code{color}}{Background color of loading screen.}
 
 \item{\code{logo}}{Logo to display.}
-
-\item{\code{id}}{Id of element on which to overlay the waiter, if \code{NULL} the waiter is
-applied to the entire body.}
 
 \item{\code{hide_on_drawn}}{Set to \code{TRUE} to automatically hide the waiter
 when the plot in \code{id} is drawn. Note the latter will only work with

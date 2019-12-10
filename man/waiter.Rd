@@ -29,10 +29,10 @@ show_waiter(
 )
 
 waiter_show(
+  id = NULL,
   html = "",
   color = "#333e48",
   logo = "",
-  id = NULL,
   hide_on_drawn = FALSE
 )
 
@@ -50,7 +50,7 @@ waiter_hide(id = NULL)
 
 update_waiter(html = "", id = NULL)
 
-waiter_update(html = "", id = NULL)
+waiter_update(id = NULL, html = "")
 }
 \arguments{
 \item{include_js}{Whether to include the Javascript dependencies, only
@@ -79,6 +79,7 @@ Programatically show and hide loading screens.
  \item{\code{waiter_show_on_load}: Show a waiter on page load, before the session is even loaded, include in UI \emph{after} \code{use_waiter}.}
  \item{\code{waiter_show}: Show waiting screen.}
  \item{\code{waiter_hide}: Hide any waiting screen.}
+ \item{\code{waiter_update}: Update the content \code{html} of the waiting screen.}
  \item{\code{waiter_hide_on_drawn}: Hide any waiting screen when the output is drawn, useful for outputs that take a long time to draw, \emph{use in \code{ui}}.}
 }
 }
