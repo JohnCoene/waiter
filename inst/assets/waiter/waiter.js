@@ -1,10 +1,11 @@
+// compute offset position of waiter overlay
 function get_offset(element) {
   var elementPosition = {};
 
-  //set width
-  elementPosition.width = element.offsetWidth;
-  //set height
-  elementPosition.height = element.offsetHeight;
+  //set width and height
+  // -10 to keep margin between plot if stacked up/side by side
+  elementPosition.width = element.offsetWidth -10;
+  elementPosition.height = element.offsetHeight -10;
 
   //calculate element top and left
   var _x = element.offsetLeft;
@@ -13,21 +14,33 @@ function get_offset(element) {
     _x = 0;
   if(isNaN(_y))
     _y = 0;
-  //set top
-  elementPosition.top = _y;
-  //set left
-  elementPosition.left = _x;
+  
+  //set top and left
+  //use 5 margin (10/2)
+  elementPosition.top = _y + 5;
+  elementPosition.left = _x + 5;
 
   return elementPosition;
 }
 
-function show_waiter(id, html, color){
+// elements to hide on recomputed
+var waiter_to_hide = [];
+
+// show waiter overlay
+function show_waiter(id, html, color, to_hide){
   // declare
   var dom,
       width,
       height,
       exists = false;
   
+  // allow missing for testing
+  to_hide = to_hide || false;
+
+  // add to array
+  if(to_hide)
+    waiter_to_hide.push(id);
+    
   // get parent
   dom = document.getElementById(id);
   if(dom == undefined){
@@ -114,3 +127,9 @@ function hide_recalculate(id){
   }
   head.appendChild(style);
 }
+
+$(document).on('shiny:value shiny:error', function(event) {
+  if(waiter_to_hide.includes(event.name)){
+    hide_waiter(event.name);
+  }
+});

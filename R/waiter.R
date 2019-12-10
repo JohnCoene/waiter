@@ -6,6 +6,8 @@
 #' @param color Background color of loading screen.
 #' @param logo Logo to display.
 #' @param id Id of element to hide or element on which to show waiter over.
+#' @param hide_on_drawn Set to \code{TRUE} to automatically hide the waiter
+#' when the plot in \code{id} is drawn.
 #' @param include_js Whether to include the Javascript dependencies, only
 #' set to \code{FALSE} if you use \code{\link{show_waiter_on_load}}.
 #' 
@@ -93,15 +95,20 @@ use_waiter <- function(include_js = TRUE){
 
 #' @rdname waiter
 #' @export
-show_waiter <- function(html = "", color = "#333e48", logo = "", id = NULL){
+show_waiter <- function(html = "", color = "#333e48", logo = "", id = NULL, 
+  hide_on_drawn = FALSE){
   html <- as.character(html)
   html <- gsub("\n", "", html)
+
+  if(hide_on_drawn && is.null(id))
+    stop("Cannot `hide_on_drawn` when `id` is not specified")
 
   opts <- list(
     id = id,
     html = html,
     color = color,
-    logo = logo
+    logo = logo,
+    hide_on_drawn
   )
   session <- shiny::getDefaultReactiveDomain()
   .check_session(session)
@@ -193,12 +200,18 @@ Waiter <- R6::R6Class(
 #' @param logo Logo to display.
 #' @param id Id of element on which to overlay the waiter, if \code{NULL} the waiter is
 #' applied to the entire body.
+#' @param hide_on_drawn Set to \code{TRUE} to automatically hide the waiter
+#' when the plot in \code{id} is drawn.
 #' 
 #' @examples
 #' \dontrun{Waiter$new()}
-    initialize = function(html = "", color = "#333e48", logo = "", id = NULL){
+    initialize = function(html = "", color = "#333e48", logo = "", id = NULL, 
+      hide_on_drawn = FALSE){
       html <- as.character(html)
       html <- gsub("\n", "", html)
+
+      if(hide_on_drawn && is.null(id))
+        stop("Cannot `hide_on_drawn` when `id` is not specified")
 
       private$.id <- id
       private$.html <- html

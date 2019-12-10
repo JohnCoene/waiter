@@ -12,7 +12,13 @@
 \usage{
 use_waiter(include_js = TRUE)
 
-show_waiter(html = "", color = "#333e48", logo = "", id = NULL)
+show_waiter(
+  html = "",
+  color = "#333e48",
+  logo = "",
+  id = NULL,
+  hide_on_drawn = FALSE
+)
 
 show_waiter_on_load(html = "", color = "#333e48", logo = "")
 
@@ -33,6 +39,9 @@ set to \code{FALSE} if you use \code{\link{show_waiter_on_load}}.}
 \item{logo}{Logo to display.}
 
 \item{id}{Id of element to hide or element on which to show waiter over.}
+
+\item{hide_on_drawn}{Set to \code{TRUE} to automatically hide the waiter
+when the plot in \code{id} is drawn.}
 }
 \description{
 Programatically show and hide loading screens.

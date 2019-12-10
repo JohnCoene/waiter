@@ -36,7 +36,13 @@ then \code{hide} or meanwhile \code{update} the content of the waiter.
 \if{html}{\out{<a id="method-new"></a>}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Waiter$new(html = "", color = "#333e48", logo = "", id = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Waiter$new(
+  html = "",
+  color = "#333e48",
+  logo = "",
+  id = NULL,
+  hide_on_drawn = FALSE
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -50,6 +56,9 @@ then \code{hide} or meanwhile \code{update} the content of the waiter.
 
 \item{\code{id}}{Id of element on which to overlay the waiter, if \code{NULL} the waiter is
 applied to the entire body.}
+
+\item{\code{hide_on_drawn}}{Set to \code{TRUE} to automatically hide the waiter
+when the plot in \code{id} is drawn.}
 }
 \if{html}{\out{</div>}}
 }
