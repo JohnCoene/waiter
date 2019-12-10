@@ -80,6 +80,7 @@ Add hostess dependencies.
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-new}{\code{Hostess$new()}}
+\item \href{#method-start}{\code{Hostess$start()}}
 \item \href{#method-print}{\code{Hostess$print()}}
 \item \href{#method-set}{\code{Hostess$set()}}
 \item \href{#method-clone}{\code{Hostess$clone()}}
@@ -113,6 +114,18 @@ Create a hostess.
 
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-start"></a>}}
+\subsection{Method \code{start()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Hostess$start()}\if{html}{\out{</div>}}
+}
+
+\subsection{Details}{
+Start the hostess
+}
+
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print"></a>}}
 \subsection{Method \code{print()}}{
 \subsection{Usage}{
@@ -120,7 +133,7 @@ Create a hostess.
 }
 
 \subsection{Details}{
-print the hostess
+Print the hostess
 }
 
 }

@@ -123,11 +123,17 @@ Hostess <- R6::R6Class(
       .check_session(session)
       private$.session <- session
 
-      session$sendCustomMessage("hostess-init", list(id = id))
       private$.id <- id
     },
 #' @details
-#' print the hostess
+#' Start the hostess
+    start = function(){
+      private$.started <- TRUE
+      private$.session$sendCustomMessage("hostess-init", list(id = private$.id))
+      invisible(self)
+    },
+#' @details
+#' Print the hostess
 		print = function(){
       cat("A hostess on", private$.id, "\n")
 		},
@@ -142,12 +148,20 @@ Hostess <- R6::R6Class(
       if(missing(value))
         stop("Missing `value`", call. = FALSE)
 
-      private$.session$sendCustomMessage("hostess-set", list(id = private$.id, value = value))
+      # start the hostess if has not been done
+      if(!private$.started){
+        private$.started <- TRUE
+        private$.session$sendCustomMessage("hostess-init", list(id = private$.id))
+      }
+
+      opts <- list(id = private$.id, value = value)
+      private$.session$sendCustomMessage("hostess-set", opts)
       invisible(self)
     }
   ),
   private = list(
     .id = NULL,
-    .session = NULL
+    .session = NULL,
+    .started = FALSE
   )
 )

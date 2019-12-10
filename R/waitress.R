@@ -126,6 +126,7 @@ Waitress <- R6::R6Class(
 #' @examples
 #' \dontrun{Waitress$new("#plot")$start()}
 		start = function(){
+			private$.started <- TRUE
 			opts <- list(name = private$.name)
 			private$get_session()
 			private$.session$sendCustomMessage("waitress-start", opts)
@@ -139,8 +140,15 @@ Waitress <- R6::R6Class(
 #' @examples
 #' \dontrun{Waitress$new("#plot")$set(20)}
 		set = function(percent){
-			opts <- list(name = private$.name, percent = percent)
 			private$get_session()
+
+			if(!private$.started){
+				private$.started <- TRUE
+				opts <- list(name = private$.name)
+				private$.session$sendCustomMessage("waitress-start", opts)
+			}
+
+			opts <- list(name = private$.name, percent = percent)
 			private$.session$sendCustomMessage("waitress-set", opts)
 			invisible(self)
 		},
@@ -153,8 +161,15 @@ Waitress <- R6::R6Class(
 #' @examples
 #' \dontrun{Waitress$new("#plot")$auto(20, 2000)}
 		auto = function(percent, ms){
-			opts <- list(name = private$.name, percent = percent, ms = ms)
 			private$get_session()
+
+			if(!private$.started){
+				private$.started <- TRUE
+				opts <- list(name = private$.name)
+				private$.session$sendCustomMessage("waitress-start", opts)
+			}
+
+			opts <- list(name = private$.name, percent = percent, ms = ms)
 			private$.session$sendCustomMessage("waitress-auto", opts)
 			invisible(self)
 		},
@@ -179,8 +194,15 @@ Waitress <- R6::R6Class(
 #' @examples
 #' \dontrun{Waitress$new("#plot")$inc(30)}
 		inc = function(percent){
-			opts <- list(name = private$.name, percent = percent)
 			private$get_session()
+			
+			if(!private$.started){
+				private$.started <- TRUE
+				opts <- list(name = private$.name)
+				private$.session$sendCustomMessage("waitress-start", opts)
+			}
+
+			opts <- list(name = private$.name, percent = percent)
 			private$.session$sendCustomMessage("waitress-increase", opts)
 			invisible(self)
 		},
@@ -224,6 +246,7 @@ Waitress <- R6::R6Class(
 		.overlay = NULL,
 		.dom = NULL,
 		.session = NULL,
+		.started = FALSE,
 		get_session = function(){
 			private$.session <- shiny::getDefaultReactiveDomain()
 			.check_session(private$.session)

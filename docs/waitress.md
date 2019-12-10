@@ -36,7 +36,6 @@ server <- function(input, output){
   waitress <- call_waitress("#plot") # call the waitress
   
   output$plot <- renderPlot({
-    waitress$start() # start the waitress
     
     dat <- vector()
     
@@ -79,7 +78,6 @@ server <- function(input, output){
   waitress <- call_waitress("nav", theme = "overlay") # call the waitress
   
   output$plot <- renderPlot({
-    waitress$start() # start the waitress
     
     dat <- vector()
     
@@ -120,10 +118,9 @@ server <- function(input, output){
   
   observeEvent(input$load, {
     waitress$
-      start()$
       auto(percent = 5, ms = 150) # increase by 5 percent every 150 milliseconds
       Sys.sleep(3.5)
-    waitress$hide()
+    waitress$close()
 	})
 
 }
