@@ -172,11 +172,35 @@ Waitress <- R6::R6Class(
 			invisible(self)
 		},
 #' @details
+#' Increase the waitress by a percentage, identical to \code{increase} method.
+#' 
+#' @param percent Percentage to increase waitress to.
+#' 
+#' @examples
+#' \dontrun{Waitress$new("#plot")$inc(30)}
+		inc = function(percent){
+			opts <- list(name = private$.name, percent = percent)
+			private$get_session()
+			private$.session$sendCustomMessage("waitress-increase", opts)
+			invisible(self)
+		},
+#' @details
 #' Hide the waitress.
 #' 
 #' @examples
 #' \dontrun{Waitress$new("#plot")$hide()}
 		hide = function(){
+			opts <- list(name = private$.name)
+			private$get_session()
+			private$.session$sendCustomMessage("waitress-end", opts)
+			invisible(self)
+		},
+#' @details
+#' Close the waitress, identical to \code{hide} method.
+#' 
+#' @examples
+#' \dontrun{Waitress$new("#plot")$close()}
+		close = function(){
 			opts <- list(name = private$.name)
 			private$get_session()
 			private$.session$sendCustomMessage("waitress-end", opts)

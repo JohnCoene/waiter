@@ -41,10 +41,22 @@ its percentage, then hide it when done.
 \dontrun{Waitress$new("#plot")$increase(30)}
 
 ## ------------------------------------------------
+## Method `Waitress$inc`
+## ------------------------------------------------
+
+\dontrun{Waitress$new("#plot")$inc(30)}
+
+## ------------------------------------------------
 ## Method `Waitress$hide`
 ## ------------------------------------------------
 
 \dontrun{Waitress$new("#plot")$hide()}
+
+## ------------------------------------------------
+## Method `Waitress$close`
+## ------------------------------------------------
+
+\dontrun{Waitress$new("#plot")$close()}
 
 ## ------------------------------------------------
 ## Method `Waitress$print`
@@ -60,7 +72,9 @@ its percentage, then hide it when done.
 \item \href{#method-set}{\code{Waitress$set()}}
 \item \href{#method-auto}{\code{Waitress$auto()}}
 \item \href{#method-increase}{\code{Waitress$increase()}}
+\item \href{#method-inc}{\code{Waitress$inc()}}
 \item \href{#method-hide}{\code{Waitress$hide()}}
+\item \href{#method-close}{\code{Waitress$close()}}
 \item \href{#method-print}{\code{Waitress$print()}}
 \item \href{#method-clone}{\code{Waitress$clone()}}
 }
@@ -205,6 +219,33 @@ Increase the waitress by a percentage.
 
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-inc"></a>}}
+\subsection{Method \code{inc()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Waitress$inc(percent)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{percent}}{Percentage to increase waitress to.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+Increase the waitress by a percentage, identical to \code{increase} method.
+}
+
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{Waitress$new("#plot")$inc(30)}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-hide"></a>}}
 \subsection{Method \code{hide()}}{
 \subsection{Usage}{
@@ -218,6 +259,26 @@ Hide the waitress.
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{\dontrun{Waitress$new("#plot")$hide()}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-close"></a>}}
+\subsection{Method \code{close()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Waitress$close()}\if{html}{\out{</div>}}
+}
+
+\subsection{Details}{
+Close the waitress, identical to \code{hide} method.
+}
+
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{Waitress$new("#plot")$close()}
 }
 \if{html}{\out{</div>}}
 
