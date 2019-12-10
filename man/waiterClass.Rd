@@ -41,7 +41,7 @@ then \code{hide} or meanwhile \code{update} the content of the waiter.
   html = spin_1(),
   color = "#333e48",
   logo = "",
-  hide_on_drawn = FALSE
+  hide_on_render = !is.null(id)
 )}\if{html}{\out{</div>}}
 }
 
@@ -57,7 +57,7 @@ applied to the entire body.}
 
 \item{\code{logo}}{Logo to display.}
 
-\item{\code{hide_on_drawn}}{Set to \code{TRUE} to automatically hide the waiter
+\item{\code{hide_on_render}}{Set to \code{TRUE} to automatically hide the waiter
 when the plot in \code{id} is drawn. Note the latter will only work with
 shiny plots, tables, htmlwidgets, etc. but will not work with arbitrary
 elements.}

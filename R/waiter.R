@@ -6,7 +6,7 @@
 #' @param color Background color of loading screen.
 #' @param logo Logo to display.
 #' @param id Id of element to hide or element on which to show waiter over.
-#' @param hide_on_drawn Set to \code{TRUE} to automatically hide the waiter
+#' @param hide_on_render Set to \code{TRUE} to automatically hide the waiter
 #' when the plot in \code{id} is drawn. Note the latter will only work with
 #' shiny plots, tables, htmlwidgets, etc. but will not work with arbitrary
 #' elements.
@@ -20,7 +20,7 @@
 #'  \item{\code{waiter_show}: Show waiting screen.}
 #'  \item{\code{waiter_hide}: Hide any waiting screen.}
 #'  \item{\code{waiter_update}: Update the content \code{html} of the waiting screen.}
-#'  \item{\code{waiter_hide_on_drawn}: Hide any waiting screen when the output is drawn, useful for outputs that take a long time to draw, \emph{use in \code{ui}}.}
+#'  \item{\code{waiter_hide_on_render}: Hide any waiting screen when the output is drawn, useful for outputs that take a long time to draw, \emph{use in \code{ui}}.}
 #' }
 #' 
 #' @examples
@@ -97,21 +97,21 @@ waiter_use <- use_waiter
 #' @rdname waiter
 #' @export
 show_waiter <- function(html = "", color = "#333e48", logo = "", id = NULL, 
-  hide_on_drawn = FALSE){
+  hide_on_render = FALSE){
   .Deprecated("waiter_show", package = "waiter")
 
   html <- as.character(html)
   html <- gsub("\n", "", html)
 
-  if(hide_on_drawn && is.null(id))
-    stop("Cannot `hide_on_drawn` when `id` is not specified")
+  if(hide_on_render && is.null(id))
+    stop("Cannot `hide_on_render` when `id` is not specified")
 
   opts <- list(
     id = id,
     html = html,
     color = color,
     logo = logo,
-    hide_on_drawn
+    hide_on_render = hide_on_render
   )
   session <- shiny::getDefaultReactiveDomain()
   .check_session(session)
@@ -121,20 +121,20 @@ show_waiter <- function(html = "", color = "#333e48", logo = "", id = NULL,
 #' @rdname waiter
 #' @export
 waiter_show <- function(id = NULL, html = spin_1(), color = "#333e48", logo = "", 
-  hide_on_drawn = FALSE){
+  hide_on_render = !is.null(id)){
   
   html <- as.character(html)
   html <- gsub("\n", "", html)
 
-  if(hide_on_drawn && is.null(id))
-    stop("Cannot `hide_on_drawn` when `id` is not specified")
+  if(hide_on_render && is.null(id))
+    stop("Cannot `hide_on_render` when `id` is not specified")
 
   opts <- list(
     id = id,
     html = html,
     color = color,
     logo = logo,
-    hide_on_drawn
+    hide_on_render = hide_on_render
   )
   session <- shiny::getDefaultReactiveDomain()
   .check_session(session)
@@ -191,7 +191,7 @@ waiter_show_on_load <- function(html = spin_1(), color = "#333e48", logo = ""){
 #' @rdname waiter
 #' @export
 hide_waiter_on_drawn <- function(id){
-  .Deprecated("waiter_hide_on_drawn", package = "waiter")
+  .Deprecated("waiter_hide_on_render", package = "waiter")
 
   if(missing(id))
     stop("Missing id", call. = FALSE)
@@ -213,12 +213,12 @@ hide_waiter_on_drawn <- function(id){
 
 #' @rdname waiter
 #' @export
-waiter_hide_on_drawn <- function(id){
+waiter_hide_on_render <- function(id){
   if(missing(id))
     stop("Missing id", call. = FALSE)
   
   script <- paste0(
-    '$(document).on("shiny:value", function(event) {
+    '$(document).on("shiny:value shiny:error", function(event) {
       if (event.target.id === "', id,'") {
         window.loading_screen.finish();
       }
@@ -303,7 +303,7 @@ Waiter <- R6::R6Class(
 #' @param logo Logo to display.
 #' @param id Id of element on which to overlay the waiter, if \code{NULL} the waiter is
 #' applied to the entire body.
-#' @param hide_on_drawn Set to \code{TRUE} to automatically hide the waiter
+#' @param hide_on_render Set to \code{TRUE} to automatically hide the waiter
 #' when the plot in \code{id} is drawn. Note the latter will only work with
 #' shiny plots, tables, htmlwidgets, etc. but will not work with arbitrary
 #' elements.
@@ -311,17 +311,18 @@ Waiter <- R6::R6Class(
 #' @examples
 #' \dontrun{Waiter$new()}
     initialize = function(id = NULL, html = spin_1(), color = "#333e48", logo = "", 
-      hide_on_drawn = FALSE){
+      hide_on_render = !is.null(id)){
       html <- as.character(html)
       html <- gsub("\n", "", html)
 
-      if(hide_on_drawn && is.null(id))
-        stop("Cannot `hide_on_drawn` when `id` is not specified")
+      if(hide_on_render && is.null(id))
+        stop("Cannot `hide_on_render` when `id` is not specified")
 
       private$.id <- id
       private$.html <- html
       private$.color <- color
       private$.logo <- logo
+      private$.hide_on_render <- hide_on_render
     },
 #' @details
 #' Hide the waiter on object kill.
@@ -335,7 +336,8 @@ Waiter <- R6::R6Class(
         id = private$.id,
         html = private$.html,
         color = private$.color,
-        logo = private$.logo
+        logo = private$.logo,
+        hide_on_render = hide_on_render
       )
       private$get_session()
       private$.session$sendCustomMessage("waiter-show", opts)
@@ -375,6 +377,7 @@ Waiter <- R6::R6Class(
     .logo = "",
     .id = NULL,
     .session = NULL,
+    hide_on_render = FALSE,
 		get_session = function(){
 			private$.session <- shiny::getDefaultReactiveDomain()
 			.check_session(private$.session)

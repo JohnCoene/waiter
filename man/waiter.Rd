@@ -9,7 +9,7 @@
 \alias{show_waiter_on_load}
 \alias{waiter_show_on_load}
 \alias{hide_waiter_on_drawn}
-\alias{waiter_hide_on_drawn}
+\alias{waiter_hide_on_render}
 \alias{hide_waiter}
 \alias{waiter_hide}
 \alias{update_waiter}
@@ -25,7 +25,7 @@ show_waiter(
   color = "#333e48",
   logo = "",
   id = NULL,
-  hide_on_drawn = FALSE
+  hide_on_render = FALSE
 )
 
 waiter_show(
@@ -33,7 +33,7 @@ waiter_show(
   html = spin_1(),
   color = "#333e48",
   logo = "",
-  hide_on_drawn = FALSE
+  hide_on_render = !is.null(id)
 )
 
 show_waiter_on_load(html = "", color = "#333e48", logo = "")
@@ -42,7 +42,7 @@ waiter_show_on_load(html = spin_1(), color = "#333e48", logo = "")
 
 hide_waiter_on_drawn(id)
 
-waiter_hide_on_drawn(id)
+waiter_hide_on_render(id)
 
 hide_waiter(id = NULL)
 
@@ -64,7 +64,7 @@ set to \code{FALSE} if you use \code{\link{show_waiter_on_load}}.}
 
 \item{id}{Id of element to hide or element on which to show waiter over.}
 
-\item{hide_on_drawn}{Set to \code{TRUE} to automatically hide the waiter
+\item{hide_on_render}{Set to \code{TRUE} to automatically hide the waiter
 when the plot in \code{id} is drawn. Note the latter will only work with
 shiny plots, tables, htmlwidgets, etc. but will not work with arbitrary
 elements.}
@@ -80,7 +80,7 @@ Programatically show and hide loading screens.
  \item{\code{waiter_show}: Show waiting screen.}
  \item{\code{waiter_hide}: Hide any waiting screen.}
  \item{\code{waiter_update}: Update the content \code{html} of the waiting screen.}
- \item{\code{waiter_hide_on_drawn}: Hide any waiting screen when the output is drawn, useful for outputs that take a long time to draw, \emph{use in \code{ui}}.}
+ \item{\code{waiter_hide_on_render}: Hide any waiting screen when the output is drawn, useful for outputs that take a long time to draw, \emph{use in \code{ui}}.}
 }
 }
 
