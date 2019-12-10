@@ -30,7 +30,7 @@ show_waiter(
 
 waiter_show(
   id = NULL,
-  html = "",
+  html = spin_1(),
   color = "#333e48",
   logo = "",
   hide_on_drawn = FALSE
@@ -38,7 +38,7 @@ waiter_show(
 
 show_waiter_on_load(html = "", color = "#333e48", logo = "")
 
-waiter_show_on_load(html = "", color = "#333e48", logo = "")
+waiter_show_on_load(html = spin_1(), color = "#333e48", logo = "")
 
 hide_waiter_on_drawn(id)
 

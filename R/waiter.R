@@ -120,7 +120,7 @@ show_waiter <- function(html = "", color = "#333e48", logo = "", id = NULL,
 
 #' @rdname waiter
 #' @export
-waiter_show <- function(id = NULL, html = "", color = "#333e48", logo = "", 
+waiter_show <- function(id = NULL, html = spin_1(), color = "#333e48", logo = "", 
   hide_on_drawn = FALSE){
   
   html <- as.character(html)
@@ -167,7 +167,7 @@ show_waiter_on_load <- function(html = "", color = "#333e48", logo = ""){
 
 #' @rdname waiter
 #' @export
-waiter_show_on_load <- function(html = "", color = "#333e48", logo = ""){
+waiter_show_on_load <- function(html = spin_1(), color = "#333e48", logo = ""){
   
   html <- as.character(html)
   html <- gsub("\n", "", html)
@@ -303,7 +303,7 @@ Waiter <- R6::R6Class(
 #' 
 #' @examples
 #' \dontrun{Waiter$new()}
-    initialize = function(id = NULL, html = "", color = "#333e48", logo = "", 
+    initialize = function(id = NULL, html = spin_1(), color = "#333e48", logo = "", 
       hide_on_drawn = FALSE){
       html <- as.character(html)
       html <- gsub("\n", "", html)
@@ -317,7 +317,7 @@ Waiter <- R6::R6Class(
       private$.logo <- logo
     },
 #' @details
-#' Hide the waiter.
+#' Hide the waiter on object kill.
     finalize = function(){
       public$hide()
     },
