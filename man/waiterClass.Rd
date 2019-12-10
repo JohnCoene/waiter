@@ -117,7 +117,7 @@ Hide the waiter.
 \if{html}{\out{<a id="method-update_waiter"></a>}}
 \subsection{Method \code{update_waiter()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Waiter$update_waiter(html = "")}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Waiter$update_waiter(html = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{

@@ -264,9 +264,16 @@ update_waiter <- function(html = "", id = NULL){
 
 #' @rdname waiter
 #' @export
-waiter_update <- function(id = NULL, html = ""){
+waiter_update <- function(id = NULL, html = NULL){
+  # default to NULL clearer to the user
+  if(is.null(html))
+    html <- span()
+  
+  # wrap in a span if character string passed
+  # otherwise breaks JavaScript.innerHTML
   if(is.character(html))
     html <- span(html)
+  
   html <- as.character(html)
   html <- gsub("\n", "", html)
   session <- shiny::getDefaultReactiveDomain()
@@ -342,7 +349,12 @@ Waiter <- R6::R6Class(
 #' @details
 #' Update the waiter's html content.
 #' @param html HTML content of waiter, generally a spinner, see \code{\link{spinners}}.
-    update_waiter = function(html = ""){
+    update_waiter = function(html = NULL){
+
+      # force span to ensure JavaScript.innerHTML does not break
+      if(is.null(html))
+        html <- span()
+
       html <- as.character(html)
       html <- gsub("\n", "", html)
       private$get_session()

@@ -50,7 +50,7 @@ waiter_hide(id = NULL)
 
 update_waiter(html = "", id = NULL)
 
-waiter_update(id = NULL, html = "")
+waiter_update(id = NULL, html = NULL)
 }
 \arguments{
 \item{include_js}{Whether to include the Javascript dependencies, only
