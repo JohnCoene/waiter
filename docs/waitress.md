@@ -2,6 +2,8 @@
 
 The waitress will let you display loading bars on the entire screen or specific elements only.
 
+> Use the wait__ress__ to show prog__ress__.
+
 ## How to
 
 Note that the waitress is a reference class.
