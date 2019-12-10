@@ -20,7 +20,7 @@ See `?hostess` for the documentation.
 
 ## Examples
 
-Initialise the hostess with `Hostess$new()` to which you pass the id of the `hostess_loader` you are using, then increment it with the `set` method. Note that when used without the full page waiter one should set `center_page` to `FALSE`.
+Initialise the hostess with `Hostess$new()` to which you pass the id of the `hostess_loader` you are using, then increment it with the `set` method. 
 
 ```r
 library(shiny)
@@ -28,7 +28,7 @@ library(waiter)
 
 ui <- fluidPage(
   use_hostess(), # include dependencies
-  hostess_loader("load", center_page = FALSE)
+  hostess_loader("load", text_color = "black", center_page = TRUE)
 )
 
 server <- function(input, output){
@@ -48,7 +48,7 @@ shinyApp(ui, server)
 
 ![](_assets/img/hostess.gif)
 
-You can of course use it together with `waiter` by playing the `hostess_spinner` in the `show_waiter*` function.
+You can of course use it together with `waiter` by playing the `hostess_spinner` in the `show_waiter*` function. Note that when used with the full page waiter one should set `center_page` to `TRUE` to center the loader.
 
 ```r
 library(shiny)
@@ -57,13 +57,14 @@ library(waiter)
 ui <- fluidPage(
   use_waiter(),
   use_hostess(),
-  show_waiter_on_load(
+  waiter_show_on_load(
     color = "#f7fff7",
     hostess_loader(
       "loader", 
       preset = "circle", 
       text_color = "black",
-      class = "label-center"
+      class = "label-center",
+      center_page = TRUE
     )
   )
 )
@@ -76,7 +77,7 @@ server <- function(input, output){
     hostess$set(i * 10)
   }
   
-  hide_waiter()
+  waiter_hide()
 }
 
 shinyApp(ui, server)

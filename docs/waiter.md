@@ -30,9 +30,9 @@ ui <- fluidPage(
 
 server <- function(input, output, session){
   observeEvent(input$show, {
-    show_waiter(spin_fading_circles())
+    waiter_show()
     Sys.sleep(3) # do something that takes time
-    hide_waiter()
+    waiter_hide()
   })
 }
 
@@ -57,12 +57,12 @@ library(waiter)
 ui <- fluidPage(
   use_waiter(include_js = FALSE), # do not include js
   h3("Content you will only see after loading screen has disappeared"),
-  show_waiter_on_load(spin_fading_circles()) # place at the bottom
+  waiter_show_on_load(html = spin_fading_circles()) # place at the bottom
 )
 
 server <- function(input, output, session){
   Sys.sleep(3) # do something that takes time
-  hide_waiter()
+  waiter_hide()
 }
 
 shinyApp(ui, server)
@@ -96,8 +96,8 @@ server <- function(input, output, session){
   observeEvent(input$switch, {
 
     # show loading
-    show_waiter(
-      tagList(
+    waiter_show(
+      html = tagList(
         spin_folding_cube(),
         span("Loading ...", style = "color:white;")
       )
@@ -109,7 +109,7 @@ server <- function(input, output, session){
     updateTabsetPanel(session = session, inputId = "tabs", selected = "networks")
 
     # hide loading
-    hide_waiter()
+    waiter_hide()
   })
 }
 
@@ -131,14 +131,14 @@ ui <- fluidPage(
 
 server <- function(input, output, session){
   observeEvent(input$show, {
-    show_waiter(span("Initialisation", style = "color:white;"))
+    waiter_show(html = span("Initialisation", style = "color:white;"))
     Sys.sleep(2)
     for(i in 1:5){
       HTML <- span(paste("Loading #", i, "of 5"), style = "color:white;z-index:999;")
-      update_waiter(html = HTML)
+      waiter_update(html = HTML)
       Sys.sleep(2)
     }
-    hide_waiter()
+    waiter_hide()
   })
 }
 
@@ -159,12 +159,12 @@ ui <- fluidPage(
   use_waiter(include_js = FALSE), 
   use_steward(),
   h3("Content you will only see after loading screen has disappeared"),
-  show_waiter_on_load(spin_fading_circles()) 
+  waiter_show_on_load(spin_fading_circles()) 
 )
 
 server <- function(input, output, session){
   Sys.sleep(10) # do something that takes time
-  hide_waiter()
+  waiter_hide()
 }
 
 shinyApp(ui, server)
@@ -184,18 +184,18 @@ ui <- fluidPage(
   use_waiter(include_js = FALSE), 
   use_hostess(),
   h3("Content you will only see after loading screen has disappeared"),
-  show_waiter_on_load(hostess_loader(preset = "bubble")) 
+  waiter_show_on_load(hostess_loader("loader", preset = "bubble", center_page = TRUE)) 
 )
 
 server <- function(input, output, session){
-  host <- Hostess$new()
+  host <- Hostess$new("loader")
 
   for(i in 1:10){
     Sys.sleep(runif(1) * 1.2)
     host$set(i * 10)
   }
 
-  hide_waiter()
+  waiter_hide()
 }
 
 shinyApp(ui, server)
@@ -215,7 +215,7 @@ library(waiter)
 ui <- fluidPage(
   use_garcon(),
   use_waiter(),
-  show_waiter_on_load(
+  waiter_show_on_load(
     tags$img(
       src="https://waiter.john-coene.com/_assets/img/logo.png", 
       height=200, 
@@ -232,7 +232,7 @@ server <- function(input, output){
     g$set(i * 10)
   }
 
-  hide_waiter()
+  waiter_hide()
 }
 
 shinyApp(ui, server)
