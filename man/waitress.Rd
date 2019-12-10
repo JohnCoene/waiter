@@ -13,7 +13,8 @@ call_waitress(
   selector = NULL,
   theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent"),
   min = 0,
-  max = 100
+  max = 100,
+  infinite = FALSE
 )
 
 browse_waitresses()
@@ -28,6 +29,10 @@ browse_waitresses()
 
 \item{min, max}{Minimum and maximum representing the starting and ending
 points of the progress bar.}
+
+\item{infinite}{Set to \code{TRUE} to create a never ending loading bar, ideal
+when you cannot compute increments or assess the time it might take before the
+loading bar should be removed.}
 }
 \description{
 Programatically show and hide loading bars.

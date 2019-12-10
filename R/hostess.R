@@ -112,7 +112,8 @@ Hostess <- R6::R6Class(
 #' @details
 #' Create a hostess.
 #' 
-#' @param id Id used in `hostess_loader`.
+#' @param id Id used in `hostess_loader` if you generate the loader with 
+#' the \code{loader} method you may leave this \code{NULL}.
 #' 
 #' @examples
 #' \dontrun{Hostess$new("mySpinner")}

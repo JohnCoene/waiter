@@ -1,3 +1,5 @@
+var intervals = [];
+
 Shiny.addCustomMessageHandler('waitress-init', function(opts) {
 	
 	if(opts.id != null)
@@ -11,7 +13,20 @@ Shiny.addCustomMessageHandler('waitress-init', function(opts) {
 });
 
 Shiny.addCustomMessageHandler('waitress-start', function(opts) {
-	window.waitress[opts.name].start();
+  
+  window.waitress[opts.name].start();
+
+  if(opts.infinite){
+    var value = 0,
+        inc = 0,
+        end = 100;
+
+    intervals[opts.name] = setInterval(function(){
+      inc = ((end - value) / 50);
+      value = value + inc;
+      window.waitress[opts.name].set(value);
+     }, 200);
+  }
 });
 
 Shiny.addCustomMessageHandler('waitress-set', function(opts) {
@@ -27,5 +42,7 @@ Shiny.addCustomMessageHandler('waitress-increase', function(opts) {
 });
 
 Shiny.addCustomMessageHandler('waitress-end', function(opts) {
-	window.waitress[opts.name].end();
+  window.waitress[opts.name].end();
+  if(opts.infinite)
+    clearInterval(intervals[opts.name]);
 });

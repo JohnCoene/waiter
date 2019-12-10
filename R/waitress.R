@@ -8,6 +8,9 @@
 #' @param theme A valid theme, see function usage.
 #' @param min,max Minimum and maximum representing the starting and ending
 #' points of the progress bar.
+#' @param infinite Set to \code{TRUE} to create a never ending loading bar, ideal
+#' when you cannot compute increments or assess the time it might take before the
+#' loading bar should be removed.
 #' 
 #' @details You can pipe the methods with \code{$}. 
 #' \code{Waitress$new()} and \code{call_waitress()} are equivalent.
@@ -67,8 +70,8 @@ use_waitress <- function(color = "#b84f3e", percent_color = "#333333"){
 #' @rdname waitress
 #' @export
 call_waitress <- function(selector = NULL, theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent"),
-	min = 0, max = 100){
-	Waitress$new(selector, theme, min, max)
+	min = 0, max = 100, infinite = FALSE){
+	Waitress$new(selector, theme, min, max, infinite = infinite)
 }
 
 #' @rdname waitress
@@ -97,11 +100,14 @@ Waitress <- R6::R6Class(
 #' @param theme A valid theme, see function usage.
 #' @param min,max Minimum and maximum representing the starting and ending
 #' points of the progress bar.
+#' @param infinite Set to \code{TRUE} to create a never ending loading bar, ideal
+#' when you cannot compute increments or assess the time it might take before the
+#' loading bar should be removed.
 #' 
 #' @examples
 #' \dontrun{Waitress$new("#plot")}
 		initialize = function(selector = NULL, theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent"),
-		min = 0, max = 100){
+		min = 0, max = 100, infinite = FALSE){
 
 			name <- .random_name()
 
@@ -115,6 +121,7 @@ Waitress <- R6::R6Class(
 			private$.dom <- selector
 			private$.min <- min
 			private$.max <- max
+      private$.infinite <- infinite
 
 			opts <- list(
 				id = selector,
@@ -135,7 +142,7 @@ Waitress <- R6::R6Class(
 #' \dontrun{Waitress$new("#plot")$start()}
 		start = function(){
 			private$.started <- TRUE
-			opts <- list(name = private$.name)
+			opts <- list(name = private$.name, infinite = private$.infinite)
 			private$get_session()
 			private$.session$sendCustomMessage("waitress-start", opts)
 			invisible(self)
@@ -152,7 +159,7 @@ Waitress <- R6::R6Class(
 
 			if(!private$.started){
 				private$.started <- TRUE
-				opts <- list(name = private$.name)
+				opts <- list(name = private$.name, infinite = private$.infinite)
 				private$.session$sendCustomMessage("waitress-start", opts)
 			}
 
@@ -176,7 +183,7 @@ Waitress <- R6::R6Class(
 
 			if(!private$.started){
 				private$.started <- TRUE
-				opts <- list(name = private$.name)
+				opts <- list(name = private$.name, infinite = private$.infinite)
 				private$.session$sendCustomMessage("waitress-start", opts)
 			}
 
@@ -212,7 +219,7 @@ Waitress <- R6::R6Class(
 			
 			if(!private$.started){
 				private$.started <- TRUE
-				opts <- list(name = private$.name)
+				opts <- list(name = private$.name, infinite = private$.infinite)
 				private$.session$sendCustomMessage("waitress-start", opts)
 			}
 
@@ -240,7 +247,7 @@ Waitress <- R6::R6Class(
 #' @examples
 #' \dontrun{Waitress$new("#plot")$close()}
 		close = function(){
-			opts <- list(name = private$.name)
+			opts <- list(name = private$.name, infinite = private$.infinite)
 			private$get_session()
 			private$.session$sendCustomMessage("waitress-end", opts)
 			invisible(self)
@@ -266,6 +273,7 @@ Waitress <- R6::R6Class(
 		.started = FALSE,
 		.min = 0,
 		.max = 100,
+    .infinite = FALSE,
 		rescale = function(value){
 			floor(((value-private$.min)/(private$.max - private$.min)) * 100)
 		},

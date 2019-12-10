@@ -97,7 +97,8 @@ Add hostess dependencies.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{id}}{Id used in `hostess_loader`.}
+\item{\code{id}}{Id used in `hostess_loader` if you generate the loader with 
+the \code{loader} method you may leave this \code{NULL}.}
 }
 \if{html}{\out{</div>}}
 }

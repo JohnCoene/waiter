@@ -75,7 +75,8 @@ its percentage, then hide it when done.
   selector = NULL,
   theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent"),
   min = 0,
-  max = 100
+  max = 100,
+  infinite = FALSE
 )}\if{html}{\out{</div>}}
 }
 
@@ -89,6 +90,10 @@ if \code{NULL} then the waitress is applied to the whole screen.}
 
 \item{\code{min, max}}{Minimum and maximum representing the starting and ending
 points of the progress bar.}
+
+\item{\code{infinite}}{Set to \code{TRUE} to create a never ending loading bar, ideal
+when you cannot compute increments or assess the time it might take before the
+loading bar should be removed.}
 
 \item{\code{color, percent_color}}{Color of waitress and color of percent text shown when 
 \code{theme} is set to \code{overlay-percent}.}
