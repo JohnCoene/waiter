@@ -58,7 +58,7 @@ hostess_loader <- function(id = "hostess", preset = NULL, text_color = "#FFFFFF"
   if(id == "hostess")
     warning("Using default `id`", call. = FALSE)
 
-  # will remove at 0.1.0
+  # will remove at > 0.1.0
   if(!missing(with_waiter)){
     warning("The `with_waiter` argument is deprecated in favour of `center_page`.")
     
