@@ -54,7 +54,8 @@ use_hostess <- function(){
 
 #' @rdname hostess
 #' @export
-hostess_loader <- function(id = "hostess", preset = NULL, text_color = "#FFFFFF", center_page = FALSE, class = "", ..., with_waiter){
+hostess_loader <- function(id = "hostess", preset = NULL, text_color = "#FFFFFF", 
+  center_page = FALSE, class = "", ..., with_waiter){
 
   if(id == "hostess")
     warning("Using default `id`", call. = FALSE)
@@ -77,7 +78,8 @@ hostess_loader <- function(id = "hostess", preset = NULL, text_color = "#FFFFFF"
 
   style <- paste0("color:", text_color, ";")
   
-  div(id = id, `data-preset` = preset, class = class, style = style, ...)
+  loader <- div(id = id, `data-preset` = preset, class = class, style = style, ...)
+  return(loader)
 }
 
 #' @rdname hostess
@@ -85,6 +87,8 @@ hostess_loader <- function(id = "hostess", preset = NULL, text_color = "#FFFFFF"
 hostess_init <- function(id = "hostess"){
   if(id == "hostess")
     warning("Using default `id`", call. = FALSE)
+
+  .Deprecated("Hostess", package = "waiter", "Deprecated in favour of R6Class <Waitress>")
 
   session <- shiny::getDefaultReactiveDomain()
   .check_session(session)
@@ -97,6 +101,8 @@ hostess_init <- function(id = "hostess"){
 hostess_set <- function(id = "hostess", value){
   if(id == "hostess")
     warning("Using default `id`", call. = FALSE)
+
+  .Deprecated("Hostess", package = "waiter", "Deprecated in favour of R6Class <Waitress>")
 
   session <- shiny::getDefaultReactiveDomain()
   .check_session(session)
@@ -169,8 +175,10 @@ Hostess <- R6::R6Class(
 #' \code{FALSE} to prevent that.
 #' @param ... Any other other advanced options to pass to the loaded
 #' see the \href{https://loading.io/progress/}{official documentation}.
-    loader = function(preset = NULL, text_color = "#FFFFFF", center_page = FALSE, class = "", ...){
-      hostess_loader(id = private$.id, preset = preset, text_color = text_color, center_page = center_page, class = class, ...)
+    loader = function(preset = NULL, text_color = "#FFFFFF", center_page = FALSE, 
+      class = "", ...){
+      hostess_loader(id = private$.id, preset = preset, text_color = text_color, 
+        center_page = center_page, class = class, ...)
     }
   ),
   private = list(
