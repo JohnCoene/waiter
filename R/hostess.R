@@ -11,6 +11,8 @@
 #' @param center_page By default the hostess is \emph{not} centered in the middle
 #' of the screen, centering in the middle of the page is however ideal when using 
 #' it with waiter full screen, for the latter set to \code{TRUE}.
+#' @param min,max Minimum and maximum representing the starting and ending
+#' points of the progress bar.
 #' @param ... Any other other advanced options to pass to the loaded
 #' see the \href{https://loading.io/progress/}{official documentation}.
 #' 
@@ -55,7 +57,7 @@ use_hostess <- function(){
 #' @rdname hostess
 #' @export
 hostess_loader <- function(id = "hostess", preset = NULL, text_color = "#FFFFFF", 
-  center_page = FALSE, class = "", ..., with_waiter){
+  center_page = FALSE, class = "", min = 0, max = 100, ..., with_waiter){
 
   if(id == "hostess")
     warning("Using default `id`", call. = FALSE)
@@ -78,7 +80,16 @@ hostess_loader <- function(id = "hostess", preset = NULL, text_color = "#FFFFFF"
 
   style <- paste0("color:", text_color, ";")
   
-  loader <- div(id = id, `data-preset` = preset, class = class, style = style, ...)
+  loader <- div(
+    id = id, 
+    `data-preset` = preset, 
+    class = class, 
+    style = style, 
+    `data-min` = min,
+    `data-max` = max,
+    ...
+  )
+
   return(loader)
 }
 
@@ -120,10 +131,12 @@ Hostess <- R6::R6Class(
 #' 
 #' @param id Id used in `hostess_loader` if you generate the loader with 
 #' the \code{loader} method you may leave this \code{NULL}.
+#' @param min,max Minimum and maximum representing the starting and ending
+#' points of the progress bar.
 #' 
 #' @examples
-#' \dontrun{Hostess$new("mySpinner")}
-    initialize = function(id = NULL){
+#' \dontrun{Hostess$new()}
+    initialize = function(id = NULL, min = 0, max = 100){
       if(is.null(id))
         id <- .random_name()
 
@@ -131,6 +144,8 @@ Hostess <- R6::R6Class(
       .check_session(session)
       private$.session <- session
       private$.id <- id
+      private$.min <- min
+      private$.max <- max
     },
 #' @details
 #' Start the hostess
@@ -150,7 +165,7 @@ Hostess <- R6::R6Class(
 #' @param value Value to set, between \code{0} and \code{100}.
 #' 
 #' @examples
-#' \dontrun{Hostess$new()}
+#' \dontrun{Hostess$new()$set(20)}
     set = function(value){
       if(missing(value))
         stop("Missing `value`", call. = FALSE)
@@ -158,6 +173,30 @@ Hostess <- R6::R6Class(
       # start the hostess if has not been done
       if(!private$.started)
         self <- self$start()
+
+      private$.current_value <- value
+
+      opts <- list(id = private$.id, value = value)
+      private$.session$sendCustomMessage("hostess-set", opts)
+      invisible(self)
+    },
+#' @details
+#' Increase the hostess loading bar.
+#' 
+#' @param value Value to set, between \code{0} and \code{100}.
+#' 
+#' @examples
+#' \dontrun{Hostess$new()$inc(10)}
+    inc = function(value){
+      if(missing(value))
+        stop("Missing `value`", call. = FALSE)
+
+      # start the hostess if has not been done
+      if(!private$.started)
+        self <- self$start()
+
+      value <- private$.current_value + value
+      private$.current_value <- value
 
       opts <- list(id = private$.id, value = value)
       private$.session$sendCustomMessage("hostess-set", opts)
@@ -173,17 +212,31 @@ Hostess <- R6::R6Class(
 #' @param center_page By default the hostess is centered in the middle
 #' of the screen, ideal when using it with waiter full screen, set to 
 #' \code{FALSE} to prevent that.
+#' @param min,max Minimum and maximum representing the starting and ending
+#' points of the progress bar.
 #' @param ... Any other other advanced options to pass to the loaded
 #' see the \href{https://loading.io/progress/}{official documentation}.
     loader = function(preset = NULL, text_color = "#FFFFFF", center_page = FALSE, 
-      class = "", ...){
+      class = "", min = NULL, max = NULL, ...){
+      
+      # allow overriding min and max
+      if(!is.null(min))
+        private$.min <- min
+
+      if(!is.null(max))
+        private$.max <- max
+
       hostess_loader(id = private$.id, preset = preset, text_color = text_color, 
-        center_page = center_page, class = class, ...)
+        center_page = center_page, class = class, 
+        min = private$.min, max = private$.max, ...)
     }
   ),
   private = list(
     .id = NULL,
     .session = NULL,
-    .started = FALSE
+    .started = FALSE,
+    .min = 0,
+    .max = 100,
+    .current_value = 0
   )
 )

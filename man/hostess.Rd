@@ -17,6 +17,8 @@ hostess_loader(
   text_color = "#FFFFFF",
   center_page = FALSE,
   class = "",
+  min = 0,
+  max = 100,
   ...,
   with_waiter
 )
@@ -37,6 +39,9 @@ of the screen, centering in the middle of the page is however ideal when using
 it with waiter full screen, for the latter set to \code{TRUE}.}
 
 \item{class}{CSS class.}
+
+\item{min, max}{Minimum and maximum representing the starting and ending
+points of the progress bar.}
 
 \item{...}{Any other other advanced options to pass to the loaded
 see the \href{https://loading.io/progress/}{official documentation}.}
@@ -68,13 +73,19 @@ Add hostess dependencies.
 ## Method `Hostess$new`
 ## ------------------------------------------------
 
-\dontrun{Hostess$new("mySpinner")}
+\dontrun{Hostess$new()}
 
 ## ------------------------------------------------
 ## Method `Hostess$set`
 ## ------------------------------------------------
 
-\dontrun{Hostess$new()}
+\dontrun{Hostess$new()$set(20)}
+
+## ------------------------------------------------
+## Method `Hostess$inc`
+## ------------------------------------------------
+
+\dontrun{Hostess$new()$inc(10)}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -83,6 +94,7 @@ Add hostess dependencies.
 \item \href{#method-start}{\code{Hostess$start()}}
 \item \href{#method-print}{\code{Hostess$print()}}
 \item \href{#method-set}{\code{Hostess$set()}}
+\item \href{#method-inc}{\code{Hostess$inc()}}
 \item \href{#method-loader}{\code{Hostess$loader()}}
 \item \href{#method-clone}{\code{Hostess$clone()}}
 }
@@ -91,7 +103,7 @@ Add hostess dependencies.
 \if{html}{\out{<a id="method-new"></a>}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Hostess$new(id = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Hostess$new(id = NULL, min = 0, max = 100)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -99,6 +111,9 @@ Add hostess dependencies.
 \describe{
 \item{\code{id}}{Id used in `hostess_loader` if you generate the loader with 
 the \code{loader} method you may leave this \code{NULL}.}
+
+\item{\code{min, max}}{Minimum and maximum representing the starting and ending
+points of the progress bar.}
 }
 \if{html}{\out{</div>}}
 }
@@ -108,7 +123,7 @@ Create a hostess.
 
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
-\preformatted{\dontrun{Hostess$new("mySpinner")}
+\preformatted{\dontrun{Hostess$new()}
 }
 \if{html}{\out{</div>}}
 
@@ -159,7 +174,34 @@ Set the hostess loading bar.
 
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
-\preformatted{\dontrun{Hostess$new()}
+\preformatted{\dontrun{Hostess$new()$set(20)}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-inc"></a>}}
+\subsection{Method \code{inc()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Hostess$inc(value)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{value}}{Value to set, between \code{0} and \code{100}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+Increase the hostess loading bar.
+}
+
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{Hostess$new()$inc(10)}
 }
 \if{html}{\out{</div>}}
 
@@ -175,6 +217,8 @@ Set the hostess loading bar.
   text_color = "#FFFFFF",
   center_page = FALSE,
   class = "",
+  min = NULL,
+  max = NULL,
   ...
 )}\if{html}{\out{</div>}}
 }
@@ -191,6 +235,9 @@ of the screen, ideal when using it with waiter full screen, set to
 \code{FALSE} to prevent that.}
 
 \item{\code{class}}{CSS class.}
+
+\item{\code{min, max}}{Minimum and maximum representing the starting and ending
+points of the progress bar.}
 
 \item{\code{...}}{Any other other advanced options to pass to the loaded
 see the \href{https://loading.io/progress/}{official documentation}.}
