@@ -118,9 +118,17 @@ Create a waitress.
 \if{html}{\out{<a id="method-start"></a>}}
 \subsection{Method \code{start()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Waitress$start()}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Waitress$start(html = NULL)}\if{html}{\out{</div>}}
 }
 
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{html}}{HTML content to show over the waitress, 
+accepts htmltools and shiny tags.}
+}
+\if{html}{\out{</div>}}
+}
 \subsection{Details}{
 Start the waitress.
 }

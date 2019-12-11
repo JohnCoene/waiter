@@ -40,17 +40,17 @@
 #' @name waitress
 #' @export
 use_waitress <- function(color = "#b84f3e", percent_color = "#333333"){
-  singleton(
-    tags$head(
+	singleton(
+		tags$head(
 			tags$script("window.waitress = [];"),
-      tags$link(
-        href = "waiter-assets/waitress/progress.min.css",
-        rel="stylesheet",
-        type="text/css"
-      ),
-      tags$script(
-        src = "waiter-assets/waitress/progress.min.js"
-      ),
+			tags$link(
+				href = "waiter-assets/waitress/progress.min.css",
+				rel="stylesheet",
+				type="text/css"
+			),
+			tags$script(
+				src = "waiter-assets/waitress/progress.min.js"
+			),
 			tags$style(
 				paste0(".progressjs-theme-blue .progressjs-inner{background-color:", color, ";}"),
 				paste0(".progressjs-theme-blueOverlay .progressjs-inner{background-color:", color, ";}"),
@@ -59,11 +59,11 @@ use_waitress <- function(color = "#b84f3e", percent_color = "#333333"){
 				paste0(".progressjs-theme-blueOverlayRadiusWithPercentBar .progressjs-inner{background-color:", color, ";}"),
 				paste0(".progressjs-percent{color:", percent_color, ";}")
 			),
-      tags$script(
-        src = "waiter-assets/waitress/custom.js"
-      )
-    )
-  )
+			tags$script(
+				src = "waiter-assets/waitress/custom.js"
+			)
+		)
+	)
 }
 
 
@@ -138,11 +138,24 @@ Waitress <- R6::R6Class(
 #' @details
 #' Start the waitress.
 #' 
+#' @param html HTML content to show over the waitress, 
+#' accepts htmltools and shiny tags.
+#' 
 #' @examples
 #' \dontrun{Waitress$new("#plot")$start()}
-		start = function(){
+		start = function(html = NULL){
+			id <- private$.dom
+			if(!is.null(html)){
+				html <- as.character(html)
+
+				if(!grepl("#", id))
+					stop("`html` will only work when the `selector` is an #id.")
+				
+				id <- gsub("#", "", id)
+			}
+
 			private$.started <- TRUE
-			opts <- list(name = private$.name, infinite = private$.infinite)
+			opts <- list(name = private$.name, infinite = private$.infinite, id = id, html = html)
 			private$get_session()
 			private$.session$sendCustomMessage("waitress-start", opts)
 			invisible(self)
@@ -244,6 +257,10 @@ Waitress <- R6::R6Class(
 #' \dontrun{Waitress$new("#plot")$close()}
 		close = function(){
 			opts <- list(name = private$.name, infinite = private$.infinite)
+
+			if(grepl("#", private$.dom))
+				opts$id <- gsub("#", "", private$.dom)
+
 			private$get_session()
 			private$.session$sendCustomMessage("waitress-end", opts)
 			invisible(self)
