@@ -58,6 +58,7 @@ its percentage, then hide it when done.
 \item \href{#method-new}{\code{Waitress$new()}}
 \item \href{#method-start}{\code{Waitress$start()}}
 \item \href{#method-set}{\code{Waitress$set()}}
+\item \href{#method-finalize}{\code{Waitress$finalize()}}
 \item \href{#method-auto}{\code{Waitress$auto()}}
 \item \href{#method-increase}{\code{Waitress$increase()}}
 \item \href{#method-inc}{\code{Waitress$inc()}}
@@ -157,6 +158,18 @@ Set the waitress to a specific percentage.
 }
 \if{html}{\out{</div>}}
 
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-finalize"></a>}}
+\subsection{Method \code{finalize()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Waitress$finalize()}\if{html}{\out{</div>}}
+}
+
+\subsection{Details}{
+Hide the waiter on object kill.
 }
 
 }

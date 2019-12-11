@@ -171,6 +171,11 @@ Waitress <- R6::R6Class(
 			invisible(self)
 		},
 #' @details
+#' Hide the waiter on object kill.
+    finalize = function(){
+      self$close()
+    },
+#' @details
 #' Automatically start and end the waitress.
 #' 
 #' @param value Value to set waitress to.

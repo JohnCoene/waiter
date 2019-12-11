@@ -327,7 +327,7 @@ Waiter <- R6::R6Class(
 #' @details
 #' Hide the waiter on object kill.
     finalize = function(){
-      public$hide()
+      self$hide()
     },
 #' @details
 #' Show the waiter.
