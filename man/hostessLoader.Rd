@@ -114,10 +114,10 @@ server <- function(input, output) {
      progress_type = "stroke",
      stroke_color = hostess_stripe()
    )
-  waiter <- Waiter$new(
-   "plot", 
-   hostess$loader()
-  )
+   waiter <- Waiter$new(
+     "plot", 
+     hostess$loader()
+   )
 
    waiter$show()
 

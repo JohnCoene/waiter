@@ -287,10 +287,10 @@ Hostess <- R6::R6Class(
 #'      progress_type = "stroke",
 #'      stroke_color = hostess_stripe()
 #'    )
-#'   waiter <- Waiter$new(
-#'    "plot", 
-#'    hostess$loader()
-#'   )
+#'    waiter <- Waiter$new(
+#'      "plot", 
+#'      hostess$loader()
+#'    )
 #' 
 #'    waiter$show()
 #' 
