@@ -150,10 +150,8 @@ Hostess <- R6::R6Class(
         stop("Missing `value`", call. = FALSE)
 
       # start the hostess if has not been done
-      if(!private$.started){
-        private$.started <- TRUE
-        private$.session$sendCustomMessage("hostess-init", list(id = private$.id))
-      }
+      if(!private$.started)
+        self <- self$start()
 
       opts <- list(id = private$.id, value = value)
       private$.session$sendCustomMessage("hostess-set", opts)

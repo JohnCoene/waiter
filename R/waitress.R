@@ -157,11 +157,8 @@ Waitress <- R6::R6Class(
 		set = function(value){
 			private$get_session()
 
-			if(!private$.started){
-				private$.started <- TRUE
-				opts <- list(name = private$.name, infinite = private$.infinite)
-				private$.session$sendCustomMessage("waitress-start", opts)
-			}
+			if(!private$.started)
+				self <- self$start()
 
 			# rescale from min - max to 0 - 100
 			value <- private$rescale(value)
@@ -186,11 +183,8 @@ Waitress <- R6::R6Class(
 		auto = function(value, ms){
 			private$get_session()
 
-			if(!private$.started){
-				private$.started <- TRUE
-				opts <- list(name = private$.name, infinite = private$.infinite)
-				private$.session$sendCustomMessage("waitress-start", opts)
-			}
+			if(!private$.started)
+				self <- self$start()
 
 			# rescale from min - max to 0 - 100
 			value <- private$rescale(value)
@@ -222,11 +216,8 @@ Waitress <- R6::R6Class(
 		inc = function(value){
 			private$get_session()
 			
-			if(!private$.started){
-				private$.started <- TRUE
-				opts <- list(name = private$.name, infinite = private$.infinite)
-				private$.session$sendCustomMessage("waitress-start", opts)
-			}
+			if(!private$.started)
+				self <- self$start()
 
 			# rescale from min - max to 0 - 100
 			value <- private$rescale(value)
