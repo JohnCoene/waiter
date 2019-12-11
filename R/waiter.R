@@ -337,7 +337,7 @@ Waiter <- R6::R6Class(
         html = private$.html,
         color = private$.color,
         logo = private$.logo,
-        hide_on_render = hide_on_render
+        hide_on_render = private$.hide_on_render
       )
       private$get_session()
       private$.session$sendCustomMessage("waiter-show", opts)
@@ -377,7 +377,7 @@ Waiter <- R6::R6Class(
     .logo = "",
     .id = NULL,
     .session = NULL,
-    hide_on_render = FALSE,
+    .hide_on_render = FALSE,
 		get_session = function(){
 			private$.session <- shiny::getDefaultReactiveDomain()
 			.check_session(private$.session)
