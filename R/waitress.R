@@ -103,11 +103,15 @@ Waitress <- R6::R6Class(
 #' @param infinite Set to \code{TRUE} to create a never ending loading bar, ideal
 #' when you cannot compute increments or assess the time it might take before the
 #' loading bar should be removed.
+#' @param hide_on_render Set to \code{TRUE} to automatically hide the waitress
+#' when the plot in \code{id} is drawn. Note the latter will only work with
+#' shiny plots, tables, htmlwidgets, etc. but will not work with arbitrary
+#' elements.
 #' 
 #' @examples
 #' \dontrun{Waitress$new("#plot")}
 		initialize = function(selector = NULL, theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent"),
-		min = 0, max = 100, infinite = FALSE){
+		min = 0, max = 100, infinite = FALSE, hide_on_render = FALSE){
 
 			name <- .random_name()
 
@@ -115,6 +119,7 @@ Waitress <- R6::R6Class(
 			overlay <- ifelse(grepl("overlay", theme), TRUE, FALSE)
 			theme <- themes_to_js(theme)
 
+      private$.hide_on_render <- hide_on_render
 			private$.name <- name
 			private$.theme <- theme
 			private$.overlay <- overlay
@@ -155,7 +160,7 @@ Waitress <- R6::R6Class(
 			}
 
 			private$.started <- TRUE
-			opts <- list(name = private$.name, infinite = private$.infinite, id = id, html = html)
+			opts <- list(name = private$.name, infinite = private$.infinite, id = id, html = html, hide_on_render = private$.hide_on_render)
 			private$get_session()
 			private$.session$sendCustomMessage("waitress-start", opts)
 			invisible(self)
@@ -287,6 +292,7 @@ Waitress <- R6::R6Class(
 		.min = 0,
 		.max = 100,
     .infinite = FALSE,
+    .hide_on_render = FALSE,
 		rescale = function(value){
 			floor(((value-private$.min)/(private$.max - private$.min)) * 100)
 		},

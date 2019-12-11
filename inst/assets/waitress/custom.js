@@ -1,43 +1,7 @@
+// keep infinite to later clear
 var intervals = [];
-
-// compute offset position of waiter overlay
-function get_offset(element) {
-  var elementPosition = {};
-
-  //set width and height
-  // -6 pixels to keep margin between plot if stacked up/side by side
-  elementPosition.width = element.offsetWidth -2;
-  elementPosition.height = element.offsetHeight -2;
-
-  //calculate element top and left
-  var _x = element.offsetLeft;
-  var _y = element.offsetTop;
-  if(isNaN(_x))
-    _x = 0;
-  if(isNaN(_y))
-    _y = 0;
-  
-  //set top and left
-  //use 3 margin (6/2)
-  elementPosition.top = _y + 1;
-  elementPosition.left = _x + 1;
-
-  return elementPosition;
-}
-
-function hide_recalculate(id){
-  var css = '#' + id + '.recalculating {opacity: 1.0 !important; }',
-      head = document.head || document.getElementsByTagName('head')[0],
-      style = document.createElement('style');
-
-  style.type = 'text/css';
-  if (style.styleSheet){
-    style.styleSheet.cssText = css;
-  } else {
-    style.appendChild(document.createTextNode(css));
-  }
-  head.appendChild(style);
-}
+// elements to hide on recomputed
+var waitress_to_hide = [];
 
 Shiny.addCustomMessageHandler('waitress-init', function(opts) {
 	
@@ -59,6 +23,9 @@ Shiny.addCustomMessageHandler('waitress-start', function(opts) {
       exists = false, 
       dom;
   
+  if(opts.hide_on_render)
+    waitress_to_hide.push({id: opts.id.substr(1), name: opts.name, infinite: opts.infinite})
+
   // content
   if(opts.html){
 
@@ -148,4 +115,55 @@ Shiny.addCustomMessageHandler('waitress-end', function(opts) {
 
   if(opts.infinite)
     clearInterval(intervals[opts.name]);
+});
+
+// compute offset position of waiter overlay
+function get_offset(element) {
+  var elementPosition = {};
+
+  //set width and height
+  // -6 pixels to keep margin between plot if stacked up/side by side
+  elementPosition.width = element.offsetWidth -2;
+  elementPosition.height = element.offsetHeight -2;
+
+  //calculate element top and left
+  var _x = element.offsetLeft;
+  var _y = element.offsetTop;
+  if(isNaN(_x))
+    _x = 0;
+  if(isNaN(_y))
+    _y = 0;
+  
+  //set top and left
+  //use 3 margin (6/2)
+  elementPosition.top = _y + 1;
+  elementPosition.left = _x + 1;
+
+  return elementPosition;
+}
+
+function hide_recalculate(id){
+  var css = '#' + id + '.recalculating {opacity: 1.0 !important; }',
+      head = document.head || document.getElementsByTagName('head')[0],
+      style = document.createElement('style');
+
+  style.type = 'text/css';
+  if (style.styleSheet){
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+  head.appendChild(style);
+}
+
+$(document).on('shiny:value shiny:error shiny:recalculated', function(event) {
+  waitress_to_hide.forEach(function(w){
+    if(w.id == event.name){
+      if(w.infinite)
+        clearInterval(intervals[w.name]);
+      
+      window.waitress[w.name].end();
+    }
+      
+  });
 });

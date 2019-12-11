@@ -77,7 +77,8 @@ its percentage, then hide it when done.
   theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent"),
   min = 0,
   max = 100,
-  infinite = FALSE
+  infinite = FALSE,
+  hide_on_render = FALSE
 )}\if{html}{\out{</div>}}
 }
 
@@ -95,6 +96,11 @@ points of the progress bar.}
 \item{\code{infinite}}{Set to \code{TRUE} to create a never ending loading bar, ideal
 when you cannot compute increments or assess the time it might take before the
 loading bar should be removed.}
+
+\item{\code{hide_on_render}}{Set to \code{TRUE} to automatically hide the waitress
+when the plot in \code{id} is drawn. Note the latter will only work with
+shiny plots, tables, htmlwidgets, etc. but will not work with arbitrary
+elements.}
 
 \item{\code{color, percent_color}}{Color of waitress and color of percent text shown when 
 \code{theme} is set to \code{overlay-percent}.}
