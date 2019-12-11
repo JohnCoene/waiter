@@ -4,28 +4,6 @@
 #' 
 #' @param id Id of hostess (valid CSS).
 #' @param value Value to set, between \code{0} and \code{100}.
-#' @param preset A loading bar preset, see section below.
-#' @param text_color The color of the loading text.
-#' @param class CSS class.
-#' @param with_waiter Deprecate in favour of \code{center_page}.
-#' @param center_page By default the hostess is \emph{not} centered in the middle
-#' of the screen, centering in the middle of the page is however ideal when using 
-#' it with waiter full screen, for the latter set to \code{TRUE}.
-#' @param min,max Minimum and maximum representing the starting and ending
-#' points of the progress bar.
-#' @param svg Either an svg path e.g.: \code{M10 10L90 10} or the path to a \code{.svg}
-#' file. Note that if passing the latter it must be made available to Shiny by
-#' placing it either in the \code{www} folder or using \link[shiny]{addResourcePath}.
-#' @param progress_type The progress type, either \code{stroke} or \code{fill}.
-#' Ther former traces the path of the \code{svg} while the latter fills it progressively.
-#' @param fill_direction,stroke_direction The direction which the progress bar should
-#' take. Wether \code{fill_direction} or \code{stroke_direction} is used depends on
-#' \code{progress_type}.
-#' @param fill_color,stroke_color The color to use for the progress bar. 
-#' Wether \code{fill_color} or \code{stroke_color} is used depends on 
-#' \code{progress_type}.
-#' @param ... Any other other advanced options to pass to the loaded
-#' see the \href{https://loading.io/progress/}{official documentation}.
 #' 
 #' @section Presets:
 #' \itemize{
@@ -63,79 +41,6 @@ use_hostess <- function(){
       )
     )
   )
-}
-
-#' @rdname hostess
-#' @export
-hostess_loader <- function(id = "hostess", preset = NULL, text_color = "#FFFFFF", 
-  center_page = FALSE, class = "", min = 0, max = 100, svg = NULL, 
-  progress_type = c("stroke", "fill"), fill_direction = c("ttb", "btt", "ltr", "rtl"),
-  stroke_direction = c("normal", "reverse"), fill_color = NULL, stroke_color = NULL, 
-  ..., with_waiter){
-
-  progress_type <- match.arg(progress_type)
-  fill_direction <- match.arg(fill_direction)
-  stroke_direction <- match.arg(stroke_direction)
-
-  # will remove at > 0.1.0
-  if(!missing(with_waiter)){
-    .Deprecated("center_page", package = "waiter", "The `with_waiter` argument is deprecated in favour of `center_page`.")
-    
-    # don't break stuff...
-    if(is.logical(with_waiter))
-      center_page <- with_waiter
-  }
-
-  if(!is.null(preset))
-    if(!preset %in% hostess_presets)
-      stop("Invalid preset, see `?hostess_spinner` for valid values", call. = FALSE)
-
-  if(center_page)
-    class <- paste(class, "hostess-center")
-
-  style <- paste0("color:", text_color, ";")
-  
-  loader <- div(
-    id = id, 
-    `data-preset` = preset, 
-    class = class, 
-    style = style, 
-    `data-min` = min,
-    `data-max` = max,
-    ...
-  )
-
-  if(!is.null(svg)){
-    # check if ends in .svg
-    # if .svg use data-img otherwise use data-path
-    is_img <- grepl("\\.svg", svg)
-
-    opts <- list()
-
-    if(is_img)
-      opts[["data-img"]] <- svg
-    else
-      opts[["data-path"]] <- svg
-
-    # set direction based on progress_type: stroke or fill
-    if(progress_type == "fill")
-      opts[["data-fill-dir"]] <- fill_direction
-    else
-      opts[["data-stroke-dir"]] <- stroke_direction
-
-    # set color based on progress_type: stroke or fill
-    if(progress_type == "fill" && !is.null(fill_color))
-      opts[["data-fill"]] <- fill_color
-    else if(progress_type == "stroke" && !is.null(stroke_color))
-      opts[["data-stroke"]] <- stroke_color
-
-    # add fill type
-    opts[["data-type"]] <- progress_type
-    opts$tag <- loader
-    loader <- do.call(tagAppendAttributes, opts) 
-  }
-
-  return(loader)
 }
 
 #' @rdname hostess
@@ -322,3 +227,178 @@ Hostess <- R6::R6Class(
     .loader = NULL
   )
 )
+
+#' Loader
+#' 
+#' Customise the Hostess laoding bar.
+#' 
+#' @param id Id of hostess (valid CSS).
+#' @param preset A loading bar preset, see section below.
+#' @param text_color The color of the loading text.
+#' @param class CSS class.
+#' @param with_waiter Deprecate in favour of \code{center_page}.
+#' @param center_page By default the hostess is \emph{not} centered in the middle
+#' of the screen, centering in the middle of the page is however ideal when using 
+#' it with waiter full screen, for the latter set to \code{TRUE}.
+#' @param min,max Minimum and maximum representing the starting and ending
+#' points of the progress bar.
+#' @param svg Either an svg path e.g.: \code{M10 10L90 10} or the path to a \code{.svg}
+#' file. Note that if passing the latter it must be made available to Shiny by
+#' placing it either in the \code{www} folder or using \link[shiny]{addResourcePath}.
+#' @param progress_type The progress type, either \code{stroke} or \code{fill}.
+#' Ther former traces the path of the \code{svg} while the latter fills it progressively.
+#' @param fill_direction,stroke_direction The direction which the progress bar should
+#' take. Wether \code{fill_direction} or \code{stroke_direction} is used depends on
+#' \code{progress_type}.
+#' @param fill_color,stroke_color The color to use for the progress bar. 
+#' Wether \code{fill_color} or \code{stroke_color} is used depends on 
+#' \code{progress_type}.
+#' @param ... Any other other advanced options to pass to the loaded
+#' see the \href{https://loading.io/progress/}{official documentation}.
+#' @param angle Angle of gradient.
+#' @param duration Duration of the loop.
+#' @param colors Color vectors composing the gradient.
+#' @param color_background The background of the color.
+#' @param color_bubble The color of the bubbles contour.
+#' @param count The number of bubbles.
+#' @param color1,color2 Colors of stripes.
+#' 
+#' @examples
+#' library(shiny)
+#' library(waiter)
+#' 
+#' # diagonal line
+#' path <- "M10 10L90 30"
+#' 
+#' ui <- fluidPage(
+#'  use_waiter(),
+#'  use_hostess(),
+#'  actionButton("draw", "redraw"),
+#'  plotOutput("plot")
+#' )
+#' 
+#' server <- function(input, output) {
+#' 
+#'  dataset <- reactive({
+#'    input$draw
+#' 
+#'    hostess <- Hostess$new(min = 0, max = 10)
+#'    hostess$set_loader <- hostess_loader(
+#'      progress_type = "stroke",
+#'      stroke_color = hostess_stripe()
+#'    )
+#'   waiter <- Waiter$new(
+#'    "plot", 
+#'    hostess$loader()
+#'   )
+#' 
+#'    waiter$show()
+#' 
+#'    for(i in 1:10){
+#'      Sys.sleep(.2)
+#'      hostess$inc(1)
+#'    }
+#' 
+#'    runif(100)
+#' 
+#'  })
+#' 
+#' output$plot <- renderPlot(plot(dataset()))
+#' 
+#' }
+#'
+#' if(interactive()) shinyApp(ui, server)
+#' 
+#' @name hostessLoader
+#' @export
+hostess_loader <- function(id = "hostess", preset = NULL, text_color = "#FFFFFF", 
+  center_page = FALSE, class = "", min = 0, max = 100, svg = NULL, 
+  progress_type = c("stroke", "fill"), fill_direction = c("btt", "ttb", "ltr", "rtl"),
+  stroke_direction = c("normal", "reverse"), fill_color = NULL, stroke_color = NULL, 
+  ..., with_waiter){
+
+  progress_type <- match.arg(progress_type)
+  fill_direction <- match.arg(fill_direction)
+  stroke_direction <- match.arg(stroke_direction)
+
+  # will remove at > 0.1.0
+  if(!missing(with_waiter)){
+    .Deprecated("center_page", package = "waiter", "The `with_waiter` argument is deprecated in favour of `center_page`.")
+    
+    # don't break stuff...
+    if(is.logical(with_waiter))
+      center_page <- with_waiter
+  }
+
+  if(!is.null(preset))
+    if(!preset %in% hostess_presets)
+      stop("Invalid preset, see `?hostess_spinner` for valid values", call. = FALSE)
+
+  if(center_page)
+    class <- paste(class, "hostess-center")
+
+  style <- paste0("color:", text_color, ";")
+  
+  loader <- div(
+    id = id, 
+    `data-preset` = preset, 
+    class = class, 
+    style = style, 
+    `data-min` = min,
+    `data-max` = max,
+    ...
+  )
+
+  opts <- list()
+  if(!is.null(svg)){
+    # check if ends in .svg
+    # if .svg use data-img otherwise use data-path
+    is_img <- grepl("\\.svg", svg)
+
+    if(is_img)
+      opts[["data-img"]] <- svg
+    else
+      opts[["data-path"]] <- svg
+  }
+
+  # set direction based on progress_type: stroke or fill
+  if(progress_type == "fill")
+    opts[["data-fill-dir"]] <- fill_direction
+  else
+    opts[["data-stroke-dir"]] <- stroke_direction
+
+  # set color based on progress_type: stroke or fill
+  if(progress_type == "fill" && !is.null(fill_color))
+    opts[["data-fill"]] <- fill_color
+  else if(progress_type == "stroke" && !is.null(stroke_color))
+    opts[["data-stroke"]] <- stroke_color
+
+  # add fill type
+  opts[["data-type"]] <- progress_type
+  opts$tag <- loader
+  loader <- do.call(tagAppendAttributes, opts) 
+
+  return(loader)
+}
+
+#' @rdname hostessLoader
+#' @export
+hostess_gradient <- function(angle = 0, duration = 1, colors = c("red", "white", "blue")) {
+  stopifnot(length(colors) > 1)
+  colors <- paste0(colors, collapse = ",")
+  paste0("data:ldbar/res,gradient(", angle, ",", duration, ",", colors, ")")
+}
+
+#' @rdname hostessLoader
+#' @export
+hostess_bubble <- function(color_background = "#697682", color_bubble = "#f7fff7", 
+  count = 25, duration = 1) {
+  paste0("data:ldbar/res,bubble(", color_background, ", ", color_bubble, 
+    ", ", count, ", ", duration, ")")
+}
+
+#' @rdname hostessLoader
+#' @export
+hostess_stripe <- function(color1 = "#697682", color2 = "#f7fff7", duration = 1) {
+  paste0("data:ldbar/res,stripe(", color1, ", ", color2, ", ", duration, ")")
+}

@@ -3,7 +3,6 @@
 \name{hostess}
 \alias{hostess}
 \alias{use_hostess}
-\alias{hostess_loader}
 \alias{hostess_init}
 \alias{hostess_set}
 \alias{Hostess}
@@ -11,63 +10,12 @@
 \usage{
 use_hostess()
 
-hostess_loader(
-  id = "hostess",
-  preset = NULL,
-  text_color = "#FFFFFF",
-  center_page = FALSE,
-  class = "",
-  min = 0,
-  max = 100,
-  svg = NULL,
-  progress_type = c("stroke", "fill"),
-  fill_direction = c("ttb", "btt", "ltr", "rtl"),
-  stroke_direction = c("normal", "reverse"),
-  fill_color = NULL,
-  stroke_color = NULL,
-  ...,
-  with_waiter
-)
-
 hostess_init(id = "hostess")
 
 hostess_set(id = "hostess", value)
 }
 \arguments{
 \item{id}{Id of hostess (valid CSS).}
-
-\item{preset}{A loading bar preset, see section below.}
-
-\item{text_color}{The color of the loading text.}
-
-\item{center_page}{By default the hostess is \emph{not} centered in the middle
-of the screen, centering in the middle of the page is however ideal when using 
-it with waiter full screen, for the latter set to \code{TRUE}.}
-
-\item{class}{CSS class.}
-
-\item{min, max}{Minimum and maximum representing the starting and ending
-points of the progress bar.}
-
-\item{svg}{Either an svg path e.g.: \code{M10 10L90 10} or the path to a \code{.svg}
-file. Note that if passing the latter it must be made available to Shiny by
-placing it either in the \code{www} folder or using \link[shiny]{addResourcePath}.}
-
-\item{progress_type}{The progress type, either \code{stroke} or \code{fill}.
-Ther former traces the path of the \code{svg} while the latter fills it progressively.}
-
-\item{fill_direction, stroke_direction}{The direction which the progress bar should
-take. Wether \code{fill_direction} or \code{stroke_direction} is used depends on
-\code{progress_type}.}
-
-\item{fill_color, stroke_color}{The color to use for the progress bar. 
-Wether \code{fill_color} or \code{stroke_color} is used depends on 
-\code{progress_type}.}
-
-\item{...}{Any other other advanced options to pass to the loaded
-see the \href{https://loading.io/progress/}{official documentation}.}
-
-\item{with_waiter}{Deprecate in favour of \code{center_page}.}
 
 \item{value}{Value to set, between \code{0} and \code{100}.}
 }
