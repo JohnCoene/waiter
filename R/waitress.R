@@ -48,6 +48,11 @@ use_waitress <- function(color = "#b84f3e", percent_color = "#333333"){
 				rel="stylesheet",
 				type="text/css"
 			),
+			tags$link(
+				href = "waiter-assets/waitress/overlay.css",
+				rel="stylesheet",
+				type="text/css"
+			),
 			tags$script(
 				src = "waiter-assets/waitress/progress.min.js"
 			),
@@ -71,6 +76,7 @@ use_waitress <- function(color = "#b84f3e", percent_color = "#333333"){
 #' @export
 call_waitress <- function(selector = NULL, theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent"),
 	min = 0, max = 100, infinite = FALSE){
+  .Deprecated("Waitress", package = "waiter", "Create a waitress with `Waitress$new()`")
 	Waitress$new(selector, theme, min, max, infinite = infinite)
 }
 
@@ -145,10 +151,12 @@ Waitress <- R6::R6Class(
 #' 
 #' @param html HTML content to show over the waitress, 
 #' accepts htmltools and shiny tags.
+#' @param background_color The background color of the html.
+#' @param text_color The color of the \code{html} content.
 #' 
 #' @examples
 #' \dontrun{Waitress$new("#plot")$start()}
-		start = function(html = NULL){
+		start = function(html = NULL, background_color = "transparent", text_color = "black"){
 			id <- private$.dom
 			if(!is.null(html)){
 				html <- as.character(html)
@@ -160,7 +168,16 @@ Waitress <- R6::R6Class(
 			}
 
 			private$.started <- TRUE
-			opts <- list(name = private$.name, infinite = private$.infinite, id = id, html = html, hide_on_render = private$.hide_on_render)
+			opts <- list(
+        name = private$.name, 
+        infinite = private$.infinite, 
+        id = id, 
+        html = html, 
+        hide_on_render = private$.hide_on_render,
+        background_color = background_color,
+        text_color = text_color
+      )
+
 			private$get_session()
 			private$.session$sendCustomMessage("waitress-start", opts)
 			invisible(self)

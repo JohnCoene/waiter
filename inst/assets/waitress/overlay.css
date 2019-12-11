@@ -1,0 +1,16 @@
+/* Custom */
+.waitress-overlay{
+  text-align: center;
+  z-index:999;
+}
+
+.waitress-overlay-content{
+  width: 70px;
+  text-align: center;
+  height: 40px;
+  position: absolute;
+  right: 50%;
+  margin-right: -35px;
+  top: 50%;
+  margin-top: -20px;
+}

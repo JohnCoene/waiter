@@ -124,7 +124,11 @@ Create a waitress.
 \if{html}{\out{<a id="method-start"></a>}}
 \subsection{Method \code{start()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Waitress$start(html = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Waitress$start(
+  html = NULL,
+  background_color = "transparent",
+  text_color = "black"
+)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -132,6 +136,10 @@ Create a waitress.
 \describe{
 \item{\code{html}}{HTML content to show over the waitress, 
 accepts htmltools and shiny tags.}
+
+\item{\code{background_color}}{The background color of the html.}
+
+\item{\code{text_color}}{The color of the \code{html} content.}
 }
 \if{html}{\out{</div>}}
 }

@@ -24,7 +24,7 @@ Shiny.addCustomMessageHandler('waitress-start', function(opts) {
       dom;
   
   if(opts.hide_on_render)
-    waitress_to_hide.push({id: opts.id.substr(1), name: opts.name, infinite: opts.infinite})
+    waitress_to_hide.push({id: opts.id, name: opts.name, infinite: opts.infinite})
 
   // content
   if(opts.html){
@@ -41,7 +41,7 @@ Shiny.addCustomMessageHandler('waitress-start', function(opts) {
 
     // check if overlay exists
     dom.childNodes.forEach(function(el){
-      if(el.className === 'waiter-overlay')
+      if(el.className === 'waitress-overlay')
         exists = true;
     });
 
@@ -56,17 +56,18 @@ Shiny.addCustomMessageHandler('waitress-start', function(opts) {
     var overlay_content = document.createElement("DIV");
     // insert html
     overlay_content.innerHTML = opts.html;
-    overlay_content.classList.add("waiter-overlay-content");
+    overlay_content.classList.add("waitress-overlay-content");
 
     // add styles
     overlay.style.height = el.height + 'px';
     overlay.style.width = el.width + 'px';
     overlay.style.top = el.top + 'px';
     overlay.style.left = el.left + 'px';
-    overlay.style.backgroundColor = "transparent";
+    overlay.style.color = opts.text_color;
+    overlay.style.backgroundColor = opts.background_color;
     overlay.style.position = "absolute";
-    overlay.style.zIndex = 99999;
-    overlay.classList.add("waiter-overlay");
+    overlay.style.zIndex = 99999999;
+    overlay.classList.add("waitress-overlay");
 
     // append overlay content in overlay
     overlay.appendChild(overlay_content);
@@ -74,7 +75,7 @@ Shiny.addCustomMessageHandler('waitress-start', function(opts) {
     // append overlay to dom
     setTimeout(function(){
       dom.appendChild(overlay);
-    }, 300);
+    }, 10);
   }
 
   if(opts.infinite){
@@ -86,7 +87,7 @@ Shiny.addCustomMessageHandler('waitress-start', function(opts) {
       inc = ((end - value) / 50);
       value = value + inc;
       window.waitress[opts.name].set(value);
-     }, 200);
+     }, 300);
   }
 });
 
@@ -107,7 +108,7 @@ Shiny.addCustomMessageHandler('waitress-end', function(opts) {
 
   if(opts.id){
     var dom = document.getElementById(opts.id);
-    var overlay = dom.getElementsByClassName("waiter-overlay");
+    var overlay = dom.getElementsByClassName("waitress-overlay");
   
     if(overlay.length > 0)
       dom.removeChild(overlay[0]);
@@ -123,7 +124,7 @@ function get_offset(element) {
 
   //set width and height
   // -6 pixels to keep margin between plot if stacked up/side by side
-  elementPosition.width = element.offsetWidth -2;
+  elementPosition.width = element.offsetWidth;
   elementPosition.height = element.offsetHeight -2;
 
   //calculate element top and left
@@ -136,8 +137,8 @@ function get_offset(element) {
   
   //set top and left
   //use 3 margin (6/2)
-  elementPosition.top = _y + 1;
-  elementPosition.left = _x + 1;
+  elementPosition.top = _y + 2;
+  elementPosition.left = _x;
 
   return elementPosition;
 }
