@@ -71,7 +71,6 @@ use_waitress <- function(color = "#b84f3e", percent_color = "#333333"){
 	)
 }
 
-
 #' @rdname waitress
 #' @export
 call_waitress <- function(selector = NULL, theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent"),
