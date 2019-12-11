@@ -174,6 +174,7 @@ Hostess <- R6::R6Class(
       if(!private$.started)
         self <- self$start()
 
+      # keep track for inc mthod
       private$.current_value <- value
 
       opts <- list(id = private$.id, value = value)
@@ -195,6 +196,7 @@ Hostess <- R6::R6Class(
       if(!private$.started)
         self <- self$start()
 
+      # increment
       value <- private$.current_value + value
       private$.current_value <- value
 
