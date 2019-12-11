@@ -2,7 +2,7 @@
 
 The waitress will let you display loading bars on the entire screen or specific elements only.
 
-> Use the wait__ress__ to show prog__ress__.
+> Use the wait<strong>ress</strong> to show prog<strong>ress</strong>.
 
 ## How to
 
