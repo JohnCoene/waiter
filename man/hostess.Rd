@@ -70,6 +70,12 @@ Add hostess dependencies.
 loader <- hostess_loader()
 Hostess$new()$set_loader(loader)
 }
+
+## ------------------------------------------------
+## Method `Hostess$notify`
+## ------------------------------------------------
+
+\dontrun{Hostess$new()$notify()}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -81,6 +87,7 @@ Hostess$new()$set_loader(loader)
 \item \href{#method-inc}{\code{Hostess$inc()}}
 \item \href{#method-get_loader}{\code{Hostess$get_loader()}}
 \item \href{#method-set_loader}{\code{Hostess$set_loader()}}
+\item \href{#method-notify}{\code{Hostess$notify()}}
 \item \href{#method-clone}{\code{Hostess$clone()}}
 }
 }
@@ -291,6 +298,46 @@ Set a hostess loader as defined by \code{\link{hostess_loader}}.
 loader <- hostess_loader()
 Hostess$new()$set_loader(loader)
 }
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-notify"></a>}}
+\subsection{Method \code{notify()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Hostess$notify(
+  html = NULL,
+  background_color = "transparent",
+  text_color = "black",
+  position = c("br", "tr", "bl", "tl")
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{html}}{Additional HTML content of the tag or a character string.}
+
+\item{\code{background_color}}{Background color of the notification.}
+
+\item{\code{text_color}}{Color of text of \code{html}.}
+
+\item{\code{position}}{Position of the notification on the screen.
+Where \code{br} is the bottom-right, \code{tr} is the top-right,
+\code{bl} is bottom-left, and \code{tl} is the top-left.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+Use the hostess as a notification. It is hidden when \code{set} tpo \code{100}.
+}
+
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{Hostess$new()$notify()}
 }
 \if{html}{\out{</div>}}
 

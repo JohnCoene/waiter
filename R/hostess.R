@@ -221,6 +221,48 @@ Hostess <- R6::R6Class(
       private$.loader <- loader
         
       invisible(self)
+    },
+#' @details
+#' Use the hostess as a notification. It is hidden when \code{set} tpo \code{100}.
+#' 
+#' @param html Additional HTML content of the tag or a character string.
+#' @param background_color Background color of the notification.
+#' @param text_color Color of text of \code{html}.
+#' @param position Position of the notification on the screen.
+#' Where \code{br} is the bottom-right, \code{tr} is the top-right,
+#' \code{bl} is bottom-left, and \code{tl} is the top-left.
+#' 
+#' @examples 
+#' \dontrun{Hostess$new()$notify()}
+    notify = function(html = NULL, background_color = "transparent", 
+			text_color = "black", position = c("br", "tr", "bl", "tl")){
+
+      position <- match.arg(position)
+
+      # process html
+      if(!is.null(html)){
+        if(is.character(html))
+          html <- span(html)
+      } else {
+        html <- span()
+      }
+
+      html <- div(private$.loader, html)
+      html <- as.character(html)
+
+      private$.started <- TRUE
+      private$.is_notification <- TRUE
+
+      opts <- list(
+        html = html, 
+        id = private$.id, 
+        position = position,
+        background_color = background_color,
+        text_color = text_color
+      )
+
+      private$.session$sendCustomMessage("hostess-notify", opts)
+      invisible(self)
     }
   ),
   private = list(
@@ -230,7 +272,8 @@ Hostess <- R6::R6Class(
     .min = 0,
     .max = 100,
     .current_value = 0,
-    .loader = NULL
+    .loader = NULL,
+    .is_notification = FALSE
   )
 )
 
