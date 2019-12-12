@@ -109,7 +109,7 @@ Waitress <- R6::R6Class(
 #' when you cannot compute increments or assess the time it might take before the
 #' loading bar should be removed.
 #' @param hide_on_render Set to \code{TRUE} to automatically hide the waitress
-#' when the plot in \code{id} is drawn. Note the latter will only work with
+#' when the element in \code{id} is rendered. Note the latter will work with
 #' shiny plots, tables, htmlwidgets, etc. but will not work with arbitrary
 #' elements.
 #' 
@@ -132,6 +132,10 @@ Waitress <- R6::R6Class(
 				max <- 100
 			}
 
+			if(!is.null(selector))
+				if(!grepl("^#", selector) && hide_on_render)
+					stop("`hide_on_render` will only work if the `selector` is an #id")
+
       private$.hide_on_render <- hide_on_render
 			private$.name <- name
 			private$.theme <- theme
@@ -153,7 +157,8 @@ Waitress <- R6::R6Class(
 #' 
 #' @examples
 #' \dontrun{Waitress$new("#plot")$start()}
-		start = function(html = NULL, background_color = "transparent", text_color = "black"){
+		start = function(html = NULL, background_color = "transparent", 
+			text_color = "black"){
 			id <- private$.dom
 
 			# initialised if has not been done already
@@ -165,10 +170,11 @@ Waitress <- R6::R6Class(
 				html <- as.character(html)
 
 				# check if selector is id
-				if(!grepl("^#", id))
-					stop("`html` will only work when the `selector` is an #id.")
-				
-				id <- gsub("^#", "", id)
+				if(!is.null(id))
+					if(!grepl("^#", id))
+						stop("`html` will only work when the `selector` is an #id.")
+					else
+						id <- gsub("^#", "", id)
 			}
 
 			# no need to rerun start
@@ -181,7 +187,67 @@ Waitress <- R6::R6Class(
         html = html, 
         hide_on_render = private$.hide_on_render,
         background_color = background_color,
-        text_color = text_color
+        text_color = text_color,
+				is_notification = FALSE
+      )
+
+			private$get_session()
+			private$.session$sendCustomMessage("waitress-start", opts)
+			invisible(self)
+		},
+#' @details
+#' Show the waitress as a notification. 
+#' 
+#' @param html HTML content to show over the waitress, 
+#' accepts htmltools and shiny tags.
+#' @param background_color The background color of the html.
+#' @param text_color The color of the \code{html} content.
+#' @param position Position of the notification on the screen.
+#' Where \code{br} is the bottom-right, \code{tr} is the top-right,
+#' \code{bl} is bottom-left, and \code{tl} is the top-left.
+#' 
+#' @examples
+#' \dontrun{Waitress$new()$notify()}
+		notify = function(html = NULL, background_color = "white", 
+			text_color = "black", position = c("br", "tr", "bl", "tl")){
+			
+			id <- private$.dom
+			private$.is_notification <- TRUE
+
+			# process html and id
+			if(!is.null(html)){
+				# force html tag otherwise breaks .innerHTML
+				if(is.character(html))
+					html <- span(html)
+				
+				# convert o html tags
+				html <- as.character(html)
+			}
+
+			# initialised if has not been done already
+			if(!private$.initialised)
+				private$.initialised <- private$init(
+					id = private$.name, # will be id of notification DIV
+					html = html,
+					background_color = background_color,
+					text_color = text_color,
+					position = match.arg(position),
+					notify = TRUE # will trigger adding DIV JS side
+				)
+
+			if(!is.null(id))
+				if(grepl("^#", id))
+					id <- gsub("^#", "", id)
+
+			# no need to rerun start
+			private$.started <- TRUE
+
+			opts <- list(
+        name = private$.name, 
+        infinite = private$.infinite, 
+        id = id,
+				hide_on_render = private$.hide_on_render,
+				is_notification = TRUE
       )
 
 			private$get_session()
@@ -279,10 +345,15 @@ Waitress <- R6::R6Class(
 #' @examples
 #' \dontrun{Waitress$new("#plot")$close()}
 		close = function(){
-			opts <- list(name = private$.name, infinite = private$.infinite)
+			opts <- list(
+				name = private$.name, 
+				infinite = private$.infinite,
+				is_notification = private$.is_notification
+			)
 
-			if(grepl("^#", private$.dom))
-				opts$id <- gsub("^#", "", private$.dom)
+			if(!is.null(private$.dom))
+				if(grepl("^#", private$.dom))
+					opts$id <- gsub("^#", "", private$.dom)
 
 			private$get_session()
 			private$.session$sendCustomMessage("waitress-end", opts)
@@ -296,8 +367,10 @@ Waitress <- R6::R6Class(
 		print = function(){
 			if(!is.null(private$.dom))
 				cat("A waitress applied to", private$.dom, "\n")
-			else
+			else if(!private$.is_notification)
 				cat("A waitress applied to the whole page\n")
+			else if (private$.is_notification)
+				cat("A waitress notification\n")
 		}
 	),
 	private = list(
@@ -312,6 +385,7 @@ Waitress <- R6::R6Class(
 		.max = 100,
     .infinite = FALSE,
     .hide_on_render = FALSE,
+		.is_notification = FALSE,
 		rescale = function(value){
 			floor(((value-private$.min)/(private$.max - private$.min)) * 100)
 		},
@@ -319,16 +393,24 @@ Waitress <- R6::R6Class(
 			private$.session <- shiny::getDefaultReactiveDomain()
 			.check_session(private$.session)
 		},
-		init = function(){
+		init = function(id = NULL, ...){
 
+			if(is.null(id))
+				id <- private$.dom
+			
 			opts <- list(
-				id = private$.dom,
+				id = id,
 				name = private$.name,
 				options = list(
 					theme = private$.theme,
 					overlayMode = private$.overlay
 				)
 			)
+
+			# append additional options for notification
+			# need to create dom BEFORE initialisation
+			additional_options <- list(...)
+			opts <- append(opts, additional_options)
 
 			private$get_session()
 			private$.session$sendCustomMessage("waitress-init", opts)

@@ -3,8 +3,62 @@ var intervals = [];
 // elements to hide on recomputed
 var waitress_to_hide = [];
 
+function position_to_coords(position){
+  var pos = {};
+
+  if(position == "bl"){
+    pos.top = "auto";
+    pos.bottom = "10px";
+    pos.left = "10px";
+    pos.right = "auto";
+  } else if (position == "tl"){
+    pos.top = "10px";
+    pos.bottom = "auto";
+    pos.left = "10px";
+    pos.right = "auto";
+  } else if(position == "br"){
+    pos.top = "auto";
+    pos.bottom = "10px";
+    pos.left = "auto";
+    pos.right = "10px";
+  } else if(position == "tr"){
+    pos.top = "10px";
+    pos.bottom = "auto";
+    pos.left = "auto";
+    pos.right = "10px";
+  }
+
+  return pos;
+}
+
 Shiny.addCustomMessageHandler('waitress-init', function(opts) {
-	
+  
+  var notification;
+
+  if(opts.notify){
+    // create div
+    notification = document.createElement("DIV");
+
+    // position div
+    var pos = position_to_coords(opts.position);
+    notification.style.bottom = pos.bottom;
+    notification.style.right = pos.right;
+    notification.style.left = pos.left;
+    notification.style.top = pos.top;
+
+    notification.width = '100px';
+    notification.height = '50px';
+    notification.style.color = opts.text_color;
+    notification.style.backgroundColor = opts.background_color;
+    notification.style.position = "fixed";
+    notification.innerHTML = opts.html;
+    notification.style.zIndex = 999;
+    notification.id = opts.id;
+    notification.classList.add("waitress-notification");
+    document.body.appendChild(notification);
+    opts.id = '#' + opts.id;
+  }
+
 	if(opts.id != null)
 		prog = progressJs(opts.id);
 	else
@@ -21,15 +75,23 @@ Shiny.addCustomMessageHandler('waitress-start', function(opts) {
   var el,
       id = opts.id, 
       exists = false, 
-      dom;
+      dom,
+      overlay,
+      overlay_content;
   
   if(opts.hide_on_render)
-    waitress_to_hide.push({id: opts.id, name: opts.name, infinite: opts.infinite})
+    waitress_to_hide.push({
+      id: opts.id, 
+      name: opts.name, 
+      infinite: opts.infinite, 
+      is_notification: opts.is_notification
+    });
 
   // content
   if(opts.html){
 
     hide_recalculate(id);
+
     // get parent
     dom = document.getElementById(id);
     if(dom == undefined){
@@ -51,9 +113,9 @@ Shiny.addCustomMessageHandler('waitress-start', function(opts) {
     }
 
     // create overlay
-    var overlay = document.createElement("DIV");
+    overlay = document.createElement("DIV");
     // create overlay content
-    var overlay_content = document.createElement("DIV");
+    overlay_content = document.createElement("DIV");
     // insert html
     overlay_content.innerHTML = opts.html;
     overlay_content.classList.add("waitress-overlay-content");
@@ -116,6 +178,15 @@ Shiny.addCustomMessageHandler('waitress-end', function(opts) {
 
   if(opts.infinite)
     clearInterval(intervals[opts.name]);
+
+  if(opts.is_notification){
+    var notif = document.getElementById(opts.name);
+
+    // small delay to allow the loading bar to end
+    setTimeout(function(){
+      notif.remove();
+    }, 400)
+  }
 });
 
 // compute offset position of waiter overlay
@@ -160,10 +231,20 @@ function hide_recalculate(id){
 $(document).on('shiny:value shiny:error shiny:recalculated', function(event) {
   waitress_to_hide.forEach(function(w){
     if(w.id == event.name){
+      console.log(w);
       if(w.infinite)
         clearInterval(intervals[w.name]);
       
       window.waitress[w.name].end();
+
+      if(w.is_notification){
+        var notif = document.getElementById(w.name);
+    
+        // small delay to allow the loading bar to end
+        setTimeout(function(){
+          notif.remove();
+        }, 400)
+      }
     }
       
   });

@@ -23,6 +23,12 @@ its percentage, then hide it when done.
 \dontrun{Waitress$new("#plot")$start()}
 
 ## ------------------------------------------------
+## Method `Waitress$notify`
+## ------------------------------------------------
+
+\dontrun{Waitress$new()$notify()}
+
+## ------------------------------------------------
 ## Method `Waitress$set`
 ## ------------------------------------------------
 
@@ -57,6 +63,7 @@ its percentage, then hide it when done.
 \itemize{
 \item \href{#method-new}{\code{Waitress$new()}}
 \item \href{#method-start}{\code{Waitress$start()}}
+\item \href{#method-notify}{\code{Waitress$notify()}}
 \item \href{#method-set}{\code{Waitress$set()}}
 \item \href{#method-auto}{\code{Waitress$auto()}}
 \item \href{#method-increase}{\code{Waitress$increase()}}
@@ -97,7 +104,7 @@ when you cannot compute increments or assess the time it might take before the
 loading bar should be removed.}
 
 \item{\code{hide_on_render}}{Set to \code{TRUE} to automatically hide the waitress
-when the plot in \code{id} is drawn. Note the latter will only work with
+when the element in \code{id} is rendered. Note the latter will work with
 shiny plots, tables, htmlwidgets, etc. but will not work with arbitrary
 elements.}
 
@@ -149,6 +156,47 @@ Start the waitress.
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{\dontrun{Waitress$new("#plot")$start()}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-notify"></a>}}
+\subsection{Method \code{notify()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Waitress$notify(
+  html = NULL,
+  background_color = "white",
+  text_color = "black",
+  position = c("br", "tr", "bl", "tl")
+)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{html}}{HTML content to show over the waitress, 
+accepts htmltools and shiny tags.}
+
+\item{\code{background_color}}{The background color of the html.}
+
+\item{\code{text_color}}{The color of the \code{html} content.}
+
+\item{\code{position}}{Position of the notification on the screen.
+Where \code{br} is the bottom-right, \code{tr} is the top-right,
+\code{bl} is bottom-left, and \code{tl} is the top-left.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+Show the waitress as a notification.
+}
+
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{Waitress$new()$notify()}
 }
 \if{html}{\out{</div>}}
 
