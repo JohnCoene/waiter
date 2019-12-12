@@ -57,7 +57,7 @@ applied to the entire body.}
 \item{\code{logo}}{Logo to display.}
 
 \item{\code{hide_on_render}}{Set to \code{TRUE} to automatically hide the waiter
-when the plot in \code{id} is drawn. Note the latter will only work with
+when the element in \code{id} is drawn. Note the latter will work with
 shiny plots, tables, htmlwidgets, etc. but will not work with arbitrary
 elements.}
 }

@@ -304,7 +304,7 @@ Waiter <- R6::R6Class(
 #' @param id Id of element on which to overlay the waiter, if \code{NULL} the waiter is
 #' applied to the entire body.
 #' @param hide_on_render Set to \code{TRUE} to automatically hide the waiter
-#' when the plot in \code{id} is drawn. Note the latter will only work with
+#' when the element in \code{id} is drawn. Note the latter will work with
 #' shiny plots, tables, htmlwidgets, etc. but will not work with arbitrary
 #' elements.
 #' 
