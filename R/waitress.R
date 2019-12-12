@@ -118,11 +118,19 @@ Waitress <- R6::R6Class(
 		initialize = function(selector = NULL, theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent"),
 		min = 0, max = 100, infinite = FALSE, hide_on_render = FALSE){
 
+			# create a random unique identifier
 			name <- .random_name()
 
+			# convert theme argument to JavaScript
 			theme <- match.arg(theme)
 			overlay <- ifelse(grepl("overlay", theme), TRUE, FALSE)
 			theme <- themes_to_js(theme)
+
+			# override min/max if infinite
+			if(infinite){
+				min <- 0
+				max <- 100
+			}
 
       private$.hide_on_render <- hide_on_render
 			private$.name <- name
@@ -157,13 +165,15 @@ Waitress <- R6::R6Class(
 #' \dontrun{Waitress$new("#plot")$start()}
 		start = function(html = NULL, background_color = "transparent", text_color = "black"){
 			id <- private$.dom
+
 			if(!is.null(html)){
 				html <- as.character(html)
 
-				if(!grepl("#", id))
+				# check if selector is id
+				if(!grepl("^#", id))
 					stop("`html` will only work when the `selector` is an #id.")
 				
-				id <- gsub("#", "", id)
+				id <- gsub("^#", "", id)
 			}
 
 			private$.started <- TRUE
@@ -274,8 +284,8 @@ Waitress <- R6::R6Class(
 		close = function(){
 			opts <- list(name = private$.name, infinite = private$.infinite)
 
-			if(grepl("#", private$.dom))
-				opts$id <- gsub("#", "", private$.dom)
+			if(grepl("^#", private$.dom))
+				opts$id <- gsub("^#", "", private$.dom)
 
 			private$get_session()
 			private$.session$sendCustomMessage("waitress-end", opts)
