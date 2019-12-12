@@ -179,7 +179,10 @@ Hostess <- R6::R6Class(
 #' \code{progress_type}.
 #' @param ... Any other other advanced options to pass to the loaded
 #' see the \href{https://loading.io/progress/}{official documentation}.
-    loader = function(preset = NULL, text_color = "#FFFFFF", center_page = FALSE, 
+#' 
+#' @examples 
+#' \dontrun{Hostess$new()$get_loader()}
+    get_loader = function(preset = NULL, text_color = "#FFFFFF", center_page = FALSE, 
       class = "", min = NULL, max = NULL, svg = NULL, progress_type = c("stroke", "fill"), 
       fill_direction = c("ttb", "btt", "ltr", "rtl"), stroke_direction = c("normal", "reverse"), 
       fill_color = NULL, stroke_color = NULL, ...){
@@ -199,20 +202,23 @@ Hostess <- R6::R6Class(
         min = private$.min, max = private$.max, svg = svg, progress_type = progress_type,
         fill_direction = fill_direction, stroke_direction = stroke_direction, 
         stroke_color = stroke_color, ...)
-    }
-  ),
-  active = list(
-#' @field set_loader Set a loader as created by \code{\link{hostess_loader}}.
-    set_loader = function(value){
-      if(missing(value)){
-        return(private$.loader)
-      } else {
-        # change id, min and max to match class
-        value$attribs$id <- private$.id
-        value$attribs[["data-min"]] <- private$.min
-        value$attribs[["data-max"]] <- private$.max
-        private$.loader <- value
-      }
+    },
+#' @details
+#' Set a hostess loader as defined by \code{\link{hostess_loader}}.
+#' 
+#' @param loader Loader as defined by \code{\link{hostess_loader}}.
+#' 
+#' @examples 
+#' \dontrun{
+#' loader <- hostess_loader()
+#' Hostess$new()$set_loader(loader)
+#' }
+    set_loader = function(loader){
+      # change id, min and max to match class
+      loader$attribs$id <- private$.id
+      loader$attribs[["data-min"]] <- private$.min
+      loader$attribs[["data-max"]] <- private$.max
+      private$.loader <- loader
         
       invisible(self)
     }

@@ -55,13 +55,21 @@ Add hostess dependencies.
 ## ------------------------------------------------
 
 \dontrun{Hostess$new()$inc(10)}
+
+## ------------------------------------------------
+## Method `Hostess$get_loader`
+## ------------------------------------------------
+
+\dontrun{Hostess$new()$get_loader()}
+
+## ------------------------------------------------
+## Method `Hostess$set_loader`
+## ------------------------------------------------
+
+\dontrun{
+loader <- hostess_loader()
+Hostess$new()$set_loader(loader)
 }
-\section{Active bindings}{
-\if{html}{\out{<div class="r6-active-bindings">}}
-\describe{
-\item{\code{set_loader}}{Set a loader as created by \code{\link{hostess_loader}}.}
-}
-\if{html}{\out{</div>}}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -71,7 +79,8 @@ Add hostess dependencies.
 \item \href{#method-print}{\code{Hostess$print()}}
 \item \href{#method-set}{\code{Hostess$set()}}
 \item \href{#method-inc}{\code{Hostess$inc()}}
-\item \href{#method-loader}{\code{Hostess$loader()}}
+\item \href{#method-get_loader}{\code{Hostess$get_loader()}}
+\item \href{#method-set_loader}{\code{Hostess$set_loader()}}
 \item \href{#method-clone}{\code{Hostess$clone()}}
 }
 }
@@ -185,10 +194,10 @@ Increase the hostess loading bar.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-loader"></a>}}
-\subsection{Method \code{loader()}}{
+\if{html}{\out{<a id="method-get_loader"></a>}}
+\subsection{Method \code{get_loader()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Hostess$loader(
+\if{html}{\out{<div class="r">}}\preformatted{Hostess$get_loader(
   preset = NULL,
   text_color = "#FFFFFF",
   center_page = FALSE,
@@ -247,6 +256,44 @@ see the \href{https://loading.io/progress/}{official documentation}.}
 }
 \subsection{Details}{
 Create a hostess loading bar.
+}
+
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{Hostess$new()$get_loader()}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-set_loader"></a>}}
+\subsection{Method \code{set_loader()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Hostess$set_loader(loader)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{loader}}{Loader as defined by \code{\link{hostess_loader}}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+Set a hostess loader as defined by \code{\link{hostess_loader}}.
+}
+
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{
+loader <- hostess_loader()
+Hostess$new()$set_loader(loader)
+}
+}
+\if{html}{\out{</div>}}
+
 }
 
 }
