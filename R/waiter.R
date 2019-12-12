@@ -325,11 +325,6 @@ Waiter <- R6::R6Class(
       private$.hide_on_render <- hide_on_render
     },
 #' @details
-#' Hide the waiter on object kill.
-    finalize = function(){
-      self$hide()
-    },
-#' @details
 #' Show the waiter.
     show = function(){
       opts <- list(

@@ -24,7 +24,6 @@ then \code{hide} or meanwhile \code{update} the content of the waiter.
 \subsection{Public methods}{
 \itemize{
 \item \href{#method-new}{\code{Waiter$new()}}
-\item \href{#method-finalize}{\code{Waiter$finalize()}}
 \item \href{#method-show}{\code{Waiter$show()}}
 \item \href{#method-hide}{\code{Waiter$hide()}}
 \item \href{#method-update_waiter}{\code{Waiter$update_waiter()}}
@@ -74,18 +73,6 @@ Create a waiter.
 }
 \if{html}{\out{</div>}}
 
-}
-
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-finalize"></a>}}
-\subsection{Method \code{finalize()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Waiter$finalize()}\if{html}{\out{</div>}}
-}
-
-\subsection{Details}{
-Hide the waiter on object kill.
 }
 
 }
