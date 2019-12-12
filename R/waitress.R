@@ -166,16 +166,15 @@ Waitress <- R6::R6Class(
 				private$.initialised <- private$init()
 
 			# process html and id
-			if(!is.null(html)){
+			if(!is.null(html))
 				html <- as.character(html)
 
-				# check if selector is id
-				if(!is.null(id))
-					if(!grepl("^#", id))
-						stop("`html` will only work when the `selector` is an #id.")
-					else
-						id <- gsub("^#", "", id)
-			}
+      # check if selector is id
+      if(!is.null(id))
+        if(!grepl("^#", id))
+          stop("`html` will only work when the `selector` is an #id.")
+        else
+          id <- gsub("^#", "", id)
 
 			# no need to rerun start
 			private$.started <- TRUE
