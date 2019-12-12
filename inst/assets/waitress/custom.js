@@ -87,7 +87,7 @@ Shiny.addCustomMessageHandler('waitress-start', function(opts) {
       inc = ((end - value) / 50);
       value = value + inc;
       window.waitress[opts.name].set(value);
-     }, 300);
+     }, 350);
   }
 });
 

@@ -141,17 +141,7 @@ Waitress <- R6::R6Class(
 			private$.max <- max
       private$.infinite <- infinite
 
-			opts <- list(
-				id = selector,
-				name = name,
-				options = list(
-					theme = theme,
-					overlayMode = overlay
-				)
-			)
-
-			private$get_session()
-			private$.session$sendCustomMessage("waitress-init", opts)
+			invisible(self)
 		},
 #' @details
 #' Start the waitress.
@@ -166,6 +156,11 @@ Waitress <- R6::R6Class(
 		start = function(html = NULL, background_color = "transparent", text_color = "black"){
 			id <- private$.dom
 
+			# initialised if has not been done already
+			if(!private$.initialised)
+				private$.initialised <- private$init()
+
+			# process html and id
 			if(!is.null(html)){
 				html <- as.character(html)
 
@@ -176,7 +171,9 @@ Waitress <- R6::R6Class(
 				id <- gsub("^#", "", id)
 			}
 
+			# no need to rerun start
 			private$.started <- TRUE
+
 			opts <- list(
         name = private$.name, 
         infinite = private$.infinite, 
@@ -310,6 +307,7 @@ Waitress <- R6::R6Class(
 		.dom = NULL,
 		.session = NULL,
 		.started = FALSE,
+		.initialised = FALSE,
 		.min = 0,
 		.max = 100,
     .infinite = FALSE,
@@ -320,6 +318,21 @@ Waitress <- R6::R6Class(
 		get_session = function(){
 			private$.session <- shiny::getDefaultReactiveDomain()
 			.check_session(private$.session)
+		},
+		init = function(){
+
+			opts <- list(
+				id = private$.dom,
+				name = private$.name,
+				options = list(
+					theme = private$.theme,
+					overlayMode = private$.overlay
+				)
+			)
+
+			private$get_session()
+			private$.session$sendCustomMessage("waitress-init", opts)
+			return(TRUE)
 		}
 	)
 )
