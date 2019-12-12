@@ -24,6 +24,17 @@
 	        animation: scale-up-center 0.4s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
+@media (max-width: 500px) { 
+  .waitress-notification {
+    width: 94%;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 10px !important;
+    margin-left: 3%;
+    margin-right: 3%;
+  }
+}
+
 @-webkit-keyframes scale-up-center {
   0% {
     -webkit-transform: scale(0.5);

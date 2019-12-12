@@ -46,7 +46,7 @@ Shiny.addCustomMessageHandler('waitress-init', function(opts) {
     notification.style.left = pos.left;
     notification.style.top = pos.top;
 
-    notification.width = '100px';
+    //notification.width = '100px';
     notification.height = '50px';
     notification.style.color = opts.text_color;
     notification.style.backgroundColor = opts.background_color;
@@ -231,7 +231,6 @@ function hide_recalculate(id){
 $(document).on('shiny:value shiny:error shiny:recalculated', function(event) {
   waitress_to_hide.forEach(function(w){
     if(w.id == event.name){
-      console.log(w);
       if(w.infinite)
         clearInterval(intervals[w.name]);
       
