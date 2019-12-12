@@ -147,7 +147,7 @@ Shiny.addCustomMessageHandler('waitress-start', function(opts) {
 
     intervals[opts.name] = setInterval(function(){
       inc = ((end - value) / 50);
-      value = value + inc;
+      value = Math.ceil(value + inc);
       window.waitress[opts.name].set(value);
      }, 350);
   }
