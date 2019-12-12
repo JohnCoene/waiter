@@ -13,7 +13,6 @@ The following staff members will help you keep your clients waiting:
 
 * A waiter - splash loading screens.
 * A waitress - loading bars on on elements or whole screen.
-* A butler - infinite loading bar.
 * A hostess - customizable loading bars.
 * A steward - animate the waiter's backgrounds. 
 * A garcon - animate images for the waiter. 
