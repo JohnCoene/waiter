@@ -33,7 +33,7 @@ library(waiter)
 
 ui <- fluidPage(
   use_waiter(), # include dependencies
-  show_waiter_on_load(),
+  waiter_show_on_load(),
   actionButton("show", "Show loading for 3 seconds")
 )
 
@@ -41,13 +41,13 @@ server <- function(input, output, session){
 
   observeEvent(input$show, {
 
-    show_waiter( # show the waiter
+    waiter_show( # show the waiter
       spin_fading_circles() # use a spnner
     )
 
     Sys.sleep(3) # do something that takes time
     
-    hide_waiter() # hide the waiter
+    waiter_hide() # hide the waiter
   })
   
 }
@@ -101,44 +101,6 @@ shinyApp(ui, server)
 ![](man/figures//waitress-basic.gif)
 
 There are more options to the waitress, you can have it overlay any element (such as the navbar), automagically increment it, etc.
-
-### Butler
-
-If you want a loading bar similar to the waitress above but cannot determine wait time.
-
-1. Include `use_butler` in your UI.
-2. Start the progress bar with `show_butler`.
-3. Hide the butler with `hide_waiter`.
-
-```r
-library(shiny)
-library(butler)
-
-ui <- fluidPage(
-  use_butler(),
-  br(),
-  actionButton("show", "show butler"),
-  actionButton("hide", "hide butler")
-)
-
-server <- function(input, output){
-
-  observeEvent(input$show,{
-    show_butler()
-  })
-
-  observeEvent(input$hide,{
-    hide_butler()
-  })
-
-}
-
-shinyApp(ui, server)
-```
-
-![](man/figures//butler-basic.gif)
-
-You can further customise the butler, the bar thicknes, color, etc.
 
 ## Get it
 
