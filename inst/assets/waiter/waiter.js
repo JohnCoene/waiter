@@ -60,6 +60,7 @@ function show_waiter(id, html, color, to_hide){
     console.log("waiter on", id, "already exists");
     return;
   }
+  
   hide_recalculate(id);
 
   // create overlay

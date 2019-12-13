@@ -48,7 +48,7 @@ Since version `0.0.4` you can show on loading screen on app launch. The loading 
 > [!NOTE]
 > You can have multiple waiters but only one active at a time.
 
-Though this function is not programatically launched it still has to be hidden with `hide_waiter`. Ensure you place `show_waiter_on_load` after `use_waiter` and at _the very end of your UI_, also set `include_js` to `FALSE`, in `use_waiter`.
+Though this function is not programmatically launched it still has to be hidden with `hide_waiter`. Ensure you place `show_waiter_on_load` after `use_waiter` and at _the very end of your UI_, also set `include_js` to `FALSE`, in `use_waiter`.
 
 ```r
 library(shiny)
