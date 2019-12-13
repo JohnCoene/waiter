@@ -336,12 +336,14 @@ Waiter <- R6::R6Class(
       )
       private$get_session()
       private$.session$sendCustomMessage("waiter-show", opts)
+      invisible(self)
     },
 #' @details
 #' Hide the waiter.
     hide = function(){
       private$get_session()
       private$.session$sendCustomMessage("waiter-hide", list(id = private$.id))
+      invisible(self)
     },
 #' @details
 #' Update the waiter's html content.
@@ -356,6 +358,7 @@ Waiter <- R6::R6Class(
       html <- gsub("\n", "", html)
       private$get_session()
       private$.session$sendCustomMessage("waiter-update", list(html = html, id = private$.id))
+      invisible(self)
     },
 #' @details
 #' print the waiter
