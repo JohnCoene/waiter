@@ -52,7 +52,7 @@ Shiny.addCustomMessageHandler('waitress-init', function(opts) {
     notification.style.backgroundColor = opts.background_color;
     notification.style.position = "fixed";
     notification.innerHTML = opts.html;
-    notification.style.zIndex = 999;
+    notification.style.zIndex = 9999;
     notification.id = opts.id;
     notification.classList.add("waitress-notification");
     document.body.appendChild(notification);
