@@ -26,6 +26,12 @@ Create a garcon to aniamte images on the waiter.
 \dontrun{Garcon$new("img")$set(30)}
 
 ## ------------------------------------------------
+## Method `Garcon$inc`
+## ------------------------------------------------
+
+\dontrun{Garcon$new("img")$inc(30)}
+
+## ------------------------------------------------
 ## Method `Garcon$reset`
 ## ------------------------------------------------
 
@@ -48,6 +54,7 @@ Create a garcon to aniamte images on the waiter.
 \itemize{
 \item \href{#method-new}{\code{Garcon$new()}}
 \item \href{#method-set}{\code{Garcon$set()}}
+\item \href{#method-inc}{\code{Garcon$inc()}}
 \item \href{#method-reset}{\code{Garcon$reset()}}
 \item \href{#method-destroy}{\code{Garcon$destroy()}}
 \item \href{#method-print}{\code{Garcon$print()}}
@@ -119,6 +126,33 @@ Value to set the garçon to.
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{\dontrun{Garcon$new("img")$set(30)}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-inc"></a>}}
+\subsection{Method \code{inc()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Garcon$inc(value)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{value}}{Percentage to increase to.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+Value to increase the garçon to.
+}
+
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{Garcon$new("img")$inc(30)}
 }
 \if{html}{\out{</div>}}
 

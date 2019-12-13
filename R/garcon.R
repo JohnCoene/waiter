@@ -65,7 +65,25 @@ Garcon <- R6::R6Class(
     set = function(value) {
       if(missing(value))
         stop("Missing `value`", call. = FALSE)
+
+      private$.current_value <- value
       private$.session$sendCustomMessage("garcon-set", list(image = private$.image, value = value))
+      invisible(self)
+    },
+#' @details
+#' Value to increase the garçon to.
+#' 
+#' @param value Percentage to increase to.
+#' 
+#' @examples
+#' \dontrun{Garcon$new("img")$inc(30)}
+    inc = function(value) {
+      if(missing(value))
+        stop("Missing `value`", call. = FALSE)
+
+      private$.current_value <- private$.current_value + value
+      private$.session$sendCustomMessage("garcon-set", list(image = private$.image, value = private$.current_value))
+      invisible(self)
     },
 #' @details
 #' Reset the garçon to.
@@ -101,6 +119,7 @@ Garcon <- R6::R6Class(
   ),
   private = list(
     .image = NULL,
-    .session = NULL
+    .session = NULL,
+    .current_value = 0
   )
 )
