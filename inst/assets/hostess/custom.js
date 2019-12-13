@@ -1,5 +1,4 @@
 var hostesses = [];
-var notification;
 
 Shiny.addCustomMessageHandler('hostess-init', function(opts) {
   hostesses[opts.id] = new ldBar("#" + opts.id);
@@ -11,8 +10,6 @@ Shiny.addCustomMessageHandler('hostess-set', function(opts) {
   if(opts.value == 100){
     var notif = document.getElementById(opts.id);
 
-    console.log(notif);
-
     if(notif != undefined)
       notif.remove();
 
@@ -22,7 +19,7 @@ Shiny.addCustomMessageHandler('hostess-set', function(opts) {
 Shiny.addCustomMessageHandler('hostess-notify', function(opts) {
 
   // create div
-  notification = document.createElement("DIV");
+  var notification = document.createElement("DIV");
 
   // position div
   var pos = position_to_coords(opts.position);

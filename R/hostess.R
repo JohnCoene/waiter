@@ -127,6 +127,10 @@ Hostess <- R6::R6Class(
       # keep track for inc mthod
       private$.current_value <- value
 
+      # reset initialisation
+      if(value == private$.max)
+        private$.started <- FALSE
+
       opts <- list(id = private$.id, value = value)
       private$.session$sendCustomMessage("hostess-set", opts)
       invisible(self)
@@ -149,6 +153,10 @@ Hostess <- R6::R6Class(
       # increment
       value <- private$.current_value + value
       private$.current_value <- value
+
+      # reset initialisation
+      if(value == private$.max)
+        private$.started <- FALSE
 
       opts <- list(id = private$.id, value = value)
       private$.session$sendCustomMessage("hostess-set", opts)
@@ -184,7 +192,7 @@ Hostess <- R6::R6Class(
 #' \dontrun{Hostess$new()$get_loader()}
     get_loader = function(preset = NULL, text_color = "#FFFFFF", center_page = FALSE, 
       class = "", min = NULL, max = NULL, svg = NULL, progress_type = c("stroke", "fill"), 
-      fill_direction = c("ttb", "btt", "ltr", "rtl"), stroke_direction = c("normal", "reverse"), 
+      fill_direction = c("btt", "ttb", "ltr", "rtl"), stroke_direction = c("normal", "reverse"), 
       fill_color = NULL, stroke_color = NULL, ...){
 
       if(!is.null(private$.loader))
@@ -196,12 +204,12 @@ Hostess <- R6::R6Class(
 
       if(!is.null(max))
         private$.max <- max
-
+      
       hostess_loader(id = private$.id, preset = preset, text_color = text_color, 
         center_page = center_page, class = class, 
         min = private$.min, max = private$.max, svg = svg, progress_type = progress_type,
         fill_direction = fill_direction, stroke_direction = stroke_direction, 
-        stroke_color = stroke_color, ...)
+        fill_color = fill_color, stroke_color = stroke_color, ...)
     },
 #' @details
 #' Set a hostess loader as defined by \code{\link{hostess_loader}}.

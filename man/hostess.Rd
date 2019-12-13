@@ -213,7 +213,7 @@ Increase the hostess loading bar.
   max = NULL,
   svg = NULL,
   progress_type = c("stroke", "fill"),
-  fill_direction = c("ttb", "btt", "ltr", "rtl"),
+  fill_direction = c("btt", "ttb", "ltr", "rtl"),
   stroke_direction = c("normal", "reverse"),
   fill_color = NULL,
   stroke_color = NULL,
