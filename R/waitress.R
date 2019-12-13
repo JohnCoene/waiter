@@ -223,11 +223,13 @@ Waitress <- R6::R6Class(
 			if(!is.null(html)){
 				# force html tag otherwise breaks .innerHTML
 				if(is.character(html))
-					html <- span(html)
-				
-				# convert o html tags
-				html <- as.character(html)
+					html <- p(html)
+			} else {
+				html <- p(style = "width:200px;")
 			}
+
+			# convert to html tags
+			html <- as.character(html)
 
 			# initialised if has not been done already
 			if(!private$.initialised)
