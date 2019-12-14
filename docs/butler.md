@@ -3,13 +3,13 @@
 The butler is ideal when you cannot assess loading time, the butler is technically infinite.
 
 > [!DANGER]
-> The butler has been deprecated you can replicate an infinite loading bar with the waitress.
+> The butler has been deprecated; you can replicate an infinite loading bar with the waitress.
 
 ## How to
 
 1. Place `use_butler` anywhere in your UI.
 2. Call `show_butler` in your server.
-3. Don't forget to programatically hide the loading screen with `hide_butler`.
+3. Don't forget to programmatically hide the loading screen with `hide_butler`.
 
 You can, optionally, configure the butler with `config_butler`.
 
