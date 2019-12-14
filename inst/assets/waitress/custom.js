@@ -6,23 +6,29 @@ var waitress_to_hide = [];
 function position_to_coords(position){
   var pos = {};
 
+  var base_y = 0;
+  var current_notifications = document.getElementsByClassName("waitress-notification");
+  for(var n of current_notifications){
+    base_y = base_y + 10 + n.offsetHeight;
+  }
+
   if(position == "bl"){
     pos.top = "auto";
-    pos.bottom = "10px";
+    pos.bottom = (base_y + 10) + 'px';
     pos.left = "10px";
     pos.right = "auto";
   } else if (position == "tl"){
-    pos.top = "10px";
+    pos.top = (base_y + 10) + "px";
     pos.bottom = "auto";
     pos.left = "10px";
     pos.right = "auto";
   } else if(position == "br"){
     pos.top = "auto";
-    pos.bottom = "10px";
+    pos.bottom = (base_y + 10) + 'px';
     pos.left = "auto";
     pos.right = "10px";
   } else if(position == "tr"){
-    pos.top = "10px";
+    pos.top = (base_y + 10) + 'px';
     pos.bottom = "auto";
     pos.left = "auto";
     pos.right = "10px";
@@ -55,6 +61,7 @@ Shiny.addCustomMessageHandler('waitress-init', function(opts) {
     notification.style.zIndex = 9999;
     notification.id = opts.id;
     notification.classList.add("waitress-notification");
+    notification.classList.add("notifications");
     document.body.appendChild(notification);
     opts.id = '#' + opts.id;
   }

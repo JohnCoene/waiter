@@ -38,31 +38,35 @@ Shiny.addCustomMessageHandler('hostess-notify', function(opts) {
   notification.classList.add("waitress-notification");
   document.body.appendChild(notification);
 
-  setTimeout(function(){
-    hostesses[opts.id] = new ldBar("#" + opts.id);
-  }, 100)
+  hostesses[opts.id] = new ldBar("#" + opts.id);
 });
 
 function position_to_coords(position){
   var pos = {};
 
+  var base_y = 100;
+  var current_notifications = document.getElementsByClassName("waitress-notification");
+  for(var n of current_notifications){
+    base_y = base_y + 100 + n.offsetHeight;
+  }
+
   if(position == "bl"){
     pos.top = "auto";
-    pos.bottom = "100px";
+    pos.bottom = (base_y + 10) + 'px';
     pos.left = "10px";
     pos.right = "auto";
   } else if (position == "tl"){
-    pos.top = "10px";
+    pos.top = (base_y + 10) + 'px';
     pos.bottom = "auto";
     pos.left = "10px";
     pos.right = "auto";
   } else if(position == "br"){
     pos.top = "auto";
-    pos.bottom = "100px";
+    pos.bottom = (base_y + 10) + 'px';
     pos.left = "auto";
     pos.right = "10px";
   } else if(position == "tr"){
-    pos.top = "10px";
+    pos.top = (base_y + 10) + 'px';
     pos.bottom = "auto";
     pos.left = "auto";
     pos.right = "10px";
