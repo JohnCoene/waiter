@@ -109,11 +109,20 @@ Garcon <- R6::R6Class(
       cat("A garcon\n")
 		},
 #' @details
-#' Stop the garçon to.
+#' Stop the garçon.
 #' 
 #' @examples
 #' \dontrun{Garcon$new("img")$set(30)$stop()}
     stop = function() {
+      .Deprecated("close", package = "waiter", "`stop` is deprecated in favour of `close`")
+      private$.session$sendCustomMessage("garcon-stop", list(image = private$.image))
+    },
+#' @details
+#' Close the garçon.
+#' 
+#' @examples
+#' \dontrun{Garcon$new("img")$set(30)$close()}
+    close = function() {
       private$.session$sendCustomMessage("garcon-stop", list(image = private$.image))
     }
   ),

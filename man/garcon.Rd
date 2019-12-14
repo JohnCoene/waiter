@@ -48,6 +48,12 @@ Create a garcon to aniamte images on the waiter.
 ## ------------------------------------------------
 
 \dontrun{Garcon$new("img")$set(30)$stop()}
+
+## ------------------------------------------------
+## Method `Garcon$close`
+## ------------------------------------------------
+
+\dontrun{Garcon$new("img")$set(30)$close()}
 }
 \section{Methods}{
 \subsection{Public methods}{
@@ -59,6 +65,7 @@ Create a garcon to aniamte images on the waiter.
 \item \href{#method-destroy}{\code{Garcon$destroy()}}
 \item \href{#method-print}{\code{Garcon$print()}}
 \item \href{#method-stop}{\code{Garcon$stop()}}
+\item \href{#method-close}{\code{Garcon$close()}}
 \item \href{#method-clone}{\code{Garcon$clone()}}
 }
 }
@@ -226,12 +233,32 @@ print the garcon
 }
 
 \subsection{Details}{
-Stop the garçon to.
+Stop the garçon.
 }
 
 \subsection{Examples}{
 \if{html}{\out{<div class="r example copy">}}
 \preformatted{\dontrun{Garcon$new("img")$set(30)$stop()}
+}
+\if{html}{\out{</div>}}
+
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-close"></a>}}
+\subsection{Method \code{close()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Garcon$close()}\if{html}{\out{</div>}}
+}
+
+\subsection{Details}{
+Close the garçon.
+}
+
+\subsection{Examples}{
+\if{html}{\out{<div class="r example copy">}}
+\preformatted{\dontrun{Garcon$new("img")$set(30)$close()}
 }
 \if{html}{\out{</div>}}
 

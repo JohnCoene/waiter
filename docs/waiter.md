@@ -219,7 +219,7 @@ ui <- fluidPage(
     tags$img(
       src="https://waiter.john-coene.com/_assets/img/logo.png", 
       height=200, 
-      id = "myImage"
+      id = "myImage" # set id
     )
   )
 )
