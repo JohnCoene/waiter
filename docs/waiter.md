@@ -151,6 +151,9 @@ shinyApp(ui, server)
 
 To use the steward, simply add `use_steward`, it takes a few arguments to customise its look and feel.
 
+> [!TIP]
+> Make sure you include the dependencies with `use_steward`.
+
 ```r
 library(shiny)
 library(waiter)
@@ -175,6 +178,9 @@ shinyApp(ui, server)
 ### With Hostess
 
 Include the hostess dependencies with `use_hostess`, place the `hostess_loader` in the `show_waiter*` function then programmatically set the percentage with the `set` method. 
+
+> [!TIP]
+> Make sure you include the dependencies with `use_hostess`.
 
 ```r
 library(shiny)
@@ -207,6 +213,9 @@ shinyApp(ui, server)
 ### With garçon
 
 Then again don't forget to add the dependency by placing `use_garcon` in the UI. Initialise the garçon then add progress by setting the percentage with the `set` method where you select the image to animate by passing its id.
+
+> [!TIP]
+> Make sure you include the dependencies with `use_garcon`.
 
 ```r
 library(shiny)

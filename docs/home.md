@@ -14,8 +14,6 @@ The following staff members will help you keep your clients waiting:
 * A waiter - splash loading screens.
 * A waitress - loading bars on on elements or whole screen.
 * A hostess - customizable loading bars.
-* A steward - animate the waiter's backgrounds. 
-* A garcon - animate images for the waiter. 
 
 ## Installation
 
@@ -62,7 +60,6 @@ The underlying CSS and JavaScript libraries that enable waiter:
 
 - [Please Wait](https://github.com/Pathgather/please-wait)
 - [Spinkit CSS](https://tobiasahlin.com/spinkit/)
-- [Topbar](https://github.com/buunguyen/topbar)
 - [Progress.js](https://usablica.github.io/progress.js/)
 - [loading.io](https://loading.io/progress/)
 - [loadGo](http://franverona.com/loadgo/)
