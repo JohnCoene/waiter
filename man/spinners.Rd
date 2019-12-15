@@ -48,6 +48,17 @@
 \alias{spin_pong}
 \alias{spin_timer}
 \alias{spin_ball}
+\alias{spin_dual_circle}
+\alias{spin_seven_circle}
+\alias{spin_clock}
+\alias{spin_pushing_shapes}
+\alias{spin_fill}
+\alias{spin_rhombus}
+\alias{spin_balance}
+\alias{spin_square_circle}
+\alias{spin_circle_square}
+\alias{spin_puzzle}
+\alias{spin_half}
 \alias{spin_1}
 \alias{spin_2}
 \alias{spin_3}
@@ -149,6 +160,28 @@ spin_pong()
 spin_timer()
 
 spin_ball()
+
+spin_dual_circle()
+
+spin_seven_circle()
+
+spin_clock()
+
+spin_pushing_shapes()
+
+spin_fill()
+
+spin_rhombus()
+
+spin_balance()
+
+spin_square_circle()
+
+spin_circle_square()
+
+spin_puzzle()
+
+spin_half()
 
 spin_1()
 

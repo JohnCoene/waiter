@@ -440,6 +440,106 @@ spin_ball <- function(){
 
 #' @rdname spinners
 #' @export
+spin_dual_circle <- function(){
+  div(class = "sbl-circ-dual")
+}
+
+#' @rdname spinners
+#' @export
+spin_seven_circle <- function(){
+  div(
+    class = "sbl-seven-circles",
+    div(),
+    div(),
+    div(),
+    div(),
+    div(),
+    div(),
+    div()
+  )
+}
+
+#' @rdname spinners
+#' @export
+spin_clock <- function(){
+  div(class = "sbl-meter")
+}
+
+#' @rdname spinners
+#' @export
+spin_pushing_shapes <- function(){
+  div(
+    class = "sbl-pushing-shapes",
+    div(),
+    div()
+  )
+}
+
+#' @rdname spinners
+#' @export
+spin_fill <- function(){
+  div(class = "sbl-rect-spin-fill")
+}
+
+#' @rdname spinners
+#' @export
+spin_rhombus <- function(){
+  div(class = "sbl-cirle-to-rhombus")
+}
+
+#' @rdname spinners
+#' @export
+spin_balance <- function(){
+  div(class = "sbl-cirle-balance")
+}
+
+#' @rdname spinners
+#' @export
+spin_square_circle <- function(){
+  div(
+    class = "sbl-cirle-and-square",
+    div(),
+    div(),
+    div(),
+    div()
+  )
+}
+
+#' @rdname spinners
+#' @export
+spin_circle_square <- function(){
+  div(
+    class = "sbl-square-to-circle",
+    div(),
+    div(),
+    div()
+  )
+}
+
+#' @rdname spinners
+#' @export
+spin_puzzle <- function(){
+  div(
+    class = "sbl-puzzle",
+    div(),
+    div(),
+    div(),
+    div(),
+    div()
+  )
+}
+
+#' @rdname spinners
+#' @export
+spin_half <- function(){
+  div(
+    class = "sbl-half-circle-spin",
+    div()
+  )
+}
+
+#' @rdname spinners
+#' @export
 spin_1 <- function(){
   div(
     class = "container--box",
