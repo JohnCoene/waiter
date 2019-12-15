@@ -296,3 +296,26 @@
     opacity: 0;
   }
 }
+
+.waiter-terminal{
+  color: white;
+  text-align: center;
+}
+
+.waiter-terminal:after {
+  animation: terminal .8s linear infinite;
+  content: "⠋";
+  font-size: 80px;
+}
+
+@keyframes terminal {
+  10% { content: "⠙"; }
+  20% { content: "⠹"; }
+  30% { content: "⠸"; }
+  40% { content: "⠼"; }
+  50% { content: "⠴"; }
+  60% { content: "⠦"; }
+  70% { content: "⠧"; }
+  80% { content: "⠇"; }
+  90% { content: "⠏"; }
+}

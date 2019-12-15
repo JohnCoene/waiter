@@ -320,6 +320,126 @@ spin_ripple <- function(){
 
 #' @rdname spinners
 #' @export
+spin_terminal <- function(){
+  div(class = "waiter-terminal")
+}
+
+#' @rdname spinners
+#' @export
+spin_loader <- function(){
+  div(class = "spinner-loader")
+}
+
+#' @rdname spinners
+#' @export
+spin_throbber <- function(){
+  div(class = "throbber-loader")
+}
+
+#' @rdname spinners
+#' @export
+spin_refresh <- function(){
+  div(class = "refreshing-loader")
+}
+
+#' @rdname spinners
+#' @export
+spin_heartbeat <- function(){
+  div(class = "heartbeat-loader")
+}
+
+#' @rdname spinners
+#' @export
+spin_gauge <- function(){
+  div(class = "gauge-loader")
+}
+
+#' @rdname spinners
+#' @export
+spin_3k <- function(){
+  div(class = "three-quarters-loader")
+}
+
+#' @rdname spinners
+#' @export
+spin_wobblebar <- function(){
+  div(class = "wobblebar-loader")
+}
+
+#' @rdname spinners
+#' @export
+spin_atebits <- function(){
+  div(class = "atebits-loader")
+}
+
+#' @rdname spinners
+#' @export
+spin_whirly <- function(){
+  div(class = "whirly-loader")
+}
+
+#' @rdname spinners
+#' @export
+spin_flowers <- function(){
+  div(class = "flower-loader")
+}
+
+#' @rdname spinners
+#' @export
+spin_dots <- function(){
+  div(class = "dots-loader")
+}
+
+#' @rdname spinners
+#' @export
+spin_3circles <- function(){
+  div(class = "circles-loader")
+}
+
+#' @rdname spinners
+#' @export
+spin_plus <- function(){
+  div(class = "plus-loader")
+}
+
+#' @rdname spinners
+#' @export
+spin_pulsar <- function(){
+  div(class = "pulse-loader")
+}
+
+#' @rdname spinners
+#' @export
+spin_hexdots <- function(){
+  div(class = "hexdots-loader")
+}
+
+#' @rdname spinners
+#' @export
+spin_inner_circles <- function(){
+  div(class = "inner-circles-loader")
+}
+
+#' @rdname spinners
+#' @export
+spin_pong <- function(){
+  div(class = "pong-loader")
+}
+
+#' @rdname spinners
+#' @export
+spin_timer <- function(){
+  div(class = "timer-loader")
+}
+
+#' @rdname spinners
+#' @export
+spin_ball <- function(){
+  div(class = "ball-loader")
+}
+
+#' @rdname spinners
+#' @export
 spin_1 <- function(){
   div(
     class = "container--box",
