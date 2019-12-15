@@ -4,8 +4,8 @@ function get_offset(element) {
 
   //set width and height
   // -6 pixels to keep margin between plot if stacked up/side by side
-  elementPosition.width = element.offsetWidth -2;
-  elementPosition.height = element.offsetHeight -2;
+  elementPosition.width = element.offsetWidth;
+  elementPosition.height = element.offsetHeight;
 
   //calculate element top and left
   var _x = element.offsetLeft;
@@ -17,8 +17,8 @@ function get_offset(element) {
   
   //set top and left
   //use 3 margin (6/2)
-  elementPosition.top = _y + 1;
-  elementPosition.left = _x + 1;
+  elementPosition.top = _y;
+  elementPosition.left = _x;
 
   return elementPosition;
 }
