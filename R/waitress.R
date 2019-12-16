@@ -39,7 +39,7 @@
 #' @import shiny
 #' @name waitress
 #' @export
-use_waitress <- function(color = "#b84f3e", percent_color = "#333333"){
+use_waitress <- function(color = "#697682", percent_color = "#333333"){
 	singleton(
 		tags$head(
 			tags$script("window.waitress = [];"),

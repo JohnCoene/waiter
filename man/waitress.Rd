@@ -7,7 +7,7 @@
 \alias{browse_waitresses}
 \title{Waitress}
 \usage{
-use_waitress(color = "#b84f3e", percent_color = "#333333")
+use_waitress(color = "#697682", percent_color = "#333333")
 
 call_waitress(
   selector = NULL,
