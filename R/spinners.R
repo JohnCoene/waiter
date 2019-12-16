@@ -557,7 +557,7 @@ spin_loaders <- function(id = 1, color = "white", style = NULL){
   else
     style <- color
   
-  div(class = paste0("loading-", id), style = style)
+  div(class = paste0("loaderz-", id), style = style)
 }
 
 #' @rdname spinners

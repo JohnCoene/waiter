@@ -1,4 +1,4 @@
-[class*="loading-"] {
+[class*="loaderz-"] {
   display: inline-block;
   width: 2em;
   height: 2em;
@@ -6,12 +6,12 @@
   vertical-align: middle;
   pointer-events: none;
 }
-.loading-01 {
+.loaderz-01 {
   border: 0.2em dotted currentcolor;
   border-radius: 50%;
-  animation: 1s loading-01 linear infinite;
+  animation: 1s loaderz-01 linear infinite;
 }
-@keyframes loading-01 {
+@keyframes loaderz-01 {
   0% {
     transform: rotate(0deg);
  }
@@ -19,14 +19,14 @@
     transform: rotate(360deg);
  }
 }
-.loading-02 {
+.loaderz-02 {
   border: 0.2em solid transparent;
   border-left-color: currentcolor;
   border-right-color: currentcolor;
   border-radius: 50%;
-  animation: 1s loading-02 linear infinite;
+  animation: 1s loaderz-02 linear infinite;
 }
-@keyframes loading-02 {
+@keyframes loaderz-02 {
   0% {
     transform: rotate(0deg);
  }
@@ -34,14 +34,14 @@
     transform: rotate(360deg);
  }
 }
-.loading-03 {
+.loaderz-03 {
   border: 0.2em solid currentcolor;
   border-bottom-color: transparent;
   border-radius: 50%;
-  animation: 1s loading-03 linear infinite;
+  animation: 1s loaderz-03 linear infinite;
   position: relative;
 }
-@keyframes loading-03 {
+@keyframes loaderz-03 {
   0% {
     transform: rotate(0deg);
  }
@@ -49,13 +49,13 @@
     transform: rotate(360deg);
  }
 }
-.loading-04 {
+.loaderz-04 {
   border: 1px solid currentcolor;
   border-radius: 50%;
-  animation: 1s loading-04 linear infinite;
+  animation: 1s loaderz-04 linear infinite;
   position: relative;
 }
-.loading-04:before {
+.loaderz-04:before {
   content: '';
   display: block;
   width: 0;
@@ -66,7 +66,7 @@
   border: 0.2em solid currentcolor;
   border-radius: 50%;
 }
-@keyframes loading-04 {
+@keyframes loaderz-04 {
   0% {
     transform: rotate(0deg);
  }
@@ -74,14 +74,14 @@
     transform: rotate(360deg);
  }
 }
-.loading-05 {
+.loaderz-05 {
   border: 0.2em solid transparent;
   border-top-color: currentcolor;
   border-radius: 50%;
-  animation: 1s loading-05 linear infinite;
+  animation: 1s loaderz-05 linear infinite;
   position: relative;
 }
-.loading-05:before {
+.loaderz-05:before {
   content: '';
   display: block;
   width: inherit;
@@ -93,7 +93,7 @@
   border-radius: 50%;
   opacity: 0.5;
 }
-@keyframes loading-05 {
+@keyframes loaderz-05 {
   0% {
     transform: rotate(0deg);
  }
@@ -101,12 +101,12 @@
     transform: rotate(360deg);
  }
 }
-.loading-06 {
+.loaderz-06 {
   border: 0.2em solid currentcolor;
   border-radius: 50%;
-  animation: loading-06 1s ease-out infinite;
+  animation: loaderz-06 1s ease-out infinite;
 }
-@keyframes loading-06 {
+@keyframes loaderz-06 {
   0% {
     transform: scale(0);
     opacity: 0;
@@ -119,12 +119,12 @@
     opacity: 0;
  }
 }
-.loading-07 {
+.loaderz-07 {
   border: 0 solid transparent;
   border-radius: 50%;
   position: relative;
 }
-.loading-07:before, .loading-07:after {
+.loaderz-07:before, .loaderz-07:after {
   content: '';
   border: 0.2em solid currentcolor;
   border-radius: 50%;
@@ -133,16 +133,16 @@
   position: absolute;
   top: 0;
   left: 0;
-  animation: loading-07 1s linear infinite;
+  animation: loaderz-07 1s linear infinite;
   opacity: 0;
 }
-.loading-07:before {
+.loaderz-07:before {
   animation-delay: 1s;
 }
-.loading-07:after {
+.loaderz-07:after {
   animation-delay: 0.5s;
 }
-@keyframes loading-07 {
+@keyframes loaderz-07 {
   0% {
     transform: scale(0);
     opacity: 0;
@@ -155,10 +155,10 @@
     opacity: 0;
  }
 }
-.loading-08 {
+.loaderz-08 {
   position: relative;
 }
-.loading-08:before, .loading-08:after {
+.loaderz-08:before, .loaderz-08:after {
   content: '';
   width: inherit;
   height: inherit;
@@ -168,12 +168,12 @@
   position: absolute;
   top: 0;
   left: 0;
-  animation: loading-08 2s infinite ease-in-out;
+  animation: loaderz-08 2s infinite ease-in-out;
 }
-.loading-08:after {
+.loaderz-08:after {
   animation-delay: -1s;
 }
-@keyframes loading-08 {
+@keyframes loaderz-08 {
   0%, 100% {
     transform: scale(0);
  }
@@ -181,12 +181,12 @@
     transform: scale(1);
  }
 }
-.loading-09 {
+.loaderz-09 {
   background-color: currentcolor;
   border-radius: 50%;
-  animation: loading-09 1s infinite ease-in-out;
+  animation: loaderz-09 1s infinite ease-in-out;
 }
-@keyframes loading-09 {
+@keyframes loaderz-09 {
   0% {
     transform: scale(0);
  }
@@ -195,11 +195,11 @@
     opacity: 0;
  }
 }
-.loading-10 {
+.loaderz-10 {
   position: relative;
-  animation: loading-10-1 2s infinite linear;
+  animation: loaderz-10-1 2s infinite linear;
 }
-.loading-10:before, .loading-10:after {
+.loaderz-10:before, .loaderz-10:after {
   content: '';
   width: 0;
   height: 0;
@@ -207,23 +207,23 @@
   display: block;
   position: absolute;
   border-radius: 100%;
-  animation: loading-10-2 2s infinite ease-in-out;
+  animation: loaderz-10-2 2s infinite ease-in-out;
 }
-.loading-10:before {
+.loaderz-10:before {
   top: 0;
   left: 50%;
 }
-.loading-10:after {
+.loaderz-10:after {
   bottom: 0;
   right: 50%;
   animation-delay: -1s;
 }
-@keyframes loading-10-1 {
+@keyframes loaderz-10-1 {
   100% {
     transform: rotate(360deg);
  }
 }
-@keyframes loading-10-2 {
+@keyframes loaderz-10-2 {
   0%, 100% {
     transform: scale(0);
  }
@@ -231,11 +231,11 @@
     transform: scale(1);
  }
 }
-.loading-11 {
+.loaderz-11 {
   background-color: currentcolor;
-  animation: loading-11 1.2s infinite ease-in-out;
+  animation: loaderz-11 1.2s infinite ease-in-out;
 }
-@keyframes loading-11 {
+@keyframes loaderz-11 {
   0% {
     transform: perspective(120px) rotateX(0deg) rotateY(0deg);
  }
@@ -246,10 +246,10 @@
     transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
  }
 }
-.loading-12 {
+.loaderz-12 {
   position: relative;
 }
-.loading-12:before, .loading-12:after {
+.loaderz-12:before, .loaderz-12:after {
   content: '';
   display: block;
   position: absolute;
@@ -259,14 +259,14 @@
   top: 0;
   bottom: 50%;
   box-shadow: -0.5em 0 0 currentcolor;
-  animation: loading-12 1s linear infinite;
+  animation: loaderz-12 1s linear infinite;
 }
-.loading-12:after {
+.loaderz-12:after {
   top: 50%;
   bottom: 0;
   animation-delay: 0.25s;
 }
-@keyframes loading-12 {
+@keyframes loaderz-12 {
   0%, 100% {
     box-shadow: -0.5em 0 0 transparent;
     background-color: currentcolor;
@@ -276,26 +276,26 @@
     background-color: transparent;
  }
 }
-.loading-13:before, .loading-13:after, .loading-13 {
+.loaderz-13:before, .loaderz-13:after, .loaderz-13 {
   border-radius: 50%;
   animation-fill-mode: both;
-  animation: loading-13 1.8s infinite ease-in-out;
+  animation: loaderz-13 1.8s infinite ease-in-out;
 }
-.loading-13 {
+.loaderz-13 {
   color: currentcolor;
   position: relative;
   transform: translateZ(0);
   animation-delay: -0.16s;
   top: -1em;
 }
-.loading-13:before {
+.loaderz-13:before {
   right: 100%;
   animation-delay: -0.32s;
 }
-.loading-13:after {
+.loaderz-13:after {
   left: 100%;
 }
-.loading-13:before, .loading-13:after {
+.loaderz-13:before, .loaderz-13:after {
   content: '';
   display: block;
   position: absolute;
@@ -303,7 +303,7 @@
   width: inherit;
   height: inherit;
 }
-@keyframes loading-13 {
+@keyframes loaderz-13 {
   0%, 80%, 100% {
     box-shadow: 0 1em 0 -1em;
  }
@@ -311,15 +311,15 @@
     box-shadow: 0 1em 0 -0.2em;
  }
 }
-.loading-14 {
+.loaderz-14 {
   border-radius: 50%;
   box-shadow: 0 1em 0 -0.2em currentcolor;
   position: relative;
-  animation: loading-14 0.8s ease-in-out alternate infinite;
+  animation: loaderz-14 0.8s ease-in-out alternate infinite;
   animation-delay: 0.32s;
   top: -1em;
 }
-.loading-14:after, .loading-14:before {
+.loaderz-14:after, .loaderz-14:before {
   content: '';
   position: absolute;
   width: inherit;
@@ -328,15 +328,15 @@
   box-shadow: inherit;
   animation: inherit;
 }
-.loading-14:before {
+.loaderz-14:before {
   left: -1em;
   animation-delay: 0.48s;
 }
-.loading-14:after {
+.loaderz-14:after {
   right: -1em;
   animation-delay: 0.16s;
 }
-@keyframes loading-14 {
+@keyframes loaderz-14 {
   0% {
     box-shadow: 0 2em 0 -0.2em currentcolor;
  }
@@ -344,16 +344,16 @@
     box-shadow: 0 1em 0 -0.2em currentcolor;
  }
 }
-.loading-15 {
+.loaderz-15 {
   background: currentcolor;
   position: relative;
-  animation: loading-15 1s ease-in-out infinite;
+  animation: loaderz-15 1s ease-in-out infinite;
   animation-delay: 0.4s;
   width: 0.25em;
   height: 0.5em;
   margin: 0 0.5em;
 }
-.loading-15:after, .loading-15:before {
+.loaderz-15:after, .loaderz-15:before {
   content: '';
   position: absolute;
   width: inherit;
@@ -361,15 +361,15 @@
   background: inherit;
   animation: inherit;
 }
-.loading-15:before {
+.loaderz-15:before {
   right: 0.5em;
   animation-delay: 0.2s;
 }
-.loading-15:after {
+.loaderz-15:after {
   left: 0.5em;
   animation-delay: 0.6s;
 }
-@keyframes loading-15 {
+@keyframes loaderz-15 {
   0%, 100% {
     box-shadow: 0 0 0 currentcolor, 0 0 0 currentcolor;
  }
@@ -377,12 +377,12 @@
     box-shadow: 0 -0.25em 0 currentcolor, 0 0.25em 0 currentcolor;
  }
 }
-.loading-16 {
+.loaderz-16 {
   transform: rotateZ(45deg);
   perspective: 1000px;
   border-radius: 50%;
 }
-.loading-16:before, .loading-16:after {
+.loaderz-16:before, .loaderz-16:after {
   content: '';
   display: block;
   position: absolute;
@@ -393,10 +393,10 @@
   border-radius: 50%;
   animation: 1s spin linear infinite;
 }
-.loading-16:before {
+.loaderz-16:before {
   transform: rotateX(70deg);
 }
-.loading-16:after {
+.loaderz-16:after {
   transform: rotateY(70deg);
   animation-delay: 0.4s;
 }
@@ -442,12 +442,12 @@
     box-shadow: 0.2em -0.2em 0 0 currentcolor;
  }
 }
-.loading-17 {
+.loaderz-17 {
   position: relative;
   background-color: currentcolor;
   border-radius: 50%;
 }
-.loading-17:after, .loading-17:before {
+.loaderz-17:after, .loaderz-17:before {
   content: "";
   position: absolute;
   width: 0.25em;
@@ -455,22 +455,22 @@
   border-radius: 50%;
   opacity: 0.8;
 }
-.loading-17:after {
+.loaderz-17:after {
   left: -0.5em;
   top: -0.25em;
   background-color: currentcolor;
   transform-origin: 0.75em 1em;
-  animation: loading-17 1s linear infinite;
+  animation: loaderz-17 1s linear infinite;
   opacity: 0.6;
 }
-.loading-17:before {
+.loaderz-17:before {
   left: -1.25em;
   top: -0.75em;
   background-color: currentcolor;
   transform-origin: 1.5em 1em;
-  animation: loading-17 2s linear infinite;
+  animation: loaderz-17 2s linear infinite;
 }
-@keyframes loading-17 {
+@keyframes loaderz-17 {
   0% {
     transform: rotateZ(0deg) translate3d(0, 0, 0);
  }
@@ -478,10 +478,10 @@
     transform: rotateZ(360deg) translate3d(0, 0, 0);
  }
 }
-.loading-18 {
+.loaderz-18 {
   position: relative;
 }
-.loading-18:before, .loading-18:after {
+.loaderz-18:before, .loaderz-18:after {
   content: '';
   display: block;
   position: absolute;
@@ -490,20 +490,20 @@
   border-bottom-color: currentcolor;
   top: 0;
   left: 0;
-  animation: 1s loading-18 linear infinite;
+  animation: 1s loaderz-18 linear infinite;
 }
-.loading-18:before {
+.loaderz-18:before {
   width: 1em;
   height: 1em;
 }
-.loading-18:after {
+.loaderz-18:after {
   width: 0.8em;
   height: 0.8em;
   top: 0.1em;
   left: 0.1em;
   animation-direction: reverse;
 }
-@keyframes loading-18 {
+@keyframes loaderz-18 {
   0% {
     transform: rotate(0deg);
  }
@@ -511,25 +511,25 @@
     transform: rotate(360deg);
  }
 }
-.loading-19 {
+.loaderz-19 {
   border-top: 0.2em solid currentcolor;
   border-right: 0.2em solid transparent;
-  animation: loading-19 1s linear infinite;
+  animation: loaderz-19 1s linear infinite;
   border-radius: 100%;
   position: relative;
 }
-@keyframes loading-19 {
+@keyframes loaderz-19 {
   to {
     transform: rotate(360deg);
  }
 }
-.loading-20 {
+.loaderz-20 {
   background-color: transparent;
   box-shadow: inset 0px 0px 0px 0.1em currentcolor;
   border-radius: 50%;
   position: relative;
 }
-.loading-20:after, .loading-20:before {
+.loaderz-20:after, .loaderz-20:before {
   position: absolute;
   content: "";
   background-color: currentcolor;
@@ -538,15 +538,15 @@
   height: 0.1em;
   transform-origin: left center;
 }
-.loading-20:after {
+.loaderz-20:after {
   width: 0.4em;
-  animation: loading-20 2s linear infinite;
+  animation: loaderz-20 2s linear infinite;
 }
-.loading-20:before {
+.loaderz-20:before {
   width: 0.3em;
-  animation: loading-20 8s linear infinite;
+  animation: loaderz-20 8s linear infinite;
 }
-@keyframes loading-20 {
+@keyframes loaderz-20 {
   0% {
     transform: rotate(0deg);
  }
@@ -554,24 +554,24 @@
     transform: rotate(360deg);
  }
 }
-.loading-21 {
+.loaderz-21 {
   position: relative;
 }
-.loading-21:before, .loading-21:after {
+.loaderz-21:before, .loaderz-21:after {
   position: absolute;
   content: "";
 }
-.loading-21:before {
+.loaderz-21:before {
   width: 80%;
   height: 80%;
   left: 10%;
   bottom: 10%;
   border-radius: 100% 100% 100% 0;
   box-shadow: 0px 0px 0px 0.1em currentcolor;
-  animation: loading-21 1s linear infinite;
+  animation: loaderz-21 1s linear infinite;
   transform: rotate(-46deg);
 }
-.loading-21:after {
+.loaderz-21:after {
   width: 1em;
   height: 0.3em;
   border-radius: 100%;
@@ -580,7 +580,7 @@
   bottom: -0.2em;
   z-index: -1;
 }
-@keyframes loading-21 {
+@keyframes loaderz-21 {
   0% {
     top: 0;
  }
@@ -591,33 +591,33 @@
     top: 0;
  }
 }
-.loading-22 {
+.loaderz-22 {
   border: 0.1em currentcolor solid;
   border-radius: 100%;
   position: relative;
   overflow: hidden;
   z-index: 1;
 }
-.loading-22:after, .loading-22:before {
+.loaderz-22:after, .loaderz-22:before {
   position: absolute;
   content: "";
   background-color: currentcolor;
 }
-.loading-22:after {
+.loaderz-22:after {
   width: 50%;
   height: 0.1em;
   left: 50%;
   top: 50%;
   transform-origin: left center;
-  animation: loading-22 2s linear infinite alternate;
+  animation: loaderz-22 2s linear infinite alternate;
 }
-.loading-22:before {
+.loaderz-22:before {
   width: 100%;
   height: 40%;
   left: 0;
   bottom: 0;
 }
-@keyframes loading-22 {
+@keyframes loaderz-22 {
   0% {
     transform: rotate(-160deg);
  }
@@ -625,14 +625,14 @@
     transform: rotate(-20deg);
  }
 }
-.loading-23 {
+.loaderz-23 {
   height: 0.5em;
   border: 0.1em currentcolor solid;
   border-radius: 0.1em;
   position: relative;
-  animation: loading-23 5s linear infinite;
+  animation: loaderz-23 5s linear infinite;
 }
-.loading-23:after {
+.loaderz-23:after {
   width: 0.07em;
   height: 100%;
   background-color: currentcolor;
@@ -642,7 +642,7 @@
   top: 0;
   left: calc(100% + .1em);
 }
-@keyframes loading-23 {
+@keyframes loaderz-23 {
   0% {
     box-shadow: inset 0px 0px 0px currentcolor;
  }
@@ -650,18 +650,18 @@
     box-shadow: inset 1em 0px 0px currentcolor;
  }
 }
-.loading-24 {
+.loaderz-24 {
   width: 0.8em;
   height: 1em;
   border: 0.1em currentcolor solid;
   border-radius: 0px 0px 0.2em 0.2em;
   position: relative;
 }
-.loading-24:after, .loading-24:before {
+.loaderz-24:after, .loaderz-24:before {
   position: absolute;
   content: "";
 }
-.loading-24:after {
+.loaderz-24:after {
   width: 0.2em;
   height: 50%;
   border: 0.1em currentcolor solid;
@@ -670,16 +670,16 @@
   left: calc(100% + .1em);
   top: 0.1em;
 }
-.loading-24:before {
+.loaderz-24:before {
   width: 0.1em;
   height: 0.3em;
   background-color: currentcolor;
   top: -0.3em;
   left: 0.05em;
   box-shadow: 0.2em 0px 0px 0px currentcolor, 0.2em -0.2em 0px 0px currentcolor, 0.4em 0px 0px 0px currentcolor;
-  animation: loading-24 1s linear infinite alternate;
+  animation: loaderz-24 1s linear infinite alternate;
 }
-@keyframes loading-24 {
+@keyframes loaderz-24 {
   0% {
     height: 0px;
  }
@@ -687,12 +687,12 @@
     height: 6px;
  }
 }
-.loading-25 {
+.loaderz-25 {
   border: 0.1em currentcolor solid;
   position: relative;
-  animation: loading-25-1 5s linear infinite;
+  animation: loaderz-25-1 5s linear infinite;
 }
-.loading-25:after {
+.loaderz-25:after {
   width: 0.2em;
   height: 0.2em;
   position: absolute;
@@ -700,9 +700,9 @@
   background-color: currentcolor;
   bottom: calc(100% + .2em);
   left: -0.4em;
-  animation: loading-25-2 1s ease-in-out infinite;
+  animation: loaderz-25-2 1s ease-in-out infinite;
 }
-@keyframes loading-25-1 {
+@keyframes loaderz-25-1 {
   0% {
     box-shadow: inset 0 0 0 0 currentcolor;
  }
@@ -710,7 +710,7 @@
     box-shadow: inset 0 -1em 0 0 currentcolor;
  }
 }
-@keyframes loading-25-2 {
+@keyframes loaderz-25-2 {
   25% {
     left: calc(100% + .2em);
     bottom: calc(100% + .2em);
@@ -728,15 +728,15 @@
     bottom: calc(100% + .2em);
  }
 }
-.loading-26 {
+.loaderz-26 {
   width: 0.5em;
   height: 0.5em;
   background-color: currentcolor;
   box-shadow: 1em 0px 0px currentcolor;
   border-radius: 50%;
-  animation: loading-26 1s ease-in-out infinite alternate;
+  animation: loaderz-26 1s ease-in-out infinite alternate;
 }
-@keyframes loading-26 {
+@keyframes loaderz-26 {
   0% {
     opacity: 0.1;
     transform: rotate(0deg) scale(0.5);
@@ -746,13 +746,13 @@
     transform: rotate(360deg) scale(1.2);
  }
 }
-.loading-27 {
+.loaderz-27 {
   box-shadow: inset 0 0 0 0.1em currentcolor;
   border-radius: 50%;
   position: relative;
   margin-left: 1.2em;
 }
-.loading-27:before {
+.loaderz-27:before {
   content: '';
   display: block;
   width: inherit;
@@ -763,7 +763,7 @@
   top: 0;
   box-shadow: inset 0 0 0 0.1em currentcolor;
 }
-.loading-27:after {
+.loaderz-27:after {
   border: 0.2em solid currentcolor;
   box-shadow: -1.2em 0 0 0 currentcolor;
   width: 0;
@@ -773,9 +773,9 @@
   top: 25%;
   position: absolute;
   content: "";
-  animation: loading-27 2s linear infinite alternate;
+  animation: loaderz-27 2s linear infinite alternate;
 }
-@keyframes loading-27 {
+@keyframes loaderz-27 {
   0% {
     left: 0;
  }
@@ -783,11 +783,11 @@
     left: 0.5em;
  }
 }
-.loading-28 {
+.loaderz-28 {
   position: relative;
-  animation: 2s loading-28-1 infinite;
+  animation: 2s loaderz-28-1 infinite;
 }
-.loading-28:before {
+.loaderz-28:before {
   content: '';
   display: block;
   width: inherit;
@@ -797,7 +797,7 @@
   transform: rotate(45deg);
   border-width: 0.1em 0.05em 0.05em 0.1em;
 }
-.loading-28:after {
+.loaderz-28:after {
   content: '';
   display: block;
   width: 0.2em;
@@ -807,9 +807,9 @@
   left: 50%;
   border-radius: 50%;
   box-shadow: -0.07em 0.07em 0 0.1em currentcolor;
-  animation: 2s loading-28-2 linear infinite;
+  animation: 2s loaderz-28-2 linear infinite;
 }
-@keyframes loading-28-1 {
+@keyframes loaderz-28-1 {
   0%, 100% {
     transform: scaleY(1);
  }
@@ -820,7 +820,7 @@
     transform: scaleY(1);
  }
 }
-@keyframes loading-28-2 {
+@keyframes loaderz-28-2 {
   0%, 100% {
     transform: translateX(0);
  }
@@ -831,12 +831,12 @@
     transform: transalteX(200%);
  }
 }
-.loading-29 {
+.loaderz-29 {
   border-radius: 50%;
   box-shadow: inset 0 0 0 0.1em currentcolor, -0.5em -0.5em 0 -0.4em currentcolor, 0 -0.7em 0 -0.4em currentcolor, 0.5em -0.5em 0 -0.4em currentcolor, -0.5em 0.5em 0 -0.4em currentcolor, 0 0.7em 0 -0.4em currentcolor, 0.5em 0.5em 0 -0.4em currentcolor, -0.7em 0 0 -0.4em currentcolor, 0.7em 0 0 -0.4em currentcolor;
-  animation: 5s loading-29 linear infinite;
+  animation: 5s loaderz-29 linear infinite;
 }
-@keyframes loading-29 {
+@keyframes loaderz-29 {
   0% {
     transform: rotate(0deg);
  }
@@ -844,15 +844,15 @@
     transform: rotate(360deg);
  }
 }
-.loading-30 {
+.loaderz-30 {
   border: 0.2em solid transparent;
   border-top-color: currentcolor;
   border-bottom-color: currentcolor;
   border-radius: 50%;
   position: relative;
-  animation: 1s loading-30 linear infinite;
+  animation: 1s loaderz-30 linear infinite;
 }
-.loading-30:before, .loading-30:after {
+.loaderz-30:before, .loaderz-30:after {
   content: '';
   display: block;
   width: 0;
@@ -861,17 +861,17 @@
   border: 0.2em solid transparent;
   border-bottom-color: currentcolor;
 }
-.loading-30:before {
+.loaderz-30:before {
   transform: rotate(135deg);
   right: -0.3em;
   top: -0.05em;
 }
-.loading-30:after {
+.loaderz-30:after {
   transform: rotate(-45deg);
   left: -0.3em;
   bottom: -0.05em;
 }
-@keyframes loading-30 {
+@keyframes loaderz-30 {
   0% {
     transform: rotate(0deg);
  }
@@ -879,14 +879,14 @@
     transform: rotate(360deg);
  }
 }
-.loading-31 {
+.loaderz-31 {
   box-shadow: 0 0 2em currentcolor;
   background-color: currentcolor;
   position: relative;
   border-radius: 50%;
   transform: rotateX(-60deg) perspective(1000px);
 }
-.loading-31:before, .loading-31:after {
+.loaderz-31:before, .loaderz-31:after {
   content: '';
   display: block;
   position: absolute;
@@ -895,12 +895,12 @@
   width: inherit;
   height: inherit;
   border-radius: inherit;
-  animation: 1s loading-31 ease-out infinite;
+  animation: 1s loaderz-31 ease-out infinite;
 }
-.loading-31:after {
+.loaderz-31:after {
   animation-delay: 0.4s;
 }
-@keyframes loading-31 {
+@keyframes loaderz-31 {
   0% {
     opacity: 1;
     transform: rotate(0deg);
@@ -912,13 +912,13 @@
     box-shadow: -1em -1em 0 -0.35em currentcolor, 0 -1.5em 0 -0.35em currentcolor, 1em -1em 0 -0.35em currentcolor, -1.5em 0 0 -0.35em currentcolor, 1.5em 0 0 -0.35em currentcolor, -1em 1em 0 -0.35em currentcolor, 0 1.5em 0 -0.35em currentcolor, 1em 1em 0 -0.35em currentcolor;
  }
 }
-.loading-32 {
+.loaderz-32 {
   position: relative;
   border-radius: 50%;
   box-shadow: 0 0 1em 0 currentcolor, inset 0 0 1em 0 currentcolor;
-  animation: 1s loading-32 linear infinite;
+  animation: 1s loaderz-32 linear infinite;
 }
-.loading-32:before, .loading-32:after {
+.loaderz-32:before, .loaderz-32:after {
   content: '';
   display: block;
   width: inherit;
@@ -926,19 +926,19 @@
   position: absolute;
   border-radius: 50%;
 }
-.loading-32:before {
+.loaderz-32:before {
   border-top: 0.2em solid currentcolor;
   border-right: 0.2em solid transparent;
   top: 0.28em;
   right: calc(50% - .22em);
 }
-.loading-32:after {
+.loaderz-32:after {
   border-bottom: 0.2em solid currentcolor;
   border-left: 0.2em solid transparent;
   bottom: 0.28em;
   left: calc(50% - .22em);
 }
-@keyframes loading-32 {
+@keyframes loaderz-32 {
   0% {
     transform: rotateX(-60deg) rotateZ(0deg);
  }
@@ -946,15 +946,15 @@
     transform: rotateX(-60deg) rotateZ(360deg);
  }
 }
-.loading-33 {
+.loaderz-33 {
   border-radius: 50%;
   position: relative;
 }
-.loading-33:after, .loading-33:before {
+.loaderz-33:after, .loaderz-33:before {
   position: absolute;
   content: "";
 }
-.loading-33:after {
+.loaderz-33:after {
   height: 0.1em;
   width: 1em;
   background-color: currentcolor;
@@ -962,18 +962,18 @@
   bottom: 0;
   left: 0;
   transform-origin: bottom center;
-  animation: loading-33-1 0.8s ease-in-out infinite alternate;
+  animation: loaderz-33-1 0.8s ease-in-out infinite alternate;
 }
-.loading-33:before {
+.loaderz-33:before {
   height: 0.2em;
   width: 0.2em;
   background-color: currentcolor;
   border-radius: 50%;
   top: 0;
   left: calc(50% - .1em);
-  animation: loading-33-2 0.4s ease-in-out infinite alternate;
+  animation: loaderz-33-2 0.4s ease-in-out infinite alternate;
 }
-@keyframes loading-33-2 {
+@keyframes loaderz-33-2 {
   0% {
     height: 0.24em;
     transform: translateY(0px);
@@ -988,7 +988,7 @@
     transform: translateY(0.8em);
  }
 }
-@keyframes loading-33-1 {
+@keyframes loaderz-33-1 {
   0% {
     transform: rotate(-45deg);
  }
@@ -996,12 +996,12 @@
     transform: rotate(45deg);
  }
 }
-.loading-34 {
+.loaderz-34 {
   position: relative;
   width: 1em;
   height: 0.5em;
 }
-.loading-34:after, .loading-34:before {
+.loaderz-34:after, .loaderz-34:before {
   position: absolute;
   content: "";
   height: 0.4em;
@@ -1010,17 +1010,17 @@
   background-color: currentcolor;
   border-radius: 50%;
 }
-.loading-34:after {
+.loaderz-34:after {
   right: 0;
-  animation: loading-34-2 0.5s ease-in-out infinite;
+  animation: loaderz-34-2 0.5s ease-in-out infinite;
   animation-direction: alternate;
 }
-.loading-34:before {
+.loaderz-34:before {
   left: 0;
-  animation: loading-34-1 0.5s ease-in-out infinite;
+  animation: loaderz-34-1 0.5s ease-in-out infinite;
   animation-direction: alternate;
 }
-@keyframes loading-34-1 {
+@keyframes loaderz-34-1 {
   0% {
     transform: translatex(0px);
  }
@@ -1034,7 +1034,7 @@
     transform: translatex(0.2em);
  }
 }
-@keyframes loading-34-2 {
+@keyframes loaderz-34-2 {
   0% {
     transform: translatex(0px);
  }
@@ -1048,14 +1048,14 @@
     transform: translatex(-0.2em);
  }
 }
-.loading-35 {
+.loaderz-35 {
   margin: 0 0.5em;
   position: relative;
 }
-.loading-35:before {
+.loaderz-35:before {
   border-radius: 50%;
   background-color: currentcolor;
-  animation: loading-35 3s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+  animation: loaderz-35 3s cubic-bezier(0.77, 0, 0.175, 1) infinite;
   content: '';
   width: inherit;
   height: inherit;
@@ -1063,7 +1063,7 @@
   left: 0;
   position: absolute;
 }
-@keyframes loading-35 {
+@keyframes loaderz-35 {
   0% {
     transform: translateX(0) scale(1);
  }
@@ -1080,23 +1080,23 @@
     transform: translateX(0) scale(1);
  }
 }
-.loading-36 {
+.loaderz-36 {
   position: relative;
 }
-.loading-36:before, .loading-36:after {
+.loaderz-36:before, .loaderz-36:after {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
 }
-.loading-36:before {
+.loaderz-36:before {
   width: 1em;
   height: 1em;
   border: 0.1em solid currentcolor;
   border-radius: 50%;
-  animation: loading-36-1 1.15s infinite -0.3s;
+  animation: loaderz-36-1 1.15s infinite -0.3s;
 }
-.loading-36:after {
+.loaderz-36:after {
   right: 0;
   bottom: 0;
   margin: auto;
@@ -1105,14 +1105,14 @@
   border: 0.1em solid currentcolor;
   border-radius: 50%;
   transform: translate(-0.2em);
-  animation: loading-36-2 4.6s infinite steps(1);
+  animation: loaderz-36-2 4.6s infinite steps(1);
 }
-@keyframes loading-36-1 {
+@keyframes loaderz-36-1 {
   to {
     transform: rotateX(180deg);
  }
 }
-@keyframes loading-36-2 {
+@keyframes loaderz-36-2 {
   0% {
     opacity: 0;
  }
@@ -1126,12 +1126,12 @@
     box-shadow: 0.2em 0 0 currentcolor, 0.4em 0 0 currentcolor;
  }
 }
-.loading-37 {
+.loaderz-37 {
   border-right: 0.1em solid currentcolor;
   border-radius: 100%;
-  animation: loading-37 800ms linear infinite;
+  animation: loaderz-37 800ms linear infinite;
 }
-.loading-37:before, .loading-37:after {
+.loaderz-37:before, .loaderz-37:after {
   content: '';
   width: 0.8em;
   height: 0.8em;
@@ -1141,9 +1141,9 @@
   left: calc(50% - .4em);
   border-left: 0.08em solid currentcolor;
   border-radius: 100%;
-  animation: loading-37 400ms linear infinite reverse;
+  animation: loaderz-37 400ms linear infinite reverse;
 }
-.loading-37:after {
+.loaderz-37:after {
   width: 0.6em;
   height: 0.6em;
   top: calc(50% - .3em);
@@ -1152,7 +1152,7 @@
   border-right: 0.05em solid currentcolor;
   animation: none;
 }
-@keyframes loading-37 {
+@keyframes loaderz-37 {
   from {
     transform: rotate(360deg);
  }
@@ -1160,13 +1160,13 @@
     transform: rotate(0deg);
  }
 }
-.loading-38 {
+.loaderz-38 {
   height: 0.1em;
   width: 0.1em;
   box-shadow: -0.2em -0.2em 0 0.1em currentcolor, -0.2em -0.2em 0 0.1em currentcolor, -0.2em -0.2em 0 0.1em currentcolor, -0.2em -0.2em 0 0.1em currentcolor;
-  animation: loading-38 6s infinite;
+  animation: loaderz-38 6s infinite;
 }
-@keyframes loading-38 {
+@keyframes loaderz-38 {
   0% {
     box-shadow: -0.2em -0.2em 0 0.1em currentcolor, -0.2em -0.2em 0 0.1em currentcolor, -0.2em -0.2em 0 0.1em currentcolor, -0.2em -0.2em 0 0.1em currentcolor;
  }
@@ -1207,15 +1207,15 @@
     box-shadow: -0.2em -0.2em 0 0.1em currentcolor, -0.2em -0.2em 0 0.1em currentcolor, -0.2em -0.2em 0 0.1em currentcolor, -0.2em -0.2em 0 0.1em currentcolor;
  }
 }
-.loading-39 {
+.loaderz-39 {
   position: relative;
   width: 0.15em;
   height: 0.15em;
   background-color: currentcolor;
   border-radius: 100%;
-  animation: loading-39-1 30s infinite linear;
+  animation: loaderz-39-1 30s infinite linear;
 }
-.loading-39:before, .loading-39:after {
+.loaderz-39:before, .loaderz-39:after {
   content: '';
   border-radius: 100%;
   position: absolute;
@@ -1223,17 +1223,17 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.loading-39:before {
+.loaderz-39:before {
   width: 0.3em;
   height: 1em;
-  animation: loading-39-2 0.8s linear infinite;
+  animation: loaderz-39-2 0.8s linear infinite;
 }
-.loading-39:after {
+.loaderz-39:after {
   width: 1em;
   height: 0.3em;
-  animation: loading-39-2 1.2s linear infinite;
+  animation: loaderz-39-2 1.2s linear infinite;
 }
-@keyframes loading-39-1 {
+@keyframes loaderz-39-1 {
   0% {
     transform: rotate(0deg);
  }
@@ -1241,7 +1241,7 @@
     transform: rotate(360deg);
  }
 }
-@keyframes loading-39-2 {
+@keyframes loaderz-39-2 {
   0% {
     box-shadow: 0.04em -0.04em 0 0.02em currentcolor;
  }
@@ -1258,33 +1258,33 @@
     box-shadow: 0.04em -0.04em 0 0.02em currentcolor;
  }
 }
-.loading-40 {
+.loaderz-40 {
   border: 0.05em currentcolor solid;
   border-radius: 0.2em;
   overflow: hidden;
   position: relative;
 }
-.loading-40:after, .loading-40:before {
+.loaderz-40:after, .loaderz-40:before {
   content: '';
   border-radius: 50%;
   position: absolute;
   width: inherit;
   height: inherit;
-  animation: loading-40 2s infinite linear;
+  animation: loaderz-40 2s infinite linear;
 }
-.loading-40:before {
+.loaderz-40:before {
   border-top: 0.2em currentcolor solid;
   top: -0.15em;
   left: calc(-50% - .15em);
   transform-origin: right center;
 }
-.loading-40:after {
+.loaderz-40:after {
   border-bottom: 0.2em currentcolor solid;
   top: 0.15em;
   right: calc(-50% - .15em);
   transform-origin: left center;
 }
-@keyframes loading-40 {
+@keyframes loaderz-40 {
   from {
     transform: rotate(0deg);
  }
@@ -1292,16 +1292,16 @@
     transform: rotate(359deg);
  }
 }
-.loading-41 {
+.loaderz-41 {
   border: 0.05em currentcolor solid;
   border-radius: 0.2em;
   position: relative;
   background: linear-gradient(45deg, transparent 48%, currentcolor 50%, currentcolor 50%, transparent 52%, transparent), linear-gradient(-45deg, transparent 48%, currentcolor 50%, currentcolor 50%, transparent 52%, transparent);
   background-size: 0.5em 0.5em;
   background-position: 0% 0%;
-  animation: loading-41 1s infinite linear;
+  animation: loaderz-41 1s infinite linear;
 }
-@keyframes loading-41 {
+@keyframes loaderz-41 {
   from {
     background-position: 0 0;
  }
@@ -1309,7 +1309,7 @@
     background-position: -1em 0;
  }
 }
-.loading-42 {
+.loaderz-42 {
   width: 2em;
   height: 0.66em;
   border: 0.05em currentcolor solid;
@@ -1317,9 +1317,9 @@
   background: linear-gradient(-60deg, transparent 0%, transparent 50%, currentcolor 50%, currentcolor 75%, transparent 75%, transparent);
   background-size: 1em 2em;
   background-position: 0 0;
-  animation: loading-42 0.8s infinite linear;
+  animation: loaderz-42 0.8s infinite linear;
 }
-@keyframes loading-42 {
+@keyframes loaderz-42 {
   from {
     background-position: 0 0;
  }
