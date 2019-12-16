@@ -22,20 +22,6 @@ hostess_set(id = "hostess", value)
 \description{
 Add hostess dependencies.
 }
-\section{Presets}{
-
-\itemize{
-  \item{\code{line}}
-  \item{\code{fan}}
-  \item{\code{circle}}
-  \item{\code{bubble}}
-  \item{\code{rainbow}}
-  \item{\code{energy}}
-  \item{\code{stripe}}
-  \item{\code{text}}
-}
-}
-
 \examples{
 
 ## ------------------------------------------------

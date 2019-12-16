@@ -90,6 +90,20 @@ see the \href{https://loading.io/progress/}{official documentation}.}
 \description{
 Customise the Hostess laoding bar.
 }
+\section{Presets}{
+
+\itemize{
+  \item{\code{line}}
+  \item{\code{fan}}
+  \item{\code{circle}}
+  \item{\code{bubble}}
+  \item{\code{rainbow}}
+  \item{\code{energy}}
+  \item{\code{stripe}}
+  \item{\code{text}}
+}
+}
+
 \examples{
 library(shiny)
 library(waiter)

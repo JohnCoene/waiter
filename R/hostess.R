@@ -5,18 +5,6 @@
 #' @param id Id of hostess (valid CSS).
 #' @param value Value to set, between \code{0} and \code{100}.
 #' 
-#' @section Presets:
-#' \itemize{
-#'   \item{\code{line}}
-#'   \item{\code{fan}}
-#'   \item{\code{circle}}
-#'   \item{\code{bubble}}
-#'   \item{\code{rainbow}}
-#'   \item{\code{energy}}
-#'   \item{\code{stripe}}
-#'   \item{\code{text}}
-#' }
-#' 
 #' @import shiny
 #' @name hostess
 #' @export
@@ -319,6 +307,18 @@ Hostess <- R6::R6Class(
 #' @param color_bubble The color of the bubbles contour.
 #' @param count The number of bubbles.
 #' @param color1,color2 Colors of stripes.
+#' 
+#' @section Presets:
+#' \itemize{
+#'   \item{\code{line}}
+#'   \item{\code{fan}}
+#'   \item{\code{circle}}
+#'   \item{\code{bubble}}
+#'   \item{\code{rainbow}}
+#'   \item{\code{energy}}
+#'   \item{\code{stripe}}
+#'   \item{\code{text}}
+#' }
 #' 
 #' @examples
 #' library(shiny)
