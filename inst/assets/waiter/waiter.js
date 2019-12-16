@@ -33,6 +33,16 @@ function show_waiter(id, html, color, to_hide){
       width,
       height,
       exists = false;
+
+  // get parent
+  dom = document.getElementById(id);
+  if(dom == undefined){
+    console.log("Cannot find", id);
+    return ;
+  }
+
+  if(dom.offsetHeight < 50)
+    return ;
   
   // allow missing for testing
   to_hide = to_hide || false;
@@ -40,13 +50,6 @@ function show_waiter(id, html, color, to_hide){
   // add to array
   if(to_hide)
     waiter_to_hide.push(id);
-    
-  // get parent
-  dom = document.getElementById(id);
-  if(dom == undefined){
-    console.log("Cannot find", id);
-    return ;
-  }
 
   el = get_offset(dom); // get dimensions
 
