@@ -1,6 +1,9 @@
 #' Spinners
 #'
 #' Spinkit spinners to use with \code{\link{show_waiter}}.
+#' 
+#' @param id The spinner identifier, an integer between \code{1},
+#' and \code{42}
 #'
 #' @details You can browse the spinners with \code{browse_spinners}.
 #'
@@ -536,6 +539,15 @@ spin_half <- function(){
     class = "sbl-half-circle-spin",
     div()
   )
+}
+
+#' @rdname spinners
+#' @export
+spin_loaders <- function(id = 1){
+  stopifnot(id > 0 && id < 43)
+  if(id < 10)
+    id <- paste0("0", id)
+  div(class = paste0("loading-", id))
 }
 
 #' @rdname spinners

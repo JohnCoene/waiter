@@ -59,6 +59,7 @@
 \alias{spin_circle_square}
 \alias{spin_puzzle}
 \alias{spin_half}
+\alias{spin_loaders}
 \alias{spin_1}
 \alias{spin_2}
 \alias{spin_3}
@@ -183,6 +184,8 @@ spin_puzzle()
 
 spin_half()
 
+spin_loaders(id = 1)
+
 spin_1()
 
 spin_2()
@@ -198,6 +201,10 @@ spin_6()
 browse_spinners()
 
 browse_waiters()
+}
+\arguments{
+\item{id}{The spinner identifier, an integer between \code{1},
+and \code{42}}
 }
 \description{
 Spinkit spinners to use with \code{\link{show_waiter}}.
