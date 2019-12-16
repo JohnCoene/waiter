@@ -3,7 +3,9 @@
 #' Spinkit spinners to use with \code{\link{show_waiter}}.
 #' 
 #' @param id The spinner identifier, an integer between \code{1},
-#' and \code{42}
+#' and \code{42}.
+#' @param style CSS style to apply to spinner.
+#' @param color Desired color of spinner.
 #'
 #' @details You can browse the spinners with \code{browse_spinners}.
 #'
@@ -543,11 +545,19 @@ spin_half <- function(){
 
 #' @rdname spinners
 #' @export
-spin_loaders <- function(id = 1){
+spin_loaders <- function(id = 1, color = "white", style = NULL){
   stopifnot(id > 0 && id < 43)
   if(id < 10)
     id <- paste0("0", id)
-  div(class = paste0("loading-", id))
+
+  color <- paste0("color:", color, ";")
+
+  if(!is.null(style))
+    style <- paste0(color, style)
+  else
+    style <- color
+  
+  div(class = paste0("loading-", id), style = style)
 }
 
 #' @rdname spinners

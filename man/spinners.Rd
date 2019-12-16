@@ -184,7 +184,7 @@ spin_puzzle()
 
 spin_half()
 
-spin_loaders(id = 1)
+spin_loaders(id = 1, color = "white", style = NULL)
 
 spin_1()
 
@@ -204,7 +204,11 @@ browse_waiters()
 }
 \arguments{
 \item{id}{The spinner identifier, an integer between \code{1},
-and \code{42}}
+and \code{42}.}
+
+\item{color}{Desired color of spinner.}
+
+\item{style}{CSS style to apply to spinner.}
 }
 \description{
 Spinkit spinners to use with \code{\link{show_waiter}}.
