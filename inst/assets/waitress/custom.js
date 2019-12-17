@@ -248,7 +248,8 @@ $(document).on('shiny:value shiny:error shiny:recalculated', function(event) {
     
         // small delay to allow the loading bar to end
         setTimeout(function(){
-          notif.remove();
+          if(notif != null)
+            notif.remove();
         }, 400)
       }
     }
