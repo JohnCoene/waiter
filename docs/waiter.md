@@ -159,6 +159,9 @@ shinyApp(ui, server)
 
 Since version `0.1.0` you are not longer limited to full screen loading screen and can show the waiter only only part of the application, whichever part you desire. 
 
+> [!NOTE]
+> All the features of the full screen are also available on partial loading screens
+
 Let us demonstrate with a basic Shiny application that includes a single plot which is updated upon clicking an action button. The way we layer the waiter on top of an element is by simply specifying the `id` of the element we want the waiter to be layered over when we initialise the waiter.
 
 ```r
@@ -287,9 +290,6 @@ shinyApp(ui, server)
 ```
 
 ![](_assets/img/waiter-layer3.gif)
-
-> [!NOTE]
-> All the features of the full screen are also available on partial loading screens
 
 ### With Hostess
 
