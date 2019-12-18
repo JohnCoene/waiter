@@ -197,7 +197,7 @@ shinyApp(ui, server)
 
 ![](_assets/img/waiter-layer1.gif)
 
-We can actually further simplify the application above: we do not in fact need to use the `hide` method. By default when specifying an `id` waiter will hide the waiting screen when the element, in our case a plot, is re-rendered. This applies to plots, tables, htmlwidgets, etc. Below we simplify the app, removing the `hide` method and demonstrate that it works on a `tableOutput`.
+We can actually further simplify the application above: we do not in fact need to use the `hide` method. By default when specifying an `id` waiter will hide the waiting screen when the element, in our case a plot, is re-rendered. This applies to plots, tables, htmlwidgets, etc. Below we simplify the app, removing the `hide` method and demonstrate that it works on a `tableOutput` and htmlwidgets ([highcharter](http://jkunst.com/highcharter/)).
 
 ```r
 library(shiny)
@@ -242,7 +242,7 @@ shinyApp(ui, server)
 
 ![](_assets/img/waiter-layer2.gif)
 
-Note that one might still want to use the `hide` method if one does not layer the waiting screen over a rendered element.
+Note that one might still want to use the `hide` method if one does not layer the waiting screen over a rendered element (if it is not dynamically rendered there is not way for the waiter to know its content has changed).
 
 ```r
 library(shiny)
@@ -288,12 +288,12 @@ shinyApp(ui, server)
 
 ![](_assets/img/waiter-layer3.gif)
 
-> [!INFO]
+> [!NOTE]
 > All the features of the full screen are also available on partial loading screens
 
 ### With Hostess
 
-Include the hostess dependencies with `use_hostess`, place the `hostess_loader` in the `show_waiter*` function then programmatically set the percentage with the `set` method. 
+Include the hostess dependencies with `use_hostess`, place the `hostess_loader` in the `show_waiter*` function then programmatically set the percentage with the `set` method.
 
 > [!TIP]
 > Make sure you include the dependencies with `use_hostess`.
