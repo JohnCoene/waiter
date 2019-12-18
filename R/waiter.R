@@ -363,7 +363,7 @@ Waiter <- R6::R6Class(
 #' @details
 #' Update the waiter's html content.
 #' @param html HTML content of waiter, generally a spinner, see \code{\link{spinners}}.
-    update_waiter = function(html = NULL){
+    update = function(html = NULL){
 
       # force span to ensure JavaScript.innerHTML does not break
       if(is.null(html))

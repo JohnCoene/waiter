@@ -26,7 +26,7 @@ then \code{hide} or meanwhile \code{update} the content of the waiter.
 \item \href{#method-new}{\code{Waiter$new()}}
 \item \href{#method-show}{\code{Waiter$show()}}
 \item \href{#method-hide}{\code{Waiter$hide()}}
-\item \href{#method-update_waiter}{\code{Waiter$update_waiter()}}
+\item \href{#method-update}{\code{Waiter$update()}}
 \item \href{#method-print}{\code{Waiter$print()}}
 \item \href{#method-clone}{\code{Waiter$clone()}}
 }
@@ -101,10 +101,10 @@ Hide the waiter.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-update_waiter"></a>}}
-\subsection{Method \code{update_waiter()}}{
+\if{html}{\out{<a id="method-update"></a>}}
+\subsection{Method \code{update()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Waiter$update_waiter(html = NULL)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Waiter$update(html = NULL)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{

@@ -11,9 +11,8 @@ Loading screens for Shiny; programmatically show and hide partial or full page l
 
 The following staff members will help you keep your clients waiting:
 
-* A waiter - splash loading screens.
-* A waitress - loading bars on on elements or whole screen.
-* A hostess - customizable loading bars.
+* A wait<strong>er</strong>, ideal for a spinn<strong>er</strong>
+* A waitr<strong>ess</strong> and a host<strong>ess</strong>, great to show progr<strong>ess</strong>
 
 ## Installation
 

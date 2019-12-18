@@ -68,7 +68,7 @@ server <- function(input, output, session){
 shinyApp(ui, server)
 ```
 
-How it is used in [chirp.sh](https://chirp.sh), where it is combined with [pushbar](https://github.com/JohnCoene/pushbar) to get rid of the navbar alltogether.
+How it is used in [chirp.sh](https://chirp.sh), where it is combined with [pushbar](https://github.com/JohnCoene/pushbar) to get rid of the navbar altogether. Note that we use the R6 class to create, show and hide the waiting screen. This is the preferred method as it comes with additional features which are covered later on.
 
 ```r
 library(shiny)
@@ -95,13 +95,15 @@ ui <- navbarPage(
 server <- function(input, output, session){
   observeEvent(input$switch, {
 
-    # show loading
-    waiter_show(
-      html = tagList(
-        spin_folding_cube(),
-        span("Loading ...", style = "color:white;")
-      )
+    # define a loding screen
+    loading_screen <- tagList(
+      spin_folding_cube(),
+      span("Loading ...", style = "color:white;")
     )
+
+    # create waiter and show loading screen
+    w <- Waiter$new(html = loading_screen)$show()
+
     # long~ish computation
     Sys.sleep(3)
 
@@ -109,7 +111,7 @@ server <- function(input, output, session){
     updateTabsetPanel(session = session, inputId = "tabs", selected = "networks")
 
     # hide loading
-    waiter_hide()
+    w$hide()
   })
 }
 
@@ -130,15 +132,21 @@ ui <- fluidPage(
 )
 
 server <- function(input, output, session){
+  # create the waiter
+  w <- Waiter$new(html = span("Initialisation", style = "color:white;"))
+
   observeEvent(input$show, {
-    waiter_show(html = span("Initialisation", style = "color:white;"))
+    w$show()
+
     Sys.sleep(2)
+    
     for(i in 1:5){
       HTML <- span(paste("Loading #", i, "of 5"), style = "color:white;z-index:999;")
-      waiter_update(html = HTML)
+      w$update(html = HTML)
       Sys.sleep(2)
     }
-    waiter_hide()
+
+    w$hide()
   })
 }
 
@@ -147,33 +155,141 @@ shinyApp(ui, server)
 
 ![](_assets/img/waiter-dynamic.gif)
 
-### With Steward
+### Partial
 
-To use the steward, simply add `use_steward`, it takes a few arguments to customise its look and feel.
+Since version `0.1.0` you are not longer limited to full screen loading screen and can show the waiter only only part of the application, whichever part you desire. 
 
-> [!TIP]
-> Make sure you include the dependencies with `use_steward`.
+Let us demonstrate with a basic Shiny application that includes a single plot which is updated upon clicking an action button. The way we layer the waiter on top of an element is by simply specifying the `id` of the element we want the waiter to be layered over when we initialise the waiter.
 
 ```r
 library(shiny)
 library(waiter)
- 
+
 ui <- fluidPage(
-  use_waiter(include_js = FALSE), 
-  use_steward(),
-  h3("Content you will only see after loading screen has disappeared"),
-  waiter_show_on_load(spin_fading_circles()) 
+  use_waiter(),
+  actionButton("draw", "draw plot"),
+  plotOutput("plot")
 )
 
-server <- function(input, output, session){
-  Sys.sleep(10) # do something that takes time
-  waiter_hide()
+server <- function(input, output){
+
+  # specify the id 
+  w <- Waiter$new(id = "plot")
+
+  dataset <- reactive({
+    input$draw
+
+    w$show()
+
+    Sys.sleep(3)
+
+    w$hide()    
+
+    runif(100)
+  })
+
+  output$plot <- renderPlot(plot(dataset()))
+
 }
 
 shinyApp(ui, server)
 ```
 
-![](_assets/img/waiter-steward.gif)
+![](_assets/img/waiter-layer1.gif)
+
+We can actually further simplify the application above: we do not in fact need to use the `hide` method. By default when specifying an `id` waiter will hide the waiting screen when the element, in our case a plot, is re-rendered. This applies to plots, tables, htmlwidgets, etc. Below we simplify the app, removing the `hide` method and demonstrate that it works on a `tableOutput`.
+
+```r
+library(shiny)
+library(waiter)
+library(highcharter)
+
+ui <- fluidPage(
+  use_waiter(),
+  actionButton("draw", "render stuff"),
+  fluidRow(
+    column(3, tableOutput("table")),
+    column(9, highchartOutput("hc"))
+  )
+)
+
+server <- function(input, output){
+
+  # specify the id 
+  w1 <- Waiter$new(id = "table")
+  w2 <- Waiter$new(id = "hc")
+
+  dataset <- reactive({
+    input$draw
+
+    w1$show()
+    w2$show()
+
+    Sys.sleep(3)
+
+    head(cars)
+  })
+
+  output$table <- renderTable(dataset())
+  output$hc <- renderHighchart({
+    hchart(dataset(), "scatter", hcaes(speed, dist))
+  })
+
+}
+
+shinyApp(ui, server)
+```
+
+![](_assets/img/waiter-layer2.gif)
+
+Note that one might still want to use the `hide` method if one does not layer the waiting screen over a rendered element.
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  use_waiter(),
+  fluidRow(
+    column(3, actionButton("draw", "render table")),
+    column(
+      9, 
+      id = "waiter",
+      style = "height:100vh;",
+      h1("The plot"),
+      plotOutput("plot")
+    )
+  )
+)
+
+server <- function(input, output){
+
+  # specify the id 
+  w <- Waiter$new(id = "waiter")
+
+  dataset <- reactive({
+    input$draw
+
+    w$show()
+
+    Sys.sleep(3) 
+
+    w$hide()
+
+    runif(150)
+  })
+
+  output$plot <- renderPlot(plot(dataset()))
+
+}
+
+shinyApp(ui, server)
+```
+
+![](_assets/img/waiter-layer3.gif)
+
+> [!INFO]
+> All the features of the full screen are also available on partial loading screens
 
 ### With Hostess
 
@@ -209,6 +325,74 @@ shinyApp(ui, server)
 
 ![](_assets/img/waiter-hostess.gif)
 
+The hostess-waiter team will also work as layers on parts of the application.
+
+```r
+library(shiny)
+library(waiter)
+ 
+ui <- fluidPage(
+  use_waiter(), 
+  use_hostess(),
+  actionButton("draw", "plot"),
+  plotOutput("plot")
+)
+
+server <- function(input, output, session){
+  hostess <- Hostess$new()
+  waiter <- Waiter$
+    new(
+      "plot", 
+      html = hostess$get_loader(stroke_color = "#ffffff")
+    )
+
+  dataset <- reactive({
+    input$draw
+    waiter$show()
+
+    for(i in 1:10){
+      hostess$set(i * 10)
+      Sys.sleep(.3)
+    }
+
+    runif(50)
+  })
+
+  output$plot <- renderPlot(plot(dataset()))
+}
+
+shinyApp(ui, server)
+```
+
+![](_assets/img/hostess-waiter.gif)
+
+### With Steward
+
+To use the steward, simply add `use_steward`, it takes a few arguments to customise its look and feel.
+
+> [!TIP]
+> Make sure you include the dependencies with `use_steward`.
+
+```r
+library(shiny)
+library(waiter)
+ 
+ui <- fluidPage(
+  use_waiter(include_js = FALSE), 
+  use_steward(),
+  h3("Content you will only see after loading screen has disappeared"),
+  waiter_show_on_load(spin_fading_circles()) 
+)
+
+server <- function(input, output, session){
+  Sys.sleep(10) # do something that takes time
+  waiter_hide()
+}
+
+shinyApp(ui, server)
+```
+
+![](_assets/img/waiter-steward.gif)
 
 ### With garçon
 
