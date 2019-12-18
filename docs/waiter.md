@@ -254,10 +254,12 @@ ui <- fluidPage(
     column(3, actionButton("draw", "render table")),
     column(
       9, 
-      id = "waiter",
-      style = "height:100vh;",
-      h1("The plot"),
-      plotOutput("plot")
+      div(
+        id = "waiter",
+        style = "height:80vh;",
+        h1("The plot"),
+        plotOutput("plot")
+      )
     )
   )
 )
