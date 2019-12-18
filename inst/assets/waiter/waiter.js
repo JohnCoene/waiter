@@ -52,6 +52,12 @@ function show_waiter(id, html, color, to_hide){
     waiter_to_hide.push(id);
 
   el = get_offset(dom); // get dimensions
+  
+  // force static if position relative
+  // otherwise overlay is completely off
+  var pos = window.getComputedStyle(dom, null).position;
+  if(pos == 'relative')
+    dom.className += ' staticParent';
 
   // check if overlay exists
   dom.childNodes.forEach(function(el){

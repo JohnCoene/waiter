@@ -5,6 +5,10 @@
   color: white;
 }
 
+.staticParent{
+  position: static;
+}
+
 .waiter-overlay-content{
   width: 70px;
   text-align: center;
