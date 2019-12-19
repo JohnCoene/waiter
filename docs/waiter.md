@@ -41,6 +41,35 @@ shinyApp(ui, server)
 
 ![](_assets/img/waiter.gif)
 
+By default the waiter will show a spinner, 1) you can choose of more than [100 spinners](https://shiny.john-coene.com/waiter/) 2) you are by no means limited to a spinner since the `html` argument takes any htmltools or shiny tag. Below we change the spinner, add some text and change the background color.
+
+``` r
+library(shiny)
+library(waiter)
+
+waiting_screen <- tagList(
+  spin_flower(),
+  h4("Cool stuff loading...")
+) 
+
+ui <- fluidPage(
+  use_waiter(), # include dependencies
+  actionButton("show", "Show loading for 3 seconds")
+)
+
+server <- function(input, output, session){
+  observeEvent(input$show, {
+    waiter_show(html = waiting_screen, color = "#697682")
+    Sys.sleep(3) # do something that takes time
+    waiter_hide()
+  })
+}
+
+shinyApp(ui, server)
+```
+
+![](_assets/img/waiter-text.gif)
+
 ### On Load
 
 You can show a loading screen on app launch. The loading screen will launch prior to everything else, even the Shiny session. 
