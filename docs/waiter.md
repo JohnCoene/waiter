@@ -2,73 +2,11 @@
 
 The waiter lets you show splash loading screens. 
 
-## How to
-
-1. Place `use_waiter` anywhere in your UI.
-2. Programmatically call `show_waiter` or use `waiter_show_on_load`.
-3. Then hide the loading screen with `hide_waiter` or `hide_waiter_on_drawn`.
+## Combos
 
 The waiter works hand-in-hand with the `steward` and the `hostess`. The former will let you animate the background of your loading screen while the latter will let you show loading bars on the loading screen.
 
-> [!TIP]
-> Make sure you include the dependencies with `use_waiter`.
-
 ## Examples
-
-### Basics
-
-A basic example could be like this.
-
-``` r
-library(shiny)
-library(waiter)
- 
-ui <- fluidPage(
-  use_waiter(), # include dependencies
-  actionButton("show", "Show loading for 3 seconds")
-)
-
-server <- function(input, output, session){
-  observeEvent(input$show, {
-    waiter_show()
-    Sys.sleep(3) # do something that takes time
-    waiter_hide()
-  })
-}
-
-shinyApp(ui, server)
-```
-
-![](_assets/img/waiter.gif)
-
-By default the waiter will show a spinner, 1) you can choose of more than [100 spinners](https://shiny.john-coene.com/waiter/) 2) you are by no means limited to a spinner since the `html` argument takes any htmltools or shiny tag. Below we change the spinner, add some text and change the background color.
-
-``` r
-library(shiny)
-library(waiter)
-
-waiting_screen <- tagList(
-  spin_flower(),
-  h4("Cool stuff loading...")
-) 
-
-ui <- fluidPage(
-  use_waiter(), # include dependencies
-  actionButton("show", "Show loading for 3 seconds")
-)
-
-server <- function(input, output, session){
-  observeEvent(input$show, {
-    waiter_show(html = waiting_screen, color = "#697682")
-    Sys.sleep(3) # do something that takes time
-    waiter_hide()
-  })
-}
-
-shinyApp(ui, server)
-```
-
-![](_assets/img/waiter-text.gif)
 
 ### On Load
 
@@ -268,7 +206,7 @@ shinyApp(ui, server)
 
 ![](_assets/img/waiter-layer3.gif)
 
-### With Hostess
+## With Hostess
 
 The API of the hostess has been somewhat improved since its initial release; the "loader" can be created from the R6Class itself, which is the recommended approach as it simplifies much of the workflow.
 
@@ -376,7 +314,7 @@ shinyApp(ui, server)
 
 ![](_assets/img/hostess-common.gif)
 
-### With Steward
+## With Steward
 
 To use the steward, simply add `use_steward`, it takes a few arguments to customise its look and feel.
 
@@ -404,7 +342,7 @@ shinyApp(ui, server)
 
 ![](_assets/img/waiter-steward.gif)
 
-### With garçon
+## With garçon
 
 Then again don't forget to add the dependency by placing `use_garcon` in the UI. Initialise the garçon then add progress by setting the percentage with the `set` method where you select the image to animate by passing its id.
 

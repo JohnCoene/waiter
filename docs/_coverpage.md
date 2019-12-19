@@ -5,4 +5,4 @@
 > Loading Screens for Shiny
 
 [Demo](https://shiny.john-coene.com/waiter)
-[Get Started](/waiter)
+[Get Started](/get-started)
