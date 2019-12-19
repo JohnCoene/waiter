@@ -31,6 +31,8 @@ shiny::shinyApp(
 
 ## shinyMobile
 
+Place `use_waiter` inside `f7SingleLayout`.
+
 ```r
 library(shiny)
 library(waiter)
@@ -76,22 +78,58 @@ ui <- dashboardPage(
   dashboardSidebar(),
   dashboardBody(
     use_waiter(),
-    show_waiter_on_load(spinner), # will show on load
+    waiter_show_on_load(spinner), # will show on load
     actionButton("show", "Show loading")
   )
 )
 
 server <- function(input, output) {
+
+  w <- Waiter$new()
   
   # give time for wait screen to show
   Sys.sleep(3) 
   hide_waiter()
 
   observeEvent(input$show, {
-    show_waiter(spinner)
+    w$show(spinner)
     Sys.sleep(3) # give time for wait screen to show
-    hide_waiter()
+    w$hide()
   })
+
+}
+
+shinyApp(ui, server)
+```
+
+## Yonder
+
+```r
+library(yonder)
+
+ui <- container(
+  use_waiter(),
+  buttonInput(
+    id = "button",
+    label = "Render"
+  ),
+  plotOutput("plot")
+)
+
+server <- function(input, output){
+
+  w <- Waiter$new()
+
+  dataset <- reactive({
+    input$button
+    
+    w$show()
+    Sys.sleep(3) # give time for wait screen to show
+    w$hide()
+    runif(100)
+  })
+
+  output$plot <- renderPlot(plot(dataset()))
 
 }
 
