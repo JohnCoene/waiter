@@ -16,6 +16,7 @@
   
   <!-- Theme: Defaults -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-defaults.css">
+  <link rel="stylesheet" href="//unpkg.com/gitalk/dist/gitalk.css">
   <link rel="stylesheet" href="/_assets/css/theme.css">
   <link rel="stylesheet" href="/_assets/css/prism.css">
 </head>
@@ -53,13 +54,26 @@
       tabs: {
         persist    : true,      // default
         sync       : true,      // default
-        theme      : 'classic', // default
+        theme      : 'material', // default
         tabComments: true,      // default
         tabHeadings: true       // default
       }
     }
   </script>
   <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/gitalk.min.js"></script>
+  <script src="//unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script>
+    const gitalk = new Gitalk({
+      clientID: '3874ff64637d41caeb17',
+      clientSecret: '10d3cdce8318a84d7f2880963dcc1d9ccee2ae0e',
+      repo: 'waiter',
+      owner: 'JohnCoene',
+      admin: ['JohnCoene'],
+      // facebook-like distraction free mode
+      distractionFreeMode: false
+    })
+  </script>
   <!-- docsify-themeable (latest v0.x.x) -->
   <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0"></script>
   <script src="//unpkg.com/docsify-copy-code@2"></script>
@@ -70,5 +84,6 @@
   <script src="//unpkg.com/docsify/lib/plugins/zoom-image.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
   <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
+  <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
 </body>
 </html>
