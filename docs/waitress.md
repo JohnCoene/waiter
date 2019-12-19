@@ -239,3 +239,41 @@ shinyApp(ui, server)
 ```
 
 ![](_assets/img/waitress-msg.gif)
+
+# On render
+
+Like the waiter, the waitress can be hidden when the element (plot, table, etc.) which it covers is rendered.
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  use_waitress(),
+  actionButton("btn", "Render"),
+  plotOutput("plot", width = 400)
+)
+
+server <- function(input, output){
+  
+  waitress <- Waitress$new("#plot", hide_on_render = TRUE) # call the waitress
+  
+  output$plot <- renderPlot({
+    input$btn
+
+    waitress$start()
+    
+    for(i in 1:10){
+      waitress$inc(10) # increase by 10%
+      Sys.sleep(.3)
+    }
+    
+    plot(runif(100))
+	})
+
+}
+
+shinyApp(ui, server)
+```
+
+![](_assets/img/waitress-hide-on-render.gif)
