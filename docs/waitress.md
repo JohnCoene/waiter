@@ -18,9 +18,7 @@ See `?waitress` for the documentation.
 > [!TIP]
 > Make sure you include the dependencies with `use_waitress`.
 
-## Examples
-
-### Plot
+## Plot
 
 The waitress can be applied to a specific element or the whole page. Note that `call_waitress` and `Waitress$new()` takes a CSS selector, so if you want to apply it to a plot use `#plotId`.
 
@@ -35,19 +33,16 @@ ui <- fluidPage(
 
 server <- function(input, output){
   
-  waitress <- call_waitress("#plot") # call the waitress
+  waitress <- Waitress$new("#plot") # call the waitress
   
   output$plot <- renderPlot({
-    
-    dat <- vector()
     
     for(i in 1:10){
       waitress$inc(10) # increase by 10%
       Sys.sleep(.3)
-      dat <- c(dat, sample(1:100, 1))
     }
     
-    hist(dat)
+    hist(runif(20))
     waitress$close() # hide when done
 	})
 
@@ -58,7 +53,7 @@ shinyApp(ui, server)
 
 ![](_assets/img/waitress-plot.gif)
 
-### Selector
+## Selector
 
 Because the waitress takes a selector, we can apply it to different parts of the page, using a class or any other selector, like the `nav`. Note that you can set the range of the progress bar when you initialise it, you are not limited to percentages.
 
@@ -82,15 +77,12 @@ server <- function(input, output){
   
   output$plot <- renderPlot({
     
-    dat <- vector()
-    
     for(i in 1:10){
       waitress$inc(1) # increase by 10%
       Sys.sleep(.5)
-      dat <- c(dat, sample(1:100, 1))
     }
     
-    hist(dat)
+    hist(runif(100))
     waitress$close() # hide when done
 	})
 
@@ -101,7 +93,7 @@ shinyApp(ui, server)
 
 ![](_assets/img/waitress-nav.gif)
 
-### Page
+## Page
 
 If you do not specify a selector to `call_waitress` then it is applied to the whole page. Note that you can change the color of the waitress in `use_waitress`.
 
@@ -132,3 +124,118 @@ shinyApp(ui, server)
 ```
 
 ![](_assets/img/waitress-whole-page.gif)
+
+## Infinite
+
+An infinite loading bar is useful when you cannot compute increments.
+
+> [!NOTE]
+> This argument effectively retires the butler
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  use_waitress(),
+  actionButton("btn", "render"),
+  plotOutput("plot", width = 400)
+)
+
+server <- function(input, output){
+  
+  waitress <- Waitress$new("#btn", theme = "overlay", infinite = TRUE)
+  
+  output$plot <- renderPlot({
+    input$btn
+
+    waitress$start()
+    
+    Sys.sleep(3)
+    
+    hist(runif(100))
+    waitress$close() # hide when done
+	})
+
+}
+
+shinyApp(ui, server)
+```
+
+![](_assets/img/waitress-infinite.gif)
+
+## Notifications
+
+You can also use the waitress to display notifications.
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  use_waitress(),
+  actionButton("btn", "render"),
+  plotOutput("plot", height = "90vh")
+)
+
+server <- function(input, output){
+  
+  waitress <- Waitress$new(theme = "overlay-percent", min = 0, max = 10)
+  
+  output$plot <- renderPlot({
+    input$btn
+
+    # use notification
+    waitress$notify()
+    
+    for(i in 1:10){
+      waitress$inc(1) # increase by 10%
+      Sys.sleep(.3)
+    }
+    
+    hist(runif(100))
+    waitress$close() # hide when done
+	})
+
+}
+
+shinyApp(ui, server)
+```
+
+![](_assets/img/waitress-notification.gif)
+
+## Message
+
+You can also layer a message on the waitress.
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  use_waitress(),
+  plotOutput("plot")
+)
+
+server <- function(input, output){
+  
+  waitress <- Waitress$new("#plot") # call the waitress
+  
+  output$plot <- renderPlot({
+    waitress$start(h3("Loading Stuff..."))
+    
+    for(i in 1:10){
+      waitress$inc(10) # increase by 10%
+      Sys.sleep(.3)
+    }
+    
+    plot(runif(100))
+    waitress$close() # hide when done
+	})
+
+}
+
+shinyApp(ui, server)
+```
+
+![](_assets/img/waitress-msg.gif)

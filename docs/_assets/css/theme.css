@@ -7,17 +7,17 @@ nav, a{
 :root {
   --base-font-size: 14px;
   --theme-color   : #333e48;
-  --base-background-color: #f7fff7;
+  --base-background-color: #f5f7f5;
   --base-font-family: 'Quicksand', sans-serif;
-  --copycode-background: #f7fff7;
+  --copycode-background: #f5f7f5;
   --copycode-color: #333e48;
   --code-font-family:'Ubuntu Mono', monospace;
   --cover-background-color: #697682;
-  --cover-color: #f7fff7;
+  --cover-color: #f5f7f5;
   --cover-background-mask-color: #697682;
-  --cover-button-border: 1px solid #f7fff7;
-  --cover-button-color: #f7fff7;
-  --cover-heading-color: #f7fff7;
+  --cover-button-border: 1px solid #f5f7f5;
+  --cover-button-color: #f5f7f5;
+  --cover-heading-color: #f5f7f5;
   --navbar-menu-link-color: #697682;
   --navbar-root-color: #ffffff;
 }
