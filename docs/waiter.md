@@ -8,6 +8,8 @@ The waiter works hand-in-hand with the `steward` and the `hostess`. The former w
 
 ## Examples
 
+There is an online demo with a list of all [100 spinners](https://shiny.john-coene.com/waiter/).
+
 ### On Load
 
 You can show a loading screen on app launch. The loading screen will launch prior to everything else, even the Shiny session. 
