@@ -2,8 +2,6 @@
 
 The waitress will let you display loading bars on the entire screen or specific elements only.
 
-> Use the wait<strong>ress</strong> to show prog<strong>ress</strong>.
-
 ## How to
 
 Note that the waitress is a reference class.
