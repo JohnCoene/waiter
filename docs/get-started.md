@@ -44,7 +44,7 @@ shinyApp(ui, server)
 
 ![](_assets/img/waiter.gif)
 
-By default the waiter will show a spinner, 1) you can choose of more than [100 spinners](https://shiny.john-coene.com/waiter/) 2) you are by no means limited to a spinner since the `html` argument takes any htmltools or shiny tag. Below we change the spinner, add some text and change the background color.
+By default the waiter will show a spinner, 1) you can choose from more than [100 spinners](https://shiny.john-coene.com/waiter/) 2) you are by no means limited to a spinner since the `html` argument takes any htmltools or shiny tag. Below we change the spinner, add some text and change the background color.
 
 ``` r
 library(shiny)

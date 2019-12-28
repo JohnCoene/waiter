@@ -2,6 +2,8 @@
 
 ## bs4Dash
 
+Include `use_waiter` in the body of the dashboard.
+
 ```r
 library(shiny)
 library(waiter)
@@ -103,6 +105,8 @@ shinyApp(ui, server)
 ```
 
 ## Yonder
+
+It's very easy with yonder, place the `use_waiter` anywhere really.
 
 ```r
 library(yonder)

@@ -8,7 +8,7 @@ The waiter works hand-in-hand with the `steward` and the `hostess`. The former w
 
 ## Examples
 
-There is an online demo with a list of all [100 spinners](https://shiny.john-coene.com/waiter/).
+There is an online demo with a list of all [100 spinners](https://shiny.john-coene.com/waiter/) available.
 
 ### On Load
 
@@ -74,7 +74,7 @@ shinyApp(ui, server)
 
 ### Partial
 
-Since version `0.1.0` you are not longer limited to full page loading screens and can show the waiter only only part of the application, whichever part you desire. 
+Since version `0.1.0` you are no longer limited to full page loading screens and can show the waiter only only part of the application, whichever part you desire. 
 
 > [!NOTE]
 > All the features of the full screen are also available on partial loading screens
@@ -117,7 +117,7 @@ shinyApp(ui, server)
 
 ![](_assets/img/waiter-layer1.gif)
 
-We can actually further simplify the application above: we do not in fact need to use the `hide` method. By default when specifying an `id` waiter will hide the waiting screen when the element, in our case a plot, is rendered. This applies to plots, tables, htmlwidgets, etc. Below we simplify the app, removing the `hide` method and demonstrate that it works on a `tableOutput` and `htmlwidgets` ([highcharter](http://jkunst.com/highcharter/)).
+We can actually further simplify the application above: we do not in fact need to use the `hide` method. By default when specifying an `id` waiter will hide the waiting screen when the element, in our case a plot, is rendered. This applies to plots, tables, htmlwidgets, etc. Below we simplify the app, removing the `hide` method and demonstrate that it works on a `tableOutput` and `htmlwidgets` (a [highcharter](http://jkunst.com/highcharter/) chart in this case).
 
 ```r
 library(shiny)
@@ -162,7 +162,7 @@ shinyApp(ui, server)
 
 ![](_assets/img/waiter-layer2.gif)
 
-Note that one might still want to use the `hide` method if one does not layer the waiting screen over a rendered element (if it is not dynamically rendered there is not way for the waiter to know its content has changed).
+Note that one might still want to use the `hide` method if one does not layer the waiting screen over a rendered element (if it is not dynamically rendered there is no way for the waiter to know its content has changed).
 
 ```r
 library(shiny)
