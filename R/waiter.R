@@ -313,10 +313,10 @@ Waiter <- R6::R6Class(
 #' @details
 #' Create a waiter.
 #' 
-#' @param html HTML content of waiter, generally a spinner, see \code{\link{spinners}}.
+#' @param html HTML content of waiter, generally a spinner, see \code{\link{spinners}} or a list of the latter.
 #' @param color Background color of loading screen.
 #' @param logo Logo to display.
-#' @param id Id of element on which to overlay the waiter, if \code{NULL} the waiter is
+#' @param id Id, or vector of ids, of element on which to overlay the waiter, if \code{NULL} the waiter is
 #' applied to the entire body.
 #' @param hide_on_render Set to \code{TRUE} to automatically hide the waiter
 #' when the element in \code{id} is drawn. Note the latter will work with
@@ -327,11 +327,24 @@ Waiter <- R6::R6Class(
 #' \dontrun{Waiter$new()}
     initialize = function(id = NULL, html = spin_1(), color = "#333e48", logo = "", 
       hide_on_render = !is.null(id)){
-      html <- as.character(html)
-      html <- gsub("\n", "", html)
+      
+      if(inherits(html, "shiny.tag.list") || inherits(html, "shiny.tag"))
+        html <- list(html)
+      
+      if(inherits(html, "list"))
+        html <- lapply(html, as.character)
 
       if(hide_on_render && is.null(id))
         stop("Cannot `hide_on_render` when `id` is not specified")
+
+      if(length(id) > 0)
+        if(length(html) != length(id))
+          html <- as.list(rep(html, length(id)))
+
+      if(is.null(id))
+        id <- list(NULL)
+      else
+        id <- as.list(id)
 
       private$.id <- id
       private$.html <- html
@@ -342,22 +355,26 @@ Waiter <- R6::R6Class(
 #' @details
 #' Show the waiter.
     show = function(){
-      opts <- list(
-        id = private$.id,
-        html = private$.html,
-        color = private$.color,
-        logo = private$.logo,
-        hide_on_render = private$.hide_on_render
-      )
       private$get_session()
-      private$.session$sendCustomMessage("waiter-show", opts)
+      for(i in 1:length(private$.id)){
+        opts <- list(
+          id = private$.id[[i]],
+          html = private$.html[[i]],
+          color = private$.color,
+          logo = private$.logo,
+          hide_on_render = private$.hide_on_render
+        )
+        private$.session$sendCustomMessage("waiter-show", opts)
+      }
       invisible(self)
     },
 #' @details
 #' Hide the waiter.
     hide = function(){
       private$get_session()
-      private$.session$sendCustomMessage("waiter-hide", list(id = private$.id))
+      for(i in 1:length(private$.id)){
+        private$.session$sendCustomMessage("waiter-hide", list(id = private$.id[[i]]))
+      }
       invisible(self)
     },
 #' @details
@@ -365,27 +382,31 @@ Waiter <- R6::R6Class(
 #' @param html HTML content of waiter, generally a spinner, see \code{\link{spinners}}.
     update = function(html = NULL){
 
+      private$get_session()
+
       # force span to ensure JavaScript.innerHTML does not break
       if(is.null(html))
         html <- span()
 
       html <- as.character(html)
       html <- gsub("\n", "", html)
-      private$get_session()
-      private$.session$sendCustomMessage("waiter-update", list(html = html, id = private$.id))
+     
+      for(i in 1:length(private$.id)){
+        private$.session$sendCustomMessage("waiter-update", list(html = html, id = private$.id[[i]]))
+      }
       invisible(self)
     },
 #' @details
 #' print the waiter
 		print = function(){
       if(!is.null(private$.id))
-		    cat("A waiter on", private$.id, "\n")
+		    cat("A waiter on", paste0(private$.id, collapse = ","), "\n")
       else
         cat("A waiter\n")
 		}
   ),
   private = list(
-    .html = "",
+    .html = list(),
     .color = "#333e48",
     .logo = "",
     .id = NULL,

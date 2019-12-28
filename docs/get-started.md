@@ -29,7 +29,7 @@ ui <- fluidPage(
 
 server <- function(input, output, session){
   # create a waiter
-  waiter <- Waiter$new()
+  w <- Waiter$new()
 
   # on button click
   observeEvent(input$show, {

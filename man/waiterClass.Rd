@@ -47,10 +47,10 @@ then \code{hide} or meanwhile \code{update} the content of the waiter.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{id}}{Id of element on which to overlay the waiter, if \code{NULL} the waiter is
+\item{\code{id}}{Id, or vector of ids, of element on which to overlay the waiter, if \code{NULL} the waiter is
 applied to the entire body.}
 
-\item{\code{html}}{HTML content of waiter, generally a spinner, see \code{\link{spinners}}.}
+\item{\code{html}}{HTML content of waiter, generally a spinner, see \code{\link{spinners}} or a list of the latter.}
 
 \item{\code{color}}{Background color of loading screen.}
 

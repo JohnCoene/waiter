@@ -117,7 +117,7 @@ shinyApp(ui, server)
 
 ![](_assets/img/waiter-layer1.gif)
 
-We can actually further simplify the application above: we do not in fact need to use the `hide` method. By default when specifying an `id` waiter will hide the waiting screen when the element, in our case a plot, is rendered. This applies to plots, tables, htmlwidgets, etc. Below we simplify the app, removing the `hide` method and demonstrate that it works on a `tableOutput` and `htmlwidgets` (a [highcharter](http://jkunst.com/highcharter/) chart in this case).
+We can actually further simplify the application above: we do not in fact need to use the `hide` method. By default when specifying an `id` waiter will hide the waiting screen when the element, in our case a plot, is rendered. This applies to plots, tables, htmlwidgets, etc. Below we simplify the app, removing the `hide` method and demonstrate that it works on a `tableOutput` and `htmlwidgets` (a [highcharter](http://jkunst.com/highcharter/) chart in this case). We also show that we can pass multiple ids to the waiter to have it show over multiple elements at once.
 
 ```r
 library(shiny)
@@ -136,14 +136,12 @@ ui <- fluidPage(
 server <- function(input, output){
 
   # specify the id 
-  w1 <- Waiter$new(id = "table")
-  w2 <- Waiter$new(id = "hc")
+  w <- Waiter$new(id = c("hc", "table"))
 
   dataset <- reactive({
     input$draw
 
-    w1$show()
-    w2$show()
+    w$show()
 
     Sys.sleep(3)
 
@@ -264,7 +262,7 @@ The approach above might get too wordy when one wants to use a hostess on multip
 ```r
 library(shiny)
 library(waiter)
- 
+
 ui <- fluidPage(
   use_waiter(), 
   use_hostess(),
@@ -286,15 +284,18 @@ server <- function(input, output, session){
   hostess3 <- Hostess$new()$set_loader(loader)
 
   # set the loader as html
-  waiter1 <- Waiter$new("plot1", html = hostess1$get_loader())
-  waiter2 <- Waiter$new("plot2", html = hostess2$get_loader())
-  waiter3 <- Waiter$new("plot3", html = hostess3$get_loader())
+  waiter <- Waiter$new(
+    c("plot1", "plot2", "plot3"),
+    html = list(
+      hostess1$get_loader(),
+      hostess2$get_loader(),
+      hostess3$get_loader()
+    )
+  )
 
   dataset <- reactive({
     input$draw
-    waiter1$show()
-    waiter2$show()
-    waiter3$show()
+    waiter$show()
 
     for(i in 1:10){
       hostess1$set(i * 10)
