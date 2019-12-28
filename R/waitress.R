@@ -82,6 +82,7 @@ call_waitress <- function(selector = NULL, theme = c("line", "overlay", "overlay
 #' @rdname waitress
 #' @export
 browse_waitresses <- function() {
+  .Deprecated("", package = "waiter", msg = "This function is no longer supported; see the package website.")
 	shiny::runApp(appDir = system.file("waitress", package = 'waiter', mustWork = TRUE))
 }
 

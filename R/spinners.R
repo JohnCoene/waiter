@@ -646,13 +646,8 @@ spin_6 <- function(){
 
 #' @rdname spinners
 #' @export
-browse_spinners <- function() {
-	.Deprecated("browse_waiters")
-	shiny::runApp(appDir = system.file("waiter", package = 'waiter', mustWork = TRUE))
-}
-
-#' @rdname spinners
-#' @export
 browse_waiters <- function() {
-	shiny::runApp(appDir = system.file("waiter", package = 'waiter', mustWork = TRUE))
+  .Deprecated("", package = "waiter", msg = "This function is no longer supported; see the package website.")
+	#shiny::runApp(appDir = system.file("waiter", package = 'waiter', mustWork = TRUE))
+  invisible()
 }
