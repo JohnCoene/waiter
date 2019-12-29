@@ -61,7 +61,7 @@ server <- function(input, output){
 shinyApp(ui, server)
 ```
 
-## Shinydashboard
+## shinydashboard
 
 Place `use_waiter` in `dashboardBody`.
 
@@ -104,7 +104,7 @@ server <- function(input, output) {
 shinyApp(ui, server)
 ```
 
-## Yonder
+## yonder
 
 It's very easy with yonder, place the `use_waiter` anywhere really.
 
