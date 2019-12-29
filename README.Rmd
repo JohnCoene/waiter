@@ -44,7 +44,8 @@ feat <- tibble::tribble(
   "Full Screen",        yes,      yes,         no,
   "Works with waiter",  yes,      no,          yes,
   "Spinner",            yes,      no,          no,
-  "Updatable",          yes,      no,          no
+  "Updatable",          yes,      no,          no,
+  "Notifications",      no,      yes,          no
 )
 
 knitr::kable(feat)
