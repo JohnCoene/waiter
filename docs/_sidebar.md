@@ -5,4 +5,5 @@
 * [The Waitress](waitress.md "Guide to the waitress")
 * [The Hostess](hostess.md "Guide to the hostess")
 * [The Butler](butler.md "Guide to the butler")
+* [Changelog](changelog.md "Changelog")
 * [Examples](examples.md "Example use cases")
