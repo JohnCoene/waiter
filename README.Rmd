@@ -42,6 +42,7 @@ feat <- tibble::tribble(
   ~"Feature",         ~"Waiter", ~"Waitress", ~"Hostess",
   "Progress Bar",       yes,      yes,         yes,
   "Full Screen",        yes,      yes,         no,
+  "Works with waiter",  yes,      no,          yes,
   "Spinner",            yes,      no,          no,
   "Updatable",          yes,      no,          no
 )

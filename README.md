@@ -14,12 +14,13 @@ Loading screens for Shiny
 
 The waiter lets you programmatically show and hide partial or full page loading screens with spinners or loading bars to keep your users patiently waiting as you load or compute fancy things.
 
-| Feature      | Waiter               | Waitress                   | Hostess                    |
-|:-------------|:---------------------|:---------------------------|:---------------------------|
-| Progress Bar | :heavy\_check\_mark: | :heavy\_check\_mark:       | :heavy\_check\_mark:       |
-| Full Screen  | :heavy\_check\_mark: | :heavy\_check\_mark:       | :heavy\_multiplication\_x: |
-| Spinner      | :heavy\_check\_mark: | :heavy\_multiplication\_x: | :heavy\_multiplication\_x: |
-| Updatable    | :heavy\_check\_mark: | :heavy\_multiplication\_x: | :heavy\_multiplication\_x: |
+| Feature           | Waiter               | Waitress                   | Hostess                    |
+|:------------------|:---------------------|:---------------------------|:---------------------------|
+| Progress Bar      | :heavy\_check\_mark: | :heavy\_check\_mark:       | :heavy\_check\_mark:       |
+| Full Screen       | :heavy\_check\_mark: | :heavy\_check\_mark:       | :heavy\_multiplication\_x: |
+| Works with waiter | :heavy\_check\_mark: | :heavy\_multiplication\_x: | :heavy\_check\_mark:       |
+| Spinner           | :heavy\_check\_mark: | :heavy\_multiplication\_x: | :heavy\_multiplication\_x: |
+| Updatable         | :heavy\_check\_mark: | :heavy\_multiplication\_x: | :heavy\_multiplication\_x: |
 
 Examples
 --------
