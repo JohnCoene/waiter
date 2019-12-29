@@ -41,8 +41,8 @@ no <- ":heavy_multiplication_x:"
 feat <- tibble::tribble(
   ~"Feature",         ~"Waiter", ~"Waitress", ~"Hostess",
   "Progress Bar",       yes,      yes,         yes,
-  "Spinner",            yes,      no,          no,
   "Full Screen",        yes,      yes,         no,
+  "Spinner",            yes,      no,          no,
   "Updatable",          yes,      no,          no
 )
 

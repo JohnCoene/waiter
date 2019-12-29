@@ -17,8 +17,8 @@ The waiter lets you programmatically show and hide partial or full page loading 
 | Feature      | Waiter               | Waitress                   | Hostess                    |
 |:-------------|:---------------------|:---------------------------|:---------------------------|
 | Progress Bar | :heavy\_check\_mark: | :heavy\_check\_mark:       | :heavy\_check\_mark:       |
-| Spinner      | :heavy\_check\_mark: | :heavy\_multiplication\_x: | :heavy\_multiplication\_x: |
 | Full Screen  | :heavy\_check\_mark: | :heavy\_check\_mark:       | :heavy\_multiplication\_x: |
+| Spinner      | :heavy\_check\_mark: | :heavy\_multiplication\_x: | :heavy\_multiplication\_x: |
 | Updatable    | :heavy\_check\_mark: | :heavy\_multiplication\_x: | :heavy\_multiplication\_x: |
 
 Examples
