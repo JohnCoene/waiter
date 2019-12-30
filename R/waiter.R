@@ -334,6 +334,10 @@ Waiter <- R6::R6Class(
       if(inherits(html, "list"))
         html <- lapply(html, as.character)
 
+      if(!is.null(id))
+        if(!is.character(id))
+          stop("`id` must be of class `character`", call. = FALSE)
+
       if(hide_on_render && is.null(id))
         stop("Cannot `hide_on_render` when `id` is not specified")
 
