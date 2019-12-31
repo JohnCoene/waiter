@@ -1,5 +1,6 @@
 [![Travis build status](https://travis-ci.org/JohnCoene/waiter.svg?branch=master)](https://travis-ci.org/JohnCoene/waiter)
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/JohnCoene/waiter?branch=master&svg=true)](https://ci.appveyor.com/project/JohnCoene/waiter)
+![GitHub repo size](https://img.shields.io/github/repo-size/JohnCoene/waiter)
 
 # waiter
 
@@ -50,6 +51,7 @@ If you find this useful, please consider supporting waiter on Github, and do not
 <script async defer src="https://buttons.github.io/buttons.js"></script>
 
 <a class="github-button" href="https://github.com/sponsors/JohnCoene" data-icon="octicon-heart" aria-label="Sponsor @JohnCoene on GitHub">Sponsor</a> <a class="github-button" href="https://github.com/JohnCoene/waiter/issues" data-icon="octicon-issue-opened" aria-label="Issue JohnCoene/waiter on GitHub">Issue</a> <a class="github-button" href="https://github.com/JohnCoene/waiter" data-icon="octicon-star" data-show-count="true" aria-label="Star JohnCoene/waiter on GitHub">Star</a>
+[![Twitter Follow](https://img.shields.io/twitter/follow/jdatap?style=social)](https://twitter.com/jdatap)
 
 Please note that the 'waiter' project is released with a [Contributor Code of Conduct](https://github.com/JohnCoene/waiter/blob/master/CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
 
