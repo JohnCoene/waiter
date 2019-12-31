@@ -81,7 +81,7 @@ Hostess$new()$set_loader(loader)
 \if{html}{\out{<a id="method-new"></a>}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Hostess$new(id = NULL, min = 0, max = 100)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Hostess$new(id = NULL, min = 0, max = 100, n = 1)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
@@ -92,6 +92,8 @@ the \code{loader} method you may leave this \code{NULL}.}
 
 \item{\code{min, max}}{Minimum and maximum representing the starting and ending
 points of the progress bar.}
+
+\item{\code{n}}{Number of loaders to generate.}
 }
 \if{html}{\out{</div>}}
 }

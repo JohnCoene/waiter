@@ -71,12 +71,23 @@ Hostess <- R6::R6Class(
 #' the \code{loader} method you may leave this \code{NULL}.
 #' @param min,max Minimum and maximum representing the starting and ending
 #' points of the progress bar.
+#' @param n Number of loaders to generate.
 #' 
 #' @examples
 #' \dontrun{Hostess$new()}
-    initialize = function(id = NULL, min = 0, max = 100){
+    initialize = function(id = NULL, min = 0, max = 100, n = 1){
       if(is.null(id))
         id <- .random_name()
+
+      if(!inherits(id, "character"))
+        stop("`id` must be of class character", call. = FALSE)
+
+      # add additional ids
+      if(n > 1){
+        n <- n - 1
+        id2 <- sapply(1:n, function(x) .random_name())
+        id <- c(id, id2) 
+      }
 
       session <- shiny::getDefaultReactiveDomain()
       .check_session(session)
@@ -89,13 +100,16 @@ Hostess <- R6::R6Class(
 #' Start the hostess
     start = function(){
       private$.started <- TRUE
-      private$.session$sendCustomMessage("hostess-init", list(id = private$.id))
+      for(i in 1:length(private$.id)){
+        private$.session$sendCustomMessage("hostess-init", list(id = private$.id[i]))
+      }
       invisible(self)
     },
 #' @details
 #' Print the hostess
 		print = function(){
-      cat("A hostess on", private$.id, "\n")
+      ids <- paste0(private$.id, collapse = ", ")
+      cat("A hostess on", ids, "\n")
 		},
 #' @details
 #' Set the hostess loading bar.
@@ -119,8 +133,11 @@ Hostess <- R6::R6Class(
       if(value == private$.max)
         private$.started <- FALSE
 
-      opts <- list(id = private$.id, value = value)
-      private$.session$sendCustomMessage("hostess-set", opts)
+      opts <- list(value = value)
+      for(i in 1:length(private$.id)){
+        opts$id <- private$.id[i]
+        private$.session$sendCustomMessage("hostess-set", opts)
+      }
       invisible(self)
     },
 #' @details
@@ -146,8 +163,11 @@ Hostess <- R6::R6Class(
       if(value == private$.max)
         private$.started <- FALSE
 
-      opts <- list(id = private$.id, value = value)
-      private$.session$sendCustomMessage("hostess-set", opts)
+      opts <- list(value = value)
+      for(i in 1:length(private$.id)){
+        opts$id <- private$.id[i]
+        private$.session$sendCustomMessage("hostess-set", opts)
+      }
       invisible(self)
     },
 #' @details
@@ -193,11 +213,26 @@ Hostess <- R6::R6Class(
       if(!is.null(max))
         private$.max <- max
       
-      hostess_loader(id = private$.id, preset = preset, text_color = text_color, 
-        center_page = center_page, class = class, 
-        min = private$.min, max = private$.max, svg = svg, progress_type = progress_type,
-        fill_direction = fill_direction, stroke_direction = stroke_direction, 
-        fill_color = fill_color, stroke_color = stroke_color, ...)
+      if(length(private$.id) > 1){
+        loader <- list()
+        for(i in 1:length(private$.id)){
+          load <- hostess_loader(id = private$.id[i], preset = preset, text_color = text_color, 
+            center_page = center_page, class = class, 
+            min = private$.min, max = private$.max, svg = svg, progress_type = progress_type,
+            fill_direction = fill_direction, stroke_direction = stroke_direction, 
+            fill_color = fill_color, stroke_color = stroke_color, ...)
+          
+          loader <- append(loader, list(load))
+        }
+      } else {
+        loader <- hostess_loader(id = private$.id, preset = preset, text_color = text_color, 
+          center_page = center_page, class = class, 
+          min = private$.min, max = private$.max, svg = svg, progress_type = progress_type,
+          fill_direction = fill_direction, stroke_direction = stroke_direction, 
+          fill_color = fill_color, stroke_color = stroke_color, ...)
+      }
+
+      return(loader) 
     },
 #' @details
 #' Set a hostess loader as defined by \code{\link{hostess_loader}}.

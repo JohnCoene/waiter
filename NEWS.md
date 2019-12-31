@@ -4,7 +4,7 @@ Version `0.1.0` sees great many changes. Nothing has been broken but has been de
 
 ## Waiter
 
-All functions start with `waiter_`.
+All functions now start with `waiter_`.
 
 * The new `waiter_show` function _deprecates_ `show_waiter`
 * The new `waiter_hide` function _deprecates_ `hide_waiter`

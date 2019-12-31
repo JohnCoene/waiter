@@ -20,37 +20,7 @@ See `?hostess` for the documentation.
 
 ## Examples
 
-### Standalone
-
-Initialise the hostess with `Hostess$new()` to which you pass the id of the `hostess_loader` you are using, then increment it with the `set` method. 
-
-```r
-library(shiny)
-library(waiter)
-
-ui <- fluidPage(
-  use_hostess(), # include dependencies
-  hostess_loader("load", text_color = "black", center_page = TRUE)
-)
-
-server <- function(input, output){
-  
-  # initialise
-  hostess <- Hostess$new("load")
-  
-  # increment
-  for(i in 1:10){
-    Sys.sleep(runif(1)) # random sleep
-    hostess$set(i * 10)
-  }
-}
-
-shinyApp(ui, server)
-```
-
-![](_assets/img/hostess.gif)
-
-### Waiter
+### With Waiter
 
 You can of course use it together with `waiter` by playing the `hostess_spinner` in the `show_waiter*` function. Note that when used with the full page waiter one should set `center_page` to `TRUE` to center the loader.
 
@@ -120,4 +90,83 @@ server <- function(input, output){
 shinyApp(ui, server)
 ```
 
-The Hostess is powered by [loadinBar.js](https://loading.io/progress/) which comes with tons of styling options to pass to `hostess_loader`, check them out!
+The Hostess is powered by [loadinBar.js](https://loading.io/progress/) which comes with tons of styling options to pass to `hostess_loader`, check them out! 
+
+### Multiple
+
+The above method of creating the loader also enables creating multiple loaders tied to the same hostess, so one hostess can set or increment multiple loading bars.
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  use_waiter(),
+  use_hostess(), # include dependencies
+  actionButton("btn", "render"),
+  fluidRow(
+    column(6, plotOutput("plot1")),
+    column(6, plotOutput("plot2"))
+  )
+)
+
+server <- function(input, output){
+
+  # n = 2 loaders
+  host <- Hostess$new(n = 2)
+  w <- Waiter$new(
+    c("plot1", "plot2"),
+    html = host$get_loader()
+  )
+
+  dataset <- reactive({
+    input$btn
+
+    w$show()
+
+    for(i in 1:10){
+      Sys.sleep(.3)
+      host$set(i * 10)
+    }
+
+    runif(100)
+  })
+
+  output$plot1 <- renderPlot(plot(dataset()))
+  output$plot2 <- renderPlot(plot(dataset()))
+}
+
+shinyApp(ui, server)
+```
+
+![](_assets/img/hostess-multi.gif)
+
+### Standalone
+
+Initialise the hostess with `Hostess$new()` to which you pass the id of the `hostess_loader` you are using, then increment it with the `set` method. 
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  use_hostess(), # include dependencies
+  hostess_loader("load", text_color = "black", center_page = TRUE)
+)
+
+server <- function(input, output){
+  
+  # initialise
+  hostess <- Hostess$new("load")
+  
+  # increment
+  for(i in 1:10){
+    Sys.sleep(runif(1)) # random sleep
+    hostess$set(i * 10)
+  }
+}
+
+shinyApp(ui, server)
+```
+
+![](_assets/img/hostess.gif)

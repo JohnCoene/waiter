@@ -345,7 +345,7 @@ shinyApp(ui, server)
 
 ![](_assets/img/waiter-steward.gif)
 
-## With garçon
+## With Garçon
 
 Then again don't forget to add the dependency by placing `use_garcon` in the UI. Initialise the garçon then add progress by setting the percentage with the `set` method where you select the image to animate by passing its id.
 
