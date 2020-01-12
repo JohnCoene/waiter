@@ -7,7 +7,7 @@ Authors@R:
            family = "Coene",
            role = c("aut", "cre"),
            email = "jcoenep@gmail.com")
-Description: Full screen splash loading screens for 'Shiny'.
+Description: Full screen and partial loading screens for 'Shiny' with spinners, progress bars, and notifications.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
