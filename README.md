@@ -1,4 +1,3 @@
-
 <div align="center">
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <img src="./man/figures/logo.png" height = "200px" />
@@ -13,7 +12,7 @@ Loading screens for Shiny
 
 [Website](https://waiter.john-coene.com) | [Demo](https://shiny.john-coene.com/waiter/) | [Get Started](https://waiter.john-coene.com/#/waiter)
 
-</div>
+<div>
 
 The waiter lets you programmatically show and hide partial or full page loading screens with spinners or loading bars to keep your users patiently waiting as you load or compute fancy things.
 
