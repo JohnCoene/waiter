@@ -1,23 +1,34 @@
-<div align="center">
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+<div data-align="center">
+
 <img src="./man/figures/logo.png" height = "200px" />
 
-waiter
-======
+# waiter
 
 Loading screens for Shiny
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.org/JohnCoene/waiter.svg?branch=master)](https://travis-ci.org/JohnCoene/waiter) [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/JohnCoene/waiter?branch=master&svg=true)](https://ci.appveyor.com/project/JohnCoene/waiter) <!-- badges: end -->
 
-[Website](https://waiter.john-coene.com) | [Demo](https://shiny.john-coene.com/waiter/) | [Get Started](https://waiter.john-coene.com/#/waiter)
+[![Travis build
+status](https://travis-ci.org/JohnCoene/waiter.svg?branch=master)](https://travis-ci.org/JohnCoene/waiter)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/JohnCoene/waiter?branch=master&svg=true)](https://ci.appveyor.com/project/JohnCoene/waiter)
+<!-- badges: end -->
 
-<div>
+[Website](https://waiter.john-coene.com) |
+[Demo](https://shiny.john-coene.com/waiter/) | [Get
+Started](https://waiter.john-coene.com/#/waiter)
 
-The waiter lets you programmatically show and hide partial or full page loading screens with spinners or loading bars to keep your users patiently waiting as you load or compute fancy things.
+</div>
+
+The waiter lets you programmatically show and hide partial or full page
+loading screens with spinners or loading bars to keep your users
+patiently waiting as you load or compute fancy things.
 
 | Feature           | Waiter                     | Waitress                   | Hostess                    |
-|:------------------|:---------------------------|:---------------------------|:---------------------------|
+| :---------------- | :------------------------- | :------------------------- | :------------------------- |
 | Progress Bar      | :heavy\_check\_mark:       | :heavy\_check\_mark:       | :heavy\_check\_mark:       |
 | Full Screen       | :heavy\_check\_mark:       | :heavy\_check\_mark:       | :heavy\_multiplication\_x: |
 | Works with waiter | :heavy\_check\_mark:       | :heavy\_multiplication\_x: | :heavy\_check\_mark:       |
@@ -25,19 +36,20 @@ The waiter lets you programmatically show and hide partial or full page loading 
 | Updatable         | :heavy\_check\_mark:       | :heavy\_multiplication\_x: | :heavy\_multiplication\_x: |
 | Notifications     | :heavy\_multiplication\_x: | :heavy\_check\_mark:       | :heavy\_multiplication\_x: |
 
-Examples
---------
+## Examples
 
-Below are simple examples of applications that use the package, consult the [website](https://waiter.john-coene.com) for more.
+Below are simple examples of applications that use the package, consult
+the [website](https://waiter.john-coene.com) for more.
 
-Waiter
-------
+## Waiter
 
 To use the waiter:
 
 1.  Include `use_waiter` in your UI.
 2.  Trigger `show_waiter` to show the waiting screen.
 3.  Eventually trigger `hide_waiter` to hide the loading screen.
+
+<!-- end list -->
 
 ``` r
 library(shiny)
@@ -69,17 +81,22 @@ shinyApp(ui, server)
 
 ![](man/figures//waiter-basic.gif)
 
-The waiter includes more options to customise the spinner, the background, show the waiter on load, etc.
+The waiter includes more options to customise the spinner, the
+background, show the waiter on load, etc.
 
 ### Waitress
 
 To use the waitress:
 
 1.  Include `use_waitress` in your UI.
-2.  Initialise a waitress from the `Waitress` object with the `new` method.
+2.  Initialise a waitress from the `Waitress` object with the `new`
+    method.
 3.  You must then call the `start`.
-4.  On the waitress object use the `increase` method to increase the progress bar.
+4.  On the waitress object use the `increase` method to increase the
+    progress bar.
 5.  Use the `hide` method when done.
+
+<!-- end list -->
 
 ``` r
 library(shiny)
@@ -112,12 +129,13 @@ shinyApp(ui, server)
 
 ![](man/figures//waitress-basic.gif)
 
-There are more options to the waitress, you can have it overlay any element (such as the navbar), automagically increment it, etc.
+There are more options to the waitress, you can have it overlay any
+element (such as the navbar), automagically increment it, etc.
 
-Get it
-------
+## Get it
 
-You can install waiter from [CRAN](https://CRAN.R-project.org/package=waiter).
+You can install waiter from
+[CRAN](https://CRAN.R-project.org/package=waiter).
 
 ``` r
 install.packages("waiter")
@@ -130,4 +148,6 @@ install.packages("remotes")
 remotes::install_github("JohnCoene/waiter")
 ```
 
-Please note that the 'waiter' project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
+Please note that the ‘waiter’ project is released with a [Contributor
+Code of Conduct](https://waiter.john-coene/coc). By contributing to this
+project, you agree to abide by its terms.
