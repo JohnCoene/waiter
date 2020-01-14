@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-<div data-align="center">
+<div align="center">
 
 <img src="./man/figures/logo.png" height = "200px" />
 
@@ -149,5 +149,5 @@ remotes::install_github("JohnCoene/waiter")
 ```
 
 Please note that the ‘waiter’ project is released with a [Contributor
-Code of Conduct](https://waiter.john-coene/coc). By contributing to this
-project, you agree to abide by its terms.
+Code of Conduct](https://waiter.john-coene.com/#/coc). By contributing
+to this project, you agree to abide by its terms.

@@ -153,4 +153,4 @@ install.packages("remotes")
 remotes::install_github("JohnCoene/waiter")
 ```
 
-Please note that the 'waiter' project is released with a [Contributor Code of Conduct](https://waiter.john-coene/coc). By contributing to this project, you agree to abide by its terms.
+Please note that the 'waiter' project is released with a [Contributor Code of Conduct](https://waiter.john-coene.com/#/coc). By contributing to this project, you agree to abide by its terms.
