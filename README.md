@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-<div data-align="center">
+<div align="center">
 
 <img src="./man/figures/logo.png" height = "200px" />
 
