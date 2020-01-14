@@ -66,7 +66,7 @@ server <- function(input, output, session){
   observeEvent(input$show, {
 
     waiter_show( # show the waiter
-      spin_fading_circles() # use a spnner
+      spin_fading_circles() # use a spinner
     )
 
     Sys.sleep(3) # do something that takes time
