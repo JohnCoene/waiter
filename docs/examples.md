@@ -42,6 +42,41 @@ server <- function(input, output, session) {
 shinyApp(ui, server)
 ```
 
+## Promises
+
+Waiter does not work within a promise so call it before.
+
+```r
+library(shiny)
+library(waiter)
+library(future)
+library(promises)
+plan(multiprocess)
+
+ui <- fluidPage(
+  use_waiter(),
+  plotOutput("plot")
+)
+
+server <- function(input, output){
+  w <- Waiter$new("plot")
+
+  dataset <- reactive({
+    Sys.sleep(3)
+    runif(100)
+  })
+
+  output$plot <- renderPlot({
+    w$show()
+    dat <- dataset()
+    future(dat) %...>% 
+      plot()
+  })
+}
+
+shinyApp(ui, server)
+```
+
 ## bs4Dash
 
 Include `use_waiter` in the body of the dashboard.
