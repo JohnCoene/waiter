@@ -1,5 +1,47 @@
 # Examples
 
+## modules
+
+Remember to use the namespace.
+
+```r
+library(shiny)
+library(waiter)
+
+plot_mod_ui <- function(id) {
+  ns <- NS(id)
+  tagList(
+    actionButton(ns("draw"), "Render"),
+    plotOutput(ns("plot"))
+  )
+}
+
+plot_mod <- function(input, output, session) {
+  ns <- session$ns
+  w <- Waiter$new(ns("plot")) # use the namespace
+
+  output$plot <- renderPlot({
+    input$draw
+    w$show()
+    Sys.sleep(3)
+    hist(runif(100))
+  })
+}
+
+ui <- fluidPage(
+  use_waiter(),
+  plot_mod_ui("plot1"),
+  plot_mod_ui("plot2")
+)
+
+server <- function(input, output, session) {
+  callModule(plot_mod, "plot1")
+  callModule(plot_mod, "plot2")
+}
+
+shinyApp(ui, server)
+```
+
 ## bs4Dash
 
 Include `use_waiter` in the body of the dashboard.
