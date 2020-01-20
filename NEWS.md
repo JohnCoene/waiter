@@ -1,4 +1,4 @@
-# waiter 0.1.0.9000
+# waiter 0.1.0
 
 Version `0.1.0` sees great many changes. Nothing has been broken but has been deprecated. The `steward` and `garcon` family of functions have been added.
 
