@@ -14,7 +14,8 @@ LazyData: true
 Imports:
     R6,
     shiny,
-    magrittr
+    magrittr,
+    rstudioapi
 RoxygenNote: 7.0.2
 Suggests: 
     knitr,
