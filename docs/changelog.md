@@ -2,13 +2,18 @@
 
 List of changes made to waiter.
 
-## waiter 0.1.0.9000
+# waiter 0.1.1.9000
+
+Check if Rstudio 1.2 available, warn if not on attach, see [#41](https://github.com/JohnCoene/waiter/issues/41) where waiter fails with earlier version of RStudio.
+
+# waiter 0.1.0
 
 Version `0.1.0` sees great many changes. Nothing has been broken but has been deprecated. The `steward` and `garcon` family of functions have been added.
 
+
 ### Waiter
 
-All functions start with `waiter_`.
+All functions now start with `waiter_`. Version `0.1.0` sees great many changes. Nothing has been broken but has been deprecated. The `steward` and `garcon` family of functions have been added.
 
 * The new `waiter_show` function _deprecates_ `show_waiter`
 * The new `waiter_hide` function _deprecates_ `hide_waiter`
