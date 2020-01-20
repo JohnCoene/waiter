@@ -16,3 +16,7 @@ Imports:
     shiny,
     magrittr
 RoxygenNote: 7.0.2
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
