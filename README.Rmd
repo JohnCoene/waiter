@@ -18,8 +18,6 @@ knitr::opts_chunk$set(
 <div align="center">
 <img src="./man/figures/logo.png" height = "200px" />
 
-# waiter
-
 Loading screens for Shiny
 
 <!-- badges: start -->

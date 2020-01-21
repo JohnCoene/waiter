@@ -5,8 +5,6 @@
 
 <img src="./man/figures/logo.png" height = "200px" />
 
-# waiter
-
 Loading screens for Shiny
 
 <!-- badges: start -->
