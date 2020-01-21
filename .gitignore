@@ -8,3 +8,4 @@ src/*.dll
 .vscode
 test.R
 inst/doc
+.DS_Store
