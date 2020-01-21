@@ -1,7 +1,6 @@
 [![Travis build status](https://travis-ci.org/JohnCoene/waiter.svg?branch=master)](https://travis-ci.org/JohnCoene/waiter)
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/JohnCoene/waiter?branch=master&svg=true)](https://ci.appveyor.com/project/JohnCoene/waiter)
 [![CRAN status](https://www.r-pkg.org/badges/version/waiter)](https://CRAN.R-project.org/package=waiter)
-![GitHub repo size](https://img.shields.io/github/repo-size/JohnCoene/waiter)
 
 # waiter
 
