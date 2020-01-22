@@ -1,5 +1,11 @@
 # waiter 0.1.1.9000
 
+## New Feature
+
+- Added theme-related functions (`waiter_set_theme`, `waiter_get_theme`, and `waiter_unset_theme`) to enable setting a global theme; making such that every waiter loading screen uses the same options (`color`, `html`, and `logo`). This can e overridden in individual waiter loading screens.
+
+## Bug Fixes
+
 Check if Rstudio 1.2 available, warn if not on attach, see [#41](https://github.com/JohnCoene/waiter/issues/41) where waiter fails with earlier version of RStudio.
 
 # waiter 0.1.0

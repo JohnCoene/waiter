@@ -37,9 +37,9 @@ then \code{hide} or meanwhile \code{update} the content of the waiter.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waiter$new(
   id = NULL,
-  html = spin_1(),
-  color = "#333e48",
-  logo = "",
+  html = NULL,
+  color = NULL,
+  logo = NULL,
   hide_on_render = !is.null(id)
 )}\if{html}{\out{</div>}}
 }

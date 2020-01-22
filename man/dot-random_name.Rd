@@ -2,10 +2,11 @@
 % Please edit documentation in R/utils.R
 \name{.random_name}
 \alias{.random_name}
-\title{return random string}
+\title{Create random name}
 \usage{
 .random_name()
 }
 \description{
-return random string
+Random name generator to use as unique ids.
 }
+\keyword{internal}

@@ -325,9 +325,15 @@ Waiter <- R6::R6Class(
 #' 
 #' @examples
 #' \dontrun{Waiter$new()}
-    initialize = function(id = NULL, html = spin_1(), color = "#333e48", logo = "", 
+    initialize = function(id = NULL, html = NULL, color = NULL, logo = NULL, 
       hide_on_render = !is.null(id)){
+
+      # get theme
+      html <- .theme_or_value(html, "WAITER_HTML")
+      color <- .theme_or_value(color, "WAITER_COLOR")
+      logo <- .theme_or_value(logo, "WAITER_LOGO")
       
+      # process inputs
       if(inherits(html, "shiny.tag.list") || inherits(html, "shiny.tag"))
         html <- list(html)
       
@@ -422,3 +428,42 @@ Waiter <- R6::R6Class(
 		}
   )
 )
+
+#' Define a Theme
+#' 
+#' Define a theme to be used by all waiter loading screens. 
+#' These can be overriden in individual loading screens.
+#' 
+#' @inheritParams waiter
+#' 
+#' @name waiterTheme
+#' @export
+waiter_set_theme <- function(html = spin_1(), color = "#333e48", logo = ""){
+  options(
+    WAITER_HTML = html,
+    WAITER_COLOR = color,
+    WAITER_LOGO = logo
+  )
+  invisible()
+}
+
+#' @rdname waiterTheme
+#' @export
+waiter_get_theme <- function(){
+  list(
+    html = .get_html(),
+    color = .get_color(),
+    logo = .get_logo()
+  )
+}
+
+#' @rdname waiterTheme
+#' @export
+waiter_unset_theme <- function(){
+  options(
+    WAITER_HTML = NULL,
+    WAITER_COLOR = NULL,
+    WAITER_LOGO = NULL
+  )
+  invisible()
+}
