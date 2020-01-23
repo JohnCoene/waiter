@@ -10,7 +10,8 @@ List of changes made to waiter.
 
 ## Bug Fixes
 
-Check if Rstudio 1.2 available, warn if not on attach, see [#41](https://github.com/JohnCoene/waiter/issues/41) where waiter fails with earlier version of RStudio.
+- Check if Rstudio 1.2 available, warn if not on attach, see [#41](https://github.com/JohnCoene/waiter/issues/41) where waiter fails with earlier version of RStudio.
+- Change internal css class to avoid clash with shinydashboard, see [#43](https://github.com/JohnCoene/waiter/issues/43).
 
 # waiter 0.1.0
 

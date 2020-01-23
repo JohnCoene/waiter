@@ -1,8 +1,8 @@
 # Examples
 
-## modules
+## Modules
 
-Remember to use the namespace.
+Remember to use the namespace when specifying an `id`.
 
 ```r
 library(shiny)
