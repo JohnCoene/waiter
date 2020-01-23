@@ -481,6 +481,8 @@ waiter_unset_theme <- function(){
 #' @param alpha Alpha channel where \code{0} is completely transparent
 #' and \code{1} is opaque.
 #' 
+#' @examples transparent()
+#' 
 #' @export
 transparent <- function(alpha = 0){
   correct <- alpha >= 0 & alpha <= 1

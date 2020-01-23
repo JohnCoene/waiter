@@ -4,7 +4,7 @@
 \alias{transparent}
 \title{Transparency}
 \usage{
-transparent(alpha = 0.4)
+transparent(alpha = 0)
 }
 \arguments{
 \item{alpha}{Alpha channel where \code{0} is completely transparent
@@ -12,4 +12,8 @@ and \code{1} is opaque.}
 }
 \description{
 A convenience function to create a waiter with transparent background.
+}
+\examples{
+transparent()
+
 }
