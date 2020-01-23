@@ -4,7 +4,7 @@
 	width: 100%;
 	height: 100%;
 }
-.container--box .box {
+.container--box .boxxy {
 	display: grid;
 	justify-items: center;
 	align-items: center;
@@ -17,7 +17,7 @@
 
 /* Spinner 1 */
 
-.box .spinner--1 {
+.boxxy .spinner--1 {
 	border-top: 2px solid #fff;
 	animation: spinner1 600ms linear infinite;
 }
@@ -29,7 +29,7 @@
 
 /* Spinner 2 */
 
-.box .spinner--2 {
+.boxxy .spinner--2 {
 	border: 2px solid rgba(0, 0, 0, 0.4);
 	border-top-color: #fff;
 	animation: spinner2 600ms linear infinite;
@@ -42,7 +42,7 @@
 
 /* Spinner 3 */
 
-.box .spinner--3 {
+.boxxy .spinner--3 {
 	border: 2px solid rgba(0, 0, 0, 0.4);
 	border-bottom-color: #fff;
 	border-top-color: #fff;
@@ -56,7 +56,7 @@
 
 /* Spinner 4 */
 
-.box .spinner--4 {
+.boxxy .spinner--4 {
 	transform: scale(0);
 	background: rgba(255, 255, 255, 1);
 	opacity: 1;
@@ -71,7 +71,7 @@
 
 /* Spinner 5 */
 
-.box .spinner--5 {
+.boxxy .spinner--5 {
 	border: 2px solid rgba(255, 255, 255, 1);
 	animation: spinner5 800ms linear infinite;
 }
@@ -95,7 +95,7 @@
 
 /* Spinner 6 */
 
-.box .spinner--6 {
+.boxxy .spinner--6 {
 	border-top: 2px solid #fff;
 	border-right: 2px solid transparent;
 	animation: spinner6 700ms linear infinite;

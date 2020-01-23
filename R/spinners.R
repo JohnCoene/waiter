@@ -566,7 +566,7 @@ spin_1 <- function(){
   div(
     class = "container--box",
     div(
-      class = "box",
+      class = "boxxy",
       div(
         class = "spinner spinner--1"
       )
@@ -580,7 +580,7 @@ spin_2 <- function(){
   div(
     class = "container--box",
     div(
-      class = "box",
+      class = "boxxy",
       div(
         class = "spinner spinner--2"
       )
@@ -594,7 +594,7 @@ spin_3 <- function(){
   div(
     class = "container--box",
     div(
-      class = "box",
+      class = "boxxy",
       div(
         class = "spinner spinner--3"
       )
@@ -608,7 +608,7 @@ spin_4 <- function(){
   div(
     class = "container--box",
     div(
-      class = "box",
+      class = "boxxy",
       div(
         class = "spinner spinner--4"
       )
@@ -622,7 +622,7 @@ spin_5 <- function(){
   div(
     class = "container--box",
     div(
-      class = "box",
+      class = "boxxy",
       div(
         class = "spinner spinner--5"
       )
@@ -636,7 +636,7 @@ spin_6 <- function(){
   div(
     class = "container--box",
     div(
-      class = "box",
+      class = "boxxy",
       div(
         class = "spinner spinner--6"
       )
