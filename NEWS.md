@@ -3,6 +3,8 @@
 ## New Feature
 
 - Added theme-related functions (`waiter_set_theme`, `waiter_get_theme`, and `waiter_unset_theme`) to enable setting a global theme; making such that every waiter loading screen uses the same options (`color`, `html`, and `logo`). This can e overridden in individual waiter loading screens.
+- Added a new `spin_google` spinner
+- Added a convenience function `transparent` to easily create transparent waiter backgrounds.
 
 ## Bug Fixes
 
