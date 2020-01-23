@@ -66,6 +66,7 @@
 \alias{spin_4}
 \alias{spin_5}
 \alias{spin_6}
+\alias{spin_google}
 \alias{browse_waiters}
 \title{Spinners}
 \usage{
@@ -196,6 +197,8 @@ spin_4()
 spin_5()
 
 spin_6()
+
+spin_google()
 
 browse_waiters()
 }

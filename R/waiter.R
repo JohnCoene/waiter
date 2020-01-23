@@ -91,6 +91,11 @@ use_waiter <- function(include_js = TRUE){
         rel="stylesheet",
         type="text/css"
       ),
+      tags$link(
+        href = "waiter-assets/waiter/custom.css",
+        rel="stylesheet",
+        type="text/css"
+      ),
       if(include_js)
         tags$script(
           src = "waiter-assets/waiter/please-wait.min.js"
@@ -466,4 +471,20 @@ waiter_unset_theme <- function(){
     WAITER_LOGO = NULL
   )
   invisible()
+}
+
+
+#' Transparency 
+#' 
+#' A convenience function to create a waiter with transparent background.
+#' 
+#' @param alpha Alpha channel where \code{0} is completely transparent
+#' and \code{1} is opaque.
+#' 
+#' @export
+transparent <- function(alpha = 0){
+  correct <- alpha >= 0 & alpha <= 1
+  if(!correct)
+    stop("`alpha` must be between 0 and 1", call. = FALSE)
+  paste0("rgba(255,255,255,", alpha, ")")
 }
