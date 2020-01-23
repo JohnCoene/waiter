@@ -8,7 +8,7 @@ The waiter works hand-in-hand with the `steward` and the `hostess`. The former w
 
 ## Examples
 
-There is an online demo with a list of all [100 spinners](https://shiny.john-coene.com/waiter/) available.
+There is an online demo with a list of all [100+ spinners](https://shiny.john-coene.com/waiter/) available, you can also see the list of available spinners in R with `?spinners`.
 
 ### On Load
 
@@ -117,6 +117,8 @@ shinyApp(ui, server)
 
 ![](_assets/img/waiter-layer1.gif)
 
+### On Render
+
 We can actually further simplify the application above: we do not in fact need to use the `hide` method. By default when specifying an `id` waiter will hide the waiting screen when the element, in our case a plot, is rendered. This applies to plots, tables, htmlwidgets, etc. Below we simplify the app, removing the `hide` method and demonstrate that it works on a `tableOutput` and `htmlwidgets` (a [highcharter](http://jkunst.com/highcharter/) chart in this case). We also show that we can pass multiple ids to the waiter to have it show over multiple elements at once.
 
 ```r
@@ -205,6 +207,48 @@ shinyApp(ui, server)
 ```
 
 ![](_assets/img/waiter-layer3.gif)
+
+### Color
+
+Waiter sets the `color` argument in CSS, therefore hex values (e.g.: `#ffffff`), rgb (e.g.: `rgb(255, 255, 255)`) as well as rgba (e.g.: `rgb(255, 255, 255, .5)`) are valid and must be passed as string, e.g.: `"rgba(255,255,255,.5)"`. There is a convenience function called `transparent` which sets the background as transparent but can be set to a more opaque white~ish color with the `alpha` parameter.
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  use_waiter(),
+  actionButton("draw", "draw plot"),
+  plotOutput("plot")
+)
+
+server <- function(input, output){
+
+  # transparent~ish background
+  w <- Waiter$new(
+    id = "plot",
+    html = spin_google(), 
+    color = transparent(.5)
+  )
+
+  dataset <- reactive({
+    input$draw
+
+    w$show()
+
+    Sys.sleep(3)   
+
+    runif(100)
+  })
+
+  output$plot <- renderPlot(plot(dataset()))
+
+}
+
+shinyApp(ui, server)
+```
+
+![](_assets/img/waiter-transparent.gif)
 
 ## Theming
 

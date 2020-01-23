@@ -482,7 +482,7 @@ waiter_unset_theme <- function(){
 #' and \code{1} is opaque.
 #' 
 #' @export
-transparent <- function(alpha = .4){
+transparent <- function(alpha = 0){
   correct <- alpha >= 0 & alpha <= 1
   if(!correct)
     stop("`alpha` must be between 0 and 1", call. = FALSE)
