@@ -4,7 +4,7 @@
 \alias{transparent}
 \title{Transparency}
 \usage{
-transparent(alpha = 0)
+transparent(alpha = 0.4)
 }
 \arguments{
 \item{alpha}{Alpha channel where \code{0} is completely transparent
