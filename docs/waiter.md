@@ -210,7 +210,7 @@ shinyApp(ui, server)
 
 ### Color
 
-Waiter sets the `color` argument in CSS, therefore hex values (e.g.: `#ffffff`), rgb (e.g.: `rgb(255, 255, 255)`) as well as rgba (e.g.: `rgb(255, 255, 255, .5)`) are valid and must be passed as string, e.g.: `"rgba(255,255,255,.5)"`. There is a convenience function called `transparent` which sets the background as transparent but can be set to a more opaque white~ish color with the `alpha` parameter.
+Waiter sets the `color` argument in CSS, therefore hex values (e.g.: `#ffffff`), rgb (e.g.: `rgb(255, 255, 255)`), a string (e.g.: `white`) as well as rgba (e.g.: `rgb(255, 255, 255, .5)`) are valid and must be passed as string, e.g.: `"rgba(255,255,255,.5)"`. There is a convenience function called `transparent` which sets the background as transparent but can be set to a more opaque white~ish color with the `alpha` parameter.
 
 ```r
 library(shiny)
@@ -249,6 +249,45 @@ shinyApp(ui, server)
 ```
 
 ![](_assets/img/waiter-transparent.gif)
+
+### Content
+
+Thus far we have been using built-in spinners but you are by no means restricted to them. Waiter will let you use any HTML content you like, either as a string (e.g.: `<p>Loading...</p>`) and more conveniently [htmltools](https://cran.r-project.org/web/packages/htmltools/index.html) or shiny tags such e.g.(`shiny::p("Loading...")`). You may thus use those to provide richer messages with images, gif, whatever you fancy.
+
+```r
+library(shiny)
+library(waiter)
+
+# a notorious gif
+gif <- paste0("https://media1.tenor.com/images",
+  "/cb27704982766b4f02691ea975d9a259/tenor.gif?itemid=11365139")
+
+loading_screen <- tagList(
+  h3("Bear with Hadley a second", style = "color:gray;"),
+  img(src = gif, height = "200px")
+)
+ 
+ui <- fluidPage(
+  use_waiter(), # include dependencies
+  actionButton("show", "Show loading for 4 seconds")
+)
+
+server <- function(input, output, session){
+  # create a waiter
+  w <- Waiter$new(html = loading_screen, color = "white")
+
+  # on button click
+  observeEvent(input$show, {
+    w$show()
+    Sys.sleep(4)
+    w$hide()
+  })
+}
+
+shinyApp(ui, server)
+```
+
+![](_assets/img/waiter-content.gif)
 
 ## Theming
 
