@@ -646,6 +646,12 @@ spin_6 <- function(){
 
 #' @rdname spinners
 #' @export
+spin_google <- function(){
+  div(class = "cm-spinner")
+}
+
+#' @rdname spinners
+#' @export
 browse_waiters <- function() {
   .Deprecated("", package = "waiter", msg = "This function is no longer supported; see the package website.")
 	#shiny::runApp(appDir = system.file("waiter", package = 'waiter', mustWork = TRUE))
