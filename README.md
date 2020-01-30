@@ -27,14 +27,14 @@ The waiter lets you programmatically show and hide partial or full page
 loading screens with spinners or loading bars to keep your users
 patiently waiting as you load or compute fancy things.
 
-| Feature           | Waiter               | Waitress             | Hostess              |
-| :---------------- | :------------------- | :------------------- | :------------------- |
-| Progress Bar      | :white\_check\_mark: | :white\_check\_mark: | :white\_check\_mark: |
-| Full Screen       | :white\_check\_mark: | :white\_check\_mark: | :x:                  |
-| Works with waiter | :white\_check\_mark: | :x:                  | :white\_check\_mark: |
-| Spinner           | :white\_check\_mark: | :x:                  | :x:                  |
-| Updatable         | :white\_check\_mark: | :x:                  | :x:                  |
-| Notifications     | :x:                  | :white\_check\_mark: | :x:                  |
+|      Feature      |           Waiter           |          Waitress          |          Hostess           |
+| :---------------: | :------------------------: | :------------------------: | :------------------------: |
+|   Progress Bar    |    :heavy\_check\_mark:    |    :heavy\_check\_mark:    |    :heavy\_check\_mark:    |
+|    Full Screen    |    :heavy\_check\_mark:    |    :heavy\_check\_mark:    | :heavy\_multiplication\_x: |
+| Works with waiter |    :heavy\_check\_mark:    | :heavy\_multiplication\_x: |    :heavy\_check\_mark:    |
+|      Spinner      |    :heavy\_check\_mark:    | :heavy\_multiplication\_x: | :heavy\_multiplication\_x: |
+|     Updatable     |    :heavy\_check\_mark:    | :heavy\_multiplication\_x: | :heavy\_multiplication\_x: |
+|   Notifications   | :heavy\_multiplication\_x: |    :heavy\_check\_mark:    | :heavy\_multiplication\_x: |
 
 ## Examples
 
@@ -115,12 +115,12 @@ server <- function(input, output){
     start() # start
 
   for(i in 1:10){
-    waitress$increase(10) # increase by 10%
+    waitress$inc(10) # increase by 10%
     Sys.sleep(.3)
   }
 
   # hide when it's done
-  waitress$hide() 
+  waitress$close() 
 
 }
 

@@ -32,8 +32,8 @@ Loading screens for Shiny
 The waiter lets you programmatically show and hide partial or full page loading screens with spinners or loading bars to keep your users patiently waiting as you load or compute fancy things.
 
 ```{r, echo=FALSE, eval=TRUE}
-yes <- ":white_check_mark:"
-no <- ":x:"
+yes <- ":heavy_check_mark:"
+no <- ":heavy_multiplication_x:"
 
 feat <- tibble::tribble(
   ~"Feature",         ~"Waiter", ~"Waitress", ~"Hostess",
@@ -45,7 +45,7 @@ feat <- tibble::tribble(
   "Notifications",      no,      yes,          no
 )
 
-knitr::kable(feat)
+knitr::kable(feat, align = "c")
 ```
 
 ## Examples
@@ -119,12 +119,12 @@ server <- function(input, output){
     start() # start
 
   for(i in 1:10){
-    waitress$increase(10) # increase by 10%
+    waitress$inc(10) # increase by 10%
     Sys.sleep(.3)
   }
 
   # hide when it's done
-  waitress$hide() 
+  waitress$close() 
 
 }
 
