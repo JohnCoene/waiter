@@ -4,7 +4,7 @@
 
 # waiter
 
-Loading screens for Shiny; programmatically show and hide partial or full page loading screens with spinners or loading bars: [demo](https://shiny.john-coene.com/waiter).
+Loading screens for Shiny; programmatically show and hide partial or full page loading screens with spinners or loading bars, see the [demo](https://shiny.john-coene.com/waiter) and the [cheat sheet](https://waiter.john-coene.com/_assets/cheatsheet.pdf).
 
 ![](_assets/img/waiter-home.gif)
 

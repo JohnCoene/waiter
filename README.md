@@ -19,7 +19,8 @@ status](https://www.r-pkg.org/badges/version/waiter)](https://CRAN.R-project.org
 
 [Website](https://waiter.john-coene.com) |
 [Demo](https://shiny.john-coene.com/waiter/) | [Get
-Started](https://waiter.john-coene.com/#/waiter)
+Started](https://waiter.john-coene.com/#/waiter) | [Cheat
+Sheet](https://waiter.john-coene.com/_assets/cheatsheet.pdf)
 
 </div>
 
