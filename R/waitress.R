@@ -27,7 +27,7 @@
 #'  
 #'   w <- Waitress$
 #'    new()$  # call a waitress
-#'   	start() # start waitress
+#'   	start() # start waitress
 #' 	 
 #'   observeEvent(input$set, {
 #'     w$set(input$set) # set at percentage
