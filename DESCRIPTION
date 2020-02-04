@@ -2,11 +2,15 @@ Package: waiter
 Title: Loading Screen for 'Shiny'
 Version: 0.1.1.9000
 Date: 2020-01-12
-Authors@R: 
+Authors@R: c(
     person(given = "John",
            family = "Coene",
            role = c("aut", "cre"),
-           email = "jcoenep@gmail.com")
+           email = "jcoenep@gmail.com"),
+    person(given = "Jinhwan",
+           family = "Kim",
+           role = "ctb",
+           email = 'hwanistic@gmail.com'))
 Description: Full screen and partial loading screens for 'Shiny' with spinners, progress bars, and notifications.
 License: MIT + file LICENSE
 Encoding: UTF-8
