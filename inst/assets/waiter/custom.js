@@ -22,3 +22,7 @@ Shiny.addCustomMessageHandler('waiter-hide', function(opts) {
   else
     window.loading_screen.finish();
 });
+
+$(document).on('shiny:disconnected', function(event) {
+  window.loading_screen.finish();
+});
