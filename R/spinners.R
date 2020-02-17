@@ -7,9 +7,14 @@
 #' @param style CSS style to apply to spinner.
 #' @param color Desired color of spinner.
 #'
-#' @details You can browse the spinners with \code{browse_spinners}.
+#' @details Much of the \code{CSS} used is to provide those spinners.
+#' One can greatly reduce the load on the browser by only sourcing
+#' the CSS for the spinners required. You can find out which CSS kits
+#' are required to load by using the spinner in the R console as 
+#' shown in the example. This prints the kit and instructions
+#' to only source the required file.
 #'
-#' @examples if(interactive()) browse_spinners()
+#' @examples spin_rotating_plane()
 #' 
 #' @name spinners
 #' @export

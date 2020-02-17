@@ -126,9 +126,10 @@ kit <- function(id){
 
   spinner <- deparse(sys.calls()[[sys.nframe()-1]])
 
+  # only print if shiny is NOT running
   if(!shiny::isRunning())
     cat(
-      spinner, " requires spinner kit #",
+      "The ", crayon::cyan(spinner), " spinner requires kit #",
       crayon::cyan(id), ", include it with:\n", 
       crayon::green("use_waiter(spinners = ", id, ")", sep = ""), " \n",
       sep = ""
