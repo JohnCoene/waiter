@@ -126,7 +126,7 @@ kit <- function(id){
 
   spinner <- deparse(sys.calls()[[sys.nframe()-1]])
 
-  if(must_print && !shiny::isRunning())
+  if(!shiny::isRunning())
     cat(
       spinner, " requires spinner kit #",
       crayon::cyan(id), ", include it with:\n", 
