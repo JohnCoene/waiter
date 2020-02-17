@@ -10,6 +10,13 @@
 #' when the plot in \code{id} is drawn. Note the latter will only work with
 #' shiny plots, tables, htmlwidgets, etc. but will not work with arbitrary
 #' elements.
+#' @param spinners Spinners to include. By default all the CSS files for 
+#' all spinners are included you can customise this only that which you 
+#' need in order to reduce the amount of CSS that needs to be loaded and
+#' improve page loading speed. There are 7 spinner kits. The spinner kit
+#' required for the spinner you use is printed in the R console when 
+#' using the spinner. You can specify a single spinner kit e.g.: \code{1}
+#' or multiple spinner kits as a vector e.g.: \code{c(1,3,6)}.
 #' @param include_js Whether to include the Javascript dependencies, only
 #' set to \code{FALSE} if you use \code{\link{show_waiter_on_load}}.
 #' 
@@ -52,62 +59,107 @@
 #' @import shiny
 #' @name waiter
 #' @export
-use_waiter <- function(include_js = TRUE){
-  singleton(
-    tags$head(
-      tags$link(
-        href = "waiter-assets/waiter/please-wait.css",
-        rel="stylesheet",
-        type="text/css"
-      ),
-      tags$script("window.loading_screen;"),
+use_waiter <- function(spinners = 1:7, include_js = TRUE){
+
+  # must haves
+  header <- tags$head(
+    tags$link(
+      href = "waiter-assets/waiter/please-wait.css",
+      rel="stylesheet",
+      type="text/css"
+    ),
+    tags$script("window.loading_screen;")
+  )
+
+  # spinner kits
+  if(1 %in% spinners)
+    header <- shiny::tagAppendChildren(
+      header,
       tags$link(
         href = "waiter-assets/waiter/spinkit.css",
         rel="stylesheet",
         type="text/css"
-      ),
+      )
+    )
+
+  if(2 %in% spinners)
+    header <- shiny::tagAppendChildren(
+      header,
       tags$link(
         href = "waiter-assets/waiter/css-spinners.css",
         rel="stylesheet",
         type="text/css"
-      ),
+      )
+    )
+
+  if(3 %in% spinners)
+    header <- shiny::tagAppendChildren(
+      header,
       tags$link(
         href = "waiter-assets/waiter/devloop.css",
         rel="stylesheet",
         type="text/css"
-      ),
+      )
+    )
+
+  if(4 %in% spinners)
+    header <- shiny::tagAppendChildren(
+      header,
       tags$link(
         href = "waiter-assets/waiter/spinners.css",
         rel="stylesheet",
         type="text/css"
-      ),
+      )
+    )
+
+  if(5 %in% spinners)
+    header <- shiny::tagAppendChildren(
+      header,
       tags$link(
         href = "waiter-assets/waiter/spinbolt.css",
         rel="stylesheet",
         type="text/css"
-      ),
+      )
+    )
+
+  if(6 %in% spinners)
+    header <- shiny::tagAppendChildren(
+      header,
       tags$link(
         href = "waiter-assets/waiter/loaders.css",
         rel="stylesheet",
         type="text/css"
-      ),
+      )
+    )
+
+  if(7 %in% spinners)
+    header <- shiny::tagAppendChildren(
+      header,
       tags$link(
         href = "waiter-assets/waiter/custom.css",
         rel="stylesheet",
         type="text/css"
-      ),
-      if(include_js)
-        tags$script(
-          src = "waiter-assets/waiter/please-wait.min.js"
-        ),
-      tags$script(
-        src = "waiter-assets/waiter/waiter.js"
-      ),
-      tags$script(
-        src = "waiter-assets/waiter/custom.js"
       )
     )
+
+  # add js
+  header <- shiny::tagAppendChildren(
+    header,
+    if(include_js)
+      tags$script(
+        src = "waiter-assets/waiter/please-wait.min.js"
+      ),
+    tags$script(
+      src = "waiter-assets/waiter/waiter.js"
+    ),
+    tags$script(
+      src = "waiter-assets/waiter/custom.js"
+    )
   )
+
+  # singleton it
+  singleton(header)
+
 }
 
 #' @rdname waiter

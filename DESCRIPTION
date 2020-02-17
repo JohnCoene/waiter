@@ -18,6 +18,7 @@ LazyData: true
 Imports:
     R6,
     shiny,
+    crayon,
     magrittr,
     rstudioapi
 RoxygenNote: 7.0.2

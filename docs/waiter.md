@@ -10,6 +10,9 @@ The waiter works hand-in-hand with the `steward` and the `hostess`. The former w
 
 There is an online demo with a list of all [100+ spinners](https://shiny.john-coene.com/waiter/) available, you can also see the list of available spinners in R with `?spinners`.
 
+> [!TIP]
+> In the development version currently on Github (`0.1.1.9000`) you can reduce the load size of the CSS files in `use_waiter` which now takes a `spinners` argument to which one can specify any of 7 spinner CSS kits, by default all kits are loaded so nothing breaks. You can know which kits should be specified by simply typing the spinner in the console, e.g.: `spin_rotating_plane()`. See an example at [the bottom of this page](#css-load).
+
 ### On Load
 
 You can show a loading screen on app launch. The loading screen will launch prior to everything else, even the Shiny session. 
@@ -507,3 +510,34 @@ shinyApp(ui, server)
 ![](_assets/img/waiter-garcon.gif)
 
 There are a number of filters available.
+
+## CSS Load
+
+In the development version currently on Github (`0.1.1.9000`) you can reduce the load size of the CSS files in `use_waiter` which now takes a `spinners` argument to which one can specify any of 7 spinner CSS kits, by default all kits are loaded so nothing breaks. You can know which kits should be specified by simply typing the spinner in the console.
+
+```r
+spin_rotating_plane()                                                                  
+#> spin_rotating_plane() requires spinner kit #1, include it with:
+#> use_waiter(spinners = 1) 
+```
+
+This tells you that only spinner kit #1 is required.
+
+```r
+library(shiny)
+library(waiter)
+ 
+ui <- fluidPage(
+  use_waiter(spinners = 1)
+)
+
+server <- function(input, output, session){
+  Waiter$
+    new(html = spin_rotating_plane())$
+    show()
+}
+
+shinyApp(ui, server)
+```
+
+This makes it lighter for the browser to load.

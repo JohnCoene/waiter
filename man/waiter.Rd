@@ -16,9 +16,9 @@
 \alias{waiter_update}
 \title{Waiter}
 \usage{
-use_waiter(include_js = TRUE)
+use_waiter(spinners = 1:7, include_js = TRUE)
 
-waiter_use(include_js = TRUE)
+waiter_use(spinners = 1:7, include_js = TRUE)
 
 show_waiter(
   html = "",
@@ -53,6 +53,14 @@ update_waiter(html = "", id = NULL)
 waiter_update(id = NULL, html = NULL)
 }
 \arguments{
+\item{spinners}{Spinners to include. By default all the CSS files for 
+all spinners are included you can customise this only that which you 
+need in order to reduce the amount of CSS that needs to be loaded and
+improve page loading speed. There are 7 spinner kits. The spinner kit
+required for the spinner you use is printed in the R console when 
+using the spinner. You can specify a single spinner kit e.g.: \code{1}
+or multiple spinner kits as a vector e.g.: \code{c(1,3,6)}.}
+
 \item{include_js}{Whether to include the Javascript dependencies, only
 set to \code{FALSE} if you use \code{\link{show_waiter_on_load}}.}
 
