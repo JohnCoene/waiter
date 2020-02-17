@@ -126,8 +126,6 @@ kit <- function(id){
 
   spinner <- deparse(sys.calls()[[sys.nframe()-1]])
 
-  must_print <- getOption("WAITER_PRINT", TRUE) 
-
   if(must_print && !shiny::isRunning())
     cat(
       spinner, " requires spinner kit #",
