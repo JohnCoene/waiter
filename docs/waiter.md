@@ -521,7 +521,10 @@ spin_rotating_plane()
 #> use_waiter(spinners = 1) 
 ```
 
-This tells you that only spinner kit #1 is required.
+> [!NOTE]
+> You can specify multiple spinners with vector, e.g.: `c(1,3,7)`.
+
+This tells you that only spinner kit number 1 is required.
 
 ```r
 library(shiny)
@@ -540,4 +543,4 @@ server <- function(input, output, session){
 shinyApp(ui, server)
 ```
 
-This makes it lighter for the browser to load.
+This makes it lighter for the browser to load. If you do not want the instructions to print to the console you can set the `WAITER_PRINT` option to `FALSE`.
