@@ -128,7 +128,7 @@ kit <- function(id){
 
   must_print <- getOption("WAITER_PRINT", TRUE) 
 
-  if(must_print && spinner != "spin_1()")
+  if(must_print && !shiny::isRunning())
     cat(
       spinner, " requires spinner kit #",
       crayon::cyan(id), ", include it with:\n", 

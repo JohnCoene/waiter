@@ -543,4 +543,4 @@ server <- function(input, output, session){
 shinyApp(ui, server)
 ```
 
-This makes it lighter for the browser to load. If you do not want the instructions to print to the console you can set the `WAITER_PRINT` option to `FALSE`.
+This makes it lighter for the browser to load.
