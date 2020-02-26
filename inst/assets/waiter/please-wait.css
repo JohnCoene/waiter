@@ -20,6 +20,18 @@
   margin-top: -20px;
 }
 
+@keyframes expand {
+  from {
+    transform: scale(.5);
+  }
+}
+
+@keyframes shrink {
+  to {
+    transform: scale(.5);
+  }
+}
+
 /* Hide flash */
 body > .inner {
   display: none;

@@ -89,6 +89,7 @@ function show_waiter(id, html, color, to_hide){
   overlay.style.position = "absolute";
   overlay.style.zIndex = 999;
   overlay.classList.add("waiter-overlay");
+  overlay.style.animation = "expand .15s ease-in-out";
 
   // append overlay content in overlay
   overlay.appendChild(overlay_content);
@@ -104,10 +105,14 @@ function hide_waiter(id){
 
   var overlay = dom.getElementsByClassName("waiter-overlay");
 
-  if(overlay.length > 0)
-    dom.removeChild(overlay[0]);
-  else
+  if(overlay.length > 0){
+    dom.style.animation = "shrink .15s ease-in-out";
+    setTimeout(function(){
+      dom.removeChild(overlay[0]);
+    }, 150)
+  } else{
     console.log("no waiter on", id);
+  }
 
 }
 

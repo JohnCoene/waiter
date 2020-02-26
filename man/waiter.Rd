@@ -106,7 +106,7 @@ server <- function(input, output, session){
   
   observeEvent(input$show, {
     waiter_show(
-      tagList(
+      html = tagList(
         spin_fading_circles(),
         "Loading ..."
       )
