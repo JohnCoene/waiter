@@ -525,7 +525,6 @@ waiter_unset_theme <- function(){
   invisible()
 }
 
-
 #' Transparency 
 #' 
 #' A convenience function to create a waiter with transparent background.
