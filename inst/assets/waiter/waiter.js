@@ -144,7 +144,7 @@ function hide_recalculate(id){
 }
 
 $(document).on('shiny:value shiny:error shiny:recalculated shiny:outputinvalidated', function(event) {
-  if(waiter_to_hide.includes(event.name)){
+  if(waiter_to_hide.indexOf(event.name) > 0){
     hide_waiter(event.name);
   }
 });
