@@ -19,6 +19,8 @@ Note that in the latest version you can also preview the spinners in the browser
 preview_spinner(spin_4())
 ```
 
+![](_assets/img/waiter-preview.png)
+
 ### On Load
 
 You can show a loading screen on app launch. The loading screen will launch prior to everything else, even the Shiny session. 
