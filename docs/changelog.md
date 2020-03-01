@@ -2,7 +2,13 @@
 
 List of changes made to waiter.
 
-# waiter 0.1.1.9000
+# waiter 0.1.2.9000
+
+- Much improved spinners API.
+- Allow previewing the spinners with `preview_spinner`.
+- Spinner kit no longer force prints, `print` method added for this.
+
+# waiter 0.1.1
 
 ## New Feature
 

@@ -114,26 +114,3 @@ hostess_presets <- c(
     logo <- ""
   return(logo)
 }
-
-#' Give Spinner kit id
-#' 
-#' Prints id of spinner CSS required.
-#' 
-#' @param id Id of CSS spinner kit required.
-#' 
-#' @keywords internal
-kit <- function(id){
-
-  spinner <- deparse(sys.calls()[[sys.nframe()-1]])
-
-  # only print if shiny is NOT running
-  if(!shiny::isRunning())
-    cat(
-      "The ", crayon::cyan(spinner), " spinner requires kit #",
-      crayon::cyan(id), ", include it with:\n", 
-      crayon::green("use_waiter(spinners = ", id, ")", sep = ""), " \n",
-      sep = ""
-    )
-
-  invisible()
-}

@@ -210,6 +210,9 @@ and \code{42}.}
 
 \item{style}{CSS style to apply to spinner.}
 }
+\value{
+An object of class \code{spinner}.
+}
 \description{
 Spinkit spinners to use with \code{\link{show_waiter}}.
 }

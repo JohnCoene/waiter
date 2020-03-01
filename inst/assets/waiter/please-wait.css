@@ -20,7 +20,7 @@
   margin-top: -20px;
 }
 
-@keyframes expand {
+/* @keyframes expand {
   from {
     transform: scale(.5);
   }
@@ -30,7 +30,7 @@
   to {
     transform: scale(.5);
   }
-}
+} */
 
 /* Hide flash */
 body > .inner {
