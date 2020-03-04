@@ -459,7 +459,7 @@ spin_dots <- function(){
 #' @rdname spinners
 #' @export
 spin_3circles <- function(){
-  construct(div(class = "circles-loader"))
+  construct(div(class = "circles-loader"), 4)
 }
 
 #' @rdname spinners
