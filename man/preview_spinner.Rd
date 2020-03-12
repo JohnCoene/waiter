@@ -14,3 +14,7 @@ preview_spinner(spinner, bg_color = "black")
 \description{
 Allows previewing spinners in web browser or RStudio Viewer.
 }
+\examples{
+preview_spinner(spin_1())
+
+}
