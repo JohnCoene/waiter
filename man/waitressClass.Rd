@@ -76,6 +76,7 @@ its percentage, then hide it when done.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waitress$new(
@@ -128,6 +129,7 @@ Create a waitress.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-start"></a>}}
+\if{latex}{\out{\hypertarget{method-start}{}}}
 \subsection{Method \code{start()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waitress$start(
@@ -164,6 +166,7 @@ Start the waitress.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-notify"></a>}}
+\if{latex}{\out{\hypertarget{method-notify}{}}}
 \subsection{Method \code{notify()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waitress$notify(
@@ -205,6 +208,7 @@ Show the waitress as a notification.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-set"></a>}}
+\if{latex}{\out{\hypertarget{method-set}{}}}
 \subsection{Method \code{set()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waitress$set(value)}\if{html}{\out{</div>}}
@@ -232,6 +236,7 @@ Set the waitress to a specific percentage.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-auto"></a>}}
+\if{latex}{\out{\hypertarget{method-auto}{}}}
 \subsection{Method \code{auto()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waitress$auto(value, ms)}\if{html}{\out{</div>}}
@@ -261,6 +266,7 @@ Automatically start and end the waitress.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-increase"></a>}}
+\if{latex}{\out{\hypertarget{method-increase}{}}}
 \subsection{Method \code{increase()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waitress$increase(percent)}\if{html}{\out{</div>}}
@@ -281,6 +287,7 @@ Increase the waitress by a percentage.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-inc"></a>}}
+\if{latex}{\out{\hypertarget{method-inc}{}}}
 \subsection{Method \code{inc()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waitress$inc(value)}\if{html}{\out{</div>}}
@@ -308,6 +315,7 @@ Increase the waitress by a percentage.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-hide"></a>}}
+\if{latex}{\out{\hypertarget{method-hide}{}}}
 \subsection{Method \code{hide()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waitress$hide()}\if{html}{\out{</div>}}
@@ -321,6 +329,7 @@ Hide the waitress.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-close"></a>}}
+\if{latex}{\out{\hypertarget{method-close}{}}}
 \subsection{Method \code{close()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waitress$close()}\if{html}{\out{</div>}}
@@ -341,6 +350,7 @@ Close the waitress.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print"></a>}}
+\if{latex}{\out{\hypertarget{method-print}{}}}
 \subsection{Method \code{print()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waitress$print()}\if{html}{\out{</div>}}
@@ -361,6 +371,7 @@ Print the waitress.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

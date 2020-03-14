@@ -79,6 +79,7 @@ Hostess$new()$set_loader(loader)
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Hostess$new(id = NULL, min = 0, max = 100, n = 1)}\if{html}{\out{</div>}}
@@ -112,6 +113,7 @@ Create a hostess.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-start"></a>}}
+\if{latex}{\out{\hypertarget{method-start}{}}}
 \subsection{Method \code{start()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Hostess$start()}\if{html}{\out{</div>}}
@@ -124,6 +126,7 @@ Start the hostess
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print"></a>}}
+\if{latex}{\out{\hypertarget{method-print}{}}}
 \subsection{Method \code{print()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Hostess$print()}\if{html}{\out{</div>}}
@@ -136,6 +139,7 @@ Print the hostess
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-set"></a>}}
+\if{latex}{\out{\hypertarget{method-set}{}}}
 \subsection{Method \code{set()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Hostess$set(value)}\if{html}{\out{</div>}}
@@ -163,6 +167,7 @@ Set the hostess loading bar.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-inc"></a>}}
+\if{latex}{\out{\hypertarget{method-inc}{}}}
 \subsection{Method \code{inc()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Hostess$inc(value)}\if{html}{\out{</div>}}
@@ -190,6 +195,7 @@ Increase the hostess loading bar.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-get_loader"></a>}}
+\if{latex}{\out{\hypertarget{method-get_loader}{}}}
 \subsection{Method \code{get_loader()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Hostess$get_loader(
@@ -264,6 +270,7 @@ Create a hostess loading bar.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-set_loader"></a>}}
+\if{latex}{\out{\hypertarget{method-set_loader}{}}}
 \subsection{Method \code{set_loader()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Hostess$set_loader(loader)}\if{html}{\out{</div>}}
@@ -294,6 +301,7 @@ Hostess$new()$set_loader(loader)
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-notify"></a>}}
+\if{latex}{\out{\hypertarget{method-notify}{}}}
 \subsection{Method \code{notify()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Hostess$notify(
@@ -334,6 +342,7 @@ Use the hostess as a notification. It is hidden when \code{set} tpo \code{100}.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

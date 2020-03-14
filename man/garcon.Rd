@@ -71,6 +71,7 @@ Create a garcon to aniamte images on the waiter.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Garcon$new(
@@ -114,6 +115,7 @@ Initialise the garçon.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-set"></a>}}
+\if{latex}{\out{\hypertarget{method-set}{}}}
 \subsection{Method \code{set()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Garcon$set(value)}\if{html}{\out{</div>}}
@@ -141,6 +143,7 @@ Value to set the garçon to.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-inc"></a>}}
+\if{latex}{\out{\hypertarget{method-inc}{}}}
 \subsection{Method \code{inc()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Garcon$inc(value)}\if{html}{\out{</div>}}
@@ -168,6 +171,7 @@ Value to increase the garçon to.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-reset"></a>}}
+\if{latex}{\out{\hypertarget{method-reset}{}}}
 \subsection{Method \code{reset()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Garcon$reset(value)}\if{html}{\out{</div>}}
@@ -195,6 +199,7 @@ Reset the garçon to.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-destroy"></a>}}
+\if{latex}{\out{\hypertarget{method-destroy}{}}}
 \subsection{Method \code{destroy()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Garcon$destroy()}\if{html}{\out{</div>}}
@@ -215,6 +220,7 @@ Kill the garçon to.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print"></a>}}
+\if{latex}{\out{\hypertarget{method-print}{}}}
 \subsection{Method \code{print()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Garcon$print()}\if{html}{\out{</div>}}
@@ -227,6 +233,7 @@ print the garcon
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-stop"></a>}}
+\if{latex}{\out{\hypertarget{method-stop}{}}}
 \subsection{Method \code{stop()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Garcon$stop()}\if{html}{\out{</div>}}
@@ -247,6 +254,7 @@ Stop the garçon.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-close"></a>}}
+\if{latex}{\out{\hypertarget{method-close}{}}}
 \subsection{Method \code{close()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Garcon$close()}\if{html}{\out{</div>}}
@@ -267,6 +275,7 @@ Close the garçon.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

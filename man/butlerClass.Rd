@@ -43,6 +43,7 @@ the application.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-new"></a>}}
+\if{latex}{\out{\hypertarget{method-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Butler$new(
@@ -81,6 +82,7 @@ Create a butler.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-show"></a>}}
+\if{latex}{\out{\hypertarget{method-show}{}}}
 \subsection{Method \code{show()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Butler$show()}\if{html}{\out{</div>}}
@@ -101,6 +103,7 @@ Show the butler.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-print"></a>}}
+\if{latex}{\out{\hypertarget{method-print}{}}}
 \subsection{Method \code{print()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Butler$print()}\if{html}{\out{</div>}}
@@ -113,6 +116,7 @@ print the butler
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-hide"></a>}}
+\if{latex}{\out{\hypertarget{method-hide}{}}}
 \subsection{Method \code{hide()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Butler$hide()}\if{html}{\out{</div>}}
@@ -133,6 +137,7 @@ Hide the butler.
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{
