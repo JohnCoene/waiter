@@ -16,3 +16,5 @@ demo
 ^\.github$
 ^README\.Rmd$
 ^cheatsheet\.pdf$
+^\.circleci$
+^\.circleci/config\.yml$
