@@ -138,6 +138,42 @@ server <- function(input, output){
 shinyApp(ui, server)
 ```
 
+## yonder
+
+It's very easy with yonder, place the `use_waiter` anywhere really.
+
+```r
+library(yonder)
+
+ui <- container(
+  use_waiter(),
+  buttonInput(
+    id = "button",
+    label = "Render"
+  ),
+  plotOutput("plot")
+)
+
+server <- function(input, output){
+
+  w <- Waiter$new()
+
+  dataset <- reactive({
+    input$button
+    
+    w$show()
+    Sys.sleep(3) # give time for wait screen to show
+    w$hide()
+    runif(100)
+  })
+
+  output$plot <- renderPlot(plot(dataset()))
+
+}
+
+shinyApp(ui, server)
+```
+
 ## shinydashboard
 
 Place `use_waiter` in `dashboardBody`.
@@ -181,45 +217,8 @@ server <- function(input, output) {
 shinyApp(ui, server)
 ```
 
-## yonder
 
-It's very easy with yonder, place the `use_waiter` anywhere really.
-
-```r
-library(yonder)
-
-ui <- container(
-  use_waiter(),
-  buttonInput(
-    id = "button",
-    label = "Render"
-  ),
-  plotOutput("plot")
-)
-
-server <- function(input, output){
-
-  w <- Waiter$new()
-
-  dataset <- reactive({
-    input$button
-    
-    w$show()
-    Sys.sleep(3) # give time for wait screen to show
-    w$hide()
-    runif(100)
-  })
-
-  output$plot <- renderPlot(plot(dataset()))
-
-}
-
-shinyApp(ui, server)
-```
-
-## Flexdashboard
-
-To display the waiter in flexdashboard's content section (excluding the menu to the left) a minor change is required. The content section does not have an id for waiter to reference, we therefore place a snippet of javascript which gives that `<section>` and id (`waiter-content`).
+To display the waiter in shinydashboard's content section (excluding the menu to the left) a minor change is required. The content section does not have an id for waiter to reference, we therefore place a snippet of javascript which gives that `<section>` and id (`waiter-content`).
 
 ```r
 ## app.R ##
