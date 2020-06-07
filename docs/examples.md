@@ -216,3 +216,94 @@ server <- function(input, output){
 
 shinyApp(ui, server)
 ```
+
+## Flexdashboard
+
+To display the waiter in flexdashboard's content section (excluding the menu to the left) a minor change is required. The content section does not have an id for waiter to reference, we therefore place a snippet of javascript which gives that `<section>` and id (`waiter-content`).
+
+```r
+## app.R ##
+library(shiny)
+library(waiter)
+library(shinydashboard)
+
+# add JavaScript to add an id to the <section> tag so we can overlay waiter on top of it
+add_id_to_section <- "
+$( document ).ready(function() {
+  var section = document.getElementsByClassName('content');
+  section[0].setAttribute('id', 'waiter-content');
+});
+"
+
+ui <- dashboardPage(
+  dashboardHeader(title = "Basic dashboard"),
+  dashboardSidebar(
+    sidebarMenu(
+      id = "tabs", # add id to pick up events server side with input$tabs
+      menuItem("Dashboard", tabName = "dashboard", icon = icon("dashboard")),
+      menuItem("Widgets", tabName = "widgets", icon = icon("th"))
+    )
+  ),
+  dashboardBody(
+    # import our custom JavaScript
+    tags$head(
+      tags$script(add_id_to_section)
+    ),
+    use_waiter(),
+    tabItems(
+      # First tab content
+      tabItem(
+        tabName = "dashboard",
+        div(
+          # force minimum height of DIV otherwise overlayed waiter is too small
+          # you should not need this
+          style = "min-height: 100vh;", 
+          uiOutput("tab1")
+        )
+      ),
+
+      # Second tab content
+      tabItem(
+        tabName = "widgets",
+        div(
+          style = "min-height: 100vh;", 
+          uiOutput("tab2")
+        )
+      )
+    )
+  )
+)
+
+server <- function(input, output) {
+  w <- Waiter$new("waiter-content")
+
+  # vector to track already loaded tabs
+  loaded_tabs <- c()
+  observeEvent(input$tabs, {
+    # only show loading screen once
+    if(!input$tabs %in% loaded_tabs){
+      # add tab to loaded
+      loaded_tabs <<- c(loaded_tabs, input$tabs)
+      w$show()
+    }
+  })
+
+  output$tab1 <- renderUI({
+    Sys.sleep(3)
+
+    w$hide()
+
+    h2("Dashboard rendered!")
+  })
+
+  output$tab2 <- renderUI({
+    Sys.sleep(3)
+
+    w$hide()
+
+    h2("Widgets rendered!")
+  })
+}
+
+shinyApp(ui, server)
+```
