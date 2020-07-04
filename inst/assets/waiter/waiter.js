@@ -143,7 +143,7 @@ function hide_recalculate(id){
   head.appendChild(style);
 }
 
-$(document).on('shiny:value shiny:error shiny:recalculated shiny:outputinvalidated', function(event) {
+$(document).on('shiny:value shiny:error shiny:outputinvalidated', function(event) {
   if(waiter_to_hide.indexOf(event.name) > 0){
     hide_waiter(event.name);
   }
