@@ -73,6 +73,8 @@ server <- function(input, output){
 shinyApp(ui, server)
 ```
 
+![](_assets/img/waiter-busy.gif)
+
 ### Dynamic Updates
 
 You can also update the `html` of the waiting screen while it's loading, useful if you want to give users more detailed updates.
