@@ -45,6 +45,34 @@ server <- function(input, output, session){
 shinyApp(ui, server)
 ```
 
+### On busy
+
+In the development version, not yet on CRAN, one can use `waiter_on_busy` to automatically display the loading screen when the server is busy computing things and automatically remove it when it goes back to idle.
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  use_waiter(),
+  waiter_on_busy(),
+  actionButton("render", "render"),
+  plotOutput("plot")
+)
+
+server <- function(input, output){
+
+  output$plot <- renderPlot({
+    input$render
+    Sys.sleep(2)
+    plot(cars)
+  })
+
+}
+
+shinyApp(ui, server)
+```
+
 ### Dynamic Updates
 
 You can also update the `html` of the waiting screen while it's loading, useful if you want to give users more detailed updates.

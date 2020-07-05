@@ -10,6 +10,7 @@
 \alias{waiter_show_on_load}
 \alias{hide_waiter_on_drawn}
 \alias{waiter_hide_on_render}
+\alias{waiter_on_busy}
 \alias{hide_waiter}
 \alias{waiter_hide}
 \alias{update_waiter}
@@ -43,6 +44,8 @@ waiter_show_on_load(html = spin_1(), color = "#333e48", logo = "")
 hide_waiter_on_drawn(id)
 
 waiter_hide_on_render(id)
+
+waiter_on_busy(html = spin_1(), color = "#333e48", logo = "")
 
 hide_waiter(id = NULL)
 

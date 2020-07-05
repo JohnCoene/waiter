@@ -306,6 +306,30 @@ waiter_hide_on_render <- function(id){
 
 #' @rdname waiter
 #' @export
+waiter_on_busy <- function(html = spin_1(), color = "#333e48", logo = ""){
+
+  html <- as.character(html)
+  html <- gsub("\n", "", html)
+  
+  script <- paste0(
+    "$(document).on('shiny:busy', function(event) {
+      window.loading_screen = pleaseWait({
+        logo: '", as.character(logo), "',
+        backgroundColor: '", color, "',
+        loadingHtml: '", html, "'
+      });
+    });
+    
+    $(document).on('shiny:idle', function(event) {
+      window.loading_screen.finish();
+    });"
+  )
+
+  singleton(HTML(paste0("<script>", script, "</script>")))
+}
+
+#' @rdname waiter
+#' @export
 hide_waiter <- function(id = NULL){
   .Deprecated("waiter_hide", package = "waiter")
   session <- shiny::getDefaultReactiveDomain()
