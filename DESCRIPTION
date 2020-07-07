@@ -13,6 +13,8 @@ Authors@R: c(
            email = 'hwanistic@gmail.com'))
 Description: Full screen and partial loading screens for 'Shiny' with spinners, progress bars, and notifications.
 License: MIT + file LICENSE
+URL: https://waiter.john-coene.com/, https://github.com/JohnCoene/waiter
+BugReports: https://github.com/JohnCoene/waiter/issues
 Encoding: UTF-8
 LazyData: true
 Imports:
