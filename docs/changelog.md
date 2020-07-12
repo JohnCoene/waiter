@@ -2,7 +2,7 @@
 
 List of changes made to waiter.
 
-# waiter 0.1.2.9000
+# waiter 0.1.2
 
 - Much improved spinners API.
 - Allow previewing the spinners with `preview_spinner`.
