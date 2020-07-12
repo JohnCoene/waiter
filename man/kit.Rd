@@ -2,7 +2,7 @@
 % Please edit documentation in R/spinners.R
 \name{kit}
 \alias{kit}
-\title{Give Spinner kit id}
+\title{Get Spinner kit id}
 \usage{
 kit(spinner)
 }

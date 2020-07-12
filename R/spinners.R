@@ -763,7 +763,7 @@ browse_waiters <- function() {
 #' @param bg_color Background color.
 #' 
 #' @examples 
-#' preview_spinner(spin_1())
+#' if(interactive()) preview_spinner(spin_1())
 #' 
 #' @export
 preview_spinner <- function(spinner, bg_color = "black") UseMethod("preview_spinner")
@@ -838,7 +838,7 @@ print.spinner <- function(x, ...){
   kit(x)
 }
 
-#' Give Spinner kit id
+#' Get Spinner kit id
 #' 
 #' Prints id of spinner CSS required.
 #' 
