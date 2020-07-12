@@ -17,8 +17,7 @@
 #' required for the spinner you use is printed in the R console when 
 #' using the spinner. You can specify a single spinner kit e.g.: \code{1}
 #' or multiple spinner kits as a vector e.g.: \code{c(1,3,6)}.
-#' @param include_js Whether to include the Javascript dependencies, only
-#' set to \code{FALSE} if you use \code{\link{show_waiter_on_load}}.
+#' @param include_js Deprecated argument, no longer needed.
 #' 
 #' @section Functions:
 #' \itemize{
@@ -61,6 +60,9 @@
 #' @name waiter
 #' @export
 use_waiter <- function(spinners = 1:7, include_js = TRUE){
+
+  if(!isTRUE(include_js))
+    warning("include_js argument is deprecated, it is no longer needed")
 
   # must haves
   header <- tags$head(
@@ -146,10 +148,9 @@ use_waiter <- function(spinners = 1:7, include_js = TRUE){
   # add js
   header <- shiny::tagAppendChildren(
     header,
-    if(include_js)
-      tags$script(
-        src = "waiter-assets/waiter/please-wait.min.js"
-      ),
+    tags$script(
+      src = "waiter-assets/waiter/please-wait.min.js"
+    ),
     tags$script(
       src = "waiter-assets/waiter/waiter.js"
     ),
@@ -253,12 +254,7 @@ waiter_show_on_load <- function(html = spin_1(), color = "#333e48", logo = ""){
     });"
   )
 
-  tagList(
-    tags$script(
-      src = "waiter-assets/waiter/please-wait.min.js"
-    ),
-    HTML(paste0("<script>", script, "</script>"))
-  )
+  HTML(paste0("<script>", script, "</script>"))
 }
 
 #' @rdname waiter

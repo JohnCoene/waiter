@@ -32,9 +32,9 @@ library(shiny)
 library(waiter)
  
 ui <- fluidPage(
-  use_waiter(include_js = FALSE), # do not include js
-  h3("Content you will only see after loading screen has disappeared"),
-  waiter_show_on_load(html = spin_fading_circles()) # place at the bottom
+  use_waiter(), 
+  waiter_show_on_load(html = spin_fading_circles()), # place at the top before content
+  h3("Content you will only see after loading screen has disappeared")
 )
 
 server <- function(input, output, session){

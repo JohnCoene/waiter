@@ -8,6 +8,7 @@ List of changes made to waiter.
 - Allow previewing the spinners with `preview_spinner`.
 - Spinner kit no longer force prints, `print` method added for this.
 - Added ability to automatically show and hide the loading screen when the server is busy/idle with `waiter_on_busy`
+- Remove `include_js` argument to simplify API
 
 # waiter 0.1.1
 

@@ -64,8 +64,7 @@ required for the spinner you use is printed in the R console when
 using the spinner. You can specify a single spinner kit e.g.: \code{1}
 or multiple spinner kits as a vector e.g.: \code{c(1,3,6)}.}
 
-\item{include_js}{Whether to include the Javascript dependencies, only
-set to \code{FALSE} if you use \code{\link{show_waiter_on_load}}.}
+\item{include_js}{Deprecated argument, no longer needed.}
 
 \item{html}{HTML content of waiter, generally a spinner, see \code{\link{spinners}}.}
 
