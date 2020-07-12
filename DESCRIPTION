@@ -1,7 +1,7 @@
 Package: waiter
 Title: Loading Screen for 'Shiny'
-Version: 0.1.2.9000
-Date: 2020-03-14
+Version: 0.1.2
+Date: 2020-07-11
 Authors@R: c(
     person(given = "John",
            family = "Coene",
