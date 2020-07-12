@@ -5,7 +5,7 @@
 \alias{Waitress}
 \title{Waitress R6 Class}
 \description{
-Create a waitress (progress bar) and programmatically set or increase 
+Create a waitress (progress bar) and programmatically set or increase
 its percentage, then hide it when done.
 }
 \examples{
@@ -92,7 +92,7 @@ its percentage, then hide it when done.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{selector}}{Element selector to apply the waitress to, 
+\item{\code{selector}}{Element selector to apply the waitress to,
 if \code{NULL} then the waitress is applied to the whole screen.}
 
 \item{\code{theme}}{A valid theme, see function usage.}
@@ -109,7 +109,7 @@ when the element in \code{id} is rendered. Note the latter will work with
 shiny plots, tables, htmlwidgets, etc. but will not work with arbitrary
 elements.}
 
-\item{\code{color, percent_color}}{Color of waitress and color of percent text shown when 
+\item{\code{color, percent_color}}{Color of waitress and color of percent text shown when
 \code{theme} is set to \code{overlay-percent}.}
 }
 \if{html}{\out{</div>}}
@@ -142,7 +142,7 @@ Create a waitress.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{html}}{HTML content to show over the waitress, 
+\item{\code{html}}{HTML content to show over the waitress,
 accepts htmltools and shiny tags.}
 
 \item{\code{background_color}}{The background color of the html.}
@@ -180,7 +180,7 @@ Start the waitress.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{html}}{HTML content to show over the waitress, 
+\item{\code{html}}{HTML content to show over the waitress,
 accepts htmltools and shiny tags.}
 
 \item{\code{background_color}}{The background color of the html.}

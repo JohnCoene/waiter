@@ -21,6 +21,6 @@ waiter_unset_theme()
 \item{logo}{Logo to display.}
 }
 \description{
-Define a theme to be used by all waiter loading screens. 
+Define a theme to be used by all waiter loading screens.
 These can be overriden in individual loading screens.
 }

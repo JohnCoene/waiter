@@ -92,11 +92,11 @@ Create a garcon to aniamte images on the waiter.
 
 \item{\code{opacity}}{Overlay transparency.}
 
-\item{\code{direction}}{Animation direction. Possible values: `lr` (left to right), 
-`rl` (right to left), `bt` (bottom to top), `tb` (top to bottom).}
+\item{\code{direction}}{Animation direction. Possible values: \code{lr} (left to right),
+\code{rl} (right to left), \code{bt} (bottom to top), \code{tb} (top to bottom).}
 
-\item{\code{filter}}{Filter to apply, options are `blur`, `grayscale`, `sepia`, 
-`hue-rotate`, `invert`, `opacity`.}
+\item{\code{filter}}{Filter to apply, options are \code{blur}, \code{grayscale}, \code{sepia},
+\code{hue-rotate}, \code{invert}, \code{opacity}.}
 }
 \if{html}{\out{</div>}}
 }

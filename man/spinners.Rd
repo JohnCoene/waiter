@@ -220,7 +220,7 @@ Spinkit spinners to use with \code{\link{show_waiter}}.
 Much of the \code{CSS} used is to provide those spinners.
 One can greatly reduce the load on the browser by only sourcing
 the CSS for the spinners required. You can find out which CSS kits
-are required to load by using the spinner in the R console as 
+are required to load by using the spinner in the R console as
 shown in the example. This prints the kit and instructions
 to only source the required file.
 }

@@ -8,7 +8,7 @@
 Create a butler.
 }
 \details{
-Create an object to show a loading bar to display at the top of 
+Create an object to show a loading bar to display at the top of
 the application.
 }
 \examples{

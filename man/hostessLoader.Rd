@@ -45,7 +45,7 @@ hostess_stripe(color1 = "#697682", color2 = "#f7fff7", duration = 1)
 \item{text_color}{The color of the loading text.}
 
 \item{center_page}{By default the hostess is \emph{not} centered in the middle
-of the screen, centering in the middle of the page is however ideal when using 
+of the screen, centering in the middle of the page is however ideal when using
 it with waiter full screen, for the latter set to \code{TRUE}.}
 
 \item{class}{CSS class.}
@@ -55,7 +55,7 @@ points of the progress bar.}
 
 \item{svg}{Either an svg path e.g.: \code{M10 10L90 10} or the path to a \code{.svg}
 file. Note that if passing the latter it must be made available to Shiny by
-placing it either in the \code{www} folder or using \link[shiny]{addResourcePath}.}
+placing it either in the \code{www} folder or using \code{\link[shiny:resourcePaths]{shiny::addResourcePath()}}.}
 
 \item{progress_type}{The progress type, either \code{stroke} or \code{fill}.
 Ther former traces the path of the \code{svg} while the latter fills it progressively.}
@@ -64,8 +64,8 @@ Ther former traces the path of the \code{svg} while the latter fills it progress
 take. Wether \code{fill_direction} or \code{stroke_direction} is used depends on
 \code{progress_type}.}
 
-\item{fill_color, stroke_color}{The color to use for the progress bar. 
-Wether \code{fill_color} or \code{stroke_color} is used depends on 
+\item{fill_color, stroke_color}{The color to use for the progress bar.
+Wether \code{fill_color} or \code{stroke_color} is used depends on
 \code{progress_type}.}
 
 \item{...}{Any other other advanced options to pass to the loaded
@@ -93,14 +93,14 @@ Customise the Hostess laoding bar.
 \section{Presets}{
 
 \itemize{
-  \item{\code{line}}
-  \item{\code{fan}}
-  \item{\code{circle}}
-  \item{\code{bubble}}
-  \item{\code{rainbow}}
-  \item{\code{energy}}
-  \item{\code{stripe}}
-  \item{\code{text}}
+\item{\code{line}}
+\item{\code{fan}}
+\item{\code{circle}}
+\item{\code{bubble}}
+\item{\code{rainbow}}
+\item{\code{energy}}
+\item{\code{stripe}}
+\item{\code{text}}
 }
 }
 

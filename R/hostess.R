@@ -184,7 +184,7 @@ Hostess <- R6::R6Class(
 #' points of the progress bar.
 #' @param svg Either an svg path e.g.: \code{M10 10L90 10} or the path to a \code{.svg}
 #' file. Note that if passing the latter it must be made available to Shiny by
-#' placing it either in the \code{www} folder or using \link[shiny]{addResourcePath}.
+#' placing it either in the \code{www} folder or using [shiny::addResourcePath()].
 #' @param progress_type The progress type, either \code{stroke} or \code{fill}.
 #' Ther former traces the path of the \code{svg} while the latter fills it progressively.
 #' @param fill_direction,stroke_direction The direction which the progress bar should
@@ -235,9 +235,9 @@ Hostess <- R6::R6Class(
       return(loader) 
     },
 #' @details
-#' Set a hostess loader as defined by \code{\link{hostess_loader}}.
+#' Set a hostess loader as defined by [hostess_loader()].
 #' 
-#' @param loader Loader as defined by \code{\link{hostess_loader}}.
+#' @param loader Loader as defined by [hostess_loader()].
 #' 
 #' @examples 
 #' \dontrun{
@@ -324,7 +324,7 @@ Hostess <- R6::R6Class(
 #' points of the progress bar.
 #' @param svg Either an svg path e.g.: \code{M10 10L90 10} or the path to a \code{.svg}
 #' file. Note that if passing the latter it must be made available to Shiny by
-#' placing it either in the \code{www} folder or using \link[shiny]{addResourcePath}.
+#' placing it either in the \code{www} folder or using [shiny::addResourcePath()].
 #' @param progress_type The progress type, either \code{stroke} or \code{fill}.
 #' Ther former traces the path of the \code{svg} while the latter fills it progressively.
 #' @param fill_direction,stroke_direction The direction which the progress bar should

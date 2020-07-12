@@ -36,10 +36,10 @@ Programmatically show and hide loading bar.
 \section{Functions}{
 
 \itemize{
- \item{\code{use_butler}: butler dependencies to include anywhere in your UI but ideally at the top.}
- \item{\code{show_butler}: Show a butler.}
- \item{\code{hide_butler}: Hide butler.}
- \item{\code{config_butler}: Configure the butler.}
+\item{\code{use_butler}: butler dependencies to include anywhere in your UI but ideally at the top.}
+\item{\code{show_butler}: Show a butler.}
+\item{\code{hide_butler}: Hide butler.}
+\item{\code{config_butler}: Configure the butler.}
 }
 }
 
@@ -47,7 +47,7 @@ Programmatically show and hide loading bar.
 
 Arguments passed to \code{config_butler} are passed to the initialisation method \code{new}.
 \itemize{
-  \item{\code{Butler}: initiatlise a Butler.} 
+\item{\code{Butler}: initiatlise a Butler.}
 }
 }
 

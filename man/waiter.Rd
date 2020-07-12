@@ -56,11 +56,11 @@ update_waiter(html = "", id = NULL)
 waiter_update(id = NULL, html = NULL)
 }
 \arguments{
-\item{spinners}{Spinners to include. By default all the CSS files for 
-all spinners are included you can customise this only that which you 
+\item{spinners}{Spinners to include. By default all the CSS files for
+all spinners are included you can customise this only that which you
 need in order to reduce the amount of CSS that needs to be loaded and
 improve page loading speed. There are 7 spinner kits. The spinner kit
-required for the spinner you use is printed in the R console when 
+required for the spinner you use is printed in the R console when
 using the spinner. You can specify a single spinner kit e.g.: \code{1}
 or multiple spinner kits as a vector e.g.: \code{c(1,3,6)}.}
 
@@ -85,13 +85,13 @@ Programatically show and hide loading screens.
 \section{Functions}{
 
 \itemize{
- \item{\code{use_waiter} and \code{waiter_use}: waiter dependencies to include anywhere in your UI but ideally at the top.}
- \item{\code{waiter_show_on_load}: Show a waiter on page load, before the session is even loaded, include in UI \emph{after} \code{use_waiter}.}
- \item{\code{waiter_show}: Show waiting screen.}
- \item{\code{waiter_hide}: Hide any waiting screen.}
- \item{\code{waiter_on_busy}: Automatically shows the waiting screen when the server is busy, and hides it when it goes back to idle.}
- \item{\code{waiter_update}: Update the content \code{html} of the waiting screen.}
- \item{\code{waiter_hide_on_render}: Hide any waiting screen when the output is drawn, useful for outputs that take a long time to draw, \emph{use in \code{ui}}.}
+\item{\code{use_waiter} and \code{waiter_use}: waiter dependencies to include anywhere in your UI but ideally at the top.}
+\item{\code{waiter_show_on_load}: Show a waiter on page load, before the session is even loaded, include in UI \emph{after} \code{use_waiter}.}
+\item{\code{waiter_show}: Show waiting screen.}
+\item{\code{waiter_hide}: Hide any waiting screen.}
+\item{\code{waiter_on_busy}: Automatically shows the waiting screen when the server is busy, and hides it when it goes back to idle.}
+\item{\code{waiter_update}: Update the content \code{html} of the waiting screen.}
+\item{\code{waiter_hide_on_render}: Hide any waiting screen when the output is drawn, useful for outputs that take a long time to draw, \emph{use in \code{ui}}.}
 }
 }
 

@@ -88,7 +88,7 @@ Hostess$new()$set_loader(loader)
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{id}}{Id used in `hostess_loader` if you generate the loader with 
+\item{\code{id}}{Id used in \code{hostess_loader} if you generate the loader with
 the \code{loader} method you may leave this \code{NULL}.}
 
 \item{\code{min, max}}{Minimum and maximum representing the starting and ending
@@ -223,7 +223,7 @@ Increase the hostess loading bar.
 \item{\code{text_color}}{The color of the loading text.}
 
 \item{\code{center_page}}{By default the hostess is centered in the middle
-of the screen, ideal when using it with waiter full screen, set to 
+of the screen, ideal when using it with waiter full screen, set to
 \code{FALSE} to prevent that.}
 
 \item{\code{class}}{CSS class.}
@@ -233,7 +233,7 @@ points of the progress bar.}
 
 \item{\code{svg}}{Either an svg path e.g.: \code{M10 10L90 10} or the path to a \code{.svg}
 file. Note that if passing the latter it must be made available to Shiny by
-placing it either in the \code{www} folder or using \link[shiny]{addResourcePath}.}
+placing it either in the \code{www} folder or using \code{\link[shiny:resourcePaths]{shiny::addResourcePath()}}.}
 
 \item{\code{progress_type}}{The progress type, either \code{stroke} or \code{fill}.
 Ther former traces the path of the \code{svg} while the latter fills it progressively.}
@@ -242,8 +242,8 @@ Ther former traces the path of the \code{svg} while the latter fills it progress
 take. Wether \code{fill_direction} or \code{stroke_direction} is used depends on
 \code{progress_type}.}
 
-\item{\code{fill_color, stroke_color}}{The color to use for the progress bar. 
-Wether \code{fill_color} or \code{stroke_color} is used depends on 
+\item{\code{fill_color, stroke_color}}{The color to use for the progress bar.
+Wether \code{fill_color} or \code{stroke_color} is used depends on
 \code{progress_type}.}
 
 \item{\code{...}}{Any other other advanced options to pass to the loaded
@@ -279,12 +279,12 @@ Create a hostess loading bar.
 \subsection{Arguments}{
 \if{html}{\out{<div class="arguments">}}
 \describe{
-\item{\code{loader}}{Loader as defined by \code{\link{hostess_loader}}.}
+\item{\code{loader}}{Loader as defined by \code{\link[=hostess_loader]{hostess_loader()}}.}
 }
 \if{html}{\out{</div>}}
 }
 \subsection{Details}{
-Set a hostess loader as defined by \code{\link{hostess_loader}}.
+Set a hostess loader as defined by \code{\link[=hostess_loader]{hostess_loader()}}.
 }
 
 \subsection{Examples}{
