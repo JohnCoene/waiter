@@ -157,7 +157,6 @@ function hide_recalculate(id){
 
 $(document).on('shiny:value', function(event) {
   if(waiter_to_hide.indexOf(event.name) > 0){
-    console.log(event);
     hide_waiter(event.name);
   }
 });
