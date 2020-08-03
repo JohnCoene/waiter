@@ -41,7 +41,9 @@ then \code{hide} or meanwhile \code{update} the content of the waiter.
   html = NULL,
   color = NULL,
   logo = NULL,
-  hide_on_render = !is.null(id)
+  hide_on_render = !is.null(id),
+  hide_on_error = !is.null(id),
+  hide_on_silent_error = !is.null(id)
 )}\if{html}{\out{</div>}}
 }
 
@@ -61,6 +63,9 @@ applied to the entire body.}
 when the element in \code{id} is drawn. Note the latter will work with
 shiny plots, tables, htmlwidgets, etc. but will not work with arbitrary
 elements.}
+
+\item{\code{hide_on_error, hide_on_silent_error}}{Whether to hide the waiter when the underlying element throws an error.
+Silent error are thrown by \link[shiny]{req} and  \link[shiny]{validate}.}
 }
 \if{html}{\out{</div>}}
 }

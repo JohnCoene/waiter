@@ -1,6 +1,6 @@
 Shiny.addCustomMessageHandler('waiter-show', function(opts) {
   if(opts.id)
-    show_waiter(opts.id, opts.html, opts.color, opts.hide_on_render);
+    show_waiter(opts.id, opts.html, opts.color, opts.hide_on_render, opts.hide_on_error, opts.hide_on_silent_error);
   else
     window.loading_screen = pleaseWait({
       logo: opts.logo,

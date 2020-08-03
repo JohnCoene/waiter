@@ -25,9 +25,11 @@ function get_offset(element) {
 
 // elements to hide on recomputed
 var waiter_to_hide = [];
+var waiter_to_hide_on_error = [];
+var waiter_to_hide_on_silent_error = [];
 
 // show waiter overlay
-function show_waiter(id, html, color, to_hide){
+function show_waiter(id, html, color, to_hide, hide_on_error, hide_on_silent_error){
   // declare
   var dom,
       width,
@@ -50,6 +52,12 @@ function show_waiter(id, html, color, to_hide){
   // add to array
   if(to_hide)
     waiter_to_hide.push(id);
+
+  if(hide_on_error)
+    waiter_to_hide_on_error.push(id);
+
+  if(hide_on_silent_error)
+    waiter_to_hide_on_silent_error.push(id);
 
   el = get_offset(dom); // get dimensions
   
@@ -108,7 +116,11 @@ function hide_waiter(id){
   if(overlay.length > 0){
     //dom.style.animation = "shrink .15s ease-in-out";
     setTimeout(function(){
-      dom.removeChild(overlay[0]);
+      try {
+        dom.removeChild(overlay[0]);
+      } catch {
+        console.log("error removing waiter from", id)
+      }
     }, 150)
   } else{
     console.log("no waiter on", id);
@@ -143,8 +155,17 @@ function hide_recalculate(id){
   head.appendChild(style);
 }
 
-$(document).on('shiny:value shiny:error shiny:outputinvalidated', function(event) {
+$(document).on('shiny:value', function(event) {
   if(waiter_to_hide.indexOf(event.name) > 0){
+    console.log(event);
+    hide_waiter(event.name);
+  }
+});
+
+$(document).on('shiny:error', function(event) {
+  if(event.error.type == null && waiter_to_hide_on_error.indexOf(event.name) > 0){
+    hide_waiter(event.name);
+  } else if (event.error.type != null && waiter_to_hide_on_silent_error.indexOf(event.name) > 0){
     hide_waiter(event.name);
   }
 });

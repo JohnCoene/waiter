@@ -400,11 +400,14 @@ Waiter <- R6::R6Class(
 #' when the element in \code{id} is drawn. Note the latter will work with
 #' shiny plots, tables, htmlwidgets, etc. but will not work with arbitrary
 #' elements.
+#' @param hide_on_error,hide_on_silent_error Whether to hide the waiter when the underlying element throws an error.
+#' Silent error are thrown by \link[shiny]{req} and  \link[shiny]{validate}.
 #' 
 #' @examples
 #' \dontrun{Waiter$new()}
     initialize = function(id = NULL, html = NULL, color = NULL, logo = NULL, 
-      hide_on_render = !is.null(id)){
+      hide_on_render = !is.null(id), hide_on_error = !is.null(id),
+      hide_on_silent_error = !is.null(id)){
 
       # get theme
       html <- .theme_or_value(html, "WAITER_HTML")
@@ -439,6 +442,8 @@ Waiter <- R6::R6Class(
       private$.color <- color
       private$.logo <- logo
       private$.hide_on_render <- hide_on_render
+      private$.hide_on_silent_error <- hide_on_silent_error
+      private$.hide_on_error <- hide_on_error
     },
 #' @details
 #' Show the waiter.
@@ -450,7 +455,9 @@ Waiter <- R6::R6Class(
           html = private$.html[[i]],
           color = private$.color,
           logo = private$.logo,
-          hide_on_render = private$.hide_on_render
+          hide_on_render = private$.hide_on_render,
+          hide_on_silent_error = private$.hide_on_silent_error,
+          hide_on_error = private$.hide_on_error
         )
         private$.session$sendCustomMessage("waiter-show", opts)
       }
@@ -500,6 +507,8 @@ Waiter <- R6::R6Class(
     .id = NULL,
     .session = NULL,
     .hide_on_render = FALSE,
+    .hide_on_silent_error = FALSE,
+    .hide_on_error = FALSE,
 		get_session = function(){
 			private$.session <- shiny::getDefaultReactiveDomain()
 			.check_session(private$.session)

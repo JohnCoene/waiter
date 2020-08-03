@@ -2,7 +2,11 @@
 
 List of changes made to waiter.
 
-# waiter 0.1.2
+## waiter 0.1.3
+
+- Added `hide_on_error`, and `hide_on_silent_error` to the `Waiter` to control whether the waiter should be removed when the underlying plot/table/or other throws an error. Silent errors are those raised by `req` and `validate`/`need`.
+
+## waiter 0.1.2
 
 - Much improved spinners API.
 - Allow previewing the spinners with `preview_spinner`.
@@ -10,9 +14,9 @@ List of changes made to waiter.
 - Added ability to automatically show and hide the loading screen when the server is busy/idle with `waiter_on_busy`
 - Remove `include_js` argument to simplify API
 
-# waiter 0.1.1
+## waiter 0.1.1
 
-## New Feature
+### New Feature
 
 - Added theme-related functions (`waiter_set_theme`, `waiter_get_theme`, and `waiter_unset_theme`) to enable setting a global theme; making such that every waiter loading screen uses the same options (`color`, `html`, and `logo`). This can e overridden in individual waiter loading screens.
 - Added a new `spin_google` spinner
@@ -21,12 +25,12 @@ List of changes made to waiter.
 - Add ability to reduce load size of CSS (raised by issue [#47](https://github.com/JohnCoene/waiter/issues/47)), `use_waiter` takes a `spinner` argument to which one can specify any of 7 spinner CSS kits, by default all kits are loaded. One can know which kits should be specified by simply typing the spinner in the console, e.g.: `spin_rotating_plane()`.
 - Fix waiter example.
 
-## Bug Fixes
+### Bug Fixes
 
 - Check if Rstudio 1.2 available, warn if not on attach, see [#41](https://github.com/JohnCoene/waiter/issues/41) where waiter fails with earlier version of RStudio.
 - Change internal css class to avoid clash with shinydashboard, see [#43](https://github.com/JohnCoene/waiter/issues/43).
 
-# waiter 0.1.0
+## waiter 0.1.0
 
 Version `0.1.0` sees great many changes. Nothing has been broken but has been deprecated. The `steward` and `garcon` family of functions have been added.
 
