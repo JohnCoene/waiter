@@ -147,16 +147,17 @@ Shiny.addCustomMessageHandler('waitress-start', function(opts) {
     }, 10);
   }
 
+  // https://github.com/JohnCoene/waiter/issues/63
   if(opts.infinite){
     var value = 0,
         inc = 0,
         end = 100;
 
     intervals[opts.name] = setInterval(function(){
-      inc = ((end - value) / 50);
-      value = Math.ceil(value + inc);
+      inc = ((end - value) / (end + value));
+      value = Math.round((value + inc + Number.EPSILON) * 1000) / 1000
       window.waitress[opts.name].set(value);
-     }, 350);
+    }, 350);
   }
 });
 

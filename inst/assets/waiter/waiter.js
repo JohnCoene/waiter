@@ -155,13 +155,15 @@ function hide_recalculate(id){
   head.appendChild(style);
 }
 
+// remove when output receives value
 $(document).on('shiny:value', function(event) {
+  console.log(event.name);
   if(waiter_to_hide.indexOf(event.name) > 0){
-    console.log(event);
     hide_waiter(event.name);
   }
 });
 
+// remove when output errors
 $(document).on('shiny:error', function(event) {
   if(event.error.type == null && waiter_to_hide_on_error.indexOf(event.name) > 0){
     hide_waiter(event.name);
