@@ -142,9 +142,11 @@ server <- function(input, output){
 
     w$show()
 
-    Sys.sleep(3)
+    on.exit({
+      w$hide()
+    })
 
-    w$hide()    
+    Sys.sleep(3)   
 
     runif(100)
   })
@@ -582,3 +584,60 @@ shinyApp(ui, server)
 ```
 
 This makes it lighter for the browser to load.
+
+## Events
+
+The waiter also fires events in shiny when:
+
+1. The loading screen is _shown_
+2. The loading screen is _hidden_
+
+These events are set to `id` that the waiter overlays followed by `_waiter_shown` or `_waiter_hidden`.
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  use_waiter(),
+  actionButton("draw", "draw plot"),
+  plotOutput("plot")
+)
+
+server <- function(input, output){
+
+  # sets: 
+  # input$plot_waiter_shown
+  # input$plot_waiter_hidden
+  w <- Waiter$new(id = "plot")
+
+  dataset <- reactive({
+    input$draw
+
+    w$show()
+
+    on.exit({
+      w$hide()
+    })
+
+    Sys.sleep(3)  
+
+    runif(100)
+  })
+
+  output$plot <- renderPlot(plot(dataset()))
+
+  observeEvent(input$plot_waiter_hidden, {
+    print(input$plot_waiter_hidden)
+  })
+
+  observeEvent(input$plot_waiter_shown, {
+    print(input$plot_waiter_shown)
+  })
+
+}
+
+shinyApp(ui, server)
+```
+
+If the waiter is not overlayed upon any element and is used full screen then the events `waiter_shown` and `waiter_hidden` are fired.

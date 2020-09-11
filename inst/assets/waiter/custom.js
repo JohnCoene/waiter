@@ -1,12 +1,14 @@
 Shiny.addCustomMessageHandler('waiter-show', function(opts) {
-  if(opts.id)
+  if(opts.id) {
     show_waiter(opts.id, opts.html, opts.color, opts.hide_on_render, opts.hide_on_error, opts.hide_on_silent_error);
-  else
+  } else {
     window.loading_screen = pleaseWait({
       logo: opts.logo,
       backgroundColor: opts.color,
       loadingHtml: opts.html
     });
+    Shiny.setInputValue("waiter_shown", true, {priority: 'event'});
+  }
 });
 
 Shiny.addCustomMessageHandler('waiter-update', function(opts) {
@@ -17,12 +19,15 @@ Shiny.addCustomMessageHandler('waiter-update', function(opts) {
 });
 
 Shiny.addCustomMessageHandler('waiter-hide', function(opts) {
-  if(opts.id)
+  if(opts.id) {
     hide_waiter(opts.id)
-  else
+  } else {
     window.loading_screen.finish();
+    Shiny.setInputValue("waiter_hidden", true, {priority: 'event'});
+  }
 });
 
 $(document).on('shiny:disconnected', function(event) {
   window.loading_screen.finish();
+  Shiny.setInputValue("waiter_hidden", true, {priority: 'event'});
 });
