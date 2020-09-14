@@ -2,6 +2,8 @@
 
 This is not meant to be a self-ingratiating piece (though judging by the length of it it's certainly pompous) on how great a package is, rather this delves into the reasons for its creation and the advantages waiter brings to both app users and shiny developers.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qBu88OfXiT4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 [My] Shiny apps can be slow. A combination of large computations, crappy servers, and poor code leads to applications that may some time to load. The end users of my apps are accustomed to the loading times of services such as Google's, so a 2 to 3 second waiting time seems like an eternity to them.
 
 When running into this issue I face concretely two options: 1) buy more computing power with money I do not have (which rarely solves the issue anyways) or 2) spend more hours in the editor attempting to improve performances. This is difficult regardless of your proficiency with R or Shiny; the code that runs your app is the code that you can write and improving upon it is difficult. 
