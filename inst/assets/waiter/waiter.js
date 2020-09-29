@@ -104,6 +104,9 @@ function show_waiter(id, html, color, to_hide, hide_on_error, hide_on_silent_err
 
   // append overlay to dom
   dom.appendChild(overlay);
+
+  // set input
+  Shiny.setInputValue(id + "_waiter_shown", true, {priority: 'event'});
   
 }
 
@@ -120,6 +123,8 @@ function hide_waiter(id){
         dom.removeChild(overlay[0]);
       } catch {
         console.log("error removing waiter from", id)
+      } finally {
+        Shiny.setInputValue(id + "_waiter_hidden", true, {priority: 'event'});
       }
     }, 150)
   } else{
