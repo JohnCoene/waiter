@@ -10,7 +10,12 @@ Authors@R: c(
     person(given = "Jinhwan",
            family = "Kim",
            role = "ctb",
-           email = 'hwanistic@gmail.com'))
+           email = 'hwanistic@gmail.com'),
+    person(given = "Victor",
+           family = "Granda",
+           role = c("ctb"),
+           email = "victorgrandagarcia@gmail.com",
+           comment = c(ORCID = "0000-0002-0469-1991")))
 Description: Full screen and partial loading screens for 'Shiny' with spinners, progress bars, and notifications.
 License: MIT + file LICENSE
 URL: https://waiter.john-coene.com/, https://github.com/JohnCoene/waiter
