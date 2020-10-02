@@ -1,7 +1,20 @@
 var hostesses = [];
+var intervals = [];
 
 Shiny.addCustomMessageHandler('hostess-init', function(opts) {
   hostesses[opts.id] = new ldBar("#" + opts.id);
+  
+  if(opts.infinite){
+    var value = 0,
+        inc = 0,
+        end = 100;
+
+    intervals[opts.name] = setInterval(function(){
+      inc = ((end - value) / (end + value));
+      value = Math.round((value + inc + Number.EPSILON) * 1000) / 1000
+      hostesses[opts.id].set(value);
+    }, 350);
+  }
 });
 
 Shiny.addCustomMessageHandler('hostess-set', function(opts) {
