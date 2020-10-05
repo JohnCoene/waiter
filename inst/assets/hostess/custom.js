@@ -69,11 +69,17 @@ Shiny.addCustomMessageHandler('hostess-notify', function(opts) {
 Shiny.addCustomMessageHandler('hostess-end', function(opts) {
   var bar = document.getElementById(opts.id);
   
-  if(opts.infinite)
+  if(opts.infinite){
     clearInterval(intervals[opts.id]);
+    hostesses[opts.id].set(95);
+  }
+    
   
   if(bar != undefined)
-    bar.remove();
+    // small delay to allow the loading bar to end
+    setTimeout(function(){
+      bar.remove();
+    }, 350)
 });
 
 function position_to_coords(position){
