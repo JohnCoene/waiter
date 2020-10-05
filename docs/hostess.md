@@ -170,3 +170,90 @@ shinyApp(ui, server)
 ```
 
 ![](_assets/img/hostess.gif)
+
+### Infinite
+
+An infinite loading bar is useful when you cannot compute increments.
+
+> [!NOTE]
+> When using `infinite` the hostess must be closed when the computation ends
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  use_waiter(),
+  use_hostess(),
+  waiter_show_on_load(
+    color = "#f7fff7",
+    hostess_loader(
+      "loader", 
+      preset = "circle", 
+      text_color = "black",
+      class = "label-center",
+      center_page = TRUE
+    )
+  )
+)
+
+server <- function(input, output){
+  hostess <- Hostess$new("loader", infinite = TRUE)
+  
+  hostess$start()
+  
+  # ... computation here ... # 
+  Sys.sleep(5) # simulating a 5 seconds computation
+  
+  hostess$close()
+  waiter_hide()
+}
+
+shinyApp(ui, server)
+```
+
+Multiple loaders tied to a single infinite hostess can also be created:
+
+```
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  use_waiter(),
+  use_hostess(), # include dependencies
+  actionButton("btn", "render"),
+  fluidRow(
+    column(6, plotOutput("plot1")),
+    column(6, plotOutput("plot2"))
+  )
+)
+
+server <- function(input, output){
+  
+  # n = 2 loaders
+  host <- Hostess$new(n = 2, infinite = TRUE)
+  w <- Waiter$new(
+    c("plot1", "plot2"),
+    html = host$get_loader()
+  )
+  
+  dataset <- reactive({
+    input$btn
+    
+    w$show()
+    host$start()
+    
+    # ... computation here ... # 
+    Sys.sleep(5) # simulating a 5 seconds computation
+    res <- runif(100)
+    
+    host$close()
+    return(res)
+  })
+  
+  output$plot1 <- renderPlot(plot(dataset()))
+  output$plot2 <- renderPlot(plot(dataset()))
+}
+
+shinyApp(ui, server)
+```
