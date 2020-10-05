@@ -302,7 +302,7 @@ Hostess <- R6::R6Class(
         position = position,
         background_color = background_color,
         text_color = text_color,
-        infinite = priveate$.infinite
+        infinite = private$.infinite
       )
 
       private$.session$sendCustomMessage("hostess-notify", opts)
