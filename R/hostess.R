@@ -37,7 +37,7 @@ hostess_init <- function(id = "hostess"){
   if(id == "hostess")
     warning("Using default `id`", call. = FALSE)
 
-  .Deprecated("Hostess", package = "waiter", "Deprecated in favour of R6Class <Waitress>")
+  .Deprecated("Hostess", package = "waiter", "Deprecated in favour of R6Class <Hostess>")
 
   session <- shiny::getDefaultReactiveDomain()
   .check_session(session)
@@ -51,7 +51,7 @@ hostess_set <- function(id = "hostess", value){
   if(id == "hostess")
     warning("Using default `id`", call. = FALSE)
 
-  .Deprecated("Hostess", package = "waiter", "Deprecated in favour of R6Class <Waitress>")
+  .Deprecated("Hostess", package = "waiter", "Deprecated in favour of R6Class <Hostess>")
 
   session <- shiny::getDefaultReactiveDomain()
   .check_session(session)
