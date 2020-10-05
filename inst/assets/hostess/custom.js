@@ -9,7 +9,7 @@ Shiny.addCustomMessageHandler('hostess-init', function(opts) {
         inc = 0,
         end = 100;
 
-    intervals[opts.name] = setInterval(function(){
+    intervals[opts.id] = setInterval(function(){
       inc = ((end - value) / (end + value));
       value = Math.round((value + inc + Number.EPSILON) * 1000) / 1000
       hostesses[opts.id].set(value);
@@ -58,12 +58,22 @@ Shiny.addCustomMessageHandler('hostess-notify', function(opts) {
         inc = 0,
         end = 100;
 
-    intervals[opts.name] = setInterval(function(){
+    intervals[opts.id] = setInterval(function(){
       inc = ((end - value) / (end + value));
       value = Math.round((value + inc + Number.EPSILON) * 1000) / 1000
       hostesses[opts.id].set(value);
     }, 350);
   }
+});
+
+Shiny.addCustomMessageHandler('hostess-end', function(opts) {
+  var bar = document.getElementById(opts.id);
+  
+  if(opts.infinite)
+    clearInterval(intervals[opts.id]);
+  
+  if(bar != undefined)
+    bar.remove();
 });
 
 function position_to_coords(position){

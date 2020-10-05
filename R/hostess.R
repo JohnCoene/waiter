@@ -183,6 +183,23 @@ Hostess <- R6::R6Class(
       invisible(self)
     },
 #' @details
+#' Close the hostess
+#' 
+#' @examples
+#' \dontrun{Waitress$new("#plot")$close()}
+    close = function() {
+      # get id
+      opts <- list(infinite = private$.infinite)
+      # reset the started
+      private$.started <- FALSE
+      # loop for the ids
+      for(i in 1:length(private$.id)){
+        opts$id <- private$.id[i]
+        private$.session$sendCustomMessage("hostess-end", opts)
+      }
+      invisible(self)
+    },
+#' @details
 #' Create a hostess loading bar.
 #' @param value Value to set, between \code{0} and \code{100}.
 #' @param preset A loading bar preset, see section below.
