@@ -214,7 +214,7 @@ shinyApp(ui, server)
 
 Multiple loaders tied to a single infinite hostess can also be created:
 
-```
+```r
 library(shiny)
 library(waiter)
 
