@@ -37,7 +37,7 @@ hostess_init <- function(id = "hostess"){
   if(id == "hostess")
     warning("Using default `id`", call. = FALSE)
 
-  .Deprecated("Hostess", package = "waiter", "Deprecated in favour of R6Class <Waitress>")
+  .Deprecated("Hostess", package = "waiter", "Deprecated in favour of R6Class <Hostess>")
 
   session <- shiny::getDefaultReactiveDomain()
   .check_session(session)
@@ -51,7 +51,7 @@ hostess_set <- function(id = "hostess", value){
   if(id == "hostess")
     warning("Using default `id`", call. = FALSE)
 
-  .Deprecated("Hostess", package = "waiter", "Deprecated in favour of R6Class <Waitress>")
+  .Deprecated("Hostess", package = "waiter", "Deprecated in favour of R6Class <Hostess>")
 
   session <- shiny::getDefaultReactiveDomain()
   .check_session(session)
@@ -72,10 +72,13 @@ Hostess <- R6::R6Class(
 #' @param min,max Minimum and maximum representing the starting and ending
 #' points of the progress bar.
 #' @param n Number of loaders to generate.
+#' @param infinite Set to \code{TRUE} to create a never ending loading bar, ideal
+#' when you cannot compute increments or assess the time it might take before the
+#' loading bar should be removed.
 #' 
 #' @examples
 #' \dontrun{Hostess$new()}
-    initialize = function(id = NULL, min = 0, max = 100, n = 1){
+    initialize = function(id = NULL, min = 0, max = 100, n = 1, infinite = FALSE){
       if(is.null(id))
         id <- .random_name()
 
@@ -88,6 +91,12 @@ Hostess <- R6::R6Class(
         id2 <- sapply(1:n, function(x) .random_name())
         id <- c(id, id2) 
       }
+      
+      # override min/max if infinite
+      if (infinite) {
+        min <- 0
+        max <- 100
+      }
 
       session <- shiny::getDefaultReactiveDomain()
       .check_session(session)
@@ -95,13 +104,16 @@ Hostess <- R6::R6Class(
       private$.id <- id
       private$.min <- min
       private$.max <- max
+      private$.infinite <- infinite
     },
 #' @details
 #' Start the hostess
     start = function(){
       private$.started <- TRUE
+      opts <- list(infinite = private$.infinite)
       for(i in 1:length(private$.id)){
-        private$.session$sendCustomMessage("hostess-init", list(id = private$.id[i]))
+        opts$id <- private$.id[i]
+        private$.session$sendCustomMessage("hostess-init", opts)
       }
       invisible(self)
     },
@@ -167,6 +179,23 @@ Hostess <- R6::R6Class(
       for(i in 1:length(private$.id)){
         opts$id <- private$.id[i]
         private$.session$sendCustomMessage("hostess-set", opts)
+      }
+      invisible(self)
+    },
+#' @details
+#' Close the hostess
+#' 
+#' @examples
+#' \dontrun{Waitress$new("#plot")$close()}
+    close = function() {
+      # get id
+      opts <- list(infinite = private$.infinite)
+      # reset the started
+      private$.started <- FALSE
+      # loop for the ids
+      for(i in 1:length(private$.id)){
+        opts$id <- private$.id[i]
+        private$.session$sendCustomMessage("hostess-end", opts)
       }
       invisible(self)
     },
@@ -289,7 +318,8 @@ Hostess <- R6::R6Class(
         id = private$.id, 
         position = position,
         background_color = background_color,
-        text_color = text_color
+        text_color = text_color,
+        infinite = private$.infinite
       )
 
       private$.session$sendCustomMessage("hostess-notify", opts)
@@ -304,7 +334,8 @@ Hostess <- R6::R6Class(
     .max = 100,
     .current_value = 0,
     .loader = NULL,
-    .is_notification = FALSE
+    .is_notification = FALSE,
+    .infinite = FALSE
   )
 )
 
