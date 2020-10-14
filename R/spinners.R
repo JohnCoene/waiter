@@ -1,6 +1,6 @@
 #' Spinners
 #'
-#' Spinkit spinners to use with \code{\link{show_waiter}}.
+#' Spinkit spinners to use with \code{\link{waiter_show}}.
 #' 
 #' @param id The spinner identifier, an integer between \code{1},
 #' and \code{42}.
@@ -747,14 +747,6 @@ spin_google <- function(){
   construct(div(class = "cm-spinner"), 7)
 }
 
-#' @rdname spinners
-#' @export
-browse_waiters <- function() {
-  .Deprecated("", package = "waiter", msg = "This function is no longer supported; see the package website.")
-	#shiny::runApp(appDir = system.file("waiter", package = 'waiter', mustWork = TRUE))
-  construct()
-}
-
 #' Preview spinner
 #' 
 #' Allows previewing spinners in web browser or RStudio Viewer.
@@ -810,7 +802,7 @@ get_spinner_dependencies <- function(){
     stylesheet = c(
       "css-spinners.css",
       "devloop.css",
-      "please-wait.css",
+      "waiter.css",
       "spinbolt.css",
       "spinkit.css",
       "spinners.css"

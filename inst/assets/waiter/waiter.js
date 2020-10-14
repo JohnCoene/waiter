@@ -3,7 +3,6 @@ function get_offset(element) {
   var elementPosition = {};
 
   //set width and height
-  // -6 pixels to keep margin between plot if stacked up/side by side
   elementPosition.width = element.offsetWidth;
   elementPosition.height = element.offsetHeight;
 
@@ -16,7 +15,6 @@ function get_offset(element) {
     _y = 0;
   
   //set top and left
-  //use 3 margin (6/2)
   elementPosition.top = _y;
   elementPosition.left = _x;
 
@@ -32,19 +30,18 @@ var waiter_to_hide_on_silent_error = [];
 function show_waiter(id, html, color, to_hide, hide_on_error, hide_on_silent_error){
   // declare
   var dom,
-      width,
-      height,
+      selector = 'body',
       exists = false;
 
   // get parent
-  dom = document.getElementById(id);
+  if(id !== null)
+    selector = '#' + id;
+  
+  dom = document.querySelector(selector);
   if(dom == undefined){
     console.log("Cannot find", id);
     return ;
   }
-
-  if(dom.offsetHeight < 50)
-    return ;
   
   // allow missing for testing
   to_hide = to_hide || false;
@@ -60,6 +57,11 @@ function show_waiter(id, html, color, to_hide, hide_on_error, hide_on_silent_err
     waiter_to_hide_on_silent_error.push(id);
 
   el = get_offset(dom); // get dimensions
+
+  if(id === null){
+    el.height = window.innerHeight;
+    el.width = window.innerWidth;
+  }
   
   // force static if position relative
   // otherwise overlay is completely off
@@ -95,7 +97,7 @@ function show_waiter(id, html, color, to_hide, hide_on_error, hide_on_silent_err
   overlay.style.left = el.left + 'px';
   overlay.style.backgroundColor = color;
   overlay.style.position = "absolute";
-  overlay.style.zIndex = 999;
+  overlay.style.zIndex = 9999;
   overlay.classList.add("waiter-overlay");
   //overlay.style.animation = "expand .15s ease-in-out";
 
@@ -112,7 +114,12 @@ function show_waiter(id, html, color, to_hide, hide_on_error, hide_on_silent_err
 
 function hide_waiter(id){
 
-  var dom = document.getElementById(id);
+  var selector = 'body';
+
+  if(id !== null)
+    selector = '#' + id;
+
+  var dom = document.querySelector(selector);
 
   var overlay = dom.getElementsByClassName("waiter-overlay");
 
@@ -135,7 +142,12 @@ function hide_waiter(id){
 
 function update_waiter(id, html){
 
-  var dom = document.getElementById(id);
+  var selector = 'body';
+
+  if(id !== null)
+    selector = '#' + id;
+
+  var dom = document.querySelector(selector);
 
   var overlay = dom.getElementsByClassName("waiter-overlay-content");
 
@@ -147,6 +159,10 @@ function update_waiter(id, html){
 }
 
 function hide_recalculate(id){
+
+  if(id === null)
+    return ;
+
   var css = '#' + id + '.recalculating {opacity: 1.0 !important; }',
       head = document.head || document.getElementsByTagName('head')[0],
       style = document.createElement('style');

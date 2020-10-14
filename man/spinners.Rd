@@ -67,7 +67,6 @@
 \alias{spin_5}
 \alias{spin_6}
 \alias{spin_google}
-\alias{browse_waiters}
 \title{Spinners}
 \usage{
 spin_rotating_plane()
@@ -199,8 +198,6 @@ spin_5()
 spin_6()
 
 spin_google()
-
-browse_waiters()
 }
 \arguments{
 \item{id}{The spinner identifier, an integer between \code{1},
@@ -214,7 +211,7 @@ and \code{42}.}
 An object of class \code{spinner}.
 }
 \description{
-Spinkit spinners to use with \code{\link{show_waiter}}.
+Spinkit spinners to use with \code{\link{waiter_show}}.
 }
 \details{
 Much of the \code{CSS} used is to provide those spinners.

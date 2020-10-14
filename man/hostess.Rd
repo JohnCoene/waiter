@@ -3,21 +3,10 @@
 \name{hostess}
 \alias{hostess}
 \alias{use_hostess}
-\alias{hostess_init}
-\alias{hostess_set}
 \alias{Hostess}
 \title{Hostess}
 \usage{
 use_hostess()
-
-hostess_init(id = "hostess")
-
-hostess_set(id = "hostess", value)
-}
-\arguments{
-\item{id}{Id of hostess (valid CSS).}
-
-\item{value}{Value to set, between \code{0} and \code{100}.}
 }
 \description{
 Add hostess dependencies.
@@ -280,10 +269,6 @@ Wether \code{fill_color} or \code{stroke_color} is used depends on
 
 \item{\code{...}}{Any other other advanced options to pass to the loaded
 see the \href{https://loading.io/progress/}{official documentation}.}
-
-\item{\code{value}}{Value to set, between \code{0} and \code{100}.}
-
-\item{\code{with_waiter}}{Deprecate in favour of \code{center_page}.}
 }
 \if{html}{\out{</div>}}
 }

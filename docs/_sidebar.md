@@ -4,7 +4,6 @@
 * [The Waiter](waiter.md "Guide to the waiter")
 * [The Waitress](waitress.md "Guide to the waitress")
 * [The Hostess](hostess.md "Guide to the hostess")
-* [The Butler](butler.md "Guide to the butler")
 * [Examples](examples.md "Example use cases")
 * [Changelog](changelog.md "Changelog")
 * [CoC](coc.md "Code of Conduct")

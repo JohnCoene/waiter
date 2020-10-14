@@ -3,36 +3,13 @@
 \name{waitress}
 \alias{waitress}
 \alias{use_waitress}
-\alias{call_waitress}
-\alias{browse_waitresses}
 \title{Waitress}
 \usage{
 use_waitress(color = "#697682", percent_color = "#333333")
-
-call_waitress(
-  selector = NULL,
-  theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent"),
-  min = 0,
-  max = 100,
-  infinite = FALSE
-)
-
-browse_waitresses()
 }
 \arguments{
 \item{color, percent_color}{Color of waitress and color of percent text shown when
 \code{theme} is set to \code{overlay-percent}.}
-
-\item{selector}{Element selector to apply the waitress to, if \code{NULL} then the waitress is applied to the whole screen.}
-
-\item{theme}{A valid theme, see function usage.}
-
-\item{min, max}{Minimum and maximum representing the starting and ending
-points of the progress bar.}
-
-\item{infinite}{Set to \code{TRUE} to create a never ending loading bar, ideal
-when you cannot compute increments or assess the time it might take before the
-loading bar should be removed.}
 }
 \description{
 Programatically show and hide loading bars.

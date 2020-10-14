@@ -2,9 +2,6 @@
 #' 
 #' Add hostess dependencies.
 #' 
-#' @param id Id of hostess (valid CSS).
-#' @param value Value to set, between \code{0} and \code{100}.
-#' 
 #' @import shiny
 #' @name hostess
 #' @export
@@ -29,34 +26,6 @@ use_hostess <- function(){
       )
     )
   )
-}
-
-#' @rdname hostess
-#' @export
-hostess_init <- function(id = "hostess"){
-  if(id == "hostess")
-    warning("Using default `id`", call. = FALSE)
-
-  .Deprecated("Hostess", package = "waiter", "Deprecated in favour of R6Class <Hostess>")
-
-  session <- shiny::getDefaultReactiveDomain()
-  .check_session(session)
-
-  session$sendCustomMessage("hostess-init", list(id = id))
-}
-
-#' @rdname hostess
-#' @export
-hostess_set <- function(id = "hostess", value){
-  if(id == "hostess")
-    warning("Using default `id`", call. = FALSE)
-
-  .Deprecated("Hostess", package = "waiter", "Deprecated in favour of R6Class <Hostess>")
-
-  session <- shiny::getDefaultReactiveDomain()
-  .check_session(session)
-
-  session$sendCustomMessage("hostess-set", list(id = id, value = value))
 }
 
 #' @rdname hostess
@@ -201,11 +170,9 @@ Hostess <- R6::R6Class(
     },
 #' @details
 #' Create a hostess loading bar.
-#' @param value Value to set, between \code{0} and \code{100}.
 #' @param preset A loading bar preset, see section below.
 #' @param text_color The color of the loading text.
 #' @param class CSS class.
-#' @param with_waiter Deprecate in favour of \code{center_page}.
 #' @param center_page By default the hostess is centered in the middle
 #' of the screen, ideal when using it with waiter full screen, set to 
 #' \code{FALSE} to prevent that.
@@ -347,7 +314,6 @@ Hostess <- R6::R6Class(
 #' @param preset A loading bar preset, see section below.
 #' @param text_color The color of the loading text.
 #' @param class CSS class.
-#' @param with_waiter Deprecate in favour of \code{center_page}.
 #' @param center_page By default the hostess is \emph{not} centered in the middle
 #' of the screen, centering in the middle of the page is however ideal when using 
 #' it with waiter full screen, for the latter set to \code{TRUE}.
@@ -438,20 +404,11 @@ hostess_loader <- function(id = "hostess", preset = NULL, text_color = "#FFFFFF"
   center_page = FALSE, class = "", min = 0, max = 100, svg = NULL, 
   progress_type = c("stroke", "fill"), fill_direction = c("btt", "ttb", "ltr", "rtl"),
   stroke_direction = c("normal", "reverse"), fill_color = NULL, stroke_color = NULL, 
-  ..., with_waiter){
+  ...){
 
   progress_type <- match.arg(progress_type)
   fill_direction <- match.arg(fill_direction)
   stroke_direction <- match.arg(stroke_direction)
-
-  # will remove at > 0.1.0
-  if(!missing(with_waiter)){
-    .Deprecated("center_page", package = "waiter", "The `with_waiter` argument is deprecated in favour of `center_page`.")
-    
-    # don't break stuff...
-    if(is.logical(with_waiter))
-      center_page <- with_waiter
-  }
 
   if(!is.null(preset))
     if(!preset %in% hostess_presets)

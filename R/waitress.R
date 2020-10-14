@@ -4,13 +4,6 @@
 #' 
 #' @param color,percent_color Color of waitress and color of percent text shown when 
 #' \code{theme} is set to \code{overlay-percent}.
-#' @param selector Element selector to apply the waitress to, if \code{NULL} then the waitress is applied to the whole screen.
-#' @param theme A valid theme, see function usage.
-#' @param min,max Minimum and maximum representing the starting and ending
-#' points of the progress bar.
-#' @param infinite Set to \code{TRUE} to create a never ending loading bar, ideal
-#' when you cannot compute increments or assess the time it might take before the
-#' loading bar should be removed.
 #' 
 #' @details You can pipe the methods with \code{$}. 
 #' \code{Waitress$new()} and \code{call_waitress()} are equivalent.
@@ -69,21 +62,6 @@ use_waitress <- function(color = "#697682", percent_color = "#333333"){
 			)
 		)
 	)
-}
-
-#' @rdname waitress
-#' @export
-call_waitress <- function(selector = NULL, theme = c("line", "overlay", "overlay-radius", "overlay-opacity", "overlay-percent"),
-	min = 0, max = 100, infinite = FALSE){
-  .Deprecated("Waitress", package = "waiter", "Create a waitress with `Waitress$new()`")
-	Waitress$new(selector, theme, min, max, infinite = infinite)
-}
-
-#' @rdname waitress
-#' @export
-browse_waitresses <- function() {
-  .Deprecated("", package = "waiter", msg = "This function is no longer supported; see the package website.")
-	shiny::runApp(appDir = system.file("waitress", package = 'waiter', mustWork = TRUE))
 }
 
 #' Waitress R6 Class
@@ -304,19 +282,6 @@ Waitress <- R6::R6Class(
 			invisible(self)
 		},
 #' @details
-#' Deprecated in favour of \code{inc} method.
-#' Increase the waitress by a percentage.
-#' 
-#' @param percent Percentage to increase waitress to.
-		increase = function(percent){
-			# remove > 0.1.0
-			.Deprecated("inc", package = "waiter", "The `increase` method has been deprecated in favour of `inc`")
-			opts <- list(name = private$.name, percent = percent)
-			private$get_session()
-			private$.session$sendCustomMessage("waitress-increase", opts)
-			invisible(self)
-		},
-#' @details
 #' Increase the waitress by a percentage.
 #' 
 #' @param value Value to increase waitress to.
@@ -334,17 +299,6 @@ Waitress <- R6::R6Class(
 
 			opts <- list(name = private$.name, percent = value)
 			private$.session$sendCustomMessage("waitress-increase", opts)
-			invisible(self)
-		},
-#' @details
-#' Deprecated in favour of \code{close} method.
-#' Hide the waitress.
-		hide = function(){
-			# remove > 0.1.0
-			.Deprecated("inc", package = "waiter", "The `hide` method has been deprecated in favour of `close`")
-			opts <- list(name = private$.name)
-			private$get_session()
-			private$.session$sendCustomMessage("waitress-end", opts)
 			invisible(self)
 		},
 #' @details

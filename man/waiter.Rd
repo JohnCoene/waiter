@@ -4,30 +4,17 @@
 \alias{waiter}
 \alias{use_waiter}
 \alias{waiter_use}
-\alias{show_waiter}
 \alias{waiter_show}
-\alias{show_waiter_on_load}
 \alias{waiter_show_on_load}
-\alias{hide_waiter_on_drawn}
 \alias{waiter_hide_on_render}
 \alias{waiter_on_busy}
-\alias{hide_waiter}
 \alias{waiter_hide}
-\alias{update_waiter}
 \alias{waiter_update}
 \title{Waiter}
 \usage{
 use_waiter(spinners = 1:7, include_js = TRUE)
 
 waiter_use(spinners = 1:7, include_js = TRUE)
-
-show_waiter(
-  html = "",
-  color = "#333e48",
-  logo = "",
-  id = NULL,
-  hide_on_render = FALSE
-)
 
 waiter_show(
   id = NULL,
@@ -37,21 +24,13 @@ waiter_show(
   hide_on_render = !is.null(id)
 )
 
-show_waiter_on_load(html = "", color = "#333e48", logo = "")
-
 waiter_show_on_load(html = spin_1(), color = "#333e48", logo = "")
-
-hide_waiter_on_drawn(id)
 
 waiter_hide_on_render(id)
 
 waiter_on_busy(html = spin_1(), color = "#333e48", logo = "")
 
-hide_waiter(id = NULL)
-
 waiter_hide(id = NULL)
-
-update_waiter(html = "", id = NULL)
 
 waiter_update(id = NULL, html = NULL)
 }
@@ -66,13 +45,13 @@ or multiple spinner kits as a vector e.g.: \code{c(1,3,6)}.}
 
 \item{include_js}{Deprecated argument, no longer needed.}
 
+\item{id}{Id of element to hide or element on which to show waiter over.}
+
 \item{html}{HTML content of waiter, generally a spinner, see \code{\link{spinners}}.}
 
 \item{color}{Background color of loading screen.}
 
 \item{logo}{Logo to display.}
-
-\item{id}{Id of element to hide or element on which to show waiter over.}
 
 \item{hide_on_render}{Set to \code{TRUE} to automatically hide the waiter
 when the plot in \code{id} is drawn. Note the latter will only work with

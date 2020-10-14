@@ -22,8 +22,7 @@ hostess_loader(
   stroke_direction = c("normal", "reverse"),
   fill_color = NULL,
   stroke_color = NULL,
-  ...,
-  with_waiter
+  ...
 )
 
 hostess_gradient(angle = 0, duration = 1, colors = c("red", "white", "blue"))
@@ -70,8 +69,6 @@ Wether \code{fill_color} or \code{stroke_color} is used depends on
 
 \item{...}{Any other other advanced options to pass to the loaded
 see the \href{https://loading.io/progress/}{official documentation}.}
-
-\item{with_waiter}{Deprecate in favour of \code{center_page}.}
 
 \item{angle}{Angle of gradient.}
 

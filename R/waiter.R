@@ -67,7 +67,7 @@ use_waiter <- function(spinners = 1:7, include_js = TRUE){
   # must haves
   header <- tags$head(
     tags$link(
-      href = "waiter-assets/waiter/please-wait.css",
+      href = "waiter-assets/waiter/waiter.css",
       rel="stylesheet",
       type="text/css"
     ),
@@ -149,9 +149,6 @@ use_waiter <- function(spinners = 1:7, include_js = TRUE){
   header <- shiny::tagAppendChildren(
     header,
     tags$script(
-      src = "waiter-assets/waiter/please-wait.min.js"
-    ),
-    tags$script(
       src = "waiter-assets/waiter/waiter.js"
     ),
     tags$script(
@@ -167,30 +164,6 @@ use_waiter <- function(spinners = 1:7, include_js = TRUE){
 #' @rdname waiter
 #' @export
 waiter_use <- use_waiter
-
-#' @rdname waiter
-#' @export
-show_waiter <- function(html = "", color = "#333e48", logo = "", id = NULL, 
-  hide_on_render = FALSE){
-  .Deprecated("waiter_show", package = "waiter")
-
-  html <- as.character(html)
-  html <- gsub("\n", "", html)
-
-  if(hide_on_render && is.null(id))
-    stop("Cannot `hide_on_render` when `id` is not specified")
-
-  opts <- list(
-    id = id,
-    html = html,
-    color = color,
-    logo = logo,
-    hide_on_render = hide_on_render
-  )
-  session <- shiny::getDefaultReactiveDomain()
-  .check_session(session)
-  session$sendCustomMessage("waiter-show", opts)
-}
 
 #' @rdname waiter
 #' @export
@@ -215,29 +188,6 @@ waiter_show <- function(id = NULL, html = spin_1(), color = "#333e48", logo = ""
   session$sendCustomMessage("waiter-show", opts)
 }
 
-#' @rdname waiter
-#' @export
-show_waiter_on_load <- function(html = "", color = "#333e48", logo = ""){
-  .Deprecated("waiter_show_on_load", package = "waiter")
-
-  html <- as.character(html)
-  html <- gsub("\n", "", html)
-
-  script <- paste0(
-    "window.loading_screen = pleaseWait({
-      logo: '", as.character(logo), "',
-      backgroundColor: '", color, "',
-      loadingHtml: '", html, "'
-    });"
-  )
-
-  tagList(
-    tags$script(
-      src = "waiter-assets/waiter/please-wait.min.js"
-    ),
-    HTML(paste0("<script>", script, "</script>"))
-  )
-}
 
 #' @rdname waiter
 #' @export
@@ -255,29 +205,6 @@ waiter_show_on_load <- function(html = spin_1(), color = "#333e48", logo = ""){
   )
 
   HTML(paste0("<script>", script, "</script>"))
-}
-
-#' @rdname waiter
-#' @export
-hide_waiter_on_drawn <- function(id){
-  .Deprecated("waiter_hide_on_render", package = "waiter")
-
-  if(missing(id))
-    stop("Missing id", call. = FALSE)
-  
-  script <- paste0(
-    '$(document).on("shiny:value", function(event) {
-      if (event.target.id === "', id,'") {
-        window.loading_screen.finish();
-      }
-    });'
-  )
-
-  singleton(
-    tags$head(
-      tags$script(script)
-    )
-  )
 }
 
 #' @rdname waiter
@@ -327,32 +254,10 @@ waiter_on_busy <- function(html = spin_1(), color = "#333e48", logo = ""){
 
 #' @rdname waiter
 #' @export
-hide_waiter <- function(id = NULL){
-  .Deprecated("waiter_hide", package = "waiter")
-  session <- shiny::getDefaultReactiveDomain()
-  .check_session(session)
-  session$sendCustomMessage("waiter-hide", list(id = id))
-}
-
-#' @rdname waiter
-#' @export
 waiter_hide <- function(id = NULL){
   session <- shiny::getDefaultReactiveDomain()
   .check_session(session)
   session$sendCustomMessage("waiter-hide", list(id = id))
-}
-
-#' @rdname waiter
-#' @export
-update_waiter <- function(html = "", id = NULL){
-  .Deprecated("waiter_update", package = "waiter")
-  if(is.character(html))
-    html <- span(html)
-  html <- as.character(html)
-  html <- gsub("\n", "", html)
-  session <- shiny::getDefaultReactiveDomain()
-  .check_session(session)
-  session$sendCustomMessage("waiter-update", list(html = html, id = id))
 }
 
 #' @rdname waiter

@@ -66,9 +66,7 @@ its percentage, then hide it when done.
 \item \href{#method-notify}{\code{Waitress$notify()}}
 \item \href{#method-set}{\code{Waitress$set()}}
 \item \href{#method-auto}{\code{Waitress$auto()}}
-\item \href{#method-increase}{\code{Waitress$increase()}}
 \item \href{#method-inc}{\code{Waitress$inc()}}
-\item \href{#method-hide}{\code{Waitress$hide()}}
 \item \href{#method-close}{\code{Waitress$close()}}
 \item \href{#method-print}{\code{Waitress$print()}}
 \item \href{#method-clone}{\code{Waitress$clone()}}
@@ -265,27 +263,6 @@ Automatically start and end the waitress.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-increase"></a>}}
-\if{latex}{\out{\hypertarget{method-increase}{}}}
-\subsection{Method \code{increase()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Waitress$increase(percent)}\if{html}{\out{</div>}}
-}
-
-\subsection{Arguments}{
-\if{html}{\out{<div class="arguments">}}
-\describe{
-\item{\code{percent}}{Percentage to increase waitress to.}
-}
-\if{html}{\out{</div>}}
-}
-\subsection{Details}{
-Deprecated in favour of \code{inc} method.
-Increase the waitress by a percentage.
-}
-
-}
-\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-inc"></a>}}
 \if{latex}{\out{\hypertarget{method-inc}{}}}
 \subsection{Method \code{inc()}}{
@@ -310,20 +287,6 @@ Increase the waitress by a percentage.
 }
 \if{html}{\out{</div>}}
 
-}
-
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-hide"></a>}}
-\if{latex}{\out{\hypertarget{method-hide}{}}}
-\subsection{Method \code{hide()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Waitress$hide()}\if{html}{\out{</div>}}
-}
-
-\subsection{Details}{
-Deprecated in favour of \code{close} method.
-Hide the waitress.
 }
 
 }
