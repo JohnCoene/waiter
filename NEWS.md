@@ -3,6 +3,7 @@
 - Added `hide_on_error`, and `hide_on_silent_error` to the `Waiter` to control whether the waiter should be removed when the underlying plot/table/or other throws an error. Silent errors are those raised by `req` and `validate`/`need`.
 - Added events `waiter_shown` and `waiter_hidden` fired when the loading screen with waiter is shown or hidden.
 - Better infinite waitress se [#63](https://github.com/JohnCoene/waiter/issues/63)
+- Add infinite hostess see [#67](https://github.com/JohnCoene/waiter/pull/67) thanks to [Víctor Granda](https://github.com/MalditoBarbudo)
 - Remove deprecated functions:
   - `show_waiter_on_load` in favour of `waiter_show_on_load`
   - `hide_waiter_on_drawn` in favour of `waiter_hide_on_drawn`
