@@ -15,6 +15,7 @@
   - `hostess_set` in favour of `Hostess$set`
   - `browse_waiters` and `browse_waitresses` in favour of the online demo.
   - `call_waitress` in favour of `Waitress$new()`
+- Fix bug on shiny disconnected see [#68](https://github.com/JohnCoene/waiter/issues/68)
 
 # waiter 0.1.2
 
