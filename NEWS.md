@@ -1,7 +1,5 @@
-# waiter 0.1.3
+# waiter 0.1.4
 
-- Added `hide_on_error`, and `hide_on_silent_error` to the `Waiter` to control whether the waiter should be removed when the underlying plot/table/or other throws an error. Silent errors are those raised by `req` and `validate`/`need`.
-- Added events `waiter_shown` and `waiter_hidden` fired when the loading screen with waiter is shown or hidden.
 - Better infinite waitress se [#63](https://github.com/JohnCoene/waiter/issues/63)
 - Add infinite hostess see [#67](https://github.com/JohnCoene/waiter/pull/67) thanks to [Víctor Granda](https://github.com/MalditoBarbudo)
 - Remove deprecated functions:
@@ -16,6 +14,11 @@
   - `browse_waiters` and `browse_waitresses` in favour of the online demo.
   - `call_waitress` in favour of `Waitress$new()`
 - Fix bug on shiny disconnected see [#68](https://github.com/JohnCoene/waiter/issues/68)
+
+# waiter 0.1.3
+
+- Added `hide_on_error`, and `hide_on_silent_error` to the `Waiter` to control whether the waiter should be removed when the underlying plot/table/or other throws an error. Silent errors are those raised by `req` and `validate`/`need`.
+- Added events `waiter_shown` and `waiter_hidden` fired when the loading screen with waiter is shown or hidden.
 
 # waiter 0.1.2
 
