@@ -9,9 +9,10 @@ Shiny.addCustomMessageHandler('waiter-update', function(opts) {
 
 Shiny.addCustomMessageHandler('waiter-hide', function(opts) {
   hide_waiter(opts.id);
-});
 
-$(document).on('shiny:disconnected', function(event) {
-  hide_waiter();
-  Shiny.setInputValue("waiter_hidden", true, {priority: 'event'});
+  let input = "waiter_hidden";
+  if(opts.id !== null)
+    input = opts.id + "_" + input;
+  
+  Shiny.setInputValue(input, true, {priority: 'event'});
 });
