@@ -70,8 +70,7 @@ use_waiter <- function(spinners = 1:7, include_js = TRUE){
       href = "waiter-assets/waiter/waiter.css",
       rel="stylesheet",
       type="text/css"
-    ),
-    tags$script("window.loading_screen;")
+    )
   )
 
   # spinner kits
@@ -192,16 +191,22 @@ waiter_show <- function(id = NULL, html = spin_1(), color = "#333e48", logo = ""
 #' @rdname waiter
 #' @export
 waiter_show_on_load <- function(html = spin_1(), color = "#333e48", logo = ""){
+
+  if(logo != "")
+    .Deprecated(
+      package = "waiter",
+      msg = "The `logo` argument is deprecated, include it in `html`"
+    )
   
   html <- as.character(html)
   html <- gsub("\n", "", html)
 
   script <- paste0(
-    "window.loading_screen = pleaseWait({
-      logo: '", as.character(logo), "',
-      backgroundColor: '", color, "',
-      loadingHtml: '", html, "'
-    });"
+    "show_waiter(
+      id = null,
+      html = '", html, "', 
+      color = '", color, "'
+    );"
   )
 
   HTML(paste0("<script>", script, "</script>"))
@@ -214,11 +219,7 @@ waiter_hide_on_render <- function(id){
     stop("Missing id", call. = FALSE)
   
   script <- paste0(
-    '$(document).on("shiny:value shiny:error", function(event) {
-      if (event.target.id === "', id,'") {
-        window.loading_screen.finish();
-      }
-    });'
+    "hide_waiter('", id, "');"
   )
 
   singleton(
@@ -234,18 +235,18 @@ waiter_on_busy <- function(html = spin_1(), color = "#333e48", logo = ""){
 
   html <- as.character(html)
   html <- gsub("\n", "", html)
-  
+
   script <- paste0(
     "$(document).on('shiny:busy', function(event) {
-      window.loading_screen = pleaseWait({
-        logo: '", as.character(logo), "',
-        backgroundColor: '", color, "',
-        loadingHtml: '", html, "'
-      });
+      show_waiter(
+        id = null,
+        html = '", html, "', 
+        color = '", color, "'
+      );
     });
     
     $(document).on('shiny:idle', function(event) {
-      window.loading_screen.finish();
+      hide_waiter(null);
     });"
   )
 
