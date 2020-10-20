@@ -25,7 +25,7 @@ preview_spinner(spin_4())
 
 You can show a loading screen on app launch. The loading screen will launch prior to everything else, even the Shiny session. 
 
-Though this function is not programmatically launched it still has to be hidden with `waiter_hide`. Ensure you place `waiter_show_on_load` after `use_waiter` and at _the very end of your UI_, also set `include_js` to `FALSE`, in `use_waiter`.
+Though this function is not programmatically launched it still has to be hidden with `waiter_hide`. Ensure you place `waiter_show_on_load` after `use_waiter`.
 
 ```r
 library(shiny)
@@ -494,7 +494,7 @@ library(shiny)
 library(waiter)
  
 ui <- fluidPage(
-  use_waiter(include_js = FALSE), 
+  use_waiter(), 
   use_steward(),
   h3("Content you will only see after loading screen has disappeared"),
   waiter_show_on_load(spin_fading_circles()) 
