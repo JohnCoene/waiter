@@ -19,6 +19,7 @@ List of changes made to waiter.
   - `call_waitress` in favour of `Waitress$new()`
 - Fix bug on shiny disconnected see [#68](https://github.com/JohnCoene/waiter/issues/68)
 - Change CSS of waiter overlays so it's more responsive and better centered.
+- Remove pleasewait.js dependency.
 
 ## waiter 0.1.3
 
