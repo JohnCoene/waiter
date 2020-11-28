@@ -20,6 +20,7 @@ List of changes made to waiter.
 - Fix bug on shiny disconnected see [#68](https://github.com/JohnCoene/waiter/issues/68)
 - Change CSS of waiter overlays so it's more responsive and better centered.
 - Remove pleasewait.js dependency.
+- Remove `rstudioapi` dependency; assumes most users have moved up from version 1.2
 
 ## waiter 0.1.3
 
