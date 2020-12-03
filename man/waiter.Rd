@@ -21,7 +21,8 @@ waiter_show(
   html = spin_1(),
   color = "#333e48",
   logo = "",
-  hide_on_render = !is.null(id)
+  hide_on_render = !is.null(id),
+  expr = NULL
 )
 
 waiter_show_on_load(html = spin_1(), color = "#333e48", logo = "")
@@ -57,6 +58,9 @@ or multiple spinner kits as a vector e.g.: \code{c(1,3,6)}.}
 when the plot in \code{id} is drawn. Note the latter will only work with
 shiny plots, tables, htmlwidgets, etc. but will not work with arbitrary
 elements.}
+
+\item{expr}{An expression to run while the spinner is active. The spinner
+will automatically get hidden when the expression completes.}
 }
 \description{
 Programatically show and hide loading screens.
