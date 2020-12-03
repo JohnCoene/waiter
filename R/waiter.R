@@ -472,7 +472,7 @@ waiter_unset_theme <- function(){
 #' 
 #' @export
 transparent <- function(alpha = 0){
-  correct <- alpha >= 0 & alpha <= 1
+  correct <- alpha >= 0 && alpha <= 1
   if(!correct)
     stop("`alpha` must be between 0 and 1", call. = FALSE)
   paste0("rgba(255,255,255,", alpha, ")")
