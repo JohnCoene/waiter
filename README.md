@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-<div align="center">
+<div data-align="center">
 
 <img src="./man/figures/logo.png" height = "200px" />
 
@@ -59,7 +59,6 @@ library(waiter)
 
 ui <- fluidPage(
   use_waiter(), # include dependencies
-  waiter_show_on_load(),
   actionButton("show", "Show loading for 3 seconds")
 )
 

@@ -67,7 +67,6 @@ library(waiter)
 
 ui <- fluidPage(
   use_waiter(), # include dependencies
-  waiter_show_on_load(),
   actionButton("show", "Show loading for 3 seconds")
 )
 
