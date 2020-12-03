@@ -17,6 +17,8 @@
 #' required for the spinner you use is printed in the R console when 
 #' using the spinner. You can specify a single spinner kit e.g.: \code{1}
 #' or multiple spinner kits as a vector e.g.: \code{c(1,3,6)}.
+#' @param expr An expression to run while the spinner is active. The spinner
+#' will automatically get hidden when the expression completes.
 #' @param include_js Deprecated argument, no longer needed.
 #' 
 #' @section Functions:
@@ -167,7 +169,7 @@ waiter_use <- use_waiter
 #' @rdname waiter
 #' @export
 waiter_show <- function(id = NULL, html = spin_1(), color = "#333e48", logo = "", 
-  hide_on_render = !is.null(id)){
+  hide_on_render = !is.null(id), expr = NULL){
   
   html <- as.character(html)
   html <- gsub("\n", "", html)
@@ -185,6 +187,11 @@ waiter_show <- function(id = NULL, html = spin_1(), color = "#333e48", logo = ""
   session <- shiny::getDefaultReactiveDomain()
   .check_session(session)
   session$sendCustomMessage("waiter-show", opts)
+
+  if (!is.null(expr)) {
+    on.exit(session$sendCustomMessage("waiter-hide", list(id = id)))
+    eval(parse(text = deparse(expr)), envir = parent.frame())
+  }
 }
 
 
