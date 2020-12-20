@@ -1,4 +1,4 @@
-# waiter 0.1.4
+# waiter 0.2.0
 
 - Better infinite waitress se [#63](https://github.com/JohnCoene/waiter/issues/63)
 - Add infinite hostess see [#67](https://github.com/JohnCoene/waiter/pull/67) thanks to [Víctor Granda](https://github.com/MalditoBarbudo)
