@@ -641,3 +641,56 @@ shinyApp(ui, server)
 ```
 
 If the waiter is not overlayed upon any element and is used full screen then the events `waiter_shown` and `waiter_hidden` are fired.
+
+## CSS
+
+The overlay that waiter places (with background color) bears the `waiter-overlay` class, the content (spinner and/or text) is placed within it in a `<div>` with class `waiter-overlay-content`.
+
+This is useful to know if you want to customise the default appearance, e.g.: placement of the spinner.
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  use_waiter(), # include dependencies
+  tags$style(
+    ".waiter-overlay-content{
+      position: absolute;
+      top: 30px; /*30 pixels from the top*/
+      left: 48%; /*48% from the left*/
+    }"
+  ),
+  actionButton("showFull", "Show full screen"),
+  actionButton("showPartial", "Show partial"),
+  div(
+    id = "hello", 
+    style = "width:400px;height:500px;",
+    h4("This could be a chart of whatever")
+  )
+)
+
+server <- function(input, output, session){
+  # partial
+  w1 <- Waiter$new("hello")
+
+  observeEvent(input$showPartial, {
+    w1$show()
+    Sys.sleep(4)
+    w1$hide()
+  })
+
+  # full screen
+  w2 <- Waiter$new()
+
+  observeEvent(input$showFull, {
+    w2$show()
+    Sys.sleep(4)
+    w2$hide()
+  })
+}
+
+shinyApp(ui, server)
+```
+
+![](_assets/img/waiter-css.png)
