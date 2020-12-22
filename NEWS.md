@@ -18,6 +18,7 @@
 - Remove pleasewait.js dependency.
 - Remove `rstudioapi` dependency; assumes most users have moved up from version 1.2
 - Fixed bug where `waiter_show_on_load` ran `Shiny.setInputValue` before shiny connected [#73](https://github.com/JohnCoene/waiter/issues/73) + correct the erroneous example in the README
+- Document CSS and spinner placement in waiter.
 
 # waiter 0.1.3
 
