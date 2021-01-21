@@ -218,8 +218,13 @@ waiter_hide_on_render <- function(id){
   if(missing(id))
     stop("Missing id", call. = FALSE)
   
-  script <- paste0(
-    "hide_waiter('", id, "');"
+  script <- sprintf(
+    "$(document).on('shiny:value', function(event) {
+      if(event.name == '%s'){
+        hide_waiter(null);
+      }
+    });",
+    id
   )
 
   singleton(

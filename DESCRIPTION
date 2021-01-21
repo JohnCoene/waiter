@@ -1,6 +1,6 @@
 Package: waiter
 Title: Loading Screen for 'Shiny'
-Version: 0.2.0
+Version: 0.2.1.9000
 Date: 2021-01-14
 Authors@R: c(
     person(given = "John",
@@ -29,7 +29,7 @@ Imports:
     magrittr,
     htmltools
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1.9000
+RoxygenNote: 7.1.1
 Suggests: 
     knitr,
     rmarkdown

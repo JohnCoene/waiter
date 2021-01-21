@@ -2,6 +2,10 @@
 
 List of changes made to waiter.
 
+# waiter 0.2.1.9000
+
+- Fixed `waiter_hide_on_render` see [#79](https://github.com/JohnCoene/waiter/issues/79).
+
 ## waiter 0.2.0
 
 - Better infinite waitress se [#63](https://github.com/JohnCoene/waiter/issues/63)
