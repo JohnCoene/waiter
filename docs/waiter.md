@@ -11,7 +11,7 @@ The waiter works hand-in-hand with the `steward` and the `hostess`. The former w
 There is an online demo with a list of all [100+ spinners](https://shiny.john-coene.com/waiter/) available, you can also see the list of available spinners in R with `?spinners`.
 
 > [!TIP]
-> In the development version currently on Github (`0.1.1.9000`) you can reduce the load size of the CSS files in `use_waiter` which now takes a `spinners` argument to which one can specify any of 7 spinner CSS kits, by default all kits are loaded so nothing breaks. You can know which kits should be specified by simply typing the spinner in the console, e.g.: `spin_rotating_plane()`. See an example at [the bottom of this page](#css-load).
+> You can reduce the load size of the CSS files in `use_waiter` which now takes a `spinners` argument to which one can specify any of 7 spinner CSS kits, by default all kits are loaded so nothing breaks. You can know which kits should be specified by simply typing the spinner in the console, e.g.: `spin_rotating_plane()`. See an example at [the bottom of this page](#css-load).
 
 Note that in the latest version you can also preview the spinners in the browser or RStudio viewer with the `preview_spinner` function like so:
 
@@ -33,13 +33,38 @@ library(waiter)
  
 ui <- fluidPage(
   use_waiter(), 
-  waiter_show_on_load(html = spin_fading_circles()), # place at the top before content
+  waiter_show_on_load(html = spin_fading_circles()),
   h3("Content you will only see after loading screen has disappeared")
 )
 
 server <- function(input, output, session){
   Sys.sleep(3) # do something that takes time
   waiter_hide()
+}
+
+shinyApp(ui, server)
+```
+
+### Preloader
+
+The `waiter_preloader` function shows the full page loading screen when the app is loaded and automatically removes it when all the UI is rendered: only runs once. Thanks to [David Granjon](https://github.com/JohnCoene/waiter/issues/82) for the suggestion.
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  use_waiter(), 
+  waiter_preloader(),
+  uiOutput("hello")
+)
+
+server <- function(input, output, session){
+  Sys.sleep(3) 
+
+  output$hello <- renderUI({
+    h1("World")
+  })
 }
 
 shinyApp(ui, server)

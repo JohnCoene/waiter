@@ -6,6 +6,7 @@
 \alias{waiter_use}
 \alias{waiter_show}
 \alias{waiter_show_on_load}
+\alias{waiter_preloader}
 \alias{waiter_hide_on_render}
 \alias{waiter_on_busy}
 \alias{waiter_hide}
@@ -24,7 +25,9 @@ waiter_show(
   hide_on_render = !is.null(id)
 )
 
-waiter_show_on_load(html = spin_1(), color = "#333e48", logo = "")
+waiter_show_on_load(html = spin_1(), color = "#333e48")
+
+waiter_preloader(html = spin_1(), color = "#333e48")
 
 waiter_hide_on_render(id)
 
@@ -71,6 +74,7 @@ Programatically show and hide loading screens.
 \item{\code{waiter_on_busy}: Automatically shows the waiting screen when the server is busy, and hides it when it goes back to idle.}
 \item{\code{waiter_update}: Update the content \code{html} of the waiting screen.}
 \item{\code{waiter_hide_on_render}: Hide any waiting screen when the output is drawn, useful for outputs that take a long time to draw, \emph{use in \code{ui}}.}
+\item{\code{waiter_preloader}: Shows the waiter on load and automatically removes it once all the UI is rendered, only runs on the first load of the app.}
 }
 }
 

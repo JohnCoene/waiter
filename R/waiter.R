@@ -28,6 +28,7 @@
 #'  \item{\code{waiter_on_busy}: Automatically shows the waiting screen when the server is busy, and hides it when it goes back to idle.}
 #'  \item{\code{waiter_update}: Update the content \code{html} of the waiting screen.}
 #'  \item{\code{waiter_hide_on_render}: Hide any waiting screen when the output is drawn, useful for outputs that take a long time to draw, \emph{use in \code{ui}}.}
+#'  \item{\code{waiter_preloader}: Shows the waiter on load and automatically removes it once all the UI is rendered, only runs on the first load of the app.}
 #' }
 #' 
 #' @examples
@@ -190,26 +191,65 @@ waiter_show <- function(id = NULL, html = spin_1(), color = "#333e48", logo = ""
 
 #' @rdname waiter
 #' @export
-waiter_show_on_load <- function(html = spin_1(), color = "#333e48", logo = ""){
-
-  if(logo != "")
-    .Deprecated(
-      package = "waiter",
-      msg = "The `logo` argument is deprecated, include it in `html`"
-    )
+waiter_show_on_load <- function(
+  html = spin_1(), color = "#333e48"
+){
   
   html <- as.character(html)
   html <- gsub("\n", "", html)
 
-  script <- paste0(
+  show <- sprintf(
     "show_waiter(
-      id = null,
-      html = '", html, "', 
-      color = '", color, "'
-    );"
+      null,
+      html = '%s', 
+      color = '%s'
+    );",
+    html, color
   )
 
-  HTML(paste0("<script>", script, "</script>"))
+  HTML(sprintf("<script>%s</script>", show))
+
+}
+
+#' @rdname waiter
+#' @export
+waiter_preloader <- function(
+  html = spin_1(), color = "#333e48"
+){
+  
+  html <- as.character(html)
+  html <- gsub("\n", "", html)
+
+  show <- sprintf(
+    "show_waiter(
+      null,
+      html = '%s', 
+      color = '%s'
+    );",
+    html, color
+  )
+
+  hide <- paste0(
+    "window.ran = false;",
+    "$(document).on('shiny:idle', function(event){
+      console.log('idle');
+      if(!window.ran)
+        hide_waiter(id = null);
+
+      window.ran = true;
+    });"
+  )
+
+  list(
+    tags$head(  
+      HTML(
+        sprintf("<script>%s</script>", hide)
+      )
+    ),
+    HTML(
+      sprintf("<script>%s</script>", show)
+    )
+  )
 }
 
 #' @rdname waiter
