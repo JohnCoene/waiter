@@ -59,7 +59,6 @@ Please note that the 'waiter' project is released with a [Contributor Code of Co
 
 The underlying CSS and JavaScript libraries that enable waiter:
 
-- [Please Wait](https://github.com/Pathgather/please-wait)
 - [Spinkit CSS](https://tobiasahlin.com/spinkit/)
 - [Progress.js](https://usablica.github.io/progress.js/)
 - [loading.io](https://loading.io/progress/)
