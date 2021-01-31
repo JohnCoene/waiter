@@ -3,6 +3,7 @@
 - Fixed `waiter_hide_on_render` see [#79](https://github.com/JohnCoene/waiter/issues/79).
 - Added `waiter_preloader` shows the full page loading screen when the app is loaded and automatically removes it when all the UI is rendered: only runs once. [#82](https://github.com/JohnCoene/waiter/issues/82)
 - Remove logging of shiny event, [#83](https://github.com/JohnCoene/waiter/issues/83)
+- Fix stewart, broken due to removal of progress.js [#81](https://github.com/JohnCoene/waiter/issues/81)
 
 # waiter 0.2.0
 
