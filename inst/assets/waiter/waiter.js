@@ -183,7 +183,6 @@ function hide_recalculate(id){
 
 // remove when output receives value
 $(document).on('shiny:value', function(event) {
-  console.log(event);
   if(waiter_to_hide.indexOf(event.name) > 0){
     hide_waiter(event.name);
   }
