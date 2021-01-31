@@ -129,7 +129,7 @@ function hide_waiter(id){
   var overlay = dom.getElementsByClassName("waiter-overlay");
 
   if(overlay.length > 0){
-    //dom.style.animation = "shrink .15s ease-in-out";
+    overlay[0].style.opacity = '0';
     setTimeout(function(){
       try {
         dom.removeChild(overlay[0]);
@@ -138,7 +138,7 @@ function hide_waiter(id){
       } finally {
         Shiny.setInputValue(id + "_waiter_hidden", true, {priority: 'event'});
       }
-    }, 150)
+    }, 250)
   } else{
     console.log("no waiter on", id);
   }

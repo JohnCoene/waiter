@@ -13,3 +13,9 @@
 .waiter-overlay-content{
   margin: auto;
 }
+
+.waiter-overlay {
+  opacity: 1;
+  -webkit-transition: opacity 250ms linear;
+  transition: opacity 250ms linear;
+}
