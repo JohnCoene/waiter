@@ -9,6 +9,7 @@ List of changes made to waiter.
 - Remove logging of shiny event, [#83](https://github.com/JohnCoene/waiter/issues/83)
 - Fix stewart, broken due to removal of progress.js [#81](https://github.com/JohnCoene/waiter/issues/81)
 - Added fadeout effect on waiter overlays, [#53](https://github.com/JohnCoene/waiter/issues/53)
+- Improve waiter screen responsiveness.
 
 ## waiter 0.2.0
 

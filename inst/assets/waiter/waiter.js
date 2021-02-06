@@ -196,3 +196,12 @@ $(document).on('shiny:error', function(event) {
     hide_waiter(event.name);
   }
 });
+
+window.addEventListener("resize", function(){
+  let waiters = document.getElementsByClassName("waiter-overlay");
+
+  for(waiter of waiters){
+    dim = get_offset(waiter.parentElement);
+    waiter.style.width = dim.width + 'px';
+  }
+});
