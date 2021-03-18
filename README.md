@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-<div align="center">
+<div data-align="center">
 
 <img src="./man/figures/logo.png" height = "200px" />
 
@@ -48,8 +48,8 @@ the [website](https://waiter.john-coene.com) for more.
 To use the waiter:
 
 1.  Include `use_waiter` in your UI.
-2.  Trigger `show_waiter` to show the waiting screen.
-3.  Eventually trigger `hide_waiter` to hide the loading screen.
+2.  Trigger `waiter_show` to show the waiting screen.
+3.  Eventually trigger `waiter_hide` to hide the loading screen.
 
 <!-- end list -->
 
