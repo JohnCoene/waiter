@@ -9,7 +9,7 @@
 use_garcon()
 }
 \description{
-Create a garcon to aniamte images on the waiter.
+Create a garcon to animate images on the waiter.
 }
 \examples{
 
