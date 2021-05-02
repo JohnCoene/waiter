@@ -99,6 +99,12 @@ function show_waiter(id, html, color, to_hide, hide_on_error, hide_on_silent_err
   overlay.style.position = "absolute";
   overlay.style.zIndex = 9999;
   overlay.classList.add("waiter-overlay");
+
+  if(id === null) {
+    overlay.classList.add("waiter-fullscreen");
+  } else {
+    overlay.classList.add("waiter-local");
+  }
   //overlay.style.animation = "expand .15s ease-in-out";
 
   // append overlay content in overlay
@@ -198,10 +204,18 @@ $(document).on('shiny:error', function(event) {
 });
 
 window.addEventListener("resize", function(){
-  let waiters = document.getElementsByClassName("waiter-overlay");
+  let waiters = document.getElementsByClassName("waiter-local");
+  let fs = document.getElementsByClassName("waiter-fullscreen");
 
   for(waiter of waiters){
     dim = get_offset(waiter.parentElement);
     waiter.style.width = dim.width + 'px';
+    waiter.style.height = dim.height + 'px';
+  }
+
+  for(waiter of fs){
+    dim = get_offset(waiter.parentElement);
+    waiter.style.width = window.innerWidth + 'px';
+    waiter.style.height = window.innerHeight + 'px';
   }
 });
