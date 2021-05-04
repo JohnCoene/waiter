@@ -21,7 +21,6 @@ License: MIT + file LICENSE
 URL: https://waiter.john-coene.com/, https://github.com/JohnCoene/waiter
 BugReports: https://github.com/JohnCoene/waiter/issues
 Encoding: UTF-8
-LazyData: true
 Imports:
     R6,
     shiny,
