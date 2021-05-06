@@ -1,3 +1,7 @@
+# waiter 0.2.2.9000
+
+- Remove `console.log`
+
 # waiter 0.2.1
 
 - Fixed `waiter_hide_on_render` see [#79](https://github.com/JohnCoene/waiter/issues/79).
