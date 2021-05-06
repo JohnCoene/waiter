@@ -232,7 +232,6 @@ waiter_preloader <- function(
   hide <- paste0(
     "window.ran = false;",
     "$(document).on('shiny:idle', function(event){
-      console.log('idle');
       if(!window.ran)
         hide_waiter(id = null);
 
