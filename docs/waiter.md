@@ -359,7 +359,7 @@ shinyApp(ui, server)
 
 ### Image
 
-The latest version allows using a background image by passing the path to said image to the `image`. 
+The latest development version (not on CRAN) allows using a background image by passing the path to said image to the `image`. 
 
 > [!NOTE]
 > If using a local image make sure it is served; place it in the `www` directory.
