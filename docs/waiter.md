@@ -379,8 +379,7 @@ server <- function(input, output, session){
 	w <- Waiter$new(
 		html = h1("Wait!"),
 		image = url
-	)$
-	show()
+	)$show()
 
 	Sys.sleep(10)
 	w$hide()
