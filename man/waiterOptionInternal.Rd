@@ -6,6 +6,7 @@
 \alias{.get_html}
 \alias{.get_color}
 \alias{.get_logo}
+\alias{.get_image}
 \title{Get Waiter Option}
 \usage{
 .get_waiter_option(theme_var)
@@ -15,6 +16,8 @@
 .get_color()
 
 .get_logo()
+
+.get_image()
 }
 \arguments{
 \item{theme_var}{Name of option to fetch.}

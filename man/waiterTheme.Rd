@@ -7,7 +7,7 @@
 \alias{waiter_unset_theme}
 \title{Define a Theme}
 \usage{
-waiter_set_theme(html = spin_1(), color = "#333e48", logo = "")
+waiter_set_theme(html = spin_1(), color = "#333e48", logo = "", image = "")
 
 waiter_get_theme()
 
@@ -18,7 +18,9 @@ waiter_unset_theme()
 
 \item{color}{Background color of loading screen.}
 
-\item{logo}{Logo to display.}
+\item{logo}{Path to logo to display.}
+
+\item{image}{Path to background image.}
 }
 \description{
 Define a theme to be used by all waiter loading screens.

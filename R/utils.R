@@ -83,12 +83,14 @@ hostess_presets <- c(
 #' @name waiterOptionInternal
 #' @keywords internal
 .get_waiter_option <- function(theme_var){
-  if(theme_var == "WAITER_HTML")
-    .get_html()
-  else if(theme_var == "WAITER_COLOR")
-    .get_color()
-  else
-    .get_logo()
+  switch(
+    theme_var,
+    WAITER_HTML = .get_html(),
+    WAITER_COLOR = .get_color(),
+    WAITER_LOGO = .get_logo(),
+    WAITER_IMAGE = .get_image(),
+    "" # default
+  )
 }
 
 #' @rdname waiterOptionInternal
@@ -113,4 +115,12 @@ hostess_presets <- c(
   if(is.null(logo))
     logo <- ""
   return(logo)
+}
+
+#' @rdname waiterOptionInternal
+.get_image <- function() {
+  image <- getOption("WAITER_IMAGE")
+  if(is.null(image))
+    image <- ""
+  return(image)
 }

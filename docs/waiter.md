@@ -357,6 +357,41 @@ shinyApp(ui, server)
 
 ![](_assets/img/waiter-content.gif)
 
+### Image
+
+The latest version allows using a background image by passing the path to said image to the `image`. 
+
+> [!NOTE]
+> If using a local image make sure it is served; place it in the `www` directory.
+
+```r
+library(shiny)
+library(waiter)
+
+url <- "https://www.freecodecamp.org/news/content/images/size/w2000/2020/04/w-qjCHPZbeXCQ-unsplash.jpg"
+
+ui <- fluidPage(
+	use_waiter(),
+	h1("Can you see me?")
+)
+
+server <- function(input, output, session){
+	w <- Waiter$new(
+		html = h1("Wait!"),
+		image = url
+	)$
+	show()
+
+	Sys.sleep(10)
+	w$hide()
+}
+
+shinyApp(ui, server)
+
+```
+
+![](_assets/img/waiter-image.png)
+
 ## Theming
 
 In the development version (from Github) you can now easily create themes for your loading screens. You can also override that in individual waiter if needed.

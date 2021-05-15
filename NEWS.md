@@ -1,6 +1,8 @@
 # waiter 0.2.2.9000
 
 - Remove `console.log`
+- Add `image` argument to the waiter, allows using a background
+image on the waiter.
 
 # waiter 0.2.1
 

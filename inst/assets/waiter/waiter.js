@@ -27,7 +27,7 @@ var waiter_to_hide_on_error = [];
 var waiter_to_hide_on_silent_error = [];
 
 // show waiter overlay
-function show_waiter(id, html, color, to_hide, hide_on_error, hide_on_silent_error){
+function show_waiter(id, html, color, to_hide, hide_on_error, hide_on_silent_error, image){
   // declare
   var dom,
       selector = 'body',
@@ -99,6 +99,10 @@ function show_waiter(id, html, color, to_hide, hide_on_error, hide_on_silent_err
   overlay.style.position = "absolute";
   overlay.style.zIndex = 9999;
   overlay.classList.add("waiter-overlay");
+
+  if(image != null && image != ''){
+    overlay.style.backgroundImage = "url('" + image + "')";
+  }
 
   if(id === null) {
     overlay.classList.add("waiter-fullscreen");

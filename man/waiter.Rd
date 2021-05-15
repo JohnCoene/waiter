@@ -22,16 +22,17 @@ waiter_show(
   html = spin_1(),
   color = "#333e48",
   logo = "",
+  image = "",
   hide_on_render = !is.null(id)
 )
 
-waiter_show_on_load(html = spin_1(), color = "#333e48")
+waiter_show_on_load(html = spin_1(), color = "#333e48", image = "")
 
-waiter_preloader(html = spin_1(), color = "#333e48")
+waiter_preloader(html = spin_1(), color = "#333e48", image = "")
 
 waiter_hide_on_render(id)
 
-waiter_on_busy(html = spin_1(), color = "#333e48", logo = "")
+waiter_on_busy(html = spin_1(), color = "#333e48", logo = "", image = "")
 
 waiter_hide(id = NULL)
 
@@ -54,7 +55,9 @@ or multiple spinner kits as a vector e.g.: \code{c(1,3,6)}.}
 
 \item{color}{Background color of loading screen.}
 
-\item{logo}{Logo to display.}
+\item{logo}{Path to logo to display.}
+
+\item{image}{Path to background image.}
 
 \item{hide_on_render}{Set to \code{TRUE} to automatically hide the waiter
 when the plot in \code{id} is drawn. Note the latter will only work with

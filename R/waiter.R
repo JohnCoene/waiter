@@ -4,7 +4,8 @@
 #' 
 #' @param html HTML content of waiter, generally a spinner, see \code{\link{spinners}}.
 #' @param color Background color of loading screen.
-#' @param logo Logo to display.
+#' @param logo Path to logo to display.
+#' @param image Path to background image.
 #' @param id Id of element to hide or element on which to show waiter over.
 #' @param hide_on_render Set to \code{TRUE} to automatically hide the waiter
 #' when the plot in \code{id} is drawn. Note the latter will only work with
@@ -167,7 +168,12 @@ waiter_use <- use_waiter
 
 #' @rdname waiter
 #' @export
-waiter_show <- function(id = NULL, html = spin_1(), color = "#333e48", logo = "", 
+waiter_show <- function(
+  id = NULL, 
+  html = spin_1(), 
+  color = "#333e48", 
+  logo = "", 
+  image = "",
   hide_on_render = !is.null(id)){
   
   html <- as.character(html)
@@ -181,6 +187,7 @@ waiter_show <- function(id = NULL, html = spin_1(), color = "#333e48", logo = ""
     html = html,
     color = color,
     logo = logo,
+    image = image,
     hide_on_render = hide_on_render
   )
   session <- shiny::getDefaultReactiveDomain()
@@ -192,7 +199,9 @@ waiter_show <- function(id = NULL, html = spin_1(), color = "#333e48", logo = ""
 #' @rdname waiter
 #' @export
 waiter_show_on_load <- function(
-  html = spin_1(), color = "#333e48"
+  html = spin_1(), 
+  color = "#333e48",
+  image = ""
 ){
   
   html <- as.character(html)
@@ -202,9 +211,10 @@ waiter_show_on_load <- function(
     "show_waiter(
       null,
       html = '%s', 
-      color = '%s'
+      color = '%s',
+      image = '%s'
     );",
-    html, color
+    html, color, image
   )
 
   HTML(sprintf("<script>%s</script>", show))
@@ -214,7 +224,9 @@ waiter_show_on_load <- function(
 #' @rdname waiter
 #' @export
 waiter_preloader <- function(
-  html = spin_1(), color = "#333e48"
+  html = spin_1(), 
+  color = "#333e48",
+  image = ""
 ){
   
   html <- as.character(html)
@@ -224,9 +236,10 @@ waiter_preloader <- function(
     "show_waiter(
       null,
       html = '%s', 
-      color = '%s'
+      color = '%s',
+      image = '%s',
     );",
-    html, color
+    html, color, image
   )
 
   hide <- paste0(
@@ -275,7 +288,7 @@ waiter_hide_on_render <- function(id){
 
 #' @rdname waiter
 #' @export
-waiter_on_busy <- function(html = spin_1(), color = "#333e48", logo = ""){
+waiter_on_busy <- function(html = spin_1(), color = "#333e48", logo = "", image = ""){
 
   html <- as.character(html)
   html <- gsub("\n", "", html)
@@ -285,7 +298,8 @@ waiter_on_busy <- function(html = spin_1(), color = "#333e48", logo = ""){
       show_waiter(
         id = null,
         html = '", html, "', 
-        color = '", color, "'
+        color = '", color, "',
+        image = '", image, "'
       );
     });
     
@@ -343,6 +357,7 @@ Waiter <- R6::R6Class(
 #' 
 #' @param html HTML content of waiter, generally a spinner, see \code{\link{spinners}} or a list of the latter.
 #' @param color Background color of loading screen.
+#' @param image Path to background image of loading screen.
 #' @param logo Logo to display.
 #' @param id Id, or vector of ids, of element on which to overlay the waiter, if \code{NULL} the waiter is
 #' applied to the entire body.
@@ -356,13 +371,14 @@ Waiter <- R6::R6Class(
 #' @examples
 #' \dontrun{Waiter$new()}
     initialize = function(id = NULL, html = NULL, color = NULL, logo = NULL, 
-      hide_on_render = !is.null(id), hide_on_error = !is.null(id),
+      image = "", hide_on_render = !is.null(id), hide_on_error = !is.null(id),
       hide_on_silent_error = !is.null(id)){
 
       # get theme
       html <- .theme_or_value(html, "WAITER_HTML")
       color <- .theme_or_value(color, "WAITER_COLOR")
       logo <- .theme_or_value(logo, "WAITER_LOGO")
+      image <- .theme_or_value(image, "WAITER_IMAGE")
       
       # process inputs
       if(inherits(html, "shiny.tag.list") || inherits(html, "shiny.tag"))
@@ -390,6 +406,7 @@ Waiter <- R6::R6Class(
       private$.id <- id
       private$.html <- html
       private$.color <- color
+      private$.image <- image
       private$.logo <- logo
       private$.hide_on_render <- hide_on_render
       private$.hide_on_silent_error <- hide_on_silent_error
@@ -405,6 +422,7 @@ Waiter <- R6::R6Class(
           html = private$.html[[i]],
           color = private$.color,
           logo = private$.logo,
+          image = private$.image,
           hide_on_render = private$.hide_on_render,
           hide_on_silent_error = private$.hide_on_silent_error,
           hide_on_error = private$.hide_on_error
@@ -454,6 +472,7 @@ Waiter <- R6::R6Class(
     .html = list(),
     .color = "#333e48",
     .logo = "",
+    .image = "",
     .id = NULL,
     .session = NULL,
     .hide_on_render = FALSE,
@@ -475,11 +494,12 @@ Waiter <- R6::R6Class(
 #' 
 #' @name waiterTheme
 #' @export
-waiter_set_theme <- function(html = spin_1(), color = "#333e48", logo = ""){
+waiter_set_theme <- function(html = spin_1(), color = "#333e48", logo = "", image = ""){
   options(
     WAITER_HTML = html,
     WAITER_COLOR = color,
-    WAITER_LOGO = logo
+    WAITER_LOGO = logo,
+    WAITER_IMAGE = image
   )
   invisible()
 }
@@ -490,7 +510,8 @@ waiter_get_theme <- function(){
   list(
     html = .get_html(),
     color = .get_color(),
-    logo = .get_logo()
+    logo = .get_logo(),
+    image = .get_image()
   )
 }
 
@@ -500,7 +521,8 @@ waiter_unset_theme <- function(){
   options(
     WAITER_HTML = NULL,
     WAITER_COLOR = NULL,
-    WAITER_LOGO = NULL
+    WAITER_LOGO = NULL,
+    WAITER_IMAGE = NULL
   )
   invisible()
 }
@@ -519,5 +541,6 @@ transparent <- function(alpha = 0){
   correct <- alpha >= 0 && alpha <= 1
   if(!correct)
     stop("`alpha` must be between 0 and 1", call. = FALSE)
-  paste0("rgba(255,255,255,", alpha, ")")
+  
+  invisible(paste0("rgba(255,255,255,", alpha, ")"))
 }
