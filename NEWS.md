@@ -3,6 +3,7 @@
 - Remove `console.log`
 - Add `image` argument to the waiter, allows using a background
 image on the waiter.
+- Fix `hide_on_render` [#94](https://github.com/JohnCoene/waiter/issues/94)
 
 # waiter 0.2.1
 

@@ -2,6 +2,13 @@
 
 List of changes made to waiter.
 
+# waiter 0.2.2.9000
+
+- Remove `console.log`
+- Add `image` argument to the waiter, allows using a background
+image on the waiter.
+- Fix `hide_on_render` [#94](https://github.com/JohnCoene/waiter/issues/94)
+
 # waiter 0.2.1.9000
 
 - Fixed `waiter_hide_on_render` see [#79](https://github.com/JohnCoene/waiter/issues/79).
