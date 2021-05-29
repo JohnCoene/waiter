@@ -193,16 +193,16 @@ function hide_recalculate(id){
 
 // remove when output receives value
 $(document).on('shiny:value', function(event) {
-  if(waiter_to_hide.indexOf(event.name) > 0){
+  if(waiter_to_hide.includes(event.name)){
     hide_waiter(event.name);
   }
 });
 
 // remove when output errors
 $(document).on('shiny:error', function(event) {
-  if(event.error.type == null && waiter_to_hide_on_error.indexOf(event.name) > 0){
+  if(event.error.type == null && waiter_to_hide_on_error.includes(event.name)){
     hide_waiter(event.name);
-  } else if (event.error.type != null && waiter_to_hide_on_silent_error.indexOf(event.name) > 0){
+  } else if (event.error.type != null && waiter_to_hide_on_silent_error.includes(event.name)){
     hide_waiter(event.name);
   }
 });
