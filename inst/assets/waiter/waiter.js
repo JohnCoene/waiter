@@ -143,6 +143,7 @@ function hide_waiter(id){
     setTimeout(function(){
       try {
         dom.removeChild(overlay[0]);
+        hide_recalculate(id);
       } catch {
         console.log("error removing waiter from", id)
       } finally {
@@ -182,27 +183,32 @@ function hide_recalculate(id){
       head = document.head || document.getElementsByTagName('head')[0],
       style = document.createElement('style');
 
-  style.type = 'text/css';
+  style.id = id + "-waiter-recalculating";
   if (style.styleSheet){
     style.styleSheet.cssText = css;
   } else {
     style.appendChild(document.createTextNode(css));
   }
+
   head.appendChild(style);
+}
+
+function show_recalculate(id){
+  $(id + "-waiter-recalculating").remove();
 }
 
 // remove when output receives value
 $(document).on('shiny:value', function(event) {
-  if(waiter_to_hide.includes(event.name)){
+  if(waiter_to_hide.indexOf(event.name) >= 0){
     hide_waiter(event.name);
   }
 });
 
 // remove when output errors
 $(document).on('shiny:error', function(event) {
-  if(event.error.type == null && waiter_to_hide_on_error.includes(event.name)){
+  if(event.error.type == null && waiter_to_hide_on_error.indexOf(event.name) >= 0){
     hide_waiter(event.name);
-  } else if (event.error.type != null && waiter_to_hide_on_silent_error.includes(event.name)){
+  } else if (event.error.type != null && waiter_to_hide_on_silent_error.indexOf(event.name) >= 0){
     hide_waiter(event.name);
   }
 });
