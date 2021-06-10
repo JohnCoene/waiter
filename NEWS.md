@@ -4,6 +4,7 @@
 - Add `image` argument to the waiter, allows using a background
 image on the waiter.
 - Fix `hide_on_render` [#94](https://github.com/JohnCoene/waiter/issues/94)
+- Fix full screen not covering entirety of body [#95](https://github.com/JohnCoene/waiter/issues/95)
 
 # waiter 0.2.1
 

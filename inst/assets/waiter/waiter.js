@@ -60,7 +60,7 @@ function show_waiter(id, html, color, to_hide, hide_on_error, hide_on_silent_err
 
   if(id === null){
     el.height = window.innerHeight;
-    el.width = window.innerWidth;
+    el.width = $("body").width();
   }
   
   // force static if position relative
@@ -99,6 +99,11 @@ function show_waiter(id, html, color, to_hide, hide_on_error, hide_on_silent_err
   overlay.style.position = "absolute";
   overlay.style.zIndex = 9999;
   overlay.classList.add("waiter-overlay");
+
+  if(id === null){
+    overlay.id = 'waiterFullWindow';
+    bindEvents();
+  }
 
   if(image != null && image != ''){
     overlay.style.backgroundImage = "url('" + image + "')";
@@ -229,3 +234,10 @@ window.addEventListener("resize", function(){
     waiter.style.height = window.innerHeight + 'px';
   }
 });
+
+function bindEvents(){
+  document.onscroll = function(){
+    let waiter = document.getElementById("waiterFullWindow");
+    waiter.scrollIntoView();
+  }
+}
