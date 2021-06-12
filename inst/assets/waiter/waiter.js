@@ -100,17 +100,13 @@ function show_waiter(id, html, color, to_hide, hide_on_error, hide_on_silent_err
   overlay.style.zIndex = 9999;
   overlay.classList.add("waiter-overlay");
 
-  if(id === null){
-    overlay.id = 'waiterFullWindow';
-    bindEvents();
-  }
-
   if(image != null && image != ''){
     overlay.style.backgroundImage = "url('" + image + "')";
   }
 
   if(id === null) {
     overlay.classList.add("waiter-fullscreen");
+    bindEvents();
   } else {
     overlay.classList.add("waiter-local");
   }
@@ -237,7 +233,11 @@ window.addEventListener("resize", function(){
 
 function bindEvents(){
   document.onscroll = function(){
-    let waiter = document.getElementById("waiterFullWindow");
-    waiter.scrollIntoView();
+    let waiter = document.getElementsByClassName("waiter-fullscreen");
+
+    if(waiter === undefined)
+      return;
+     
+    waiter[0].scrollIntoView();
   }
 }
