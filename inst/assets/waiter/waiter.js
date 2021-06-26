@@ -149,20 +149,27 @@ function hide_waiter(id){
   if(id !== null)
     selector = '#' + id;
 
-  let $el = $(selector);
-
-  var overlay = $el.find(".waiter-overlay");
+  let overlay = $(selector).find(".waiter-overlay");
   
   if(overlay.length == 0)
     return;
   
-  if(waiter_to_fadeout.get(id))
-    overlay.fadeOut(250);
+  let timeout = 250;
+  if(waiter_to_fadeout.get(id)){
+    let value = waiter_to_fadeout.get(id);
+
+    if(typeof value == 'boolean')
+      value = 500;
+
+    $(overlay).fadeOut(value);
+
+    timeout = timeout + value;
+  }
   
   // this is to avoid the waiter screen from flashing
   setTimeout(function(){
     overlay.remove();
-  }, 250)
+  }, timeout);
 
 }
 
