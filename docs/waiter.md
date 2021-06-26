@@ -759,6 +759,22 @@ shinyApp(ui, server)
 You can also directly use the JavaScript if you want, this may
 allow you to avoid going through the websocket and the server.
 
+The function `show_waiter` takes the arguments below, if `id = null` then a full-screen waiter is used.
+
+```js
+function show_waiter(
+  id = null, 
+  html, 
+  color = '#333e48', 
+  to_hide = false, 
+  hide_on_error = false, 
+  hide_on_silent_error = false, 
+  image = null
+)
+```
+
+To hide the waiter use `hide_waiter` and pass it the `id` of the element from which you want to removed the waiter, if `null` it removes the full-screen waiter.
+
 ```r
 library(shiny)
 library(waiter)
