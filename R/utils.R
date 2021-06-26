@@ -36,17 +36,14 @@ globalVariables("private")
 #' 
 #' @keywords internal
 themes_to_js <- function(x) {
-  if (x == "overlay"){
-    "blueOverlay"
-  } else if (x == "overlay-radius") {
-    "blueOverlayRadius"
-  } else if (x == "overlay-opacity") {
-    "blueOverlayRadiusHalfOpacity"
-  } else if (x == "overlay-percent") {
-    "blueOverlayRadiusWithPercentBar"
-  } else {
-    "blue"
-  } 
+  switch(
+    x,
+    "overlay" = "blueOverlay",
+    "overlay-radius" = "blueOverlayRadius",
+    "overlay-opacity" = "blueOverlayRadiusHalfOpacity",
+    "overlay-percent" = "blueOverlayRadiusWithPercentBar",
+    "blue" 
+  )
 }
 
 # valid presets for checks
@@ -95,32 +92,20 @@ hostess_presets <- c(
 
 #' @rdname waiterOptionInternal
 .get_html <- function() {
-  html <- getOption("WAITER_HTML")
-  if(is.null(html))
-    html <- spin_1()
-  return(html)
+  getOption("WAITER_HTML", spin_1())
 }
 
 #' @rdname waiterOptionInternal
 .get_color <- function() {
-  color <- getOption("WAITER_COLOR")
-  if(is.null(color))
-    color <- "#333e48"
-  return(color)
+  getOption("WAITER_COLOR", "#333e48")
 }
 
 #' @rdname waiterOptionInternal
 .get_logo <- function() {
-  logo <- getOption("WAITER_LOGO")
-  if(is.null(logo))
-    logo <- ""
-  return(logo)
+  getOption("WAITER_LOGO", "")
 }
 
 #' @rdname waiterOptionInternal
 .get_image <- function() {
-  image <- getOption("WAITER_IMAGE")
-  if(is.null(image))
-    image <- ""
-  return(image)
+  getOption("WAITER_IMAGE", "")
 }

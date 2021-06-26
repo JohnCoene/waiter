@@ -27,7 +27,21 @@ var waiter_to_hide_on_error = [];
 var waiter_to_hide_on_silent_error = [];
 
 // show waiter overlay
-function show_waiter(id, html, color, to_hide, hide_on_error, hide_on_silent_error, image){
+function show_waiter(
+  id = null, 
+  html, 
+  color = '#333e48', 
+  to_hide = false, 
+  hide_on_error = false, 
+  hide_on_silent_error = false, 
+  image = null
+){
+
+  if(html == null){
+    console.error("Missing html content");
+    return;
+  }
+
   // declare
   var dom,
       selector = 'body',
@@ -134,7 +148,6 @@ function show_waiter(id, html, color, to_hide, hide_on_error, hide_on_silent_err
 function hide_waiter(id){
 
   var selector = 'body';
-
   if(id !== null)
     selector = '#' + id;
 
@@ -145,6 +158,7 @@ function hide_waiter(id){
   if(overlay.length == 0)
     return;
 
+  // this is to avoid the waiter screen from flashing
   setTimeout(function(){
     overlay.remove();
   }, 250)
@@ -172,6 +186,7 @@ function update_waiter(id, html){
   
 }
 
+// storage to avoid multiple CSS injections
 hiddenRecalculating = new Map();
 
 function hide_recalculate(id){
@@ -198,6 +213,7 @@ function hide_recalculate(id){
   head.appendChild(style);
 }
 
+// currently unused but may be useful for others using JS API
 function show_recalculate(id){
   $(id + "-waiter-recalculating").remove();
 }
@@ -218,6 +234,7 @@ $(document).on('shiny:error', function(event) {
   }
 });
 
+// On resize we need to resize the waiter screens too
 window.addEventListener("resize", function(){
   let waiters = document.getElementsByClassName("waiter-local");
   let fs = document.getElementsByClassName("waiter-fullscreen");
