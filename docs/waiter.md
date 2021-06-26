@@ -753,3 +753,51 @@ shinyApp(ui, server)
 ```
 
 ![](_assets/img/waiter-css.png)
+
+## JavaScript
+
+You can also directly use the JavaScript if you want, this may
+allow you to avoid going through the websocket and the server.
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  tags$head(
+    use_waiter(),
+    tags$script(
+      "function show(){
+        show_waiter(
+          id = 'contentBox',
+          html = 'LOADING',
+          color = 'black'
+        );
+      }
+      function hide(){
+        hide_waiter('contentBox');
+      }"
+    )
+  ),
+  br(),
+  tags$button(
+    onclick = "show();",
+    class = "btn btn-success",
+    "Show waiter"
+  ),
+  tags$button(
+    onclick = 'hide();',
+    class = "btn btn-warning",
+    "Hide waiter"
+  ),
+  div(
+    id = "contentBox",
+    style = "min-height:300px;",
+    h1("Hello")
+  )
+)
+
+server <- function(input, output) {}
+
+shinyApp(ui, server)
+```
