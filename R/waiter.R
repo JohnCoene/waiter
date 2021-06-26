@@ -358,6 +358,7 @@ Waiter <- R6::R6Class(
 #' @param html HTML content of waiter, generally a spinner, see \code{\link{spinners}} or a list of the latter.
 #' @param color Background color of loading screen.
 #' @param image Path to background image of loading screen.
+#' @param fadeout Whether to hide the screen with a fade out effect.
 #' @param logo Logo to display.
 #' @param id Id, or vector of ids, of element on which to overlay the waiter, if \code{NULL} the waiter is
 #' applied to the entire body.
@@ -371,7 +372,7 @@ Waiter <- R6::R6Class(
 #' @examples
 #' \dontrun{Waiter$new()}
     initialize = function(id = NULL, html = NULL, color = NULL, logo = NULL, 
-      image = "", hide_on_render = !is.null(id), hide_on_error = !is.null(id),
+      image = "", fadeout = FALSE, hide_on_render = !is.null(id), hide_on_error = !is.null(id),
       hide_on_silent_error = !is.null(id)){
 
       # get theme
@@ -408,6 +409,7 @@ Waiter <- R6::R6Class(
       private$.color <- color
       private$.image <- image
       private$.logo <- logo
+      private$.fadeout <- fadeout
       private$.hide_on_render <- hide_on_render
       private$.hide_on_silent_error <- hide_on_silent_error
       private$.hide_on_error <- hide_on_error
@@ -425,7 +427,8 @@ Waiter <- R6::R6Class(
           image = private$.image,
           hide_on_render = private$.hide_on_render,
           hide_on_silent_error = private$.hide_on_silent_error,
-          hide_on_error = private$.hide_on_error
+          hide_on_error = private$.hide_on_error,
+          fade_out = private$.fadeout
         )
         private$.session$sendCustomMessage("waiter-show", opts)
       }
@@ -475,6 +478,7 @@ Waiter <- R6::R6Class(
     .image = "",
     .id = NULL,
     .session = NULL,
+    .fadeout = FALSE,
     .hide_on_render = FALSE,
     .hide_on_silent_error = FALSE,
     .hide_on_error = FALSE,

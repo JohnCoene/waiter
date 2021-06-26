@@ -23,6 +23,7 @@ function get_offset(element) {
 
 // elements to hide on recomputed
 var waiter_to_hide = new Map();
+var waiter_to_fadeout = new Map();
 var waiter_to_hide_on_error = new Map();
 var waiter_to_hide_on_silent_error = new Map();
 
@@ -34,7 +35,8 @@ function show_waiter(
   to_hide = false, 
   hide_on_error = false, 
   hide_on_silent_error = false, 
-  image = null
+  image = null,
+  fade_out = false
 ){
 
   if(html == null){
@@ -60,15 +62,11 @@ function show_waiter(
   // allow missing for testing
   to_hide = to_hide || false;
 
-  // add to array
-  if(to_hide)
-    waiter_to_hide.set(id, true);
-
-  if(hide_on_error)
-    waiter_to_hide_on_error.set(id, true);
-
-  if(hide_on_silent_error)
-    waiter_to_hide_on_silent_error.set(id, true);
+  // set in maps
+  waiter_to_hide.set(id, to_hide);
+  waiter_to_fadeout.set(id, fade_out);
+  waiter_to_hide_on_error.set(id, hide_on_error);
+  waiter_to_hide_on_silent_error.set(id, hide_on_silent_error);
 
   el = get_offset(dom); // get dimensions
 
@@ -157,7 +155,10 @@ function hide_waiter(id){
   
   if(overlay.length == 0)
     return;
-
+  
+  if(waiter_to_fadeout.get(id))
+    overlay.fadeOut(250);
+  
   // this is to avoid the waiter screen from flashing
   setTimeout(function(){
     overlay.remove();

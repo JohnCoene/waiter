@@ -42,6 +42,7 @@ then \code{hide} or meanwhile \code{update} the content of the waiter.
   color = NULL,
   logo = NULL,
   image = "",
+  fadeout = FALSE,
   hide_on_render = !is.null(id),
   hide_on_error = !is.null(id),
   hide_on_silent_error = !is.null(id)
@@ -61,6 +62,8 @@ applied to the entire body.}
 \item{\code{logo}}{Logo to display.}
 
 \item{\code{image}}{Path to background image of loading screen.}
+
+\item{\code{fadeout}}{Whether to hide the screen with a fade out effect.}
 
 \item{\code{hide_on_render}}{Set to \code{TRUE} to automatically hide the waiter
 when the element in \code{id} is drawn. Note the latter will work with

@@ -6,7 +6,8 @@ Shiny.addCustomMessageHandler('waiter-show', function(opts) {
     opts.hide_on_render, 
     opts.hide_on_error, 
     opts.hide_on_silent_error,
-    opts.image
+    opts.image,
+    opts.fade_out
   );
   Shiny.setInputValue("waiter_shown", true, {priority: 'event'});
 });
