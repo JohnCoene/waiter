@@ -6,6 +6,9 @@
 #' @param color Background color of loading screen.
 #' @param logo Path to logo to display.
 #' @param image Path to background image.
+#' @param fadeout Use a fade out effect when the screen is removed.
+#' Can be a boolean, or a numeric indicating the number of 
+#' milliseconds the effect should take. 
 #' @param id Id of element to hide or element on which to show waiter over.
 #' @param hide_on_render Set to \code{TRUE} to automatically hide the waiter
 #' when the plot in \code{id} is drawn. Note the latter will only work with
@@ -226,11 +229,14 @@ waiter_show_on_load <- function(
 waiter_preloader <- function(
   html = spin_1(), 
   color = "#333e48",
-  image = ""
+  image = "",
+  fadeout = FALSE
 ){
   
   html <- as.character(html)
   html <- gsub("\n", "", html)
+  
+  fadeout <- ifelse(is.logical(fadeout), tolower(fadeout), fadeout)
 
   show <- sprintf(
     "show_waiter(
@@ -238,6 +244,7 @@ waiter_preloader <- function(
       html = '%s', 
       color = '%s',
       image = '%s',
+      fadeout = %s
     );",
     html, color, image
   )
@@ -288,10 +295,12 @@ waiter_hide_on_render <- function(id){
 
 #' @rdname waiter
 #' @export
-waiter_on_busy <- function(html = spin_1(), color = "#333e48", logo = "", image = ""){
+waiter_on_busy <- function(html = spin_1(), color = "#333e48", logo = "", image = "", fadeout = FALSE){
 
   html <- as.character(html)
   html <- gsub("\n", "", html)
+
+  fadeout <- ifelse(is.logical(fadeout), tolower(fadeout), fadeout)
 
   script <- paste0(
     "$(document).on('shiny:busy', function(event) {
@@ -299,7 +308,8 @@ waiter_on_busy <- function(html = spin_1(), color = "#333e48", logo = "", image 
         id = null,
         html = '", html, "', 
         color = '", color, "',
-        image = '", image, "'
+        image = '", image, "',
+        fadeout = ", fadeout, "
       );
     });
     
@@ -470,7 +480,7 @@ Waiter <- R6::R6Class(
       if(!is.null(private$.id))
 		    cat("A waiter on", paste0(private$.id, collapse = ","), "\n")
       else
-        cat("A waiter\n")
+        cat("A full-screen waiter\n")
 		}
   ),
   active = list(

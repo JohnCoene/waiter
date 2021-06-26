@@ -28,11 +28,22 @@ waiter_show(
 
 waiter_show_on_load(html = spin_1(), color = "#333e48", image = "")
 
-waiter_preloader(html = spin_1(), color = "#333e48", image = "")
+waiter_preloader(
+  html = spin_1(),
+  color = "#333e48",
+  image = "",
+  fadeout = FALSE
+)
 
 waiter_hide_on_render(id)
 
-waiter_on_busy(html = spin_1(), color = "#333e48", logo = "", image = "")
+waiter_on_busy(
+  html = spin_1(),
+  color = "#333e48",
+  logo = "",
+  image = "",
+  fadeout = FALSE
+)
 
 waiter_hide(id = NULL)
 
@@ -63,6 +74,10 @@ or multiple spinner kits as a vector e.g.: \code{c(1,3,6)}.}
 when the plot in \code{id} is drawn. Note the latter will only work with
 shiny plots, tables, htmlwidgets, etc. but will not work with arbitrary
 elements.}
+
+\item{fadeout}{Use a fade out effect when the screen is removed.
+Can be a boolean, or a numeric indicating the number of
+milliseconds the effect should take.}
 }
 \description{
 Programatically show and hide loading screens.
