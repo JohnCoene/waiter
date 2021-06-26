@@ -244,7 +244,7 @@ waiter_preloader <- function(
       html = '%s', 
       color = '%s',
       image = '%s',
-      fadeout = %s
+      fade_out = %s
     );",
     html, color, image
   )
@@ -309,7 +309,7 @@ waiter_on_busy <- function(html = spin_1(), color = "#333e48", logo = "", image 
         html = '", html, "', 
         color = '", color, "',
         image = '", image, "',
-        fadeout = ", fadeout, "
+        fade_out = ", fadeout, "
       );
     });
     
