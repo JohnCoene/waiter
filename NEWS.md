@@ -3,6 +3,8 @@
 - Fix [#95](https://github.com/JohnCoene/waiter/issues/95) with different CSS for full screen (`position: fixed`).
 - Fix CSS injection that repeatedly injected CSS to hide recalculating effect.
 - Remove magrittr in favour of R native pipe.
+- Add active bindings for many of the waiter components,
+see `?Waiter`.
 
 # waiter 0.2.2
 

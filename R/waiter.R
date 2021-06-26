@@ -473,6 +473,43 @@ Waiter <- R6::R6Class(
         cat("A waiter\n")
 		}
   ),
+  active = list(
+#' @field fadeout Set or get the fade out
+    fadeout = function(value) {
+      if(missing(value))
+        return(private$.fadeout)
+      
+      private$.fadeout <- value
+    },
+#' @field color Set or get the background color
+    color = function(value) {
+      if(missing(value))
+        return(private$.color)
+      
+      private$.color <- value
+    },
+#' @field image Set of get the background image
+    image = function(value) {
+      if(missing(value))
+        return(private$.image)
+      
+      private$.image <- value
+    },
+#' @field session Set or get the shiny session
+    session = function(value) {
+      if(missing(value))
+        return(private$.session)
+      
+      private$.session <- value
+    },
+#' @field html Set or get the html content
+    html = function(value) {
+      if(missing(value))
+        return(private$.html)
+      
+      private$.html <- value
+    }
+  ),
   private = list(
     .html = list(),
     .color = "#333e48",

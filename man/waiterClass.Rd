@@ -20,6 +20,21 @@ then \code{hide} or meanwhile \code{update} the content of the waiter.
 
 \dontrun{Waiter$new()}
 }
+\section{Active bindings}{
+\if{html}{\out{<div class="r6-active-bindings">}}
+\describe{
+\item{\code{fadeout}}{Set or get the fade out}
+
+\item{\code{color}}{Set or get the background color}
+
+\item{\code{image}}{Set of get the background image}
+
+\item{\code{session}}{Set or get the shiny session}
+
+\item{\code{html}}{Set or get the html content}
+}
+\if{html}{\out{</div>}}
+}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
