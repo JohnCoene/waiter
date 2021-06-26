@@ -90,25 +90,28 @@ function show_waiter(id, html, color, to_hide, hide_on_error, hide_on_silent_err
   overlay_content.innerHTML = html;
   overlay_content.classList.add("waiter-overlay-content");
 
-  // add styles
+  // dynamic position
+  if(id == null)
+    overlay.style.position = "fixed";
+  else
+    overlay.style.position = "absolute";
+  
+  // dynamic dimensions
   overlay.style.height = el.height + 'px';
   overlay.style.width = el.width + 'px';
   overlay.style.top = el.top + 'px';
   overlay.style.left = el.left + 'px';
   overlay.style.backgroundColor = color;
-  overlay.style.position = "absolute";
-  overlay.style.zIndex = 9999;
   overlay.classList.add("waiter-overlay");
 
   if(image != null && image != ''){
     overlay.style.backgroundImage = "url('" + image + "')";
   }
 
-  if(id === null) {
-    overlay.classList.add("waiter-fullscreen");
-    bindEvents();
-  } else {
+  if(id !== null) {
     overlay.classList.add("waiter-local");
+  } else {
+    overlay.classList.add('waiter-fullscreen');
   }
   //overlay.style.animation = "expand .15s ease-in-out";
 
@@ -135,25 +138,16 @@ function hide_waiter(id){
   if(id !== null)
     selector = '#' + id;
 
-  var dom = document.querySelector(selector);
+  let $el = $(selector);
 
-  var overlay = dom.getElementsByClassName("waiter-overlay");
+  var overlay = $el.find(".waiter-overlay");
+  
+  if(overlay.length == 0)
+    return;
 
-  if(overlay.length > 0){
-    overlay[0].style.opacity = '0';
-    setTimeout(function(){
-      try {
-        dom.removeChild(overlay[0]);
-        hide_recalculate(id);
-      } catch {
-        console.log("error removing waiter from", id)
-      } finally {
-        Shiny.setInputValue(id + "_waiter_hidden", true, {priority: 'event'});
-      }
-    }, 250)
-  } else{
-    console.log("no waiter on", id);
-  }
+  setTimeout(function(){
+    overlay.remove();
+  }, 250)
 
 }
 
@@ -167,6 +161,9 @@ function update_waiter(id, html){
   var dom = document.querySelector(selector);
 
   var overlay = dom.getElementsByClassName("waiter-overlay-content");
+  
+  if(overlay.length == 0)
+    return;
 
   if(overlay.length > 0)
     overlay[0].innerHTML = html;
@@ -175,10 +172,17 @@ function update_waiter(id, html){
   
 }
 
+hiddenRecalculating = new Map();
+
 function hide_recalculate(id){
 
   if(id === null)
     return ;
+  
+  if(hiddenRecalculating.get(id))
+    return;
+  
+  hiddenRecalculating.set(id, true);
 
   var css = '#' + id + '.recalculating {opacity: 1.0 !important; }',
       head = document.head || document.getElementsByTagName('head')[0],
@@ -230,14 +234,3 @@ window.addEventListener("resize", function(){
     waiter.style.height = window.innerHeight + 'px';
   }
 });
-
-function bindEvents(){
-  document.onscroll = function(){
-    let waiter = document.getElementsByClassName("waiter-fullscreen");
-
-    if(waiter === undefined)
-      return;
-     
-    waiter[0].scrollIntoView();
-  }
-}

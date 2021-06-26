@@ -1,11 +1,3 @@
-/* Custom */
-.waiter-overlay{
-  text-align: center;
-  z-index:999;
-  color: white;
-  display: flex;
-}
-
 .staticParent{
   position: static;
 }
@@ -18,4 +10,8 @@
   opacity: 1;
   -webkit-transition: opacity 250ms linear;
   transition: opacity 250ms linear;
+  text-align: center;
+  color: white;
+  display: flex;
+  z-index: 99999;
 }
