@@ -3,17 +3,23 @@
 \name{waiter}
 \alias{waiter}
 \alias{use_waiter}
+\alias{useWaiter}
 \alias{waiter_use}
 \alias{waiter_show}
 \alias{waiter_show_on_load}
 \alias{waiter_preloader}
+\alias{waiterPreloader}
 \alias{waiter_hide_on_render}
+\alias{waiterHideOnRender}
 \alias{waiter_on_busy}
+\alias{waiterOnBusy}
 \alias{waiter_hide}
 \alias{waiter_update}
 \title{Waiter}
 \usage{
 use_waiter(spinners = 1:7, include_js = TRUE)
+
+useWaiter(spinners = 1:7, include_js = TRUE)
 
 waiter_use(spinners = 1:7, include_js = TRUE)
 
@@ -35,9 +41,26 @@ waiter_preloader(
   fadeout = FALSE
 )
 
+waiterPreloader(
+  html = spin_1(),
+  color = "#333e48",
+  image = "",
+  fadeout = FALSE
+)
+
 waiter_hide_on_render(id)
 
+waiterHideOnRender(id)
+
 waiter_on_busy(
+  html = spin_1(),
+  color = "#333e48",
+  logo = "",
+  image = "",
+  fadeout = FALSE
+)
+
+waiterOnBusy(
   html = spin_1(),
   color = "#333e48",
   logo = "",
@@ -100,7 +123,7 @@ Programatically show and hide loading screens.
 library(shiny)
 
 ui <- fluidPage(
-  use_waiter(), # dependencies
+  useWaiter(), # dependencies
   waiter_show_on_load(spin_fading_circles()), # shows before anything else 
   actionButton("show", "Show loading for 5 seconds")
 )

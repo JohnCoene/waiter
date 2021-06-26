@@ -360,7 +360,7 @@ Hostess <- R6::R6Class(
 #' path <- "M10 10L90 30"
 #' 
 #' ui <- fluidPage(
-#'  use_waiter(),
+#'  useWaiter(),
 #'  use_hostess(),
 #'  actionButton("draw", "redraw"),
 #'  plotOutput("plot")

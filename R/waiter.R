@@ -39,7 +39,7 @@
 #' library(shiny)
 #' 
 #' ui <- fluidPage(
-#'   use_waiter(), # dependencies
+#'   useWaiter(), # dependencies
 #'   waiter_show_on_load(spin_fading_circles()), # shows before anything else 
 #'   actionButton("show", "Show loading for 5 seconds")
 #' )
@@ -65,6 +65,13 @@
 #' @name waiter
 #' @export
 use_waiter <- function(spinners = 1:7, include_js = TRUE){
+  .Deprecated("useWaiter", "waiter")
+  useWaiter(spinners, include_js)
+}
+
+#' @export 
+#' @rdname waiter
+useWaiter <- function(spinners = 1:7, include_js = TRUE){
 
   if(!isTRUE(include_js))
     warning("include_js argument is deprecated, it is no longer needed")
@@ -167,7 +174,10 @@ use_waiter <- function(spinners = 1:7, include_js = TRUE){
 
 #' @rdname waiter
 #' @export
-waiter_use <- use_waiter
+waiter_use <- function(spinners = 1:7, include_js = TRUE){
+  .Deprecated("useWaiter", "waiter")
+  useWaiter(spinners, include_js)
+}
 
 #' @rdname waiter
 #' @export
@@ -232,6 +242,18 @@ waiter_preloader <- function(
   image = "",
   fadeout = FALSE
 ){
+  .Deprecated("waiterPreloader", package = "waiter")
+  waiterPreloader(html, color, image, fadeout)
+}
+
+#' @rdname waiter
+#' @export
+waiterPreloader <- function(
+  html = spin_1(), 
+  color = "#333e48",
+  image = "",
+  fadeout = FALSE
+){
   
   html <- as.character(html)
   html <- gsub("\n", "", html)
@@ -274,6 +296,13 @@ waiter_preloader <- function(
 #' @rdname waiter
 #' @export
 waiter_hide_on_render <- function(id){
+  .Deprecated("waiterHideOnRender", package = "waiter")
+  waiterHideOnRender(id)
+}
+
+#' @rdname waiter
+#' @export
+waiterHideOnRender <- function(id){
   if(missing(id))
     stop("Missing id", call. = FALSE)
   
@@ -296,6 +325,12 @@ waiter_hide_on_render <- function(id){
 #' @rdname waiter
 #' @export
 waiter_on_busy <- function(html = spin_1(), color = "#333e48", logo = "", image = "", fadeout = FALSE){
+  .Deprecated("waiterOnBudy", package = "waiter")
+}
+
+#' @rdname waiter
+#' @export
+waiterOnBusy <- function(html = spin_1(), color = "#333e48", logo = "", image = "", fadeout = FALSE){
 
   html <- as.character(html)
   html <- gsub("\n", "", html)
