@@ -64,7 +64,7 @@ function show_waiter(
 
   // set in maps
   waiter_to_hide.set(id, to_hide);
-  waiter_to_fadeout.set(id, fade_out);
+  waiter_to_fadeout.set(selector, fade_out);
   waiter_to_hide_on_error.set(id, hide_on_error);
   waiter_to_hide_on_silent_error.set(id, hide_on_silent_error);
 
@@ -155,8 +155,8 @@ function hide_waiter(id){
     return;
   
   let timeout = 250;
-  if(waiter_to_fadeout.get(id)){
-    let value = waiter_to_fadeout.get(id);
+  if(waiter_to_fadeout.get(selector)){
+    let value = waiter_to_fadeout.get(selector);
 
     if(typeof value == 'boolean')
       value = 500;

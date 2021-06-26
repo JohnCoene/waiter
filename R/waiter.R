@@ -358,7 +358,9 @@ Waiter <- R6::R6Class(
 #' @param html HTML content of waiter, generally a spinner, see \code{\link{spinners}} or a list of the latter.
 #' @param color Background color of loading screen.
 #' @param image Path to background image of loading screen.
-#' @param fadeout Whether to hide the screen with a fade out effect.
+#' @param fadeout Use a fade out effect when the screen is removed.
+#' Can be a boolean, or a numeric indicating the number of 
+#' milliseconds the effect should take. 
 #' @param logo Logo to display.
 #' @param id Id, or vector of ids, of element on which to overlay the waiter, if \code{NULL} the waiter is
 #' applied to the entire body.

@@ -63,7 +63,9 @@ applied to the entire body.}
 
 \item{\code{image}}{Path to background image of loading screen.}
 
-\item{\code{fadeout}}{Whether to hide the screen with a fade out effect.}
+\item{\code{fadeout}}{Use a fade out effect when the screen is removed.
+Can be a boolean, or a numeric indicating the number of
+milliseconds the effect should take.}
 
 \item{\code{hide_on_render}}{Set to \code{TRUE} to automatically hide the waiter
 when the element in \code{id} is drawn. Note the latter will work with
