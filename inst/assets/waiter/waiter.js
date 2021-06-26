@@ -22,9 +22,9 @@ function get_offset(element) {
 }
 
 // elements to hide on recomputed
-var waiter_to_hide = [];
-var waiter_to_hide_on_error = [];
-var waiter_to_hide_on_silent_error = [];
+var waiter_to_hide = new Map();
+var waiter_to_hide_on_error = new Map();
+var waiter_to_hide_on_silent_error = new Map();
 
 // show waiter overlay
 function show_waiter(
@@ -62,13 +62,13 @@ function show_waiter(
 
   // add to array
   if(to_hide)
-    waiter_to_hide.push(id);
+    waiter_to_hide.set(id, true);
 
   if(hide_on_error)
-    waiter_to_hide_on_error.push(id);
+    waiter_to_hide_on_error.set(id, true);
 
   if(hide_on_silent_error)
-    waiter_to_hide_on_silent_error.push(id);
+    waiter_to_hide_on_silent_error.set(id, true);
 
   el = get_offset(dom); // get dimensions
 
@@ -220,16 +220,16 @@ function show_recalculate(id){
 
 // remove when output receives value
 $(document).on('shiny:value', function(event) {
-  if(waiter_to_hide.indexOf(event.name) >= 0){
+  if(waiter_to_hide.get(event.name)){
     hide_waiter(event.name);
   }
 });
 
 // remove when output errors
 $(document).on('shiny:error', function(event) {
-  if(event.error.type == null && waiter_to_hide_on_error.indexOf(event.name) >= 0){
+  if(event.error.type == null && waiter_to_hide_on_error.get(event.name)){
     hide_waiter(event.name);
-  } else if (event.error.type != null && waiter_to_hide_on_silent_error.indexOf(event.name) >= 0){
+  } else if (event.error.type != null && waiter_to_hide_on_silent_error.get(event.name)){
     hide_waiter(event.name);
   }
 });
