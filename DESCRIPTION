@@ -25,7 +25,6 @@ Imports:
     R6,
     shiny,
     crayon,
-    magrittr,
     htmltools
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1

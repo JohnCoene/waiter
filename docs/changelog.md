@@ -2,7 +2,13 @@
 
 List of changes made to waiter.
 
-# waiter 0.2.2.9000
+# waiter 0.2.3.9000
+
+- Fix [#95](https://github.com/JohnCoene/waiter/issues/95) with different CSS for full screen (`position: fixed`).
+- Fix CSS injection that repeatedly injected CSS to hide recalculating effect.
+- Remove magrittr in favour of R native pipe.
+
+# waiter 0.2.2
 
 - Remove `console.log`
 - Add `image` argument to the waiter, allows using a background

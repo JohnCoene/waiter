@@ -6,11 +6,11 @@ globalVariables("private")
 #' 
 #' @keywords internal
 .random_name <- function() {
-	letters <- LETTERS %>% 
-		tolower() %>% 
+	letters <- LETTERS |> 
+		tolower() |> 
 		sample()
 
-	numbers <- 1:20 %>% 
+	numbers <- 1:20 |>  
 		sample() 
 
 	paste0(letters, numbers, collapse = "")
