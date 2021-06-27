@@ -18,7 +18,7 @@ waiter_unset_theme()
 
 \item{color}{Background color of loading screen.}
 
-\item{logo}{Path to logo to display.}
+\item{logo}{Path to logo to display. Deprecated.}
 
 \item{image}{Path to background image.}
 }

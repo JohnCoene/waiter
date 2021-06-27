@@ -5,7 +5,6 @@
 \alias{.get_waiter_option}
 \alias{.get_html}
 \alias{.get_color}
-\alias{.get_logo}
 \alias{.get_image}
 \title{Get Waiter Option}
 \usage{
@@ -14,8 +13,6 @@
 .get_html()
 
 .get_color()
-
-.get_logo()
 
 .get_image()
 }

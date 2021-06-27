@@ -89,7 +89,7 @@ or multiple spinner kits as a vector e.g.: \code{c(1,3,6)}.}
 
 \item{color}{Background color of loading screen.}
 
-\item{logo}{Path to logo to display.}
+\item{logo}{Path to logo to display. Deprecated.}
 
 \item{image}{Path to background image.}
 

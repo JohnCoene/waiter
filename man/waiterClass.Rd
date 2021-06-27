@@ -74,7 +74,7 @@ applied to the entire body.}
 
 \item{\code{color}}{Background color of loading screen.}
 
-\item{\code{logo}}{Logo to display.}
+\item{\code{logo}}{Logo to display. Deprecated.}
 
 \item{\code{image}}{Path to background image of loading screen.}
 

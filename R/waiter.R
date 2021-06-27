@@ -4,7 +4,7 @@
 #' 
 #' @param html HTML content of waiter, generally a spinner, see \code{\link{spinners}}.
 #' @param color Background color of loading screen.
-#' @param logo Path to logo to display.
+#' @param logo Path to logo to display. Deprecated.
 #' @param image Path to background image.
 #' @param fadeout Use a fade out effect when the screen is removed.
 #' Can be a boolean, or a numeric indicating the number of 
@@ -188,6 +188,9 @@ waiter_show <- function(
   logo = "", 
   image = "",
   hide_on_render = !is.null(id)){
+
+  if(logo != "")
+    .Deprecated("html", "waiter", "The logo argument is deprecated")
   
   html <- as.character(html)
   html <- gsub("\n", "", html)
@@ -199,7 +202,6 @@ waiter_show <- function(
     id = id,
     html = html,
     color = color,
-    logo = logo,
     image = image,
     hide_on_render = hide_on_render
   )
@@ -332,6 +334,9 @@ waiter_on_busy <- function(html = spin_1(), color = "#333e48", logo = "", image 
 #' @export
 waiterOnBusy <- function(html = spin_1(), color = "#333e48", logo = "", image = "", fadeout = FALSE){
 
+  if(logo != "")
+    .Deprecated("html", "waiter", "The logo argument is deprecated")
+
   html <- as.character(html)
   html <- gsub("\n", "", html)
 
@@ -406,7 +411,7 @@ Waiter <- R6::R6Class(
 #' @param fadeout Use a fade out effect when the screen is removed.
 #' Can be a boolean, or a numeric indicating the number of 
 #' milliseconds the effect should take. 
-#' @param logo Logo to display.
+#' @param logo Logo to display. Deprecated.
 #' @param id Id, or vector of ids, of element on which to overlay the waiter, if \code{NULL} the waiter is
 #' applied to the entire body.
 #' @param hide_on_render Set to \code{TRUE} to automatically hide the waiter
@@ -421,11 +426,13 @@ Waiter <- R6::R6Class(
     initialize = function(id = NULL, html = NULL, color = NULL, logo = NULL, 
       image = "", fadeout = FALSE, hide_on_render = !is.null(id), hide_on_error = !is.null(id),
       hide_on_silent_error = !is.null(id)){
+      
+      if(logo != "")
+        .Deprecated("html", "waiter", "The logo argument is deprecated")
 
       # get theme
       html <- .theme_or_value(html, "WAITER_HTML")
       color <- .theme_or_value(color, "WAITER_COLOR")
-      logo <- .theme_or_value(logo, "WAITER_LOGO")
       image <- .theme_or_value(image, "WAITER_IMAGE")
       
       # process inputs
@@ -455,7 +462,6 @@ Waiter <- R6::R6Class(
       private$.html <- html
       private$.color <- color
       private$.image <- image
-      private$.logo <- logo
       private$.fadeout <- fadeout
       private$.hide_on_render <- hide_on_render
       private$.hide_on_silent_error <- hide_on_silent_error
@@ -470,7 +476,6 @@ Waiter <- R6::R6Class(
           id = private$.id[[i]],
           html = private$.html[[i]],
           color = private$.color,
-          logo = private$.logo,
           image = private$.image,
           hide_on_render = private$.hide_on_render,
           hide_on_silent_error = private$.hide_on_silent_error,
@@ -558,7 +563,6 @@ Waiter <- R6::R6Class(
   private = list(
     .html = list(),
     .color = "#333e48",
-    .logo = "",
     .image = "",
     .id = NULL,
     .session = NULL,
@@ -583,10 +587,13 @@ Waiter <- R6::R6Class(
 #' @name waiterTheme
 #' @export
 waiter_set_theme <- function(html = spin_1(), color = "#333e48", logo = "", image = ""){
+  
+  if(logo != "")
+    .Deprecated("html", "waiter", "The logo argument is deprecated")
+
   options(
     WAITER_HTML = html,
     WAITER_COLOR = color,
-    WAITER_LOGO = logo,
     WAITER_IMAGE = image
   )
   invisible()
@@ -598,7 +605,6 @@ waiter_get_theme <- function(){
   list(
     html = .get_html(),
     color = .get_color(),
-    logo = .get_logo(),
     image = .get_image()
   )
 }
@@ -609,7 +615,6 @@ waiter_unset_theme <- function(){
   options(
     WAITER_HTML = NULL,
     WAITER_COLOR = NULL,
-    WAITER_LOGO = NULL,
     WAITER_IMAGE = NULL
   )
   invisible()
@@ -631,4 +636,62 @@ transparent <- function(alpha = 0){
     stop("`alpha` must be between 0 and 1", call. = FALSE)
   
   invisible(paste0("rgba(255,255,255,", alpha, ")"))
+}
+
+triggerWaiter <- function(
+  el,
+  id = NULL,
+  html = NULL, 
+  color = NULL, 
+  image = "", 
+  fadeout = FALSE, 
+  hide_on_render = !is.null(id), 
+  hide_on_error = !is.null(id),
+  hide_on_silent_error = !is.null(id) 
+){
+
+  # get/set id of trigger
+  el_id <- el$attr$id
+
+  if(is.null(el_id)){
+    el_id <- .random_name()
+    shiny::tagAppendAttributes(el, id = el_id)
+  }
+  
+  # html
+  html <- .theme_or_value(html, "WAITER_HTML")
+  html <- as.character(html)
+  html <- gsub("\n", "", html)
+
+  color <- .theme_or_value(color, "WAITER_COLOR")
+  fadeout <- ifelse(is.logical(fadeout), tolower(fadeout), fadeout)
+
+  script <- sprintf(
+    "$('#%s').on('click', function(event){
+      show_waiter(
+        '%s'
+        '%s', 
+        color = '%s', 
+        to_hide = %s, 
+        hide_on_error = %s, 
+        hide_on_silent_error = %s, 
+        image = '%s',
+        fade_out = %s
+      );
+    })",
+    el_id,
+    el_id, 
+    html,
+    color,
+    tolower(hide_on_render),
+    tolower(hide_on_silent_error),
+    tolower(hide_on_silent_error),
+    image,
+    fadeout
+  )
+
+  shiny::tagList(
+    el,
+    script
+  )
 }

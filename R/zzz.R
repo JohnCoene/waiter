@@ -9,6 +9,6 @@
   options(
     WAITER_HTML = NULL,
     WAITER_COLOR = NULL,
-    WAITER_LOGO = NULL
+    WAITER_IMAGE = NULL
   )
 }
