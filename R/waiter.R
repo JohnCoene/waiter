@@ -669,7 +669,7 @@ triggerWaiter <- function(
   script <- sprintf(
     "$('#%s').on('click', function(event){
       show_waiter(
-        '%s'
+        '%s',
         '%s', 
         color = '%s', 
         to_hide = %s, 
@@ -680,7 +680,7 @@ triggerWaiter <- function(
       );
     })",
     el_id,
-    el_id, 
+    id, 
     html,
     color,
     tolower(hide_on_render),
@@ -692,6 +692,6 @@ triggerWaiter <- function(
 
   shiny::tagList(
     el,
-    script
+    HTML(sprintf("<script>%s</script>", script))
   )
 }
