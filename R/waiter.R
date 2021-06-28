@@ -638,13 +638,23 @@ transparent <- function(alpha = 0){
   invisible(paste0("rgba(255,255,255,", alpha, ")"))
 }
 
+#' Trigger Waiter
+#' 
+#' A a trigger to a waiting screen from the UI.
+#' 
+#' @param el Element that triggers the waiter.
+#' @param on The event that triggers the waiter.
+#' @inheritParams waiter
+#' 
+#' @keywords internal
 triggerWaiter <- function(
   el,
   id = NULL,
   html = NULL, 
   color = NULL, 
   image = "", 
-  fadeout = FALSE, 
+  fadeout = FALSE,
+  on = "click", 
   hide_on_render = !is.null(id), 
   hide_on_error = !is.null(id),
   hide_on_silent_error = !is.null(id) 
@@ -667,7 +677,7 @@ triggerWaiter <- function(
   fadeout <- ifelse(is.logical(fadeout), tolower(fadeout), fadeout)
 
   script <- sprintf(
-    "$('#%s').on('click', function(event){
+    "$('#%s').on('%s', function(event){
       show_waiter(
         '%s',
         '%s', 
@@ -680,6 +690,7 @@ triggerWaiter <- function(
       );
     })",
     el_id,
+    on,
     id, 
     html,
     color,
