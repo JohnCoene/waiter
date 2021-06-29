@@ -127,7 +127,7 @@ library(shiny)
 
 ui <- fluidPage(
   useWaiter(), # dependencies
-  waiter_show_on_load(spin_fading_circles()), # shows before anything else 
+  waiterShowOnLoad(spin_fading_circles()), # shows before anything else 
   actionButton("show", "Show loading for 5 seconds")
 )
 
