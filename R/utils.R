@@ -6,14 +6,9 @@ globalVariables("private")
 #' 
 #' @keywords internal
 .random_name <- function() {
-	letters <- LETTERS |> 
-		tolower() |> 
-		sample()
+	rand <- sample(c(letters, 1:20))
 
-	numbers <- 1:20 |>  
-		sample() 
-
-	paste0(letters, numbers, collapse = "")
+	paste0(rand, collapse = "")
 }
 
 #' Check Session

@@ -210,10 +210,20 @@ waiter_show <- function(
   session$sendCustomMessage("waiter-show", opts)
 }
 
-
 #' @rdname waiter
 #' @export
 waiter_show_on_load <- function(
+  html = spin_1(), 
+  color = "#333e48",
+  image = ""
+){
+  .Deprecated("waiterShowOnLoad", package = "waiter")
+  waiterShowOnLoad(html, color, image)
+}
+
+#' @rdname waiter
+#' @export
+waiterShowOnLoad <- function(
   html = spin_1(), 
   color = "#333e48",
   image = ""

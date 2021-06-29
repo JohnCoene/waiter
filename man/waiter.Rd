@@ -7,6 +7,7 @@
 \alias{waiter_use}
 \alias{waiter_show}
 \alias{waiter_show_on_load}
+\alias{waiterShowOnLoad}
 \alias{waiter_preloader}
 \alias{waiterPreloader}
 \alias{waiter_hide_on_render}
@@ -33,6 +34,8 @@ waiter_show(
 )
 
 waiter_show_on_load(html = spin_1(), color = "#333e48", image = "")
+
+waiterShowOnLoad(html = spin_1(), color = "#333e48", image = "")
 
 waiter_preloader(
   html = spin_1(),
