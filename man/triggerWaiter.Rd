@@ -38,8 +38,37 @@ milliseconds the effect should take.}
 when the plot in \code{id} is drawn. Note the latter will only work with
 shiny plots, tables, htmlwidgets, etc. but will not work with arbitrary
 elements.}
+
+\item{hide_on_error, hide_on_silent_error}{Whether to hide the waiter when the underlying element throws an error.
+Silent error are thrown by \link[shiny]{req} and  \link[shiny]{validate}.}
 }
 \description{
 A a trigger to a waiting screen from the UI.
 }
-\keyword{internal}
+\examples{
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+ useWaiter(),
+ triggerWaiter(
+   actionButton(
+     "generate",
+     "Generate Plot"
+   )
+ ),
+ plotOutput("plot")
+)
+
+server <- function(input, output){
+ output$plot <- renderPlot({
+   input$generate
+   Sys.sleep(3)
+   plot(runif(50))
+ })
+}
+
+if(interactive())
+ shinyApp(ui, server)
+
+}
