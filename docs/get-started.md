@@ -6,13 +6,13 @@ The waiter package comes with a few members of staff but the core member is the 
 
 It's fairly straightforward
 
-1. Place `use_waiter` anywhere in your UI.
+1. Place `useWaiter` anywhere in your UI.
 2. Create a waiter
 3. Show the waiter
 4. Hide the waiter
 
 > [!TIP]
-> Make sure you include the dependencies with `use_waiter` or nothing will work.
+> Make sure you include the dependencies with `useWaiter` or nothing will work.
 
 ## Examples
 

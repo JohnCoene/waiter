@@ -18,7 +18,7 @@ The waiter package comes with a few members of staff but the core one is the wai
 
 It's fairly straightforward:
 
-1. Place `use_waiter` anywhere in your UI.
+1. Place `useWaiter` anywhere in your UI.
 2. Create a waiter with `Waiter$new()`
 3. Show the waiter with `Waiter$show()`
 4. Hide the waiter with `Waiter$hide()`
@@ -32,7 +32,7 @@ library(shiny)
 library(waiter)
  
 ui <- fluidPage(
-  use_waiter(), # include dependencies
+  useWaiter(), # include dependencies
   actionButton("show", "Show loading for 3 seconds")
 )
 
@@ -51,7 +51,7 @@ server <- function(input, output, session){
 shinyApp(ui, server)
 ```
 
-> Make sure you include the dependencies with `use_waiter` or nothing will work.
+> Make sure you include the dependencies with `useWaiter` or nothing will work.
 
 By default the waiter will show a spinner, 1) you can choose from more than [100 spinners](https://shiny.john-coene.com/waiter/) 2) you are by no means limited to a spinner since the `html` argument takes any htmltools or shiny tag. Below we change the spinner, add some text and change the background color.
 
@@ -65,7 +65,7 @@ waiting_screen <- tagList(
 ) 
 
 ui <- fluidPage(
-  use_waiter(), # include dependencies
+  useWaiter(), # include dependencies
   actionButton("show", "Show loading for 3 seconds")
 )
 

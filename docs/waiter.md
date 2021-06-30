@@ -11,7 +11,7 @@ The waiter works hand-in-hand with the `steward` and the `hostess`. The former w
 There is an online demo with a list of all [100+ spinners](https://shiny.john-coene.com/waiter/) available, you can also see the list of available spinners in R with `?spinners`.
 
 > [!TIP]
-> You can reduce the load size of the CSS files in `use_waiter` which now takes a `spinners` argument to which one can specify any of 7 spinner CSS kits, by default all kits are loaded so nothing breaks. You can know which kits should be specified by simply typing the spinner in the console, e.g.: `spin_rotating_plane()`. See an example at [the bottom of this page](#css-load).
+> You can reduce the load size of the CSS files in `useWaiter` which now takes a `spinners` argument to which one can specify any of 7 spinner CSS kits, by default all kits are loaded so nothing breaks. You can know which kits should be specified by simply typing the spinner in the console, e.g.: `spin_rotating_plane()`. See an example at [the bottom of this page](#css-load).
 
 ## Preview
 
@@ -27,7 +27,7 @@ preview_spinner(spin_4())
 
 You can show a loading screen on app launch. The loading screen will launch prior to everything else, even the Shiny session. 
 
-Though this function is not programmatically launched it still has to be hidden with `waiter_hide`. Ensure you place `waiter_show_on_load` after `use_waiter`.
+Though this function is not programmatically launched it still has to be hidden with `waiter_hide`. Ensure you place `waiterShowOnLoad` after `useWaiter`.
 
 ```r
 library(shiny)
@@ -35,7 +35,7 @@ library(waiter)
  
 ui <- fluidPage(
   useWaiter(), 
-  waiter_show_on_load(html = spin_fading_circles()),
+  waiterShowOnLoad(html = spin_fading_circles()),
   h3("Content you will only see after loading screen has disappeared")
 )
 
@@ -656,12 +656,12 @@ There are a number of filters available.
 
 ## CSS Load
 
-In the development version currently on Github (`0.1.1.9000`) you can reduce the load size of the CSS files in `use_waiter` which now takes a `spinners` argument to which one can specify any of 7 spinner CSS kits, by default all kits are loaded so nothing breaks. You can know which kits should be specified by simply typing the spinner in the console.
+In the development version currently on Github (`0.1.1.9000`) you can reduce the load size of the CSS files in `useWaiter` which now takes a `spinners` argument to which one can specify any of 7 spinner CSS kits, by default all kits are loaded so nothing breaks. You can know which kits should be specified by simply typing the spinner in the console.
 
 ```r
 spin_rotating_plane()                                                                  
 #> spin_rotating_plane() requires spinner kit #1, include it with:
-#> use_waiter(spinners = 1) 
+#> useWaiter(spinners = 1) 
 ```
 
 > [!NOTE]

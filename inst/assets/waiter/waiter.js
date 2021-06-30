@@ -68,7 +68,7 @@ function show_waiter(
   waiter_to_hide_on_error.set(id, hide_on_error);
   waiter_to_hide_on_silent_error.set(id, hide_on_silent_error);
 
-  el = get_offset(dom); // get dimensions
+  let el = get_offset(dom); // get dimensions
 
   if(id === null){
     el.height = window.innerHeight;

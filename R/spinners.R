@@ -843,7 +843,7 @@ kit <- function(spinner){
   cat(
     "This spinner requires kit #",
     crayon::cyan(id), ", include it with:\n", 
-    crayon::green("use_waiter(spinners = ", id, ")", sep = ""), " \n",
+    crayon::green("useWaiter(spinners = ", id, ")", sep = ""), " \n",
     sep = ""
   )
 
