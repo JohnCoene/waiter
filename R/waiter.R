@@ -161,9 +161,6 @@ useWaiter <- function(spinners = 1:7, include_js = TRUE){
     header,
     tags$script(
       src = "waiter-assets/waiter/waiter.js"
-    ),
-    tags$script(
-      src = "waiter-assets/waiter/custom.js"
     )
   )
 
