@@ -13,6 +13,8 @@ There is an online demo with a list of all [100+ spinners](https://shiny.john-co
 > [!TIP]
 > You can reduce the load size of the CSS files in `use_waiter` which now takes a `spinners` argument to which one can specify any of 7 spinner CSS kits, by default all kits are loaded so nothing breaks. You can know which kits should be specified by simply typing the spinner in the console, e.g.: `spin_rotating_plane()`. See an example at [the bottom of this page](#css-load).
 
+## Preview
+
 Note that in the latest version you can also preview the spinners in the browser or RStudio viewer with the `preview_spinner` function like so:
 
 ```r
