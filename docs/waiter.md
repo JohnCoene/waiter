@@ -806,7 +806,7 @@ allow you to avoid going through the websocket and the server.
 The function `waiter.showWaiter` takes the arguments below, if `id = null` then a full-screen waiter is used.
 
 ```js
-function show_waiter(
+function showWaiter(
   id = null, 
   html, 
   color = '#333e48', 
