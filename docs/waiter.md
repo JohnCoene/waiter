@@ -6,7 +6,7 @@ The waiter lets you show splash loading screens.
 
 The waiter works hand-in-hand with the `steward` and the `hostess`. The former will let you animate the background of your loading screen while the latter will let you show loading bars on the loading screen.
 
-## Examples
+---
 
 There is an online demo with a list of all [100+ spinners](https://shiny.john-coene.com/waiter/) available, you can also see the list of available spinners in R with `?spinners`.
 
@@ -21,7 +21,7 @@ preview_spinner(spin_4())
 
 ![](_assets/img/waiter-preview.png)
 
-### On Load
+## On Load
 
 You can show a loading screen on app launch. The loading screen will launch prior to everything else, even the Shiny session. 
 
@@ -45,7 +45,7 @@ server <- function(input, output, session){
 shinyApp(ui, server)
 ```
 
-### Preloader
+## Preloader
 
 The `waiter_preloader` function shows the full page loading screen when the app is loaded and automatically removes it when all the UI is rendered: only runs once. Thanks to [David Granjon](https://github.com/JohnCoene/waiter/issues/82) for the suggestion.
 
@@ -70,7 +70,7 @@ server <- function(input, output, session){
 shinyApp(ui, server)
 ```
 
-### On busy
+## On busy
 
 In the development version, not yet on CRAN, one can use `waiter_on_busy` to automatically display the loading screen when the server is busy computing things and automatically remove it when it goes back to idle.
 
@@ -100,7 +100,7 @@ shinyApp(ui, server)
 
 ![](_assets/img/waiter-busy.gif)
 
-### Dynamic Updates
+## Dynamic Updates
 
 You can also update the `html` of the waiting screen while it's loading, useful if you want to give users more detailed updates.
 
@@ -138,7 +138,7 @@ shinyApp(ui, server)
 
 ![](_assets/img/waiter-dynamic.gif)
 
-### Partial
+## Partial
 
 Since version `0.1.0` you are no longer limited to full page loading screens and can show the waiter only only part of the application, whichever part you desire. 
 
@@ -185,7 +185,7 @@ shinyApp(ui, server)
 
 ![](_assets/img/waiter-layer1.gif)
 
-### On Render
+## On Render
 
 We can actually further simplify the application above: we do not in fact need to use the `hide` method. By default when specifying an `id` waiter will hide the waiting screen when the element, in our case a plot, is rendered. This applies to plots, tables, htmlwidgets, etc. Below we simplify the app, removing the `hide` method and demonstrate that it works on a `tableOutput` and `htmlwidgets` (a [highcharter](http://jkunst.com/highcharter/) chart in this case). We also show that we can pass multiple ids to the waiter to have it show over multiple elements at once.
 
@@ -276,7 +276,7 @@ shinyApp(ui, server)
 
 ![](_assets/img/waiter-layer3.gif)
 
-### Color
+## Color
 
 Waiter sets the `color` argument in CSS, therefore hex values (e.g.: `#ffffff`), rgb (e.g.: `rgb(255, 255, 255)`), a string (e.g.: `white`) as well as rgba (e.g.: `rgb(255, 255, 255, .5)`) are valid and must be passed as string, e.g.: `"rgba(255,255,255,.5)"`. There is a convenience function called `transparent` which sets the background as transparent but can be set to a more opaque white~ish color with the `alpha` parameter.
 
@@ -318,7 +318,7 @@ shinyApp(ui, server)
 
 ![](_assets/img/waiter-transparent.gif)
 
-### Content
+## Custom Content
 
 Thus far we have been using built-in spinners but you are by no means restricted to them. Waiter will let you use any HTML content you like, either as a string (e.g.: `<p>Loading...</p>`) and more conveniently [htmltools](https://cran.r-project.org/web/packages/htmltools/index.html) or shiny tags such e.g.(`shiny::p("Loading...")`). You may thus use those to provide richer messages with images, gif, whatever you fancy.
 
@@ -357,7 +357,7 @@ shinyApp(ui, server)
 
 ![](_assets/img/waiter-content.gif)
 
-### Image
+## Image
 
 The latest development version (not on CRAN) allows using a background image by passing the path to said image to the `image`. 
 
