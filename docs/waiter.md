@@ -803,7 +803,7 @@ shinyApp(ui, server)
 You can also directly use the JavaScript if you want, this may
 allow you to avoid going through the websocket and the server.
 
-The function `show_waiter` takes the arguments below, if `id = null` then a full-screen waiter is used.
+The function `waiter.showWaiter` takes the arguments below, if `id = null` then a full-screen waiter is used.
 
 ```js
 function show_waiter(
@@ -817,7 +817,7 @@ function show_waiter(
 )
 ```
 
-To hide the waiter use `hide_waiter` and pass it the `id` of the element from which you want to removed the waiter, if `null` it removes the full-screen waiter.
+To hide the waiter use `waiter.hideWaiter` and pass it the `id` of the element from which you want to removed the waiter, if `null` it removes the full-screen waiter.
 
 ```r
 library(shiny)
@@ -828,14 +828,14 @@ ui <- fluidPage(
     useWaiter(),
     tags$script(
       "function show(){
-        show_waiter(
+        waiter.showWaiter(
           id = 'contentBox',
           html = 'LOADING',
           color = 'black'
         );
       }
       function hide(){
-        hide_waiter('contentBox');
+        waiter.hideWaiter('contentBox');
       }"
     )
   ),
