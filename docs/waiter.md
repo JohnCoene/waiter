@@ -32,7 +32,7 @@ library(shiny)
 library(waiter)
  
 ui <- fluidPage(
-  use_waiter(), 
+  useWaiter(), 
   waiter_show_on_load(html = spin_fading_circles()),
   h3("Content you will only see after loading screen has disappeared")
 )
@@ -54,8 +54,8 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-  use_waiter(), 
-  waiter_preloader(),
+  useWaiter(), 
+  waiterPreloader(),
   uiOutput("hello")
 )
 
@@ -79,8 +79,8 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-  use_waiter(),
-  waiter_on_busy(),
+  useWaiter(),
+  waiterOnBusy(),
   actionButton("render", "render"),
   plotOutput("plot")
 )
@@ -109,7 +109,7 @@ library(shiny)
 library(waiter)
  
 ui <- fluidPage(
-  use_waiter(),
+  useWaiter(),
   actionButton("show", "Show loading with updates")
 )
 
@@ -152,7 +152,7 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-  use_waiter(),
+  useWaiter(),
   actionButton("draw", "draw plot"),
   plotOutput("plot")
 )
@@ -195,7 +195,7 @@ library(waiter)
 library(highcharter)
 
 ui <- fluidPage(
-  use_waiter(),
+  useWaiter(),
   actionButton("draw", "render stuff"),
   fluidRow(
     column(3, tableOutput("table")),
@@ -237,7 +237,7 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-  use_waiter(),
+  useWaiter(),
   fluidRow(
     column(3, actionButton("draw", "render table")),
     column(
@@ -285,7 +285,7 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-  use_waiter(),
+  useWaiter(),
   actionButton("draw", "draw plot"),
   plotOutput("plot")
 )
@@ -336,7 +336,7 @@ loading_screen <- tagList(
 )
  
 ui <- fluidPage(
-  use_waiter(), # include dependencies
+  useWaiter(), # include dependencies
   actionButton("show", "Show loading for 4 seconds")
 )
 
@@ -371,7 +371,7 @@ library(waiter)
 url <- "https://www.freecodecamp.org/news/content/images/size/w2000/2020/04/w-qjCHPZbeXCQ-unsplash.jpg"
 
 ui <- fluidPage(
-	use_waiter(),
+	useWaiter(),
 	h1("Can you see me?")
 )
 
@@ -391,6 +391,48 @@ shinyApp(ui, server)
 
 ![](_assets/img/waiter-image.png)
 
+## No server
+
+_This feature was added in version 0.2.3._
+
+Most examples have made use of the R server to some degree. 
+I prefer such code, though there is more of it, it seems 
+much clearer; UI code tends to be dirtier than server-side 
+code.
+
+However, the server itself is often not needed for what waiter
+wants to achieve. The function `triggerWaiter` does this 
+(in my opinion, at the expense of more readable code).
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  useWaiter(),
+  triggerWaiter(
+    actionButton(
+      "generate",
+      "Generate Plot"
+    ),
+    id = "plot" # hide when plot renders
+  ),
+  plotOutput("plot")
+)
+
+server <- function(input, output){
+
+  output$plot <- renderPlot({
+    input$generate
+    Sys.sleep(3)
+    plot(runif(50))
+  })
+
+}
+
+shinyApp(ui, server)
+```
+
 ## Theming
 
 In the development version (from Github) you can now easily create themes for your loading screens. You can also override that in individual waiter if needed.
@@ -403,7 +445,7 @@ library(waiter)
 waiter_set_theme(html = spin_3(), color = "darkblue")
 
 ui <- fluidPage(
-  use_waiter(),
+  useWaiter(),
   actionButton("show", "Show loading with updates"),
   plotOutput("plot1"),
   plotOutput("plot2")
@@ -444,8 +486,8 @@ library(shiny)
 library(waiter)
  
 ui <- fluidPage(
-  use_waiter(), 
-  use_hostess(),
+  useWaiter(), 
+  useHostess(),
   actionButton("draw", "plot"),
   plotOutput("plot")
 )
@@ -488,8 +530,8 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-  use_waiter(), 
-  use_hostess(),
+  useWaiter(), 
+  useHostess(),
   actionButton("draw", "plot"),
   fluidRow(
     column(4, plotOutput("plot1")),
@@ -553,8 +595,8 @@ library(shiny)
 library(waiter)
  
 ui <- fluidPage(
-  use_waiter(), 
-  use_steward(),
+  useWaiter(), 
+  useSteward(),
   h3("Content you will only see after loading screen has disappeared"),
   waiter_show_on_load(spin_fading_circles()) 
 )
@@ -581,9 +623,9 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-  use_garcon(),
-  use_waiter(),
-  waiter_show_on_load(
+  useGarcon(),
+  useWaiter(),
+  waiterShowOnLoad(
     tags$img(
       src="https://waiter.john-coene.com/_assets/img/logo.png", 
       height=200, 
@@ -630,7 +672,7 @@ library(shiny)
 library(waiter)
  
 ui <- fluidPage(
-  use_waiter(spinners = 1)
+  useWaiter(spinners = 1)
 )
 
 server <- function(input, output, session){
@@ -658,7 +700,7 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-  use_waiter(),
+  useWaiter(),
   actionButton("draw", "draw plot"),
   plotOutput("plot")
 )
@@ -712,7 +754,7 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-  use_waiter(), # include dependencies
+  useWaiter(), # include dependencies
   tags$style(
     ".waiter-overlay-content{
       position: absolute;
@@ -781,7 +823,7 @@ library(waiter)
 
 ui <- fluidPage(
   tags$head(
-    use_waiter(),
+    useWaiter(),
     tags$script(
       "function show(){
         show_waiter(

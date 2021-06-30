@@ -29,7 +29,7 @@ plot_mod <- function(input, output, session) {
 }
 
 ui <- fluidPage(
-  use_waiter(),
+  useWaiter(),
   plot_mod_ui("plot1"),
   plot_mod_ui("plot2")
 )
@@ -54,7 +54,7 @@ library(promises)
 plan(multiprocess)
 
 ui <- fluidPage(
-  use_waiter(),
+  useWaiter(),
   plotOutput("plot")
 )
 
@@ -79,6 +79,54 @@ shinyApp(ui, server)
 
 ## bs4Dash
 
+bs4Dash comes with a nice preloader, see `preloader` argument of `dashboardPage` function.
+
+```r
+library(shiny)
+library(bs4Dash)
+library(waiter)
+
+ui <- dashboardPage(
+  title = "Waiter Issue",
+  fullscreen = TRUE,
+  preloader = list(html = spin_1(), color = "#333e48"),
+  header = bs4DashNavbar(
+    title = "Home",
+    compact = TRUE
+  ),
+  sidebar = bs4DashSidebar(
+    collapsed = FALSE,
+    bs4SidebarMenu(
+      bs4SidebarMenuItem(
+        text = "Waiter",
+        tabName = "Waiter", 
+        icon = icon("exclamation")
+      )
+    )
+  ),
+  controlbar = dashboardControlbar(),
+  footer = dashboardFooter(
+    left = "Waiter",
+    right = "2021"
+  ),
+  body = bs4DashBody(
+    bs4TabItems(
+      bs4TabItem(
+        tabName = "Waiter",
+        plotOutput("plot")
+      )
+    )
+  )
+)
+
+server <- function(input, output){
+  Sys.sleep(3)
+  output$plot <- renderPlot(plot(cars))
+}
+
+shinyApp(ui = ui, server = server)
+```
+
 Include `use_waiter` in the body of the dashboard.
 
 ```r
@@ -97,8 +145,8 @@ shiny::shinyApp(
     controlbar = bs4DashControlbar(),
     footer = bs4DashFooter(),
     body = bs4DashBody(
-      use_waiter(),
-      show_waiter_on_load(spin_3())
+      useWaiter(),
+      showWaiterOnLoad(spin_3())
     )
   ),
   server = function(input, output) {

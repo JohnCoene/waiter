@@ -7,6 +7,11 @@ List of changes made to waiter.
 - Fix [#95](https://github.com/JohnCoene/waiter/issues/95) with different CSS for full screen (`position: fixed`).
 - Fix CSS injection that repeatedly injected CSS to hide recalculating effect.
 - Remove magrittr in favour of R native pipe.
+- Add active bindings for many of the waiter components,
+see `?Waiter`.
+- Deprecate functions with underscores in favour of camel case
+(only for that which are to be used in the shiny UI).
+- Deprecate the `logo` argument.
 
 # waiter 0.2.2
 

@@ -29,8 +29,8 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-  use_waiter(),
-  use_hostess(),
+  useWaiter(),
+  useHostess(),
   waiter_show_on_load(
     color = "#f7fff7",
     hostess_loader(
@@ -66,8 +66,8 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-  use_waiter(),
-  use_hostess(),
+  useWaiter(),
+  useHostess(),
   h1("Some content")
 )
 
@@ -101,8 +101,8 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-  use_waiter(),
-  use_hostess(), # include dependencies
+  useWaiter(),
+  useHostess(), # include dependencies
   actionButton("btn", "render"),
   fluidRow(
     column(6, plotOutput("plot1")),
@@ -150,7 +150,7 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-  use_hostess(), # include dependencies
+  useHostess(), # include dependencies
   hostess_loader("load", text_color = "black", center_page = TRUE)
 )
 
@@ -183,8 +183,8 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-  use_waiter(),
-  use_hostess(),
+  useWaiter(),
+  useHostess(),
   waiter_show_on_load(
     color = "#f7fff7",
     hostess_loader(
@@ -219,8 +219,8 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-  use_waiter(),
-  use_hostess(), # include dependencies
+  useWaiter(),
+  useHostess(), # include dependencies
   actionButton("btn", "render"),
   fluidRow(
     column(6, plotOutput("plot1")),

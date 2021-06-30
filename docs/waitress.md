@@ -25,7 +25,7 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-  use_waitress(),
+  useWaitress(),
   plotOutput("plot", width = 400)
 )
 
@@ -63,7 +63,7 @@ ui <- navbarPage(
   "Waitress on nav",
   tabPanel(
     "home",
-    use_waitress(),
+    useWaitress(),
     plotOutput("plot")
     )
 )
@@ -100,7 +100,7 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-  use_waitress(color = "#7F7FFF"),
+  useWaitress(color = "#7F7FFF"),
   h2("waitress on entire page"),
   actionButton("load", "load")
 )
@@ -135,7 +135,7 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-  use_waitress(),
+  useWaitress(),
   actionButton("btn", "render"),
   plotOutput("plot", width = 400)
 )
@@ -171,7 +171,7 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-  use_waitress(),
+  useWaitress(),
   actionButton("btn", "render"),
   plotOutput("plot", height = "90vh")
 )
@@ -211,7 +211,7 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-  use_waitress(),
+  useWaitress(),
   plotOutput("plot")
 )
 
@@ -247,7 +247,7 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-  use_waitress(),
+  useWaitress(),
   actionButton("btn", "Render"),
   plotOutput("plot", width = 400)
 )

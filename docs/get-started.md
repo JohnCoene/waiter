@@ -23,7 +23,7 @@ library(shiny)
 library(waiter)
  
 ui <- fluidPage(
-  use_waiter(), # include dependencies
+  useWaiter(), # include dependencies
   actionButton("show", "Show loading for 3 seconds")
 )
 
@@ -56,7 +56,7 @@ waiting_screen <- tagList(
 ) 
 
 ui <- fluidPage(
-  use_waiter(), # include dependencies
+  useWaiter(), # include dependencies
   actionButton("show", "Show loading for 3 seconds")
 )
 

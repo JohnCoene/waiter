@@ -1,6 +1,6 @@
 <img src="_assets/img/logo.png" height=200 />
 
-# waiter <small>v 0.1.2</small>
+# waiter <small>v 0.2.3.9000</small>
 
 > Loading Screens for Shiny
 
