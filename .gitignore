@@ -9,3 +9,4 @@ src/*.dll
 test.R
 inst/doc
 .DS_Store
+node_modules
