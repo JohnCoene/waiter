@@ -206,7 +206,6 @@ waiter_show <- function(
     hide_on_render = hide_on_render
   )
   session <- shiny::getDefaultReactiveDomain()
-  .check_session(session)
   session$sendCustomMessage("waiter-show", opts)
 }
 
@@ -376,7 +375,6 @@ waiterOnBusy <- function(html = spin_1(), color = "#333e48", logo = "", image = 
 #' @export
 waiter_hide <- function(id = NULL){
   session <- shiny::getDefaultReactiveDomain()
-  .check_session(session)
   session$sendCustomMessage("waiter-hide", list(id = id))
 }
 
@@ -395,7 +393,6 @@ waiter_update <- function(id = NULL, html = NULL){
   html <- as.character(html)
   html <- gsub("\n", "", html)
   session <- shiny::getDefaultReactiveDomain()
-  .check_session(session)
   session$sendCustomMessage("waiter-update", list(html = html, id = id))
 }
 
@@ -583,7 +580,6 @@ Waiter <- R6::R6Class(
     .hide_on_error = FALSE,
 		get_session = function(){
 			private$.session <- shiny::getDefaultReactiveDomain()
-			.check_session(private$.session)
 		}
   )
 )

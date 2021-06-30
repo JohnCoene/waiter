@@ -360,7 +360,6 @@ Waitress <- R6::R6Class(
 		},
 		get_session = function(){
 			private$.session <- shiny::getDefaultReactiveDomain()
-			.check_session(private$.session)
 		},
 		init = function(id = NULL, ...){
 

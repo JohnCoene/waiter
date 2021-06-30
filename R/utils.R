@@ -11,18 +11,6 @@ globalVariables("private")
 	paste0(rand, collapse = "")
 }
 
-#' Check Session
-#' 
-#' Check whether session is valid.
-#' 
-#' @param x A session.
-#' 
-#' @keywords internal
-.check_session <- function(x){
-  if(is.null(x))
-    stop("invalid session, run this function inside your Shiny server.", call. = FALSE)
-}
-
 #' Waitress Themes
 #' 
 #' Changes waitress themes from R input to js as expected by JS library.

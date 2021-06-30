@@ -75,7 +75,6 @@ Hostess <- R6::R6Class(
       }
 
       session <- shiny::getDefaultReactiveDomain()
-      .check_session(session)
       private$.session <- session
       private$.id <- id
       private$.min <- min

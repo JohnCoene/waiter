@@ -47,7 +47,6 @@ Garcon <- R6::R6Class(
         stop("Missing `image`", call. = FALSE)
 
       session <- shiny::getDefaultReactiveDomain()
-      .check_session(session)
 
       msg <- list(
         image = image, 
