@@ -2,9 +2,12 @@
 % Please edit documentation in R/waitress.R
 \name{waitress}
 \alias{waitress}
+\alias{useWaitress}
 \alias{use_waitress}
 \title{Waitress}
 \usage{
+useWaitress(color = "#697682", percent_color = "#333333")
+
 use_waitress(color = "#697682", percent_color = "#333333")
 }
 \arguments{
@@ -22,7 +25,7 @@ You can pipe the methods with \code{$}.
 library(shiny)
 
 ui <- fluidPage(
-  use_waitress("red"), # dependencies
+  useWaitress("red"), # dependencies
   sliderInput("set", "percentage", 1, 100, step = 5, value = 1)
 )
 

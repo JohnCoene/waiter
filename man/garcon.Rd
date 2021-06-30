@@ -2,10 +2,13 @@
 % Please edit documentation in R/garcon.R
 \name{garcon}
 \alias{garcon}
+\alias{useGarcon}
 \alias{use_garcon}
 \alias{Garcon}
 \title{Garcon}
 \usage{
+useGarcon()
+
 use_garcon()
 }
 \description{

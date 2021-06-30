@@ -110,7 +110,7 @@ path <- "M10 10L90 30"
 
 ui <- fluidPage(
  useWaiter(),
- use_hostess(),
+ useHostess(),
  actionButton("draw", "redraw"),
  plotOutput("plot")
 )

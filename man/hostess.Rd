@@ -3,10 +3,13 @@
 \name{hostess}
 \alias{hostess}
 \alias{use_hostess}
+\alias{useHostess}
 \alias{Hostess}
 \title{Hostess}
 \usage{
 use_hostess()
+
+useHostess()
 }
 \description{
 Add hostess dependencies.

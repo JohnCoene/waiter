@@ -6,8 +6,9 @@
 #' @param speed Seconds it takes to loop over colors.
 #' @param angle Degrees at which colors slide.
 #' 
+#' @name steward
 #' @export 
-use_steward <- function(colors = c("#ee7752", "#e73c7e", "#23a6d5", "#23d5ab"), 
+useSteward <- function(colors = c("#ee7752", "#e73c7e", "#23a6d5", "#23d5ab"), 
   speed = 30, angle = -45) {
   
   bg_size <- length(colors) * 200
@@ -43,4 +44,19 @@ use_steward <- function(colors = c("#ee7752", "#e73c7e", "#23a6d5", "#23d5ab"),
     )
   )
 
+}
+
+#' @rdname steward
+#' @export 
+use_steward <- function(
+  colors = c("#ee7752", "#e73c7e", "#23a6d5", "#23d5ab"), 
+  speed = 30, 
+  angle = -45
+) {
+  .Deprecated("useSteward", package = "waiter")
+  useSteward(
+    colors,
+    speed,
+    angle
+  )
 }

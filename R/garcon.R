@@ -4,7 +4,7 @@
 #' 
 #' @name garcon
 #' @export
-use_garcon <- function(){
+useGarcon <- function(){
   singleton(
     tags$head(
       tags$script(
@@ -15,6 +15,13 @@ use_garcon <- function(){
       )
     )
   )
+}
+
+#' @rdname garcon
+#' @export
+use_garcon <- function(){
+  .Deprecated("useGarcon", package = "waiter")
+  useGarcon()
 }
 
 #' @export

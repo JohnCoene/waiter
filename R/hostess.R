@@ -6,6 +6,13 @@
 #' @name hostess
 #' @export
 use_hostess <- function(){
+  .Deprecated("useHostess", package = "waiter")
+  useHostess()
+}
+
+#' @rdname hostess
+#' @export
+useHostess <- function(){
   singleton(
     tags$head(
       tags$link(
@@ -361,7 +368,7 @@ Hostess <- R6::R6Class(
 #' 
 #' ui <- fluidPage(
 #'  useWaiter(),
-#'  use_hostess(),
+#'  useHostess(),
 #'  actionButton("draw", "redraw"),
 #'  plotOutput("plot")
 #' )

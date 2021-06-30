@@ -12,7 +12,7 @@
 #' library(shiny)
 #' 
 #' ui <- fluidPage(
-#'   use_waitress("red"), # dependencies
+#'   useWaitress("red"), # dependencies
 #'   sliderInput("set", "percentage", 1, 100, step = 5, value = 1)
 #' )
 #' 
@@ -32,7 +32,7 @@
 #' @import shiny
 #' @name waitress
 #' @export
-use_waitress <- function(color = "#697682", percent_color = "#333333"){
+useWaitress <- function(color = "#697682", percent_color = "#333333"){
 	singleton(
 		tags$head(
 			tags$script("window.waitress = [];"),
@@ -62,6 +62,13 @@ use_waitress <- function(color = "#697682", percent_color = "#333333"){
 			)
 		)
 	)
+}
+
+#' @rdname waitress
+#' @export
+use_waitress <- function(color = "#697682", percent_color = "#333333"){
+	.Deprecated("useWaitress", package = "waiter")
+	useWaitress(color, percent_color)
 }
 
 #' Waitress R6 Class
