@@ -20,7 +20,7 @@ var waiter_to_hide_on_error = new Map();
 var waiter_to_hide_on_silent_error = new Map();
 
 // show waiter overlay
-export const show_waiter = (
+export const showWaiter = (
   id = null, 
   html, 
   color = '#333e48', 
@@ -84,7 +84,7 @@ export const show_waiter = (
     return;
   }
   
-  hide_recalculate(id);
+  hideRecalculate(id);
 
   // create overlay
   var overlay = document.createElement("DIV");
@@ -130,12 +130,12 @@ export const show_waiter = (
     Shiny.setInputValue(id + "_waiter_shown", true, {priority: 'event'});
   }
   catch(err) {
-    console.log("waiter_show_on_load - shiny not connected yet:", err.message);
+    console.log("waiterShowOnLoad - shiny not connected yet:", err.message);
   }
   
 }
 
-export const hide_waiter = (id) => {
+export const hideWaiter = (id) => {
 
   var selector = 'body';
   if(id !== null)
@@ -165,7 +165,7 @@ export const hide_waiter = (id) => {
 
 }
 
-export const update_waiter = (id, html) => {
+export const updateWaiter = (id, html) => {
 
   var selector = 'body';
 
@@ -189,7 +189,7 @@ export const update_waiter = (id, html) => {
 // storage to avoid multiple CSS injections
 let hiddenRecalculating = new Map();
 
-const hide_recalculate = (id) => {
+const hideRecalculate = (id) => {
 
   if(id === null)
     return ;
@@ -214,23 +214,23 @@ const hide_recalculate = (id) => {
 }
 
 // currently unused but may be useful for others using JS API
-export const show_recalculate = (id) => {
+export const showRecalculate = (id) => {
   $(id + "-waiter-recalculating").remove();
 }
 
 // remove when output receives value
 $(document).on('shiny:value', function(event) {
   if(waiter_to_hide.get(event.name)){
-    hide_waiter(event.name);
+    hideWaiter(event.name);
   }
 });
 
 // remove when output errors
 $(document).on('shiny:error', function(event) {
   if(event.error.type == null && waiter_to_hide_on_error.get(event.name)){
-    hide_waiter(event.name);
+    hideWaiter(event.name);
   } else if (event.error.type != null && waiter_to_hide_on_silent_error.get(event.name)){
-    hide_waiter(event.name);
+    hideWaiter(event.name);
   }
 });
 

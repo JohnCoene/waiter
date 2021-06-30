@@ -1,0 +1,469 @@
+.sbl-circ-dual {
+  height: 48px;
+  width: 48px;
+  color: #ffffff;
+  display: inline-block;
+  position: relative;
+  border: 5px solid;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: rotate 1s linear infinite; }
+  .sbl-circ-dual::after {
+    content: '';
+    height: 40%;
+    width: 40%;
+    display: block;
+    color: inherit;
+    margin: 10px auto;
+    position: relative;
+    border: 5px solid;
+    border-radius: 50%;
+    border-top-color: transparent;
+    animation: rotate .5s linear infinite reverse; }
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(360deg); } 
+}
+
+.sbl-seven-circles {
+  height: 48px;
+  width: 48px;
+  color: #ffffff;
+  position: relative;
+  animation: rotate 1s linear infinite;
+  display: inline-block; }
+  .sbl-seven-circles div {
+    height: 50%;
+    width: 50%;
+    border-radius: 50%;
+    border: 1px solid;
+    position: absolute; }
+    .sbl-seven-circles div:nth-child(1) {
+      top: 10%;
+      left: 5%; }
+    .sbl-seven-circles div:nth-child(2) {
+      top: 0;
+      left: 25%; }
+    .sbl-seven-circles div:nth-child(3) {
+      top: 10%;
+      right: 5%; }
+    .sbl-seven-circles div:nth-child(4) {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto; }
+    .sbl-seven-circles div:nth-child(5) {
+      bottom: 0;
+      left: 25%; }
+    .sbl-seven-circles div:nth-child(6) {
+      bottom: 10%;
+      left: 5%; }
+    .sbl-seven-circles div:nth-child(7) {
+      bottom: 10%;
+      right: 5%; }
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(360deg); } 
+}
+
+.sbl-meter {
+  height: 48px;
+  width: 48px;
+  color: #ffffff;
+  border-radius: 50%;
+  border: 5px solid;
+  position: relative;
+  display: inline-block; }
+  .sbl-meter::after {
+    content: '';
+    height: 25%;
+    width: 0;
+    border-radius: 5px;
+    border: 3px solid;
+    display: block;
+    color: inherit;
+    position: absolute;
+    left: 22px;
+    top: 5px;
+    transform-origin: bottom;
+    animation: rotate 1s linear infinite; }
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(360deg); } 
+}
+
+.sbl-pushing-shapes {
+  height: 48px;
+  width: 48px;
+  color: #ffffff;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  box-sizing: border-box;
+  animation: rotate 3s ease-in-out infinite; }
+  .sbl-pushing-shapes div {
+    color: inherit;
+    height: 24px;
+    width: 24px;
+    position: absolute;
+    left: 60px;
+    top: 12px;
+    box-sizing: border-box;
+    border: 3px solid;
+    animation: moving-shapes 2s linear infinite; }
+    .sbl-pushing-shapes div:nth-child(1) {
+      border-radius: 50%;
+      animation-delay: 0s; }
+    .sbl-pushing-shapes div:nth-child(2) {
+      transform: rotate(45deg);
+      animation-delay: 1s; }
+
+@keyframes moving-shapes {
+  0% {
+    left: 60px; }
+  50% {
+    left: 5px; }
+  60% {
+    left: 12px;
+    transform: rotate(135deg); }
+  70% {
+    left: 17px; }
+  100% {
+    left: -24px; } }
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0); }
+  100% {
+    transform: rotate(360deg); } 
+}
+
+.sbl-rect-spin-fill {
+  color: #ffffff;
+  height: 48px;
+  width: 48px;
+  position: relative;
+  border: 4px solid;
+  display: inline-block;
+  animation: rect-rotate 1s  linear infinite; }
+
+.sbl-rect-spin-fill::after {
+  content: '';
+  height: 0;
+  width: inherit;
+  display: block;
+  background: rgba(255, 255, 255, 0.5);
+  animation: fill-rect 1s linear infinite; }
+
+@keyframes rect-rotate {
+  0% {
+    transform: rotate(0); }
+  50%, 100% {
+    transform: rotate(180deg); } }
+
+@keyframes fill-rect {
+  0%, 50% {
+    height: 0; }
+  100% {
+    height: inherit; } 
+}
+
+.sbl-puzzle {
+  height: 48px;
+  width: 48px;
+  color: #ffffff;
+  position: relative;
+  display: inline-block; }
+  .sbl-puzzle div {
+    border-radius: 50%;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 3px solid;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    animation: rotateTest1 4s linear infinite;
+    box-sizing: border-box; }
+  .sbl-puzzle div:nth-child(1) {
+    height: 20%;
+    width: 20%;
+    animation-delay: 0.5s; }
+  .sbl-puzzle div:nth-child(2) {
+    height: 40%;
+    width: 40%;
+    animation-delay: 1s; }
+  .sbl-puzzle div:nth-child(3) {
+    height: 60%;
+    width: 60%;
+    animation-delay: 1.5s; }
+  .sbl-puzzle div:nth-child(4) {
+    height: 80%;
+    width: 80%;
+    animation-delay: 2s; }
+  .sbl-puzzle div:nth-child(5) {
+    height: 100%;
+    width: 100%;
+    animation-delay: 2.5s; }
+
+@keyframes rotateTest1 {
+  50% {
+    transform: rotate(360deg); } 
+}
+
+.sbl-cirle-balance {
+  height: 48px;
+  width: 48px;
+  color: #ffffff;
+  display: inline-block;
+  position: relative;
+  border: 3px solid;
+  border-radius: 50%;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  transform: rotate(45deg);
+  animation: tilt-half-circle 2s linear infinite; }
+  .sbl-cirle-balance::before, .sbl-cirle-balance::after {
+    content: '';
+    height: 0;
+    width: 0%;
+    color: inherit;
+    border-radius: 50%;
+    border: 7px solid;
+    display: block;
+    position: absolute; }
+  .sbl-cirle-balance::before {
+    left: 25px;
+    bottom: 1px;
+    animation: move-circle-left 2s linear infinite; }
+  .sbl-cirle-balance::after {
+    right: 5px;
+    bottom: 5px;
+    animation: move-circle-right 2s linear infinite; }
+
+@keyframes move-circle-left {
+  0%, 100% {
+    left: 5px;
+    bottom: 5px; }
+  20%, 85% {
+    left: 15px;
+    bottom: 0px; }
+  35%, 70% {
+    left: 30px;
+    bottom: 7px; } 
+}
+
+@keyframes move-circle-right {
+  0%, 20%, 100% {
+    right: 5px;
+    bottom: 5px; }
+  40%, 80% {
+    right: 0px;
+    bottom: 15px; }
+  50% {
+    right: 5px;
+    bottom: 30px; } 
+}
+
+@keyframes tilt-half-circle {
+  0%, 50%, 100% {
+    transform: rotate(45deg); }
+  25% {
+    transform: rotate(15deg); }
+  75% {
+    transform: rotate(75deg); } 
+}
+
+.sbl-cirle-to-rhombus {
+  height: 12px;
+  width: 12px;
+  color: #ffffff;
+  position: relative;
+  display: inline-block;
+  border: 5px solid;
+  border-radius: 50%;
+  transform: rotate(45deg);
+  animation: cirle-to-rhombus 1.5s  .66s ease-in-out infinite; }
+  .sbl-cirle-to-rhombus::before, .sbl-cirle-to-rhombus::after {
+    content: '';
+    height: inherit;
+    width: inherit;
+    border: 5px solid;
+    position: absolute;
+    border-radius: 50%;
+    top: -5px;
+    animation: cirle-to-rhombus 1.5s ease-in-out infinite; }
+  .sbl-cirle-to-rhombus::before {
+    left: -30px;
+    top: 20px;
+    animation-delay: .33s; }
+  .sbl-cirle-to-rhombus::after {
+    right: -30px;
+    top: -30px;
+    animation-delay: .99s; }
+
+@keyframes cirle-to-rhombus {
+  50% {
+    border-radius: 0; } 
+}
+
+.sbl-cirle-and-square {
+  height: 48px;
+  width: 48px;
+  color: #ffffff;
+  display: inline-block;
+  position: relative; }
+  .sbl-cirle-and-square div {
+    display: inline-block;
+    color: inherit;
+    border: 2px solid;
+    height: 20%;
+    width: 20%;
+    margin: 4px; }
+    .sbl-cirle-and-square div:nth-child(1) {
+      animation: moveTopLt 1s   ease-in-out infinite; }
+    .sbl-cirle-and-square div:nth-child(2) {
+      border-radius: 50%;
+      animation: moveTopRt 1s .5s ease-in-out infinite; }
+    .sbl-cirle-and-square div:nth-child(3) {
+      border-radius: 50%;
+      animation: moveBtLt 1s  .5s ease-in-out infinite; }
+    .sbl-cirle-and-square div:nth-child(4) {
+      animation: moveBtRt 1s ease-in-out infinite; }
+
+@keyframes moveTopLt {
+  50% {
+    transform: translate(13px, 13px); } 
+}
+
+@keyframes moveBtLt {
+  50% {
+    transform: translate(13px, -13px); } 
+}
+
+@keyframes moveBtRt {
+  50% {
+    transform: translate(-13px, -13px); } 
+}
+
+@keyframes moveTopRt {
+  50% {
+    transform: translate(-13px, 13px); } 
+}
+
+.sbl-square-to-circle {
+  height: 48px;
+  width: 48px;
+  color: #ffffff;
+  position: relative;
+  display: inline-block;
+  animation: rotateSquareToCircle 3s ease infinite; }
+  .sbl-square-to-circle div {
+    height: 0;
+    width: 0;
+    box-sizing: border-box;
+    border: 5px solid;
+    position: absolute;
+    top: 40%; }
+    .sbl-square-to-circle div:nth-child(1) {
+      left: 0;
+      animation: moveRight 2s ease infinite; }
+    .sbl-square-to-circle div:nth-child(2) {
+      left: 0;
+      right: 0;
+      margin: auto;
+      border-radius: 50%;
+      animation: toCircle 2s ease infinite; }
+    .sbl-square-to-circle div:nth-child(3) {
+      right: 0;
+      animation: moveLeft 2s ease infinite; }
+
+@keyframes moveLeft {
+  25% {
+    transform: translateX(-19px); }
+  50% {
+    transform: translateX(0); }
+  75% {
+    transform: translateX(-19px);
+    border-radius: 50%; } 
+}
+
+@keyframes moveRight {
+  25% {
+    transform: translateX(19px); }
+  50% {
+    transform: translateX(0); }
+  75% {
+    transform: translateX(19px);
+    border-radius: 50%; } 
+}
+
+@keyframes toCircle {
+  50% {
+    border-radius: 0%; } 
+}
+
+@keyframes rotateSquareToCircle {
+  50% {
+    transform: rotate(-270deg); } 
+}
+
+.sbl-half-circle-spin {
+  height: 48px;
+  width: 48px;
+  color: #ffffff;
+  display: inline-block;
+  position: relative;
+  border: 1px solid;
+  border-radius: 50%;
+  animation: animeCircleSpin 4s ease-in-out infinite reverse; }
+  .sbl-half-circle-spin::after {
+    content: '';
+    border: 4px solid;
+    position: absolute;
+    left: 10px;
+    top: 4px;
+    border-radius: inherit; }
+  .sbl-half-circle-spin div {
+    height: 50%;
+    width: 50%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    top: 0;
+    margin: auto;
+    border: 1px solid;
+    border-radius: 50%;
+    animation: animeCircleSpin 3s ease-in-out infinite; }
+    .sbl-half-circle-spin div::before {
+      height: 0;
+      width: 0;
+      content: '';
+      border-radius: 50%;
+      display: block; }
+    .sbl-half-circle-spin div::before {
+      border: 12px solid;
+      border-right-color: transparent;
+      border-bottom-color: transparent;
+      transform: rotate(-45deg); }
+
+@keyframes animeCircleSpin {
+  0% {
+    transform: rotate(0); }
+  50% {
+    transform: rotate(720deg); }
+  100% {
+    transform: rotate(0); } }

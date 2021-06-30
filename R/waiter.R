@@ -232,7 +232,7 @@ waiterShowOnLoad <- function(
   html <- gsub("\n", "", html)
 
   show <- sprintf(
-    "show_waiter(
+    "waiter.showWaiter(
       null,
       html = '%s', 
       color = '%s',
@@ -272,7 +272,7 @@ waiterPreloader <- function(
   fadeout <- ifelse(is.logical(fadeout), tolower(fadeout), fadeout)
 
   show <- sprintf(
-    "show_waiter(
+    "waiter.showWaiter(
       null,
       html = '%s', 
       color = '%s',
@@ -286,7 +286,7 @@ waiterPreloader <- function(
     "window.ran = false;",
     "$(document).on('shiny:idle', function(event){
       if(!window.ran)
-        hide_waiter(id = null);
+        waiter.hideWaiter(id = null);
 
       window.ran = true;
     });"
@@ -320,7 +320,7 @@ waiterHideOnRender <- function(id){
   script <- sprintf(
     "$(document).on('shiny:value', function(event) {
       if(event.name == '%s'){
-        hide_waiter(null);
+        waiter.hideWaiter(null);
       }
     });",
     id
@@ -354,7 +354,7 @@ waiterOnBusy <- function(html = spin_1(), color = "#333e48", logo = "", image = 
 
   script <- paste0(
     "$(document).on('shiny:busy', function(event) {
-      show_waiter(
+      waiter.showWaiter(
         id = null,
         html = '", html, "', 
         color = '", color, "',
@@ -364,7 +364,7 @@ waiterOnBusy <- function(html = spin_1(), color = "#333e48", logo = "", image = 
     });
     
     $(document).on('shiny:idle', function(event) {
-      hide_waiter(null);
+      waiter.hideWaiter(null);
     });"
   )
 
@@ -713,7 +713,7 @@ triggerWaiter <- function(
 
   script <- sprintf(
     "$('#%s').on('%s', function(event){
-      show_waiter(
+      waiter.showWaiter(
         '%s',
         '%s', 
         color = '%s', 
