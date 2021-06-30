@@ -7,7 +7,8 @@
 see `?Waiter`.
 - Prep deprecation of functions with underscores in favour of camel case
 (only for that which are to be used in the shiny UI).
-- Deprecate the `logo` argument.
+- Deprecate the `logo` argument it is no longer used and can be
+easily achieved in other ways.
 
 # waiter 0.2.2
 
