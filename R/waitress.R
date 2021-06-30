@@ -67,7 +67,7 @@ useWaitress <- function(color = "#697682", percent_color = "#333333"){
 #' @rdname waitress
 #' @export
 use_waitress <- function(color = "#697682", percent_color = "#333333"){
-	.Deprecated("useWaitress", package = "waiter")
+  # to deprecate
 	useWaitress(color, percent_color)
 }
 

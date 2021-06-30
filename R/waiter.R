@@ -65,7 +65,7 @@
 #' @name waiter
 #' @export
 use_waiter <- function(spinners = 1:7, include_js = TRUE){
-  .Deprecated("useWaiter", "waiter")
+  # to deprecate
   useWaiter(spinners, include_js)
 }
 
@@ -175,7 +175,7 @@ useWaiter <- function(spinners = 1:7, include_js = TRUE){
 #' @rdname waiter
 #' @export
 waiter_use <- function(spinners = 1:7, include_js = TRUE){
-  .Deprecated("useWaiter", "waiter")
+  # to deprecate
   useWaiter(spinners, include_js)
 }
 
@@ -217,7 +217,7 @@ waiter_show_on_load <- function(
   color = "#333e48",
   image = ""
 ){
-  .Deprecated("waiterShowOnLoad", package = "waiter")
+  # to deprecate
   waiterShowOnLoad(html, color, image)
 }
 
@@ -254,7 +254,7 @@ waiter_preloader <- function(
   image = "",
   fadeout = FALSE
 ){
-  .Deprecated("waiterPreloader", package = "waiter")
+  # to deprecate
   waiterPreloader(html, color, image, fadeout)
 }
 
@@ -308,7 +308,7 @@ waiterPreloader <- function(
 #' @rdname waiter
 #' @export
 waiter_hide_on_render <- function(id){
-  .Deprecated("waiterHideOnRender", package = "waiter")
+  # to deprecate
   waiterHideOnRender(id)
 }
 
@@ -337,7 +337,8 @@ waiterHideOnRender <- function(id){
 #' @rdname waiter
 #' @export
 waiter_on_busy <- function(html = spin_1(), color = "#333e48", logo = "", image = "", fadeout = FALSE){
-  .Deprecated("waiterOnBudy", package = "waiter")
+  # to deprecate
+  waiterOnBusy(html, color, logo, image, fadeout)
 }
 
 #' @rdname waiter

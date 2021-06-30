@@ -6,7 +6,7 @@
 #' @name hostess
 #' @export
 use_hostess <- function(){
-  .Deprecated("useHostess", package = "waiter")
+  # to deprecate
   useHostess()
 }
 

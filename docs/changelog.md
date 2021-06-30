@@ -9,7 +9,7 @@ List of changes made to waiter.
 - Remove magrittr in favour of R native pipe.
 - Add active bindings for many of the waiter components,
 see `?Waiter`.
-- Deprecate functions with underscores in favour of camel case
+- Prep deprecation functions with underscores in favour of camel case
 (only for that which are to be used in the shiny UI).
 - Deprecate the `logo` argument.
 

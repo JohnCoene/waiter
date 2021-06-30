@@ -20,7 +20,7 @@ useGarcon <- function(){
 #' @rdname garcon
 #' @export
 use_garcon <- function(){
-  .Deprecated("useGarcon", package = "waiter")
+  # to deprecate
   useGarcon()
 }
 

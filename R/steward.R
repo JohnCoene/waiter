@@ -53,7 +53,7 @@ use_steward <- function(
   speed = 30, 
   angle = -45
 ) {
-  .Deprecated("useSteward", package = "waiter")
+  # to depreacte
   useSteward(
     colors,
     speed,
