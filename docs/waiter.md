@@ -294,7 +294,7 @@ server <- function(input, output){
   # transparent~ish background
   w <- Waiter$new(
     id = "plot",
-    html = spin_google(), 
+    html = spin_3(), 
     color = transparent(.5)
   )
 
@@ -597,7 +597,7 @@ ui <- fluidPage(
   useWaiter(), 
   useSteward(),
   h3("Content you will only see after loading screen has disappeared"),
-  waiter_show_on_load(spin_fading_circles()) 
+  waiterShowOnLoad(spin_fading_circles()) 
 )
 
 server <- function(input, output, session){
@@ -650,40 +650,6 @@ shinyApp(ui, server)
 ![](_assets/img/waiter-garcon.gif)
 
 There are a number of filters available.
-
-## CSS Load
-
-In the development version currently on Github (`0.1.1.9000`) you can reduce the load size of the CSS files in `use_waiter` which now takes a `spinners` argument to which one can specify any of 7 spinner CSS kits, by default all kits are loaded so nothing breaks. You can know which kits should be specified by simply typing the spinner in the console.
-
-```r
-spin_rotating_plane()                                                                  
-#> spin_rotating_plane() requires spinner kit #1, include it with:
-#> use_waiter(spinners = 1) 
-```
-
-> [!NOTE]
-> You can specify multiple spinners with vector, e.g.: `c(1,3,7)`.
-
-This tells you that only spinner kit number 1 is required.
-
-```r
-library(shiny)
-library(waiter)
- 
-ui <- fluidPage(
-  useWaiter(spinners = 1)
-)
-
-server <- function(input, output, session){
-  Waiter$
-    new(html = spin_rotating_plane())$
-    show()
-}
-
-shinyApp(ui, server)
-```
-
-This makes it lighter for the browser to load.
 
 ## Events
 

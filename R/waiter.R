@@ -115,8 +115,13 @@ waiter_show <- function(
   image = "",
   hide_on_render = !is.null(id)){
 
-  if(logo != "")
-    .Deprecated("html", "waiter", "The logo argument is deprecated")
+  if(logo != "") {
+    .Deprecated(
+      "html", 
+      package = "waiter", 
+      msg = "The logo argument is deprecated, use html instead"
+    )
+  }
   
   html <- as.character(html)
   html <- gsub("\n", "", html)
@@ -205,7 +210,7 @@ waiterPreloader <- function(
       image: '%s',
       fadeOut: %s
     });",
-    html, color, image
+    html, color, image, fadeout
   )
 
   hide <- paste0(
@@ -361,7 +366,7 @@ Waiter <- R6::R6Class(
       image = "", fadeout = FALSE, hide_on_render = !is.null(id), hide_on_error = !is.null(id),
       hide_on_silent_error = !is.null(id)){
       
-      if(logo != "")
+      if(!is.null(logo) && logo != "")
         .Deprecated("html", "waiter", "The logo argument is deprecated")
 
       # get theme

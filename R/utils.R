@@ -6,9 +6,12 @@ globalVariables("private")
 #' 
 #' @keywords internal
 .random_name <- function() {
-	rand <- sample(c(letters, 1:20))
+	rand <- sample(c(letters, 1:20), 40)
 
-	paste0(rand, collapse = "")
+	rand <- paste0(rand, collapse = "")
+
+  # ensure valid selector
+  paste0("waiter", rand)
 }
 
 #' Waitress Themes

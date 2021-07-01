@@ -149,7 +149,7 @@ export const showWaiter = (params = defaultWaiter) => {
   
 }
 
-export const hideWaiter = (id, onHidden) => {
+export const hideWaiter = (id, onHidden = null) => {
 
   var selector = 'body';
   if(id !== null)
@@ -177,7 +177,8 @@ export const hideWaiter = (id, onHidden) => {
     overlay.remove();
   }, timeout);
 
-  onHidden(id);
+  if(onHidden != null)
+    onHidden(id);
 
 }
 
@@ -208,20 +209,20 @@ export const showRecalculate = (id) => {
 
 // remove when output receives value
 $(document).on('shiny:value', function(event) {
-  if(waiterToHide.get(event.name)){
-    hideWaiter(event.name);
+  if(waiterToHideOnRender.get(event.name)){
+    hideWaiter(event.name, setWaiterHiddenInput);
   }
 });
 
 // remove when output errors
 $(document).on('shiny:error', function(event) {
   if(event.error.type == null && waiterToHideOnError.get(event.name)){
-    hideWaiter(event.name);
+    hideWaiter(event.name, setWaiterHiddenInput);
     return
   } 
   
   if (event.error.type != null && waiterToHideOnSilentError.get(event.name)){
-    hideWaiter(event.name);
+    hideWaiter(event.name, setWaiterHiddenInput);
   }
 });
 
