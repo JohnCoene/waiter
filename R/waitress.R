@@ -37,7 +37,7 @@ useWaitress <- function(color = "#697682", percent_color = "#333333"){
     name = "waitress",
     version = utils::packageVersion("waiter"),
     src = "packer",
-    package = "waitress",
+    package = "waiter",
     script = "waitress.js"
   )
 	singleton(

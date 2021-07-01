@@ -1,4 +1,4 @@
-import './progress';
+import {progressJs} from './progress';
 import { hideRecalculate } from '../recalculate';
 import { getDimensions } from '../dimensions';
 
@@ -48,7 +48,7 @@ function positionToCoords(position){
 
 Shiny.addCustomMessageHandler('waitress-init', function(opts) {
   
-  let notification;
+  let notification, prog;
 
   if(opts.notify){
     // create div
@@ -209,7 +209,7 @@ Shiny.addCustomMessageHandler('waitress-end', function(opts) {
 $(document).on('shiny:value shiny:error shiny:recalculated', function(event) {
   let w = waitressToHide.get(event.name);
 
-  if(w != undefined)
+  if(w == undefined)
     return ;
   
   if(w.infinite)
