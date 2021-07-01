@@ -16,6 +16,7 @@ status](https://travis-ci.org/JohnCoene/waiter.svg?branch=master)](https://travi
 status](https://circleci.com/gh/JohnCoene/waiter.svg?style=svg)](https://circleci.com/gh/JohnCoene/waiter)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/waiter)](https://CRAN.R-project.org/package=waiter)
+[![R-CMD-check](https://github.com/JohnCoene/waiter/workflows/R-CMD-check/badge.svg)](https://github.com/JohnCoene/waiter/actions)
 <!-- badges: end -->
 
 [Website](https://waiter.john-coene.com) |
@@ -47,7 +48,7 @@ the [website](https://waiter.john-coene.com) for more.
 
 To use the waiter:
 
-1.  Include `use_waiter` in your UI.
+1.  Include `useWaiter` in your UI.
 2.  Trigger `waiter_show` to show the waiting screen.
 3.  Eventually trigger `waiter_hide` to hide the loading screen.
 
@@ -58,7 +59,7 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-  use_waiter(), # include dependencies
+  useWaiter(), # include dependencies
   actionButton("show", "Show loading for 3 seconds")
 )
 
@@ -104,7 +105,7 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-  use_waitress(),
+  useWaitress(),
   p("App content")
 )
 

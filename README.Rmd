@@ -108,7 +108,7 @@ library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-  use_waitress(),
+  useWaitress(),
   p("App content")
 )
 

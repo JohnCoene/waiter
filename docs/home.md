@@ -43,6 +43,10 @@ devtools::install_github("JohnCoene/waiter")
 
 <!-- tabs:end -->
 
+> [!TIP]
+> You can learn how to build packages such as waiter
+> with the book [JavaScript for R](https://javascript-for-r.com/)
+
 ## Support
 
 If you find this useful, please consider supporting waiter on Github, and do not hesitate to report any issue you may come across. 
