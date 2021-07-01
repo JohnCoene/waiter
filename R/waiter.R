@@ -417,7 +417,7 @@ Waiter <- R6::R6Class(
           color = private$.color,
           image = private$.image,
           hideOnRender = private$.hide_on_render,
-          hideOnSilent_error = private$.hide_on_silent_error,
+          hideOnSilentError = private$.hide_on_silent_error,
           hideOnError = private$.hide_on_error,
           fadeOut = private$.fadeout,
           blur = private$.blur

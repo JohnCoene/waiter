@@ -115,7 +115,7 @@ export const hideWaiter = (id, onHidden = null) => {
 
     if(typeof value == 'boolean')
       value = 500;
-
+    
     $(overlay).fadeOut(value);
 
     timeout = timeout + value;
@@ -190,16 +190,7 @@ window.addEventListener("resize", function(){
   });
 
 Shiny.addCustomMessageHandler('waiter-show', function(opts) {
-  showWaiter({
-    id: opts.id, 
-    html: opts.html, 
-    color: opts.color, 
-    hideOnRender: opts.hide_on_render,
-    hideOnError: opts.hide_on_error, 
-    hideOnSilentError: opts.hide_on_silent_error,
-    image: opts.image,
-    fadeOut: opts.fade_out
-  });
+  showWaiter(opts);
   Shiny.setInputValue("waiter_shown", true, {priority: 'event'});
 });
 
