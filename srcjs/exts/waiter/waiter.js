@@ -187,17 +187,11 @@ export const updateWaiter = (id, html) => {
   if(id !== null)
     selector = '#' + id;
 
-  var dom = document.querySelector(selector);
-
-  var overlay = dom.getElementsByClassName("waiter-overlay-content");
-  
-  if(overlay.length == 0)
-    return;
-
-  if(overlay.length > 0)
-    overlay[0].innerHTML = html;
-  else
-    console.log("no waiter on", id); 
+  $(selector)
+    .find('.waiter-overlay-content')
+    .each((index, el) => {
+      $(el).html(html);
+    });
 }
 
 // currently unused but may be useful for others using JS API
