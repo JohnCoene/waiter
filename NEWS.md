@@ -13,6 +13,7 @@ easily achieved in other ways.
 the server.
 - Implement webpack for waiter, minifies and optimises code.
 - Deprecate `spinners` argument of `use_waiter` function. All CSS is bundled with webpack.
+- Performance improvements with use of maps instead of arrays.
 
 # waiter 0.2.2
 
