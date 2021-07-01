@@ -5,6 +5,7 @@ nav, a{
 }
 
 :root {
+  --content-max-width: 70em;
   --base-font-size: 14px;
   --theme-color   : #333e48;
   --base-background-color: #f5f7f5;
