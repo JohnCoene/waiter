@@ -8,3 +8,5 @@
 * [Examples](examples.md "Example use cases")
 * [Changelog](changelog.md "Changelog")
 * [CoC](coc.md "Code of Conduct")
+
+<footer id="mb-footer"></footer>

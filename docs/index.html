@@ -57,7 +57,12 @@
         theme      : 'material', // default
         tabComments: true,      // default
         tabHeadings: true       // default
-      }
+      },
+      autoFooter: {
+        name:       'John Coene',          // company display name (required)
+        copyYear:   2021,             // start copyright year (required)
+        url:        'https://opifex.org',          // company url (optional)
+      } 
     }
   </script>
   <script src="//unpkg.com/docsify@4.10.2/lib/docsify.js"></script>
@@ -71,5 +76,8 @@
   <script src="//cdn.jsdelivr.net/npm/docsify-tabs@1"></script>
   <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
   <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
+  <script src="//unpkg.com/@markbattistella/docsify-sidebarfooter@latest"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/pdfobject/2.1.1/pdfobject.min.js"></script> 
+  <script src="//unpkg.com/docsify-pdf-embed-plugin/src/docsify-pdf-embed.js"></script>
 </body>
 </html>
