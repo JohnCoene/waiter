@@ -2,7 +2,6 @@
 
 S3method(preview_spinner,spinner)
 S3method(print,butler)
-S3method(print,spinner)
 S3method(print,waitress)
 export(Garcon)
 export(Hostess)

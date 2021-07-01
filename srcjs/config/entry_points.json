@@ -1,0 +1,4 @@
+{
+  "waiter": "./srcjs/exts/waiter/waiter.js",
+  "waitress": "./srcjs/exts/waitress/waitress.js"
+}

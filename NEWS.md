@@ -11,6 +11,9 @@ see `?Waiter`.
 easily achieved in other ways.
 - Add `triggerWaiter` to trigger the waiter without going through
 the server.
+- Implement webpack for waiter, minifies and optimises code.
+- Deprecate `spinners` argument of `use_waiter` function. All CSS is bundled with webpack.
+- Performance improvements with use of maps instead of arrays.
 
 # waiter 0.2.2
 

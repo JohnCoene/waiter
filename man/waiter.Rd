@@ -18,9 +18,9 @@
 \alias{waiter_update}
 \title{Waiter}
 \usage{
-use_waiter(spinners = 1:7, include_js = TRUE)
+use_waiter(spinners = NULL, include_js = TRUE)
 
-useWaiter(spinners = 1:7, include_js = TRUE)
+useWaiter(spinners = NULL, include_js = TRUE)
 
 waiter_use(spinners = 1:7, include_js = TRUE)
 
@@ -76,7 +76,7 @@ waiter_hide(id = NULL)
 waiter_update(id = NULL, html = NULL)
 }
 \arguments{
-\item{spinners}{Spinners to include. By default all the CSS files for
+\item{spinners}{Deprecated argument. Spinners to include. By default all the CSS files for
 all spinners are included you can customise this only that which you
 need in order to reduce the amount of CSS that needs to be loaded and
 improve page loading speed. There are 7 spinner kits. The spinner kit

@@ -14,7 +14,7 @@
 #' when the plot in \code{id} is drawn. Note the latter will only work with
 #' shiny plots, tables, htmlwidgets, etc. but will not work with arbitrary
 #' elements.
-#' @param spinners Spinners to include. By default all the CSS files for 
+#' @param spinners Deprecated argument. Spinners to include. By default all the CSS files for 
 #' all spinners are included you can customise this only that which you 
 #' need in order to reduce the amount of CSS that needs to be loaded and
 #' improve page loading speed. There are 7 spinner kits. The spinner kit
@@ -64,111 +64,37 @@
 #' @import shiny
 #' @name waiter
 #' @export
-use_waiter <- function(spinners = 1:7, include_js = TRUE){
+use_waiter <- function(spinners = NULL, include_js = TRUE){
   # to deprecate
   useWaiter(spinners, include_js)
 }
 
 #' @export 
 #' @rdname waiter
-useWaiter <- function(spinners = 1:7, include_js = TRUE){
+useWaiter <- function(spinners = NULL, include_js = TRUE){
 
   if(!isTRUE(include_js))
-    warning("include_js argument is deprecated, it is no longer needed")
-
-  # must haves
-  header <- tags$head(
-    tags$link(
-      href = "waiter-assets/waiter/waiter.css",
-      rel="stylesheet",
-      type="text/css"
+    .Deprecated(
+      "", 
+      package = "waiter", 
+      msg = "include_js argument is deprecated, it is no longer needed"
     )
+
+  if(!is.null(spinners)){
+    .Deprecated(
+      "",
+      package = "waiter",
+      msg = "spinners argument is no longer in use"
+    )
+  }
+  
+  htmltools::htmlDependency(
+    name = "waiter",
+    version = utils::packageVersion("waiter"),
+    src = "packer",
+    package = "waiter",
+    script = "waiter.js"
   )
-
-  # spinner kits
-  if(1 %in% spinners)
-    header <- shiny::tagAppendChildren(
-      header,
-      tags$link(
-        href = "waiter-assets/waiter/spinkit.css",
-        rel="stylesheet",
-        type="text/css"
-      )
-    )
-
-  if(2 %in% spinners)
-    header <- shiny::tagAppendChildren(
-      header,
-      tags$link(
-        href = "waiter-assets/waiter/css-spinners.css",
-        rel="stylesheet",
-        type="text/css"
-      )
-    )
-
-  if(3 %in% spinners)
-    header <- shiny::tagAppendChildren(
-      header,
-      tags$link(
-        href = "waiter-assets/waiter/devloop.css",
-        rel="stylesheet",
-        type="text/css"
-      )
-    )
-
-  if(4 %in% spinners)
-    header <- shiny::tagAppendChildren(
-      header,
-      tags$link(
-        href = "waiter-assets/waiter/spinners.css",
-        rel="stylesheet",
-        type="text/css"
-      )
-    )
-
-  if(5 %in% spinners)
-    header <- shiny::tagAppendChildren(
-      header,
-      tags$link(
-        href = "waiter-assets/waiter/spinbolt.css",
-        rel="stylesheet",
-        type="text/css"
-      )
-    )
-
-  if(6 %in% spinners)
-    header <- shiny::tagAppendChildren(
-      header,
-      tags$link(
-        href = "waiter-assets/waiter/loaders.css",
-        rel="stylesheet",
-        type="text/css"
-      )
-    )
-
-  if(7 %in% spinners)
-    header <- shiny::tagAppendChildren(
-      header,
-      tags$link(
-        href = "waiter-assets/waiter/custom.css",
-        rel="stylesheet",
-        type="text/css"
-      )
-    )
-
-  # add js
-  header <- shiny::tagAppendChildren(
-    header,
-    tags$script(
-      src = "waiter-assets/waiter/waiter.js"
-    ),
-    tags$script(
-      src = "waiter-assets/waiter/custom.js"
-    )
-  )
-
-  # singleton it
-  singleton(header)
 
 }
 
@@ -189,8 +115,13 @@ waiter_show <- function(
   image = "",
   hide_on_render = !is.null(id)){
 
-  if(logo != "")
-    .Deprecated("html", "waiter", "The logo argument is deprecated")
+  if(logo != "") {
+    .Deprecated(
+      "html", 
+      package = "waiter", 
+      msg = "The logo argument is deprecated, use html instead"
+    )
+  }
   
   html <- as.character(html)
   html <- gsub("\n", "", html)
@@ -232,12 +163,12 @@ waiterShowOnLoad <- function(
   html <- gsub("\n", "", html)
 
   show <- sprintf(
-    "show_waiter(
-      null,
-      html = '%s', 
-      color = '%s',
-      image = '%s'
-    );",
+    "waiter.showWaiter({
+      id: null,
+      html: '%s', 
+      color: '%s',
+      image: '%s'
+    });",
     html, color, image
   )
 
@@ -272,21 +203,21 @@ waiterPreloader <- function(
   fadeout <- ifelse(is.logical(fadeout), tolower(fadeout), fadeout)
 
   show <- sprintf(
-    "show_waiter(
-      null,
-      html = '%s', 
-      color = '%s',
-      image = '%s',
-      fade_out = %s
-    );",
-    html, color, image
+    "waiter.showWaiter({
+      id: null,
+      html: '%s', 
+      color: '%s',
+      image: '%s',
+      fadeOut: %s
+    });",
+    html, color, image, fadeout
   )
 
   hide <- paste0(
     "window.ran = false;",
     "$(document).on('shiny:idle', function(event){
       if(!window.ran)
-        hide_waiter(id = null);
+        waiter.hideWaiter(id = null);
 
       window.ran = true;
     });"
@@ -320,7 +251,7 @@ waiterHideOnRender <- function(id){
   script <- sprintf(
     "$(document).on('shiny:value', function(event) {
       if(event.name == '%s'){
-        hide_waiter(null);
+        waiter.hideWaiter(null);
       }
     });",
     id
@@ -354,17 +285,17 @@ waiterOnBusy <- function(html = spin_1(), color = "#333e48", logo = "", image = 
 
   script <- paste0(
     "$(document).on('shiny:busy', function(event) {
-      show_waiter(
-        id = null,
-        html = '", html, "', 
-        color = '", color, "',
-        image = '", image, "',
-        fade_out = ", fadeout, "
-      );
+      waiter.showWaiter({
+        id: null,
+        html: '", html, "', 
+        color: '", color, "',
+        image: '", image, "',
+        fadeOut: ", fadeout, "
+      });
     });
     
     $(document).on('shiny:idle', function(event) {
-      hide_waiter(null);
+      waiter.hideWaiter(null);
     });"
   )
 
@@ -713,16 +644,16 @@ triggerWaiter <- function(
 
   script <- sprintf(
     "$('#%s').on('%s', function(event){
-      show_waiter(
-        '%s',
-        '%s', 
-        color = '%s', 
-        to_hide = %s, 
-        hide_on_error = %s, 
-        hide_on_silent_error = %s, 
-        image = '%s',
-        fade_out = %s
-      );
+      waiter.showWaiter({
+        id: '%s',
+        html: '%s', 
+        color: '%s', 
+        hideOnRender: %s, 
+        hideOnError: %s, 
+        hideOnSilentError: %s, 
+        image: '%s',
+        fadeOut: %s
+      });
     })",
     el_id,
     on,

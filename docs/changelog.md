@@ -9,12 +9,15 @@ List of changes made to waiter.
 - Remove magrittr in favour of R native pipe.
 - Add active bindings for many of the waiter components,
 see `?Waiter`.
-- Prep deprecation functions with underscores in favour of camel case
+- Prep deprecation of functions with underscores in favour of camel case
 (only for that which are to be used in the shiny UI).
 - Deprecate the `logo` argument it is no longer used and can be
 easily achieved in other ways.
 - Add `triggerWaiter` to trigger the waiter without going through
 the server.
+- Implement webpack for waiter, minifies and optimises code.
+- Deprecate `spinners` argument of `use_waiter` function. All CSS is bundled with webpack.
+- Performance improvements with use of maps instead of arrays.
 
 # waiter 0.2.2
 

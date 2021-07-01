@@ -33,22 +33,15 @@
 #' @name waitress
 #' @export
 useWaitress <- function(color = "#697682", percent_color = "#333333"){
+  dep <- htmltools::htmlDependency(
+    name = "waitress",
+    version = utils::packageVersion("waiter"),
+    src = "packer",
+    package = "waiter",
+    script = "waitress.js"
+  )
 	singleton(
 		tags$head(
-			tags$script("window.waitress = [];"),
-			tags$link(
-				href = "waiter-assets/waitress/progress.min.css",
-				rel="stylesheet",
-				type="text/css"
-			),
-			tags$link(
-				href = "waiter-assets/waitress/overlay.css",
-				rel="stylesheet",
-				type="text/css"
-			),
-			tags$script(
-				src = "waiter-assets/waitress/progress.min.js"
-			),
 			tags$style(
 				paste0(".progressjs-theme-blue .progressjs-inner{background-color:", color, ";}"),
 				paste0(".progressjs-theme-blueOverlay .progressjs-inner{background-color:", color, ";}"),
@@ -57,9 +50,7 @@ useWaitress <- function(color = "#697682", percent_color = "#333333"){
 				paste0(".progressjs-theme-blueOverlayRadiusWithPercentBar .progressjs-inner{background-color:", color, ";}"),
 				paste0(".progressjs-percent{color:", percent_color, ";}")
 			),
-			tags$script(
-				src = "waiter-assets/waitress/custom.js"
-			)
+			dep
 		)
 	)
 }
@@ -176,10 +167,10 @@ Waitress <- R6::R6Class(
         infinite = private$.infinite, 
         id = id, 
         html = html, 
-        hide_on_render = private$.hide_on_render,
-        background_color = background_color,
-        text_color = text_color,
-				is_notification = FALSE
+        hideOnRender = private$.hide_on_render,
+        backgroundColor = background_color,
+        textColor = text_color,
+				isNotification = FALSE
       )
 
 			private$get_session()
@@ -222,8 +213,8 @@ Waitress <- R6::R6Class(
 				private$.initialised <- private$init(
 					id = private$.name, # will be id of notification DIV
 					html = html,
-					background_color = background_color,
-					text_color = text_color,
+					backgroundColor = background_color,
+					textColor = text_color,
 					position = match.arg(position),
 					notify = TRUE # will trigger adding DIV JS side
 				)
@@ -239,8 +230,8 @@ Waitress <- R6::R6Class(
         name = private$.name, 
         infinite = private$.infinite, 
         id = id,
-				hide_on_render = private$.hide_on_render,
-				is_notification = TRUE
+				hideOnRender = private$.hide_on_render,
+				isNotification = TRUE
       )
 
 			private$get_session()

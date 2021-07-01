@@ -766,12 +766,10 @@ preview_spinner.spinner <- function(spinner, bg_color = "black"){
   if(missing(spinner))
     stop("Missing spinner", call. = FALSE)
 
-  deps <- get_spinner_dependencies()
-  spinner <- htmltools::attachDependencies(spinner, deps)
-
   htmltools::browsable(
     tagList(
       tags$head(
+        useWaiter(),
         tags$style(
           paste0("body{background: ", bg_color,";}")
         )
@@ -788,29 +786,6 @@ preview_spinner.spinner <- function(spinner, bg_color = "black"){
 
 }
 
-#' Get Dependencies
-#' 
-#' Get dependencies for preview.
-#' 
-#' @keywords internal
-get_spinner_dependencies <- function(){
-  htmltools::htmlDependency(
-    name = "css-spinner",
-    version = "1.0.0",
-    src = "assets/waiter",
-    package = "waiter",
-    stylesheet = c(
-      "css-spinners.css",
-      "devloop.css",
-      "waiter.css",
-      "spinbolt.css",
-      "spinkit.css",
-      "spinners.css"
-    ),
-    all_files = TRUE
-  )
-}
-
 #' Spinner Constructor
 #' 
 #' Construct spinner class.
@@ -820,32 +795,5 @@ get_spinner_dependencies <- function(){
 #' 
 #' @keywords internal
 construct <- function(spinner, id){
-  # hold spinner and id
-  attr(spinner, "id") <- id
   structure(spinner, class = c("spinner", class(spinner)))
-}
-
-#' @export
-print.spinner <- function(x, ...){
-  kit(x)
-}
-
-#' Get Spinner kit id
-#' 
-#' Prints id of spinner CSS required.
-#' 
-#' @param spinner Spinner to print kit of.
-#' 
-#' @keywords internal
-kit <- function(spinner){
-  id <- attr(spinner, 'id')
-
-  cat(
-    "This spinner requires kit #",
-    crayon::cyan(id), ", include it with:\n", 
-    crayon::green("useWaiter(spinners = ", id, ")", sep = ""), " \n",
-    sep = ""
-  )
-
-  invisible()
 }
