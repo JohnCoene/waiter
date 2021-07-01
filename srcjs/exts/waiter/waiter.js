@@ -183,7 +183,6 @@ export const hideWaiter = (id, onHidden = null) => {
 }
 
 export const updateWaiter = (id, html) => {
-
   var selector = 'body';
   if(id !== null)
     selector = '#' + id;
@@ -198,8 +197,7 @@ export const updateWaiter = (id, html) => {
   if(overlay.length > 0)
     overlay[0].innerHTML = html;
   else
-    console.log("no waiter on", id);
-  
+    console.log("no waiter on", id); 
 }
 
 // currently unused but may be useful for others using JS API
@@ -228,14 +226,13 @@ $(document).on('shiny:error', function(event) {
 
 // On resize we need to resize the waiter screens too
 window.addEventListener("resize", function(){
-  $('.waiter-local')
-    .each(() => {
-      let dim = getDimensions(waiter.parentElement);
-      $(this).css({
-        width: dim.width + 'px',
-        height: dim.height + 'px'
-      });
-    })
+  let waiters = document.getElementsByClassName("waiter-local");
+
+  for(waiter of waiters){
+    let dim = getDimensions(waiter.parentElement);
+    waiter.style.width = dim.width + 'px';
+    waiter.style.height = dim.height + 'px';
+  }  
 
   $('.waiter-fullscreen')
     .css({
