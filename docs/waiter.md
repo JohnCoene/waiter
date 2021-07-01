@@ -783,7 +783,11 @@ const showWaiter = (
 }
 ```
 
-To hide the waiter use `waiter.hideWaiter` and pass it the `id` of the element from which you want to removed the waiter, if `null` it removes the full-screen waiter.
+The callback function should accept the `id` argument, it is called once the waiter is shown.
+
+To hide the waiter use `waiter.hideWaiter(id, callback)` and pass it the `id` of the element from which you want to removed the waiter, if `null` it removes the full-screen waiter.
+
+The callback function should accept the `id` argument, it is called once the waiter is hidden.
 
 ```r
 library(shiny)
