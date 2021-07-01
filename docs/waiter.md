@@ -2,17 +2,23 @@
 
 The waiter lets you show splash loading screens. 
 
+> [!ATTENTION]
+> The long-term plan is to deprecate snake_case UI functions 
+> in favour of camelCase to be more inline with the rest
+> of shiny UI code. e.g.: `use_waiter` will be deprecated in
+> favour  `useWaiter`.
+> 
+> This only applies to code used in the _Shiny UI._  
+
 ## Combos
 
-The waiter works hand-in-hand with the `steward` and the `hostess`. The former will let you animate the background of your loading screen while the latter will let you show loading bars on the loading screen.
-
----
+The waiter works hand-in-hand with the `steward`, the `butler`, the `waitress` and the `hostess`. The former will let you animate the background of your loading screen while the latter will let you show loading bars on the loading screen.
 
 There is an online demo with a list of all [100+ spinners](https://shiny.john-coene.com/waiter/) available, you can also see the list of available spinners in R with `?spinners`.
 
 ## Preview
 
-Note that in the latest version you can also preview the spinners in the browser or RStudio viewer with the `preview_spinner` function like so:
+You can preview the spinners in the browser or RStudio viewer with the `preview_spinner` function like so:
 
 ```r
 preview_spinner(spin_4())
@@ -46,7 +52,7 @@ shinyApp(ui, server)
 
 ## Preloader
 
-The `waiter_preloader` function shows the full page loading screen when the app is loaded and automatically removes it when all the UI is rendered: only runs once. Thanks to [David Granjon](https://github.com/JohnCoene/waiter/issues/82) for the suggestion.
+The `waiterPreloader` function shows the full page loading screen when the app is loaded and automatically removes it when all the UI is rendered: only runs once. Thanks to [David Granjon](https://github.com/JohnCoene/waiter/issues/82) for the suggestion.
 
 ```r
 library(shiny)
@@ -71,7 +77,7 @@ shinyApp(ui, server)
 
 ## On busy
 
-In the development version, not yet on CRAN, one can use `waiter_on_busy` to automatically display the loading screen when the server is busy computing things and automatically remove it when it goes back to idle.
+One can use `waiterOnBusy` to automatically display the loading screen when the server is busy computing things and automatically remove it when it goes back to idle.
 
 ```r
 library(shiny)
@@ -138,8 +144,6 @@ shinyApp(ui, server)
 ![](_assets/img/waiter-dynamic.gif)
 
 ## Partial
-
-Since version `0.1.0` you are no longer limited to full page loading screens and can show the waiter only only part of the application, whichever part you desire. 
 
 > [!NOTE]
 > All the features of the full screen are also available on partial loading screens
@@ -258,10 +262,11 @@ server <- function(input, output){
     input$draw
 
     w$show()
+    on.exit({
+      w$hide()
+    })
 
     Sys.sleep(3) 
-
-    w$hide()
 
     runif(150)
   })
@@ -375,17 +380,16 @@ ui <- fluidPage(
 )
 
 server <- function(input, output, session){
-	w <- Waiter$new(
-		html = h1("Wait!"),
-		image = url
-	)$show()
-
-	Sys.sleep(10)
-	w$hide()
+  w <- Waiter$new(
+    html = h1("Wait!"),
+    image = url
+  )$show()
+  
+  Sys.sleep(10)
+  w$hide()
 }
 
 shinyApp(ui, server)
-
 ```
 
 ![](_assets/img/waiter-image.png)

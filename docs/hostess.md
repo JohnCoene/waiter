@@ -31,7 +31,7 @@ library(waiter)
 ui <- fluidPage(
   useWaiter(),
   useHostess(),
-  waiter_show_on_load(
+  waiterShowOnLoad(
     color = "#f7fff7",
     hostess_loader(
       "loader", 
@@ -185,7 +185,7 @@ library(waiter)
 ui <- fluidPage(
   useWaiter(),
   useHostess(),
-  waiter_show_on_load(
+  waiterShowOnLoad(
     color = "#f7fff7",
     hostess_loader(
       "loader", 

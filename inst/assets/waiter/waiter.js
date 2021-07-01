@@ -138,7 +138,7 @@ function show_waiter(
     Shiny.setInputValue(id + "_waiter_shown", true, {priority: 'event'});
   }
   catch(err) {
-    console.log("waiter_show_on_load - shiny not connected yet:", err.message);
+    console.log("waiterShowOnLoad - shiny not connected yet:", err.message);
   }
   
 }

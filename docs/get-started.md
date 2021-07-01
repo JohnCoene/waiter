@@ -12,7 +12,7 @@ It's fairly straightforward
 4. Hide the waiter
 
 > [!TIP]
-> Make sure you include the dependencies with `useWaiter` or nothing will work.
+> Always make sure you include the dependencies with `useWaiter` or nothing will work.
 
 ## Examples
 
