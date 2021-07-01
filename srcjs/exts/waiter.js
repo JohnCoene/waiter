@@ -1,40 +1,43 @@
 import 'shiny';
 import 'jquery';
-
-// compute offset position of waiter overlay
-const getDimensions = (element) => {
-  var elementPosition = {
-		width: element.offsetWidth,
-		height: element.offsetHeight,
-		top: isNaN(element.offsetTop) ? 0 : element.offsetTop,
-		left: isNaN(element.offsetLeft) ? 0 : element.offsetLeft,
-	};
-
-  return elementPosition;
-}
+import { getDimensions } from './dimensions';
 
 // elements to hide on recomputed
-var waiter_to_hide = new Map();
-var waiter_to_fadeout = new Map();
-var waiter_to_hide_on_error = new Map();
-var waiter_to_hide_on_silent_error = new Map();
+var waiterToHideOnRender = new Map();
+var waiterToFadeout = new Map();
+var waiterToHideOnError = new Map();
+var waiterToHideOnSilentError = new Map();
+
+const setWaiterShownInput = (id) => {
+  let input = "waiter_shown";
+  if(id !== null)
+    input = id + "_" + input;
+  
+  Shiny.setInputValue(input, true, {priority: 'event'});
+};
+
+const setWaiterHiddenInput = (id) => {
+  let input = "waiter_hidden";
+  if(id !== null)
+    input = id + "_" + input;
+  
+  Shiny.setInputValue(input, true, {priority: 'event'});
+}
+
+let defaultWaiter = {
+  id: null, 
+  html: '<div class="container--box"><div class="boxxy"><div class="spinner spinner--1"></div></div></div>', 
+  color: '#333e48', 
+  hideOnRender: false, 
+  hideOnError: false, 
+  hideOnSilentError: false, 
+  image: null,
+  fadeOut: false,
+  onShown: setWaiterShownInput
+};
 
 // show waiter overlay
-export const showWaiter = (
-  id = null, 
-  html, 
-  color = '#333e48', 
-  to_hide = false, 
-  hide_on_error = false, 
-  hide_on_silent_error = false, 
-  image = null,
-  fade_out = false
-) => {
-
-  if(html == null){
-    console.error("Missing html content");
-    return;
-  }
+export const showWaiter = (params = defaultWaiter) => {
 
   // declare
   var dom,
@@ -42,27 +45,28 @@ export const showWaiter = (
       exists = false;
 
   // get parent
-  if(id !== null)
-    selector = '#' + id;
+  if(params.id !== null)
+    selector = '#' + params.id;
   
   dom = document.querySelector(selector);
   if(dom == undefined){
-    console.log("Cannot find", id);
+    console.log("Cannot find", params.id);
     return ;
   }
   
   // allow missing for testing
-  to_hide = to_hide || false;
+  params.hideOnRender = params.hideOnRender || false;
 
   // set in maps
-  waiter_to_hide.set(id, to_hide);
-  waiter_to_fadeout.set(selector, fade_out);
-  waiter_to_hide_on_error.set(id, hide_on_error);
-  waiter_to_hide_on_silent_error.set(id, hide_on_silent_error);
+  waiterToHideOnRender.set(params.id, params.hideOnError);
+  waiterToFadeout.set(selector, params.fadeOut);
+  waiterToHideOnError.set(params.id, params.hideOnError);
+  waiterToHideOnSilentError.set(params.id, params.hideOnSilentError);
 
   let el = getDimensions(dom); // get dimensions
 
-  if(id === null){
+  // no id = fll screen
+  if(params.id === null){
     el.height = window.innerHeight;
     el.width = $("body").width();
   }
@@ -79,23 +83,23 @@ export const showWaiter = (
       exists = true;
   });
 
-  if(exists === true){
-    console.log("waiter on", id, "already exists");
+  if(exists){
+    console.log("waiter on", params.id, "already exists");
     return;
   }
   
-  hideRecalculate(id);
+  hideRecalculate(params.id);
 
   // create overlay
-  var overlay = document.createElement("DIV");
+  let overlay = document.createElement("DIV");
   // create overlay content
-  var overlay_content = document.createElement("DIV");
+  let overlayContent = document.createElement("DIV");
   // insert html
-  overlay_content.innerHTML = html;
-  overlay_content.classList.add("waiter-overlay-content");
+  overlayContent.innerHTML = params.html;
+  overlayContent.classList.add("waiter-overlay-content");
 
   // dynamic position
-  if(id == null)
+  if(params.id == null)
     overlay.style.position = "fixed";
   else
     overlay.style.position = "absolute";
@@ -105,37 +109,37 @@ export const showWaiter = (
   overlay.style.width = el.width + 'px';
   overlay.style.top = el.top + 'px';
   overlay.style.left = el.left + 'px';
-  overlay.style.backgroundColor = color;
+  overlay.style.backgroundColor = params.color;
   overlay.classList.add("waiter-overlay");
 
-  if(image != null && image != ''){
-    overlay.style.backgroundImage = "url('" + image + "')";
+  if(params.image != null && params.image != ''){
+    overlay.style.backgroundImage = "url('" + params.image + "')";
   }
 
-  if(id !== null) {
+  // either full-screen or partial
+  if(params.id !== null) {
     overlay.classList.add("waiter-local");
   } else {
     overlay.classList.add('waiter-fullscreen');
   }
-  //overlay.style.animation = "expand .15s ease-in-out";
 
   // append overlay content in overlay
-  overlay.appendChild(overlay_content);
+  overlay.appendChild(overlayContent);
 
   // append overlay to dom
   dom.appendChild(overlay);
 
   // set input
   try {
-    Shiny.setInputValue(id + "_waiter_shown", true, {priority: 'event'});
+    params.onShown(params.id);
   }
   catch(err) {
-    console.log("waiterShowOnLoad - shiny not connected yet:", err.message);
+    console.log("likely using waiterShowOnLoad - shiny not connected yet:", err.message);
   }
   
 }
 
-export const hideWaiter = (id) => {
+export const hideWaiter = (id, onHidden) => {
 
   var selector = 'body';
   if(id !== null)
@@ -147,8 +151,8 @@ export const hideWaiter = (id) => {
     return;
   
   let timeout = 250;
-  if(waiter_to_fadeout.get(selector)){
-    let value = waiter_to_fadeout.get(selector);
+  if(waiterToFadeout.get(selector)){
+    let value = waiterToFadeout.get(selector);
 
     if(typeof value == 'boolean')
       value = 500;
@@ -163,12 +167,13 @@ export const hideWaiter = (id) => {
     overlay.remove();
   }, timeout);
 
+  onHidden(id);
+
 }
 
 export const updateWaiter = (id, html) => {
 
   var selector = 'body';
-
   if(id !== null)
     selector = '#' + id;
 
@@ -220,16 +225,19 @@ export const showRecalculate = (id) => {
 
 // remove when output receives value
 $(document).on('shiny:value', function(event) {
-  if(waiter_to_hide.get(event.name)){
+  if(waiterToHide.get(event.name)){
     hideWaiter(event.name);
   }
 });
 
 // remove when output errors
 $(document).on('shiny:error', function(event) {
-  if(event.error.type == null && waiter_to_hide_on_error.get(event.name)){
+  if(event.error.type == null && waiterToHideOnError.get(event.name)){
     hideWaiter(event.name);
-  } else if (event.error.type != null && waiter_to_hide_on_silent_error.get(event.name)){
+    return
+  } 
+  
+  if (event.error.type != null && waiterToHideOnSilentError.get(event.name)){
     hideWaiter(event.name);
   }
 });
@@ -240,29 +248,28 @@ window.addEventListener("resize", function(){
   let fs = document.getElementsByClassName("waiter-fullscreen");
 
   for(waiter of waiters){
-    dim = get_offset(waiter.parentElement);
+    let dim = getDimensions(waiter.parentElement);
     waiter.style.width = dim.width + 'px';
     waiter.style.height = dim.height + 'px';
   }
 
   for(waiter of fs){
-    dim = get_offset(waiter.parentElement);
     waiter.style.width = window.innerWidth + 'px';
     waiter.style.height = window.innerHeight + 'px';
   }
 });
 
 Shiny.addCustomMessageHandler('waiter-show', function(opts) {
-  showWaiter(
-    opts.id, 
-    opts.html, 
-    opts.color, 
-    opts.hide_on_render, 
-    opts.hide_on_error, 
-    opts.hide_on_silent_error,
-    opts.image,
-    opts.fade_out
-  );
+  showWaiter({
+    id: opts.id, 
+    html: opts.html, 
+    color: opts.color, 
+    hideOnRender: opts.hide_on_render,
+    hideOnError: opts.hide_on_error, 
+    hideOnSilentError: opts.hide_on_silent_error,
+    image: opts.image,
+    fadeOut: opts.fade_out
+  });
   Shiny.setInputValue("waiter_shown", true, {priority: 'event'});
 });
 
@@ -271,11 +278,5 @@ Shiny.addCustomMessageHandler('waiter-update', function(opts) {
 });
 
 Shiny.addCustomMessageHandler('waiter-hide', function(opts) {
-  hideWaiter(opts.id);
-
-  let input = "waiter_hidden";
-  if(opts.id !== null)
-    input = opts.id + "_" + input;
-  
-  Shiny.setInputValue(input, true, {priority: 'event'});
+  hideWaiter(opts.id, setWaiterHiddenInput);
 });

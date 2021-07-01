@@ -229,12 +229,12 @@ waiterShowOnLoad <- function(
   html <- gsub("\n", "", html)
 
   show <- sprintf(
-    "waiter.showWaiter(
-      null,
-      html = '%s', 
-      color = '%s',
-      image = '%s'
-    );",
+    "waiter.showWaiter({
+      id: null,
+      html: '%s', 
+      color: '%s',
+      image: '%s'
+    });",
     html, color, image
   )
 
@@ -269,13 +269,13 @@ waiterPreloader <- function(
   fadeout <- ifelse(is.logical(fadeout), tolower(fadeout), fadeout)
 
   show <- sprintf(
-    "waiter.showWaiter(
-      null,
-      html = '%s', 
-      color = '%s',
-      image = '%s',
-      fade_out = %s
-    );",
+    "waiter.showWaiter({
+      id: null,
+      html: '%s', 
+      color: '%s',
+      image: '%s',
+      fadeOut: %s
+    });",
     html, color, image
   )
 
@@ -351,13 +351,13 @@ waiterOnBusy <- function(html = spin_1(), color = "#333e48", logo = "", image = 
 
   script <- paste0(
     "$(document).on('shiny:busy', function(event) {
-      waiter.showWaiter(
-        id = null,
-        html = '", html, "', 
-        color = '", color, "',
-        image = '", image, "',
-        fade_out = ", fadeout, "
-      );
+      waiter.showWaiter({
+        id: null,
+        html: '", html, "', 
+        color: '", color, "',
+        image: '", image, "',
+        fadeOut: ", fadeout, "
+      });
     });
     
     $(document).on('shiny:idle', function(event) {
@@ -710,16 +710,16 @@ triggerWaiter <- function(
 
   script <- sprintf(
     "$('#%s').on('%s', function(event){
-      waiter.showWaiter(
-        '%s',
-        '%s', 
-        color = '%s', 
-        to_hide = %s, 
-        hide_on_error = %s, 
-        hide_on_silent_error = %s, 
-        image = '%s',
-        fade_out = %s
-      );
+      waiter.showWaiter({
+        id: '%s',
+        html: '%s', 
+        color: '%s', 
+        hideOnRender: %s, 
+        hideOnError: %s, 
+        hideOnSilentError: %s, 
+        image: '%s',
+        fadeOut: %s
+      });
     })",
     el_id,
     on,
