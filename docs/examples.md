@@ -127,7 +127,7 @@ server <- function(input, output){
 shinyApp(ui = ui, server = server)
 ```
 
-Include `use_waiter` in the body of the dashboard.
+Include `useWaiter` in the body of the dashboard.
 
 ```r
 library(shiny)
@@ -158,7 +158,7 @@ shiny::shinyApp(
 
 ## shinyMobile
 
-Place `use_waiter` inside `f7SingleLayout`.
+Place `useWaiter` inside `f7SingleLayout`.
 
 ```r
 library(shiny)
@@ -167,7 +167,7 @@ library(shinyMobile)
 
 ui <- f7Page(
   title = "waiter",
-  use_waiter(),
+  useWaiter(),
   f7SingleLayout(
     navbar = f7Navbar(
       title = "waiter",
@@ -188,13 +188,13 @@ shinyApp(ui, server)
 
 ## yonder
 
-It's very easy with yonder, place the `use_waiter` anywhere really.
+It's very easy with yonder, place the `useWaiter` anywhere really.
 
 ```r
 library(yonder)
 
 ui <- container(
-  use_waiter(),
+  useWaiter(),
   buttonInput(
     id = "button",
     label = "Render"
@@ -224,7 +224,7 @@ shinyApp(ui, server)
 
 ## shinydashboard
 
-Place `use_waiter` in `dashboardBody`.
+Place `useWaiter` in `dashboardBody`.
 
 ```r
 library(shiny)
@@ -240,8 +240,8 @@ ui <- dashboardPage(
   dashboardHeader(),
   dashboardSidebar(),
   dashboardBody(
-    use_waiter(),
-    waiter_show_on_load(spinner), # will show on load
+    useWaiter(),
+    waiterShowOnLoad(spinner), # will show on load
     actionButton("show", "Show loading")
   )
 )
@@ -296,7 +296,7 @@ ui <- dashboardPage(
     tags$head(
       tags$script(add_id_to_section)
     ),
-    use_waiter(),
+    useWaiter(),
     tabItems(
       # First tab content
       tabItem(

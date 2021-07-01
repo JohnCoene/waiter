@@ -24,7 +24,7 @@ preview_spinner(spin_4())
 
 You can show a loading screen on app launch. The loading screen will launch prior to everything else, even the Shiny session. 
 
-Though this function is not programmatically launched it still has to be hidden with `waiter_hide`. Ensure you place `waiter_show_on_load` after `use_waiter`.
+Though this function is not programmatically launched it still has to be hidden with `waiter_hide`. Ensure you place `waiterShowOnLoad` after `useWaiter`.
 
 ```r
 library(shiny)
@@ -32,7 +32,7 @@ library(waiter)
  
 ui <- fluidPage(
   useWaiter(), 
-  waiter_show_on_load(html = spin_fading_circles()),
+  waiterShowOnLoad(html = spin_fading_circles()),
   h3("Content you will only see after loading screen has disappeared")
 )
 
@@ -760,74 +760,3 @@ shinyApp(ui, server)
 ```
 
 ![](_assets/img/waiter-css.png)
-
-## JavaScript
-
-You can also directly use the JavaScript if you want, this may
-allow you to avoid going through the websocket and the server.
-
-The function `waiter.showWaiter` takes the arguments below, if `id = null` then a full-screen waiter is used.
-
-```js
-const showWaiter = (
-  id = null, 
-  html, 
-  color = '#333e48', 
-  hideOnRender = false, 
-  hideOnError = false, 
-  hideOnSilentError = false, 
-  image = null,
-  onSHown = setWaiterShownInput // callback
-) => {
-  ...
-}
-```
-
-The callback function should accept the `id` argument, it is called once the waiter is shown.
-
-To hide the waiter use `waiter.hideWaiter(id, callback)` and pass it the `id` of the element from which you want to removed the waiter, if `null` it removes the full-screen waiter.
-
-The callback function should accept the `id` argument, it is called once the waiter is hidden.
-
-```r
-library(shiny)
-library(waiter)
-
-ui <- fluidPage(
-  tags$head(
-    useWaiter(),
-    tags$script(
-      "function show(){
-        waiter.showWaiter(
-          id = 'contentBox',
-          html = 'LOADING',
-          color = 'black'
-        );
-      }
-      function hide(){
-        waiter.hideWaiter('contentBox');
-      }"
-    )
-  ),
-  br(),
-  tags$button(
-    onclick = "show();",
-    class = "btn btn-success",
-    "Show waiter"
-  ),
-  tags$button(
-    onclick = 'hide();',
-    class = "btn btn-warning",
-    "Hide waiter"
-  ),
-  div(
-    id = "contentBox",
-    style = "min-height:300px;",
-    h1("Hello")
-  )
-)
-
-server <- function(input, output) {}
-
-shinyApp(ui, server)
-```
