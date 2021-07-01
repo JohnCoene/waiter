@@ -167,10 +167,10 @@ Waitress <- R6::R6Class(
         infinite = private$.infinite, 
         id = id, 
         html = html, 
-        hide_on_render = private$.hide_on_render,
-        background_color = background_color,
-        text_color = text_color,
-				is_notification = FALSE
+        hideOnRender = private$.hide_on_render,
+        backgroundColor = background_color,
+        textColor = text_color,
+				isNotification = FALSE
       )
 
 			private$get_session()
@@ -213,8 +213,8 @@ Waitress <- R6::R6Class(
 				private$.initialised <- private$init(
 					id = private$.name, # will be id of notification DIV
 					html = html,
-					background_color = background_color,
-					text_color = text_color,
+					backgroundColor = background_color,
+					textColor = text_color,
 					position = match.arg(position),
 					notify = TRUE # will trigger adding DIV JS side
 				)
@@ -230,8 +230,8 @@ Waitress <- R6::R6Class(
         name = private$.name, 
         infinite = private$.infinite, 
         id = id,
-				hide_on_render = private$.hide_on_render,
-				is_notification = TRUE
+				hideOnRender = private$.hide_on_render,
+				isNotification = TRUE
       )
 
 			private$get_session()

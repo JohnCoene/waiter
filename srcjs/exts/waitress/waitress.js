@@ -1,3 +1,6 @@
+import 'shiny';
+import 'jquery';
+
 import {progressJs} from './progress';
 import { hideRecalculate } from '../recalculate';
 import { getDimensions } from '../dimensions';
@@ -6,7 +9,7 @@ import './css/progress.css';
 import './css/overlay.css';
 
 // keep infinite to later clear
-let intervals = [];
+let intervals = new Map();
 // elements to hide on recomputed
 let waitressToHide = new Map();
 
@@ -47,6 +50,9 @@ function positionToCoords(position){
 }
 
 Shiny.addCustomMessageHandler('waitress-init', function(opts) {
+
+	if(waitresses.get(opts.name) != undefined)
+    return; 
   
   let notification, prog;
 
@@ -63,8 +69,8 @@ Shiny.addCustomMessageHandler('waitress-init', function(opts) {
 
     //notification.width = '100px';
     notification.height = '50px';
-    notification.style.color = opts.text_color;
-    notification.style.backgroundColor = opts.background_color;
+    notification.style.color = opts.textColor;
+    notification.style.backgroundColor = opts.backgroundColor;
     notification.style.position = "fixed";
     notification.innerHTML = opts.html;
     notification.style.zIndex = 9999;
@@ -88,34 +94,27 @@ Shiny.addCustomMessageHandler('waitress-init', function(opts) {
 Shiny.addCustomMessageHandler('waitress-start', function(opts) {
   
   waitresses.get(opts.name).start();
-  let el,
-      id = opts.id, 
-      exists = false, 
+  let exists = false, 
       dom,
       overlay,
       overlayContent;
   
-  if(opts.hide_on_render)
-    waitressToHide.set(opts.name, {
-      id: opts.id, 
-      name: opts.name, 
-      infinite: opts.infinite, 
-      is_notification: opts.is_notification
-    });
+  if(opts.hideOnRender)
+    waitressToHide.set(opts.id, opts);
 
   // content
   if(opts.html){
 
-    hideRecalculate(id);
+    hideRecalculate(opts.id);
 
     // get parent
-    dom = document.getElementById(id);
+    dom = document.getElementById(opts.id);
     if(dom == undefined){
-      console.log("Cannot find", id);
+      console.log("Cannot find", opts.id);
       return ;
     }
 
-    el = getDimensions(dom, 2, -2); 
+    let el = getDimensions(dom, 2, -2); 
 
     // check if overlay exists
     dom.childNodes.forEach(function(el){
@@ -123,8 +122,8 @@ Shiny.addCustomMessageHandler('waitress-start', function(opts) {
         exists = true;
     });
 
-    if(exists === true){
-      console.log("waitress on", id, "already exists");
+    if(exists){
+      console.log("waitress on", opts.id, "already exists");
       return;
     }
 
@@ -141,8 +140,8 @@ Shiny.addCustomMessageHandler('waitress-start', function(opts) {
     overlay.style.width = el.width + 'px';
     overlay.style.top = el.top + 'px';
     overlay.style.left = el.left + 'px';
-    overlay.style.color = opts.text_color;
-    overlay.style.backgroundColor = opts.background_color;
+    overlay.style.color = opts.textColor;
+    overlay.style.backgroundColor = opts.backgroundColor;
     overlay.style.position = "absolute";
     overlay.style.zIndex = 99999999;
     overlay.classList.add("waitress-overlay");
@@ -162,11 +161,14 @@ Shiny.addCustomMessageHandler('waitress-start', function(opts) {
         inc = 0,
         end = 100;
 
-    intervals[opts.name] = setInterval(function(){
-      inc = ((end - value) / (end + value));
-      value = Math.round((value + inc + Number.EPSILON) * 1000) / 1000
-      waitresses.get(opts.name).set(value);
-    }, 350);
+    intervals.set(
+      opts.name, 
+      setInterval(function(){
+        inc = ((end - value) / (end + value));
+        value = Math.round((value + inc + Number.EPSILON) * 1000) / 1000
+        waitresses.get(opts.name).set(value);
+      }, 350)
+    );
   }
 });
 
@@ -194,16 +196,15 @@ Shiny.addCustomMessageHandler('waitress-end', function(opts) {
   }
 
   if(opts.infinite)
-    clearInterval(intervals[opts.name]);
-
-  if(opts.is_notification){
-    var notif = document.getElementById(opts.name);
-
+    clearInterval(intervals.get(opts.name));
+  
+    if(opts.isNotification){
     // small delay to allow the loading bar to end
     setTimeout(function(){
-      notif.remove();
-    }, 400)
+      $(`#${opts.name}`).remove();
+    }, 400);
   }
+
 });
 
 $(document).on('shiny:value shiny:error shiny:recalculated', function(event) {
@@ -213,17 +214,14 @@ $(document).on('shiny:value shiny:error shiny:recalculated', function(event) {
     return ;
   
   if(w.infinite)
-    clearInterval(intervals[w.name]);
+    clearInterval(intervals.get(event.name));
   
   waitresses.get(w.name).end();
 
-  if(w.is_notification){
-    var notif = document.getElementById(w.name);
-
+  if(w.isNotification){
     // small delay to allow the loading bar to end
     setTimeout(function(){
-      if(notif != null)
-        notif.remove();
+      $(`#${event.name}`).remove();
     }, 400);
   }
   
