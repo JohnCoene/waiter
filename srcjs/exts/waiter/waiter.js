@@ -228,20 +228,22 @@ $(document).on('shiny:error', function(event) {
 
 // On resize we need to resize the waiter screens too
 window.addEventListener("resize", function(){
-  let waiters = document.getElementsByClassName("waiter-local");
-  let fs = document.getElementsByClassName("waiter-fullscreen");
+  $('.waiter-local')
+    .each(() => {
+      let dim = getDimensions(waiter.parentElement);
+      $(this).css({
+        width: dim.width + 'px',
+        height: dim.height + 'px'
+      });
+    })
 
-  for(waiter of waiters){
-    let dim = getDimensions(waiter.parentElement);
-    waiter.style.width = dim.width + 'px';
-    waiter.style.height = dim.height + 'px';
-  }
+  $('.waiter-fullscreen')
+    .css({
+      width: window.innerWidth + 'px',
+      height: window.innerHeight + 'px'
+    });
 
-  for(waiter of fs){
-    waiter.style.width = window.innerWidth + 'px';
-    waiter.style.height = window.innerHeight + 'px';
-  }
-});
+  });
 
 Shiny.addCustomMessageHandler('waiter-show', function(opts) {
   showWaiter({
