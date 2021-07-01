@@ -17,15 +17,18 @@ The following staff members will help you keep your clients waiting:
 
 ## Installation
 
-Install the stable version from [CRAN](https://CRAN.R-project.org/package=waiter):
+Install the stable version from 
+[CRAN](https://CRAN.R-project.org/package=waiter)
+or development version from Github with `remotes` or
+`devtools`.
+
+<!-- tabs:start -->
+
+#### **CRAN**
 
 ```r
 install.packages("waiter")
 ```
-
-Install the development version from Github with `remotes` or `devtools`: 
-
-<!-- tabs:start -->
 
 #### **remotes**
 

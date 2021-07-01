@@ -1,4 +1,6 @@
-# Examples
+# Integrations
+
+Intergrating waiter with various frameworks or Shiny features.
 
 ## Modules
 

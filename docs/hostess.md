@@ -18,9 +18,7 @@ See `?hostess` for the documentation.
 > [!TIP]
 > Make sure you include the dependencies with `use_hostess`.
 
-## Examples
-
-### With Waiter
+## With Waiter
 
 You can of course use it together with `waiter` by playing the `hostess_spinner` in the `show_waiter*` function. Note that when used with the full page waiter one should set `center_page` to `TRUE` to center the loader.
 
@@ -92,7 +90,7 @@ shinyApp(ui, server)
 
 The Hostess is powered by [loadinBar.js](https://loading.io/progress/) which comes with tons of styling options to pass to `hostess_loader`, check them out! 
 
-### Multiple
+## Multiple
 
 The above method of creating the loader also enables creating multiple loaders tied to the same hostess, so one hostess can set or increment multiple loading bars.
 
@@ -141,7 +139,7 @@ shinyApp(ui, server)
 
 ![](_assets/img/hostess-multi.gif)
 
-### Standalone
+## Standalone
 
 Initialise the hostess with `Hostess$new()` to which you pass the id of the `hostess_loader` you are using, then increment it with the `set` method. 
 
@@ -171,7 +169,7 @@ shinyApp(ui, server)
 
 ![](_assets/img/hostess.gif)
 
-### Infinite
+## Infinite
 
 An infinite loading bar is useful when you cannot compute increments.
 

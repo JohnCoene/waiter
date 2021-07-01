@@ -5,7 +5,7 @@
 * [The Waiter](waiter.md "Guide to the waiter")
 * [The Waitress](waitress.md "Guide to the waitress")
 * [The Hostess](hostess.md "Guide to the hostess")
-* [Examples](examples.md "Example use cases")
+* [Integrations](integrations.md "Integrations with other packages")
 * [Changelog](changelog.md "Changelog")
 * [CoC](coc.md "Code of Conduct")
 

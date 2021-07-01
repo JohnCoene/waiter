@@ -14,7 +14,7 @@ It's fairly straightforward
 > [!TIP]
 > Always make sure you include the dependencies with `useWaiter` or nothing will work.
 
-## Examples
+## Basic
 
 A basic example could be like this, upon clicking a button we display a full page loading screen.
 
@@ -43,6 +43,8 @@ shinyApp(ui, server)
 ```
 
 ![](_assets/img/waiter.gif)
+
+## Customise
 
 By default the waiter will show a spinner, 1) you can choose from more than [100 spinners](https://shiny.john-coene.com/waiter/) 2) you are by no means limited to a spinner since the `html` argument takes any htmltools or shiny tag. Below we change the spinner, add some text and change the background color.
 
