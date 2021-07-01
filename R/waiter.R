@@ -416,10 +416,11 @@ Waiter <- R6::R6Class(
           html = private$.html[[i]],
           color = private$.color,
           image = private$.image,
-          hide_on_render = private$.hide_on_render,
-          hide_on_silent_error = private$.hide_on_silent_error,
-          hide_on_error = private$.hide_on_error,
-          fade_out = private$.fadeout
+          hideOnRender = private$.hide_on_render,
+          hideOnSilent_error = private$.hide_on_silent_error,
+          hideOnError = private$.hide_on_error,
+          fadeOut = private$.fadeout,
+          blur = private$.blur
         )
         private$.session$sendCustomMessage("waiter-show", opts)
       }
@@ -504,6 +505,7 @@ Waiter <- R6::R6Class(
     .color = "#333e48",
     .image = "",
     .id = NULL,
+    .blur = NULL,
     .session = NULL,
     .fadeout = FALSE,
     .hide_on_render = FALSE,

@@ -2,6 +2,8 @@ import 'shiny';
 import 'jquery';
 import { getDimensions } from '../dimensions';
 import { hideRecalculate } from '../recalculate';
+import { setWaiterHiddenInput, setWaiterShownInput } from './callbacks';
+import { createOverlay } from './overlay';
 
 import './css/css-spinners.css';
 import './css/custom.css';
@@ -18,22 +20,6 @@ var waiterToFadeout = new Map();
 var waiterToHideOnError = new Map();
 var waiterToHideOnSilentError = new Map();
 
-const setWaiterShownInput = (id) => {
-  let input = "waiter_shown";
-  if(id !== null)
-    input = id + "_" + input;
-  
-  Shiny.setInputValue(input, true, {priority: 'event'});
-};
-
-const setWaiterHiddenInput = (id) => {
-  let input = "waiter_hidden";
-  if(id !== null)
-    input = id + "_" + input;
-  
-  Shiny.setInputValue(input, true, {priority: 'event'});
-}
-
 let defaultWaiter = {
   id: null, 
   html: '<div class="container--box"><div class="boxxy"><div class="spinner spinner--1"></div></div></div>', 
@@ -43,7 +29,9 @@ let defaultWaiter = {
   hideOnSilentError: false, 
   image: null,
   fadeOut: false,
-  onShown: setWaiterShownInput
+  ns: null,
+  onShown: setWaiterShownInput,
+  onHidden: setWaiterHiddenInput
 };
 
 // show waiter overlay
@@ -68,7 +56,7 @@ export const showWaiter = (params = defaultWaiter) => {
   params.hideOnRender = params.hideOnRender || false;
 
   // set in maps
-  waiterToHideOnRender.set(params.id, params.hideOnError);
+  waiterToHideOnRender.set(params.id, params);
   waiterToFadeout.set(selector, params.fadeOut);
   waiterToHideOnError.set(params.id, params.hideOnError);
   waiterToHideOnSilentError.set(params.id, params.hideOnSilentError);
@@ -88,7 +76,7 @@ export const showWaiter = (params = defaultWaiter) => {
     dom.className += ' staticParent';
 
   // check if overlay exists
-  dom.childNodes.forEach(function(el){
+  dom.childNodes.forEach((el) => {
     if(el.className === 'waiter-overlay')
       exists = true;
   });
@@ -100,42 +88,7 @@ export const showWaiter = (params = defaultWaiter) => {
   
   hideRecalculate(params.id);
 
-  // create overlay
-  let overlay = document.createElement("DIV");
-  // create overlay content
-  let overlayContent = document.createElement("DIV");
-  // insert html
-  overlayContent.innerHTML = params.html;
-  overlayContent.classList.add("waiter-overlay-content");
-
-  // dynamic position
-  if(params.id == null)
-    overlay.style.position = "fixed";
-  else
-    overlay.style.position = "absolute";
-  
-  // dynamic dimensions
-  overlay.style.height = el.height + 'px';
-  overlay.style.width = el.width + 'px';
-  overlay.style.top = el.top + 'px';
-  overlay.style.left = el.left + 'px';
-  overlay.style.backgroundColor = params.color;
-  overlay.classList.add("waiter-overlay");
-
-  if(params.image != null && params.image != ''){
-    overlay.style.backgroundImage = "url('" + params.image + "')";
-  }
-
-  // either full-screen or partial
-  if(params.id !== null) {
-    overlay.classList.add("waiter-local");
-  } else {
-    overlay.classList.add('waiter-fullscreen');
-  }
-
-  // append overlay content in overlay
-  overlay.appendChild(overlayContent);
-
+  let overlay =  createOverlay(params, el);
   // append overlay to dom
   dom.appendChild(overlay);
 
@@ -173,7 +126,7 @@ export const hideWaiter = (id, onHidden = null) => {
     overlay.remove();
   }, timeout);
 
-  if(onHidden != null)
+  if(onHidden != undefined && onHidden != null)
     onHidden(id);
 
 }
@@ -197,9 +150,12 @@ export const showRecalculate = (id) => {
 
 // remove when output receives value
 $(document).on('shiny:value', function(event) {
-  if(waiterToHideOnRender.get(event.name)){
-    hideWaiter(event.name, setWaiterHiddenInput);
-  }
+  let w = waiterToHideOnRender.get(event.name);
+
+  if(w == undefined)
+    return ;
+  
+  hideWaiter(event.name, w.onHidden);
 });
 
 // remove when output errors
