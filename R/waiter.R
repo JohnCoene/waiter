@@ -91,7 +91,7 @@ useWaiter <- function(spinners = NULL, include_js = TRUE){
   htmltools::htmlDependency(
     name = "waiter",
     version = utils::packageVersion("waiter"),
-    src = "assets/waiter",
+    src = "packer",
     package = "waiter",
     script = "waiter.js"
   )

@@ -1,15 +1,16 @@
 import 'shiny';
 import 'jquery';
-import { getDimensions } from './dimensions';
+import { getDimensions } from '../dimensions';
+import { hideRecalculate } from '../recalculate';
 
-import './waiter-css/css-spinners.css';
-import './waiter-css/custom.css';
-import './waiter-css/devloop.css';
-import './waiter-css/loaders.css';
-import './waiter-css/spinbolt.css';
-import './waiter-css/spinkit.css';
-import './waiter-css/spinners.css';
-import './waiter-css/waiter.css';
+import './css/css-spinners.css';
+import './css/custom.css';
+import './css/devloop.css';
+import './css/loaders.css';
+import './css/spinbolt.css';
+import './css/spinkit.css';
+import './css/spinners.css';
+import './css/waiter.css';
 
 // elements to hide on recomputed
 var waiterToHideOnRender = new Map();
@@ -198,33 +199,6 @@ export const updateWaiter = (id, html) => {
   else
     console.log("no waiter on", id);
   
-}
-
-// storage to avoid multiple CSS injections
-let hiddenRecalculating = new Map();
-
-const hideRecalculate = (id) => {
-
-  if(id === null)
-    return ;
-  
-  if(hiddenRecalculating.get(id))
-    return;
-  
-  hiddenRecalculating.set(id, true);
-
-  var css = '#' + id + '.recalculating {opacity: 1.0 !important; }',
-      head = document.head || document.getElementsByTagName('head')[0],
-      style = document.createElement('style');
-
-  style.id = id + "-waiter-recalculating";
-  if (style.styleSheet){
-    style.styleSheet.cssText = css;
-  } else {
-    style.appendChild(document.createTextNode(css));
-  }
-
-  head.appendChild(style);
 }
 
 // currently unused but may be useful for others using JS API

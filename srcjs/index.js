@@ -1,3 +1,4 @@
-import waiter from './exts/waiter.js';
+import waitress from './exts/waitress/waitress.js';
+import waiter from './exts/waiter/waiter.js';
 
-export { waiter }
+export { waiter, waitress }

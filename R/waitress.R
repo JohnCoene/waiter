@@ -33,22 +33,15 @@
 #' @name waitress
 #' @export
 useWaitress <- function(color = "#697682", percent_color = "#333333"){
+  dep <- htmltools::htmlDependency(
+    name = "waitress",
+    version = utils::packageVersion("waiter"),
+    src = "packer",
+    package = "waitress",
+    script = "waitress.js"
+  )
 	singleton(
 		tags$head(
-			tags$script("window.waitress = [];"),
-			tags$link(
-				href = "waiter-assets/waitress/progress.min.css",
-				rel="stylesheet",
-				type="text/css"
-			),
-			tags$link(
-				href = "waiter-assets/waitress/overlay.css",
-				rel="stylesheet",
-				type="text/css"
-			),
-			tags$script(
-				src = "waiter-assets/waitress/progress.min.js"
-			),
 			tags$style(
 				paste0(".progressjs-theme-blue .progressjs-inner{background-color:", color, ";}"),
 				paste0(".progressjs-theme-blueOverlay .progressjs-inner{background-color:", color, ";}"),
@@ -57,9 +50,7 @@ useWaitress <- function(color = "#697682", percent_color = "#333333"){
 				paste0(".progressjs-theme-blueOverlayRadiusWithPercentBar .progressjs-inner{background-color:", color, ";}"),
 				paste0(".progressjs-percent{color:", percent_color, ";}")
 			),
-			tags$script(
-				src = "waiter-assets/waitress/custom.js"
-			)
+			dep
 		)
 	)
 }
