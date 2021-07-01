@@ -773,10 +773,11 @@ const showWaiter = (
   id = null, 
   html, 
   color = '#333e48', 
-  to_hide = false, 
-  hide_on_error = false, 
-  hide_on_silent_error = false, 
-  image = null
+  hideOnRender = false, 
+  hideOnError = false, 
+  hideOnSilentError = false, 
+  image = null,
+  onSHown = setWaiterShownInput // callback
 ) => {
   ...
 }
