@@ -140,12 +140,8 @@ export const showWaiter = (params = defaultWaiter) => {
   dom.appendChild(overlay);
 
   // set input
-  try {
+  if(params.onShown != undefined)
     params.onShown(params.id);
-  }
-  catch(err) {
-    console.log("likely using waiterShowOnLoad - shiny not connected yet:", err.message);
-  }
   
 }
 
