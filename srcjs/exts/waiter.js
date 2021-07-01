@@ -2,6 +2,15 @@ import 'shiny';
 import 'jquery';
 import { getDimensions } from './dimensions';
 
+import './waiter-css/css-spinners.css';
+import './waiter-css/custom.css';
+import './waiter-css/devloop.css';
+import './waiter-css/loaders.css';
+import './waiter-css/spinbolt.css';
+import './waiter-css/spinkit.css';
+import './waiter-css/spinners.css';
+import './waiter-css/waiter.css';
+
 // elements to hide on recomputed
 var waiterToHideOnRender = new Map();
 var waiterToFadeout = new Map();
