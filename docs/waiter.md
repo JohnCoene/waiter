@@ -427,7 +427,7 @@ server <- function(input, output){
 
   output$plot <- renderPlot({
     input$generate
-    Sys.sleep(3)
+    Sys.sleep(5)
     plot(runif(50))
   })
 

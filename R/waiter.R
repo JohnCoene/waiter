@@ -163,7 +163,7 @@ waiterShowOnLoad <- function(
   html <- gsub("\n", "", html)
 
   show <- sprintf(
-    "waiter.showWaiter({
+    "waiter.show({
       id: null,
       html: '%s', 
       color: '%s',
@@ -203,7 +203,7 @@ waiterPreloader <- function(
   fadeout <- ifelse(is.logical(fadeout), tolower(fadeout), fadeout)
 
   show <- sprintf(
-    "waiter.showWaiter({
+    "waiter.show({
       id: null,
       html: '%s', 
       color: '%s',
@@ -285,7 +285,7 @@ waiterOnBusy <- function(html = spin_1(), color = "#333e48", logo = "", image = 
 
   script <- paste0(
     "$(document).on('shiny:busy', function(event) {
-      waiter.showWaiter({
+      waiter.show({
         id: null,
         html: '", html, "', 
         color: '", color, "',
@@ -646,7 +646,7 @@ triggerWaiter <- function(
 
   script <- sprintf(
     "$('#%s').on('%s', function(event){
-      waiter.showWaiter({
+      waiter.show({
         id: '%s',
         html: '%s', 
         color: '%s', 

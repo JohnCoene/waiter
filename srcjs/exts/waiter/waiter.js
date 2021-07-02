@@ -35,7 +35,7 @@ let defaultWaiter = {
 };
 
 // show waiter overlay
-export const showWaiter = (params = defaultWaiter) => {
+export const show = (params = defaultWaiter) => {
 
   // declare
   var dom,
@@ -190,7 +190,7 @@ window.addEventListener("resize", function(){
   });
 
 Shiny.addCustomMessageHandler('waiter-show', function(opts) {
-  showWaiter(opts);
+  show(opts);
   Shiny.setInputValue("waiter_shown", true, {priority: 'event'});
 });
 
