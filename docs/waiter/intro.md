@@ -1,6 +1,25 @@
-# Get Started
+# The Waiter
 
 The waiter package comes with a few members of staff but the core member is the waiter which will let you show full page or partial loading screens in your shiny application.
+
+<Note type='danger'>
+The long-term plan is to deprecate snake_case UI functions 
+in favour of camelCase to be more inline with the rest
+of shiny UI code. e.g.: `use_waiter` will be deprecated in
+favour  `useWaiter`.
+
+This only applies to code used in the _Shiny UI._  
+</Note>
+
+## Preview
+
+You can preview the spinners in the browser or RStudio viewer with the `preview_spinner` function like so:
+
+```r
+preview_spinner(spin_4())
+```
+
+![](_assets/img/waiter-preview.png)
 
 ## How to
 
@@ -11,8 +30,9 @@ It's fairly straightforward
 3. Show the waiter
 4. Hide the waiter
 
-> [!TIP]
-> Always make sure you include the dependencies with `useWaiter` or nothing will work.
+<Note type='tip'>
+Always make sure you include the dependencies with `useWaiter` or nothing will work.
+</Note>
 
 ## Basic
 

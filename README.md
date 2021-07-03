@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-<div data-align="center">
+<div align="center">
 
 <img src="./man/figures/logo.png" height = "200px" />
 
@@ -21,8 +21,8 @@ status](https://www.r-pkg.org/badges/version/waiter)](https://CRAN.R-project.org
 
 [Website](https://waiter.john-coene.com) |
 [Demo](https://shiny.john-coene.com/waiter/) | [Get
-Started](https://waiter.john-coene.com/#/waiter) | [Cheat
-Sheet](https://waiter.john-coene.com/_assets/cheatsheet.pdf)
+Started](https://waiter.john-coene.com/#/waiter/intro) | [Cheat
+Sheet](https://waiter.john-coene.com/#/cheatsheet)
 
 </div>
 
