@@ -328,3 +328,45 @@ shinyApp(ui, server)
 ```
 
 ![](_assets/img/waiter-image.png)
+
+## Add waiter
+
+The function `addWaiter` is there for convenience to easily 
+add waiters to dynamically rendered Shiny content where
+"dynamic" means `render*` and `*output` function pair.
+
+This will display the waiter when the element is being 
+recalculated and hide it when it receives new data.
+
+You can place multiple `addWaiter` functions in your UI.
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+	addWaiter(c("plot", "dom")),
+	actionButton(
+		"trigger",
+		"Render"
+	),
+	plotOutput("plot"),
+	plotOutput("dom")
+)
+
+server <- function(input, output){
+	output$plot <- renderPlot({
+		input$trigger
+		Sys.sleep(3)
+		plot(cars)
+	})
+
+	output$dom <- renderPlot({
+		input$trigger
+		Sys.sleep(5)
+		plot(runif(100))
+	})
+}
+
+shinyApp(ui, server)
+```

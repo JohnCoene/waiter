@@ -644,10 +644,16 @@ triggerWaiter <- function(
   color <- .theme_or_value(color, "WAITER_COLOR")
   fadeout <- ifelse(is.logical(fadeout), tolower(fadeout), fadeout)
 
+  if(!is.null(id))
+    id <- sprintf("'%s'", id)
+
+  if(is.null(id))
+    id <- "null"
+
   script <- sprintf(
     "$('#%s').on('%s', function(event){
       waiter.show({
-        id: '%s',
+        id: %s,
         html: '%s', 
         color: '%s', 
         hideOnRender: %s, 
@@ -671,6 +677,99 @@ triggerWaiter <- function(
 
   shiny::tagList(
     el,
+    HTML(sprintf("<script>%s</script>", script))
+  )
+}
+
+#' Add Waiter
+#' 
+#' This function allows easily adding
+#' waiters to dynamically rendered Shiny content where
+#' "dynamic" means `render*` and `*output` function pair.
+#' 
+#' This will display the waiter when the element is being 
+#' recalculated and hide it when it receives new data.
+#' 
+#' @inheritParams waiter
+#' 
+#' @examples
+#' library(shiny)
+#' library(waiter)
+#' 
+#' ui <- fluidPage(
+#' 	addWaiter(c("plot", "dom")),
+#' 	actionButton(
+#' 		"trigger",
+#' 		"Render"
+#' 	),
+#' 	plotOutput("plot"),
+#' 	plotOutput("dom")
+#' )
+#' 
+#' server <- function(input, output){
+#' 	output$plot <- renderPlot({
+#' 		input$trigger
+#' 		Sys.sleep(3)
+#' 		plot(cars)
+#' 	})
+#' 
+#' 	output$dom <- renderPlot({
+#' 		input$trigger
+#' 		Sys.sleep(5)
+#' 		plot(runif(100))
+#' 	})
+#' }
+#' 
+#' if(interactive())
+#'  shinyApp(ui, server)
+#' 
+#' @export
+addWaiter <- function(
+  id,
+  html = NULL, 
+  color = NULL, 
+  image = "", 
+  fadeout = FALSE
+){
+
+  if(missing(id))
+    stop("Missing `id`")
+  
+  # html
+  html <- .theme_or_value(html, "WAITER_HTML")
+  html <- as.character(html)
+  html <- gsub("\n", "", html)
+
+  color <- .theme_or_value(color, "WAITER_COLOR")
+  fadeout <- ifelse(is.logical(fadeout), tolower(fadeout), fadeout)
+
+  ids <- paste0("['", paste0(id, collapse = "','"), "']")
+
+  script <- sprintf(
+    "$(document).on('shiny:recalculating', function(event) {
+      if(!%s.includes(event.target.id))
+        return ;
+
+      waiter.show({
+        id: event.target.id,
+        html: '%s', 
+        color: '%s', 
+        hideOnRender: true, 
+        hideOnError: true, 
+        hideOnSilentError: true, 
+        image: '%s',
+        fadeOut: %s
+      });
+    });",
+    ids,
+    html,
+    color,
+    image,
+    fadeout
+  )
+
+  shiny::tagList(
+    useWaiter(),
     HTML(sprintf("<script>%s</script>", script))
   )
 }

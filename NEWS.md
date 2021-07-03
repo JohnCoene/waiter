@@ -15,6 +15,8 @@ the server.
 - Deprecate `spinners` argument of `use_waiter` function. All CSS is bundled with webpack.
 - Performance improvements with use of maps instead of arrays.
 - Improve documentation, new site.
+- Added function `addWaiter` to easily add waiter to dynamic
+Shiny-rendered elements from the UI.
 
 # waiter 0.2.2
 
