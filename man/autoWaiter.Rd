@@ -2,7 +2,7 @@
 % Please edit documentation in R/waiter.R
 \name{autoWaiter}
 \alias{autoWaiter}
-\title{Add Waiter}
+\title{Automatic Waiter}
 \usage{
 autoWaiter(id = NULL, html = NULL, color = NULL, image = "", fadeout = FALSE)
 }

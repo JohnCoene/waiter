@@ -681,7 +681,7 @@ triggerWaiter <- function(
   )
 }
 
-#' Add Waiter
+#' Automatic Waiter
 #' 
 #' This function allows easily adding
 #' waiters to dynamically rendered Shiny content where
