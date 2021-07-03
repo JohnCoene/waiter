@@ -1,5 +1,91 @@
 # Examples
 
+## Automatic
+
+The function `autoWaiter` is there for convenience to easily 
+add waiters to dynamically rendered Shiny content where
+"dynamic" means `render*` and `*output` function pair.
+
+This will display the waiter when the element is being 
+recalculated and hide it when it receives new data.
+
+You can place multiple `autoWaiter` functions in your UI.
+
+By default `autoWaiter` will be applied to all dynamically-rendered elements.
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+	autoWaiter(),
+	actionButton(
+		"trigger",
+		"Render"
+	),
+	plotOutput("plot"),
+	plotOutput("plot2")
+)
+
+server <- function(input, output){
+	output$plot <- renderPlot({
+		input$trigger
+		Sys.sleep(3)
+		plot(cars)
+	})
+
+	output$plot2 <- renderPlot({
+		input$trigger
+		Sys.sleep(5)
+		plot(runif(100))
+	})
+}
+
+shinyApp(ui, server)
+```
+
+Otherwise you can restrict the showing of waiting screens to 
+some elements by passing their `id` as first argument to the
+function.
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+	autoWaiter(c("plot1", "plot3")),
+	actionButton(
+		"trigger",
+		"Render"
+	),
+	plotOutput("plot1"),
+	plotOutput("plot2"),
+	plotOutput("plot3")
+)
+
+server <- function(input, output){
+	output$plot1 <- renderPlot({
+		input$trigger
+		Sys.sleep(2)
+		plot(cars)
+	})
+
+	output$plot2 <- renderPlot({
+		input$trigger
+		Sys.sleep(2)
+		plot(runif(100))
+	})
+	
+	output$plot3 <- renderPlot({
+		input$trigger
+		Sys.sleep(2)
+		plot(runif(100))
+	})
+}
+
+shinyApp(ui, server)
+```
+
 ## On Load
 
 You can show a loading screen on app launch. The loading screen will launch prior to everything else, even the Shiny session. 
@@ -328,45 +414,3 @@ shinyApp(ui, server)
 ```
 
 ![](_assets/img/waiter-image.png)
-
-## Add waiter
-
-The function `addWaiter` is there for convenience to easily 
-add waiters to dynamically rendered Shiny content where
-"dynamic" means `render*` and `*output` function pair.
-
-This will display the waiter when the element is being 
-recalculated and hide it when it receives new data.
-
-You can place multiple `addWaiter` functions in your UI.
-
-```r
-library(shiny)
-library(waiter)
-
-ui <- fluidPage(
-	addWaiter(c("plot", "dom")),
-	actionButton(
-		"trigger",
-		"Render"
-	),
-	plotOutput("plot"),
-	plotOutput("dom")
-)
-
-server <- function(input, output){
-	output$plot <- renderPlot({
-		input$trigger
-		Sys.sleep(3)
-		plot(cars)
-	})
-
-	output$dom <- renderPlot({
-		input$trigger
-		Sys.sleep(5)
-		plot(runif(100))
-	})
-}
-
-shinyApp(ui, server)
-```

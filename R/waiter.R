@@ -690,6 +690,9 @@ triggerWaiter <- function(
 #' This will display the waiter when the element is being 
 #' recalculated and hide it when it receives new data.
 #' 
+#' @param id Vector of ids of elements to overlay the waiter.
+#' If `NULL` then the loading screens are applied to all
+#' elements.
 #' @inheritParams waiter
 #' 
 #' @examples
@@ -697,7 +700,7 @@ triggerWaiter <- function(
 #' library(waiter)
 #' 
 #' ui <- fluidPage(
-#' 	addWaiter(c("plot", "dom")),
+#' 	autoWaiter(),
 #' 	actionButton(
 #' 		"trigger",
 #' 		"Render"
@@ -724,17 +727,14 @@ triggerWaiter <- function(
 #'  shinyApp(ui, server)
 #' 
 #' @export
-addWaiter <- function(
-  id,
+autoWaiter <- function(
+  id = NULL,
   html = NULL, 
   color = NULL, 
   image = "", 
   fadeout = FALSE
 ){
 
-  if(missing(id))
-    stop("Missing `id`")
-  
   # html
   html <- .theme_or_value(html, "WAITER_HTML")
   html <- as.character(html)
@@ -743,12 +743,16 @@ addWaiter <- function(
   color <- .theme_or_value(color, "WAITER_COLOR")
   fadeout <- ifelse(is.logical(fadeout), tolower(fadeout), fadeout)
 
+  auto <- ifelse(is.null(id), "true", "false")
   ids <- paste0("['", paste0(id, collapse = "','"), "']")
 
   script <- sprintf(
-    "$(document).on('shiny:recalculating', function(event) {
-      if(!%s.includes(event.target.id))
-        return ;
+    "let auto = %s;
+    $(document).on('shiny:recalculating', function(event) {
+
+      if(!auto)
+        if(!%s.includes(event.target.id))
+          return ;
 
       waiter.show({
         id: event.target.id,
@@ -761,6 +765,7 @@ addWaiter <- function(
         fadeOut: %s
       });
     });",
+    auto,
     ids,
     html,
     color,

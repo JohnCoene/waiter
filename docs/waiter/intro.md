@@ -35,6 +35,41 @@ It's fairly straightforward
 Always make sure you include the dependencies with `useWaiter` or nothing will work.
 </Note>
 
+## Automatic
+
+Simply place `autoWaiter` in your UI.
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+	autoWaiter(),
+	actionButton(
+		"trigger",
+		"Render"
+	),
+	plotOutput("plot"),
+	plotOutput("plot2")
+)
+
+server <- function(input, output){
+	output$plot <- renderPlot({
+		input$trigger
+		Sys.sleep(3)
+		plot(cars)
+	})
+
+	output$plot2 <- renderPlot({
+		input$trigger
+		Sys.sleep(5)
+		plot(runif(100))
+	})
+}
+
+shinyApp(ui, server)
+```
+
 ## Basic
 
 A basic example could be like this, upon clicking a button we display a full page loading screen.
