@@ -4,8 +4,9 @@ The waiter package comes with a few members of staff but the core member is the 
 
 <Note type='danger'>
 The long-term plan is to deprecate snake_case UI functions 
-in favour of camelCase to be more inline with the rest
-of shiny UI code. e.g.: `use_waiter` will be deprecated in
+in favour of camelCase to align with the rest
+of shiny UI code (it's `selectInput` not `select_input`).
+e.g.: `use_waiter` will be deprecated in
 favour  `useWaiter`.
 
 This only applies to code used in the _Shiny UI._  
@@ -61,7 +62,6 @@ server <- function(input, output, session){
 
 shinyApp(ui, server)
 ```
-
 ![](_assets/img/waiter.gif)
 
 ## Customise
