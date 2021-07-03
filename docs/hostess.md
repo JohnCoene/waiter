@@ -15,8 +15,9 @@ Note the hostess can work with the waiter, see examples.
 
 See `?hostess` for the documentation.
 
-> [!TIP]
-> Make sure you include the dependencies with `use_hostess`.
+<Note type='tip'>
+Make sure you include the dependencies with `use_hostess`.
+</Note>
 
 ## With Waiter
 
@@ -173,8 +174,9 @@ shinyApp(ui, server)
 
 An infinite loading bar is useful when you cannot compute increments.
 
-> [!NOTE]
-> When using `infinite` the hostess must be closed when the computation ends
+<Note type='tip'>
+When using <code>infinite</code> the hostess must be closed when the computation ends
+</Note>
 
 ```r
 library(shiny)

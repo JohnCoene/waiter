@@ -13,8 +13,9 @@ Note that the waitress is a reference class.
 
 See `?waitress` for the documentation.
 
-> [!TIP]
-> Make sure you include the dependencies with `use_waitress`.
+<Note type='tip'>
+Make sure you include the dependencies with `use_waitress`.
+</Note>
 
 ## Plot
 
@@ -126,9 +127,6 @@ shinyApp(ui, server)
 ## Infinite
 
 An infinite loading bar is useful when you cannot compute increments.
-
-> [!NOTE]
-> This argument effectively retires the butler
 
 ```r
 library(shiny)

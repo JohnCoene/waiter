@@ -2,13 +2,14 @@
 
 The waiter lets you show splash loading screens. 
 
-> [!ATTENTION]
-> The long-term plan is to deprecate snake_case UI functions 
-> in favour of camelCase to be more inline with the rest
-> of shiny UI code. e.g.: `use_waiter` will be deprecated in
-> favour  `useWaiter`.
-> 
-> This only applies to code used in the _Shiny UI._  
+<Note type='danger'>
+The long-term plan is to deprecate snake_case UI functions 
+in favour of camelCase to be more inline with the rest
+of shiny UI code. e.g.: `use_waiter` will be deprecated in
+favour  `useWaiter`.
+
+This only applies to code used in the _Shiny UI._  
+</Note>
 
 ## Combos
 
@@ -145,8 +146,9 @@ shinyApp(ui, server)
 
 ## Partial
 
-> [!NOTE]
-> All the features of the full screen are also available on partial loading screens
+<Note type='tip'>
+All the features of the full screen are also available on partial loading screens
+</Note>
 
 Let us demonstrate with a basic Shiny application that includes a single plot which is updated upon clicking an action button. The way we layer the waiter on top of an element is simply by specifying the `id` of said element when we initialise the waiter.
 
@@ -365,8 +367,10 @@ shinyApp(ui, server)
 
 The latest development version (not on CRAN) allows using a background image by passing the path to said image to the `image`. 
 
-> [!NOTE]
-> If using a local image make sure it is served; place it in the `www` directory.
+<Note type='tip'>
+If using a local image make sure it is served; place it in 
+the `www` directory.
+</Note>
 
 ```r
 library(shiny)
@@ -479,8 +483,9 @@ shinyApp(ui, server)
 
 The API of the hostess has been somewhat improved since its initial release; the "loader" can be created from the R6Class itself, which is the recommended approach as it simplifies much of the workflow.
 
-> [!TIP]
-> Make sure you include the dependencies with `use_hostess`.
+<Note type='tip'>
+Make sure you include the dependencies with <code>useHostess</code>
+</Note>
 
 The hostess-waiter team will work as layers over parts of the application.
 
@@ -590,8 +595,9 @@ shinyApp(ui, server)
 
 To use the steward, simply add `use_steward`, it takes a few arguments to customise its look and feel.
 
-> [!TIP]
-> Make sure you include the dependencies with `use_steward`.
+<Note type='tip'>
+Make sure you include the dependencies with <code>useSteward</code>.
+</Note>
 
 ```r
 library(shiny)
@@ -618,8 +624,9 @@ shinyApp(ui, server)
 
 Then again don't forget to add the dependency by placing `use_garcon` in the UI. Initialise the garçon then add progress by setting the percentage with the `set` method where you select the image to animate by passing its id.
 
-> [!TIP]
-> Make sure you include the dependencies with `use_garcon`.
+<Note type='tip'>
+Make sure you include the dependencies with <code>useGarcon</code>.
+</Note>
 
 ```r
 library(shiny)

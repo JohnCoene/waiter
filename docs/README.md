@@ -1,12 +1,12 @@
-[![Travis build status](https://travis-ci.org/JohnCoene/waiter.svg?branch=master)](https://travis-ci.org/JohnCoene/waiter)
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/JohnCoene/waiter?branch=master&svg=true)](https://ci.appveyor.com/project/JohnCoene/waiter)
-[![CRAN status](https://www.r-pkg.org/badges/version/waiter)](https://CRAN.R-project.org/package=waiter)
+![Travis build status](https://travis-ci.org/JohnCoene/waiter.svg?branch=master)
+![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/JohnCoene/waiter?branch=master&svg=true)
+![CRAN status](https://www.r-pkg.org/badges/version/waiter)
+
+<img height=250 src="_assets/img/logo.png" />
 
 # waiter
 
 Loading screens for Shiny; programmatically show and hide partial or full page loading screens with spinners or loading bars, see the [demo](https://shiny.john-coene.com/waiter) and the [cheat sheet](https://waiter.john-coene.com/_assets/cheatsheet.pdf).
-
-![](_assets/img/waiter-home.gif)
 
 ## The Staff
 
@@ -46,9 +46,10 @@ devtools::install_github("JohnCoene/waiter")
 
 <!-- tabs:end -->
 
-> [!TIP]
-> You can learn how to build packages such as waiter
-> with the book [JavaScript for R](https://javascript-for-r.com/)
+<Note type = "tip">
+You can learn how to build packages such as waiter
+with the book <a href='https://javascript-for-r.com/'>JavaScript for R</a>
+</Note>
 
 ## Support
 
