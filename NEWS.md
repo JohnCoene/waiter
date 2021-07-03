@@ -14,6 +14,7 @@ the server.
 - Implement webpack for waiter, minifies and optimises code.
 - Deprecate `spinners` argument of `use_waiter` function. All CSS is bundled with webpack.
 - Performance improvements with use of maps instead of arrays.
+- Improve documentation, new site.
 
 # waiter 0.2.2
 
