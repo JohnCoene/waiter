@@ -9,7 +9,8 @@ of shiny UI code (it's `selectInput` not `select_input`).
 e.g.: `use_waiter` will be deprecated in
 favour  `useWaiter`.
 
-This only applies to code used in the _Shiny UI._  
+This only applies to code used in the _Shiny UI._ 
+Server-side functions will remain snake_case.
 </Note>
 
 ## Preview
@@ -21,19 +22,6 @@ preview_spinner(spin_4())
 ```
 
 ![](_assets/img/waiter-preview.png)
-
-## How to
-
-It's fairly straightforward
-
-1. Place `useWaiter` anywhere in your UI.
-2. Create a waiter
-3. Show the waiter
-4. Hide the waiter
-
-<Note type='tip'>
-Always make sure you include the dependencies with `useWaiter` or nothing will work.
-</Note>
 
 ## Automatic
 
@@ -69,6 +57,20 @@ server <- function(input, output){
 
 shinyApp(ui, server)
 ```
+
+## How to
+
+It's fairly straightforward
+
+1. Place `useWaiter` anywhere in your UI.
+2. Create a waiter
+3. Show the waiter
+4. Hide the waiter
+
+<Note type='tip'>
+Always make sure you include the dependencies with `useWaiter` or nothing will work.
+</Note>
+
 
 ## Basic
 
