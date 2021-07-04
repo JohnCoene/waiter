@@ -155,6 +155,9 @@ $(document).on('shiny:value', function(event) {
   if(w == undefined)
     return ;
   
+  if(!w.hideOnRender)
+    return ;
+  
   hideWaiter(event.name, w.onHidden);
 });
 

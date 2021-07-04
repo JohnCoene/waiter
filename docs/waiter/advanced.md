@@ -98,3 +98,36 @@ shinyApp(ui, server)
 ```
 
 If the waiter is not overlayed upon any element and is used full screen then the events `waiter_shown` and `waiter_hidden` are fired.
+
+## JavaScript
+
+One can also interact with the JavaScript API directly.
+
+After importing the dependency with `useWaiter` you can
+use the functions `waiter.showWaiter()` and 
+`waiter.hideWaiter()`.
+
+The function to show the waiter accepts a single argument, 
+a JSON object. The default values of the JSON are below.
+
+```json
+{
+  id: null, 
+  html: '<div class="container--box"><div class="boxxy"><div class="spinner spinner--1"></div></div></div>', 
+  color: '#333e48', 
+  hideOnRender: false, 
+  hideOnError: false, 
+  hideOnSilentError: false, 
+  image: null,
+  fadeOut: false,
+  ns: null,
+  onShown: setWaiterShownInput,
+  onHidden: setWaiterHiddenInput
+};
+```
+
+The `onShown` and `onHidden` arguments are callback functions.
+If `id` is `null` than a full-screen loading screen is shown.
+
+The function `waiter.hideWaiter` accepts two arguments, 1) the 
+`id` and second the callback function.
