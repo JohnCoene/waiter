@@ -21,7 +21,7 @@ Make sure you include the dependencies with `use_waitress`.
 
 The waitress can be applied to a specific element or the whole page. Note that `call_waitress` and `Waitress$new()` takes a CSS selector, so if you want to apply it to a plot use `#plotId`.
 
-```r
+```r {highlight: [5,11,16,21]}
 library(shiny)
 library(waiter)
 
@@ -56,7 +56,7 @@ shinyApp(ui, server)
 
 Because the waitress takes a selector, we can apply it to different parts of the page, using a class or any other selector, like the `nav`. Note that you can set the range of the progress bar when you initialise it, you are not limited to percentages.
 
-```r
+```r {highlight: [8,16,21,26]}
 library(shiny)
 library(waiter)
 
@@ -66,7 +66,7 @@ ui <- navbarPage(
     "home",
     useWaitress(),
     plotOutput("plot")
-    )
+  )
 )
 
 server <- function(input, output){
@@ -83,7 +83,7 @@ server <- function(input, output){
     
     hist(runif(100))
     waitress$close() # hide when done
-	})
+  })
 
 }
 
@@ -96,7 +96,7 @@ shinyApp(ui, server)
 
 If you do not specify a selector to `call_waitress` then it is applied to the whole page. Note that you can change the color of the waitress in `use_waitress`.
 
-```r
+```r {highlight: [5,12,'15-16',18]}
 library(shiny)
 library(waiter)
 
@@ -112,9 +112,9 @@ server <- function(input, output){
   
   observeEvent(input$load, {
     waitress$
-      auto(percent = 5, ms = 150) # increase by 5 percent every 150 milliseconds
+      auto(percent = 5, ms = 150) # increase by 5 % every 150 ms
       Sys.sleep(3.5)
-    waitress$close()
+      waitress$close()
 	})
 
 }
@@ -128,7 +128,7 @@ shinyApp(ui, server)
 
 An infinite loading bar is useful when you cannot compute increments.
 
-```r
+```r {highlight: [5,12,17,22]}
 library(shiny)
 library(waiter)
 
@@ -151,7 +151,7 @@ server <- function(input, output){
     
     hist(runif(100))
     waitress$close() # hide when done
-	})
+  })
 
 }
 
@@ -164,7 +164,7 @@ shinyApp(ui, server)
 
 You can also use the waitress to display notifications.
 
-```r
+```r {highlight: [5,12,18,21,26]}
 library(shiny)
 library(waiter)
 
@@ -191,7 +191,7 @@ server <- function(input, output){
     
     hist(runif(100))
     waitress$close() # hide when done
-	})
+  })
 
 }
 
@@ -204,7 +204,7 @@ shinyApp(ui, server)
 
 You can also layer a message on the waitress.
 
-```r
+```r {highlight: [5,11,14,17,22]}
 library(shiny)
 library(waiter)
 
@@ -227,7 +227,7 @@ server <- function(input, output){
     
     plot(runif(100))
     waitress$close() # hide when done
-	})
+  })
 
 }
 
@@ -236,11 +236,11 @@ shinyApp(ui, server)
 
 ![](_assets/img/waitress-msg.gif)
 
-# On render
+## On render
 
 Like the waiter, the waitress can be hidden when the element (plot, table, etc.) which it covers is rendered.
 
-```r
+```r {highlight: [5,12,17,20]}
 library(shiny)
 library(waiter)
 

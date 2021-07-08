@@ -19,7 +19,7 @@ The following staff members will help you keep your clients waiting:
 
 Simply place `autoWaiter` in your UI.
 
-```r
+```r {highlight: [5]}
 library(shiny)
 library(waiter)
 

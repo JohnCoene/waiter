@@ -6,7 +6,7 @@ Intergrating waiter with various frameworks or Shiny features.
 
 Remember to use the namespace when specifying an `id`.
 
-```r
+```r {highlight: [14,18,25]}
 library(shiny)
 library(waiter)
 
@@ -48,7 +48,7 @@ shinyApp(ui, server)
 
 Waiter does not work within a promise so call it before.
 
-```r
+```r {highlight: [8,13,21]}
 library(shiny)
 library(waiter)
 library(future)
@@ -83,13 +83,13 @@ shinyApp(ui, server)
 
 bs4Dash comes with a nice preloader, see `preloader` argument of `dashboardPage` function.
 
-```r
+```r {highlight: [8]}
 library(shiny)
 library(bs4Dash)
 library(waiter)
 
 ui <- dashboardPage(
-  title = "Waiter Issue",
+  title = "Waiter Preloader",
   fullscreen = TRUE,
   preloader = list(html = spin_1(), color = "#333e48"),
   header = bs4DashNavbar(
@@ -131,7 +131,7 @@ shinyApp(ui = ui, server = server)
 
 Include `useWaiter` in the body of the dashboard.
 
-```r
+```r {highlight: [16,17,22]}
 library(shiny)
 library(waiter)
 library(bs4Dash)
@@ -162,7 +162,7 @@ shiny::shinyApp(
 
 Place `useWaiter` inside `f7SingleLayout`.
 
-```r
+```r {highlight: [7,13,20]}
 library(shiny)
 library(waiter)
 library(shinyMobile)
@@ -192,8 +192,9 @@ shinyApp(ui, server)
 
 It's very easy with yonder, place the `useWaiter` anywhere really.
 
-```r
+```r {highlight: [5,15,20,22]}
 library(yonder)
+library(waiter)
 
 ui <- container(
   useWaiter(),
@@ -228,7 +229,7 @@ shinyApp(ui, server)
 
 Place `useWaiter` in `dashboardBody`.
 
-```r
+```r {highlight: ['5-8',14,15,22,26,29,31]}
 library(shiny)
 library(waiter)
 library(shinydashboard)
@@ -267,22 +268,21 @@ server <- function(input, output) {
 shinyApp(ui, server)
 ```
 
-
 To display the waiter in shinydashboard's content section (excluding the menu to the left) a minor change is required. The content section does not have an id for waiter to reference, we therefore place a snippet of javascript which gives that `<section>` and id (`waiter-content`).
 
-```r
+```r {highlight: ['8-12',28,54,70,78]}
 ## app.R ##
 library(shiny)
 library(waiter)
 library(shinydashboard)
 
-# add JavaScript to add an id to the <section> tag so we can overlay waiter on top of it
+# add JavaScript to add an id to the <section> tag 
+#so we can overlay waiter on top of it
 add_id_to_section <- "
 $( document ).ready(function() {
   var section = document.getElementsByClassName('content');
   section[0].setAttribute('id', 'waiter-content');
-});
-"
+});"
 
 ui <- dashboardPage(
   dashboardHeader(title = "Basic dashboard"),

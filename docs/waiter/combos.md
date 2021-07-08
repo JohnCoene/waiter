@@ -14,7 +14,7 @@ Make sure you include the dependencies with <code>useHostess</code>
 
 The hostess-waiter team will work as layers over parts of the application.
 
-```r
+```r {highlight: [5,6,13,'16-20',24,27]}
 library(shiny)
 library(waiter)
  
@@ -58,7 +58,7 @@ shinyApp(ui, server)
 
 The approach above might get too wordy when one wants to use a hostess on multiple waiting screens. Take for instance the application above but with more than one plot.
 
-```r
+```r {highlight: ['5-6',17,'20-22','25-32',35,'38-41']}
 library(shiny)
 library(waiter)
 
@@ -124,7 +124,7 @@ To use the steward, simply add `use_steward`, it takes a few arguments to custom
 Make sure you include the dependencies with <code>useSteward</code>.
 </Note>
 
-```r
+```r {highlight: [5,6,8,13]}
 library(shiny)
 library(waiter)
  
@@ -153,7 +153,7 @@ Then again don't forget to add the dependency by placing `use_garcon` in the UI.
 Make sure you include the dependencies with <code>useGarcon</code>.
 </Note>
 
-```r
+```r {highlight: ['5-13',17,21,24]}
 library(shiny)
 library(waiter)
 

@@ -13,7 +13,7 @@ However, the server itself is often not needed for what waiter
 wants to achieve. The function `triggerWaiter` does this 
 (in my opinion, at the expense of more readable code).
 
-```r
+```r {highlight: [5,'6-12']}
 library(shiny)
 library(waiter)
 
@@ -51,7 +51,7 @@ The waiter also fires events in shiny when:
 
 These events are set to `id` that the waiter overlays followed by `_waiter_shown` or `_waiter_hidden`.
 
-```r
+```r {highlight: [5,15,20,23,34,38]}
 library(shiny)
 library(waiter)
 

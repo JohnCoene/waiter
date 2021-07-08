@@ -27,7 +27,7 @@ preview_spinner(spin_4())
 
 Simply place `autoWaiter` in your UI.
 
-```r
+```r {highlight: [5]}
 library(shiny)
 library(waiter)
 
@@ -76,7 +76,7 @@ Always make sure you include the dependencies with `useWaiter` or nothing will w
 
 A basic example could be like this, upon clicking a button we display a full page loading screen.
 
-``` r
+```r {highlight: [5,11,15,17]}
 library(shiny)
 library(waiter)
  
@@ -105,7 +105,7 @@ shinyApp(ui, server)
 
 By default the waiter will show a spinner, 1) you can choose from more than [100 spinners](https://shiny.john-coene.com/waiter/) 2) you are by no means limited to a spinner since the `html` argument takes any htmltools or shiny tag. Below we change the spinner, add some text and change the background color.
 
-``` r
+```r {highlight: ['4-7',10,16,18]}
 library(shiny)
 library(waiter)
 

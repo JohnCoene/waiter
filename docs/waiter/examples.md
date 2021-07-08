@@ -13,7 +13,7 @@ You can place multiple `autoWaiter` functions in your UI.
 
 By default `autoWaiter` will be applied to all dynamically-rendered elements.
 
-```r
+```r {highlight: [5]}
 library(shiny)
 library(waiter)
 
@@ -48,7 +48,7 @@ Otherwise you can restrict the showing of waiting screens to
 some elements by passing their `id` as first argument to the
 function.
 
-```r
+```r {highlight: [5]}
 library(shiny)
 library(waiter)
 
@@ -92,7 +92,7 @@ You can show a loading screen on app launch. The loading screen will launch prio
 
 Though this function is not programmatically launched it still has to be hidden with `waiter_hide`. Ensure you place `waiterShowOnLoad` after `useWaiter`.
 
-```r
+```r {highlight: ['5-6',12]}
 library(shiny)
 library(waiter)
  
@@ -114,7 +114,7 @@ shinyApp(ui, server)
 
 The `waiterPreloader` function shows the full page loading screen when the app is loaded and automatically removes it when all the UI is rendered: only runs once. Thanks to [David Granjon](https://github.com/JohnCoene/waiter/issues/82) for the suggestion.
 
-```r
+```r {highlight: ['5-6']}
 library(shiny)
 library(waiter)
 
@@ -139,7 +139,7 @@ shinyApp(ui, server)
 
 One can use `waiterOnBusy` to automatically display the loading screen when the server is busy computing things and automatically remove it when it goes back to idle.
 
-```r
+```r {highlight: ['5-6']}
 library(shiny)
 library(waiter)
 
@@ -169,7 +169,7 @@ shinyApp(ui, server)
 
 You can also update the `html` of the waiting screen while it's loading, useful if you want to give users more detailed updates.
 
-```r
+```r {highlight: [5,11,16,21,25]}
 library(shiny)
 library(waiter)
  
@@ -211,7 +211,7 @@ All the features of the full screen are also available on partial loading screen
 
 Let us demonstrate with a basic Shiny application that includes a single plot which is updated upon clicking an action button. The way we layer the waiter on top of an element is simply by specifying the `id` of said element when we initialise the waiter.
 
-```r
+```r {highlight: [5,13,18,'20-22']}
 library(shiny)
 library(waiter)
 
@@ -253,9 +253,8 @@ shinyApp(ui, server)
 
 We can actually further simplify the application above: we do not in fact need to use the `hide` method. By default when specifying an `id` waiter will hide the waiting screen when the element, in our case a plot, is rendered. This applies to plots, tables, htmlwidgets, etc. Below we simplify the app, removing the `hide` method and demonstrate that it works on a `tableOutput` and `htmlwidgets` (a [highcharter](http://jkunst.com/highcharter/) chart in this case). We also show that we can pass multiple ids to the waiter to have it show over multiple elements at once.
 
-```r
+```r {highlight: [5,16,21]}
 library(shiny)
-library(waiter)
 library(highcharter)
 
 ui <- fluidPage(
@@ -296,7 +295,7 @@ shinyApp(ui, server)
 
 Note that one might still want to use the `hide` method if one does not layer the waiting screen over a rendered element (if it is not dynamically rendered there is no way for the waiter to know its content has changed).
 
-```r
+```r {highlight: [5,6,21,'26-29']}
 library(shiny)
 library(waiter)
 
@@ -345,7 +344,7 @@ shinyApp(ui, server)
 
 Thus far we have been using built-in spinners but you are by no means restricted to them. Waiter will let you use any HTML content you like, either as a string (e.g.: `<p>Loading...</p>`) and more conveniently [htmltools](https://cran.r-project.org/web/packages/htmltools/index.html) or shiny tags such e.g.(`shiny::p("Loading...")`). You may thus use those to provide richer messages with images, gif, whatever you fancy.
 
-```r
+```r {highlight: ['5-6','8-11',14,20,24,26]}
 library(shiny)
 library(waiter)
 
@@ -389,7 +388,7 @@ If using a local image make sure it is served; place it in
 the `www` directory.
 </Note>
 
-```r
+```r {highlight: [4,7,'12-15',18]}
 library(shiny)
 library(waiter)
 

@@ -23,7 +23,7 @@ Make sure you include the dependencies with `use_hostess`.
 
 You can of course use it together with `waiter` by playing the `hostess_spinner` in the `show_waiter*` function. Note that when used with the full page waiter one should set `center_page` to `TRUE` to center the loader.
 
-```r
+```r {highlight: ['5-16',20,24,27]}
 library(shiny)
 library(waiter)
 
@@ -60,7 +60,7 @@ shinyApp(ui, server)
 
 If you want to show the waiting screen from the server (rather than on load as shown above) you can create the loader from the `Hostess` object, which is much more convenient.
 
-```r
+```r {highlight: [5,6,11,16,20,23]}
 library(shiny)
 library(waiter)
 
@@ -95,7 +95,7 @@ The Hostess is powered by [loadinBar.js](https://loading.io/progress/) which com
 
 The above method of creating the loader also enables creating multiple loaders tied to the same hostess, so one hostess can set or increment multiple loading bars.
 
-```r
+```r {highlight: [5,6,'17-21',26,30]}
 library(shiny)
 library(waiter)
 
@@ -144,7 +144,7 @@ shinyApp(ui, server)
 
 Initialise the hostess with `Hostess$new()` to which you pass the id of the `hostess_loader` you are using, then increment it with the `set` method. 
 
-```r
+```r {highlight: [5,6,12,17]}
 library(shiny)
 library(waiter)
 
@@ -178,7 +178,7 @@ An infinite loading bar is useful when you cannot compute increments.
 When using <code>infinite</code> the hostess must be closed when the computation ends
 </Note>
 
-```r
+```r {highlight: ['5-16',20,22,27]}
 library(shiny)
 library(waiter)
 
@@ -214,7 +214,7 @@ shinyApp(ui, server)
 
 Multiple loaders tied to a single infinite hostess can also be created:
 
-```r
+```r {highlight: [5,6,'17-21',26,27,33]}
 library(shiny)
 library(waiter)
 
