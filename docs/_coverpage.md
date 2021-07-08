@@ -1,8 +1,0 @@
-<img src="_assets/img/logo.png" height=200 />
-
-# waiter <small>v 0.3.0</small>
-
-> Loading Screens for Shiny
-
-[Demo](https://shiny.john-coene.com/waiter)
-[Get Started](/get-started)
