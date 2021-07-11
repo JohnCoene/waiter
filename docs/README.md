@@ -1,5 +1,4 @@
 ![Travis build status](https://travis-ci.org/JohnCoene/waiter.svg?branch=master)
-![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/JohnCoene/waiter?branch=master&svg=true)
 ![CRAN status](https://www.r-pkg.org/badges/version/waiter)
 
 <img height=250 src="_assets/img/logo.png" />

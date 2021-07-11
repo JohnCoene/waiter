@@ -9,14 +9,9 @@ Loading screens for Shiny
 
 <!-- badges: start -->
 
-[![Travis build
-status](https://travis-ci.org/JohnCoene/waiter.svg?branch=master)](https://travis-ci.org/JohnCoene/waiter)
 ![R-CMD-check](https://github.com/JohnCoene/waiter/workflows/R-CMD-check/badge.svg)
-[![CircleCI build
-status](https://circleci.com/gh/JohnCoene/waiter.svg?style=svg)](https://circleci.com/gh/JohnCoene/waiter)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/waiter)](https://CRAN.R-project.org/package=waiter)
-[![R-CMD-check](https://github.com/JohnCoene/waiter/workflows/R-CMD-check/badge.svg)](https://github.com/JohnCoene/waiter/actions)
 <!-- badges: end -->
 
 [Website](https://waiter.john-coene.com) |
