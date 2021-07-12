@@ -1,5 +1,4 @@
-![Travis build status](https://travis-ci.org/JohnCoene/waiter.svg?branch=master)
-![CRAN status](https://www.r-pkg.org/badges/version/waiter)
+![R-CMD-check](https://github.com/JohnCoene/waiter/workflows/R-CMD-check/badge.svg) ![CRAN status](https://www.r-pkg.org/badges/version/waiter)
 
 <img height=250 src="_assets/img/logo.png" />
 
