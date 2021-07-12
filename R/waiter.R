@@ -113,7 +113,8 @@ waiter_show <- function(
   color = "#333e48", 
   logo = "", 
   image = "",
-  hide_on_render = !is.null(id)){
+  hide_on_render = !is.null(id)
+){
 
   if(logo != "") {
     .Deprecated(
@@ -145,10 +146,11 @@ waiter_show <- function(
 waiter_show_on_load <- function(
   html = spin_1(), 
   color = "#333e48",
-  image = ""
+  image = "",
+  logo = ""
 ){
   # to deprecate
-  waiterShowOnLoad(html, color, image)
+  waiterShowOnLoad(html, color, image, logo)
 }
 
 #' @rdname waiter
@@ -156,8 +158,17 @@ waiter_show_on_load <- function(
 waiterShowOnLoad <- function(
   html = spin_1(), 
   color = "#333e48",
-  image = ""
+  image = "",
+  logo = ""
 ){
+  
+  if(logo != "") {
+    .Deprecated(
+      "html", 
+      package = "waiter", 
+      msg = "The logo argument is deprecated, use html instead"
+    )
+  }
   
   html <- as.character(html)
   html <- gsub("\n", "", html)
@@ -182,10 +193,11 @@ waiter_preloader <- function(
   html = spin_1(), 
   color = "#333e48",
   image = "",
-  fadeout = FALSE
+  fadeout = FALSE,
+  logo = ""
 ){
   # to deprecate
-  waiterPreloader(html, color, image, fadeout)
+  waiterPreloader(html, color, image, fadeout, logo)
 }
 
 #' @rdname waiter
@@ -194,8 +206,17 @@ waiterPreloader <- function(
   html = spin_1(), 
   color = "#333e48",
   image = "",
-  fadeout = FALSE
+  fadeout = FALSE,
+  logo = ""
 ){
+  
+  if(logo != "") {
+    .Deprecated(
+      "html", 
+      package = "waiter", 
+      msg = "The logo argument is deprecated, use html instead"
+    )
+  }
   
   html <- as.character(html)
   html <- gsub("\n", "", html)

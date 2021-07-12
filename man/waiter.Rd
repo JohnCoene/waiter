@@ -33,22 +33,24 @@ waiter_show(
   hide_on_render = !is.null(id)
 )
 
-waiter_show_on_load(html = spin_1(), color = "#333e48", image = "")
+waiter_show_on_load(html = spin_1(), color = "#333e48", image = "", logo = "")
 
-waiterShowOnLoad(html = spin_1(), color = "#333e48", image = "")
+waiterShowOnLoad(html = spin_1(), color = "#333e48", image = "", logo = "")
 
 waiter_preloader(
   html = spin_1(),
   color = "#333e48",
   image = "",
-  fadeout = FALSE
+  fadeout = FALSE,
+  logo = ""
 )
 
 waiterPreloader(
   html = spin_1(),
   color = "#333e48",
   image = "",
-  fadeout = FALSE
+  fadeout = FALSE,
+  logo = ""
 )
 
 waiter_hide_on_render(id)
