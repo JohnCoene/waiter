@@ -1,4 +1,4 @@
-# waiter 0.2.3.9000
+# waiter 0.2.3
 
 - Fix [#95](https://github.com/JohnCoene/waiter/issues/95) with different CSS for full screen (`position: fixed`).
 - Fix CSS injection that repeatedly injected CSS to hide recalculating effect.

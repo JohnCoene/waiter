@@ -2,7 +2,7 @@
 
 List of changes made to waiter.
 
-# waiter 0.2.3.9000
+## waiter 0.2.3
 
 - Fix [#95](https://github.com/JohnCoene/waiter/issues/95) with different CSS for full screen (`position: fixed`).
 - Fix CSS injection that repeatedly injected CSS to hide recalculating effect.
@@ -22,14 +22,14 @@ the server.
 - Added function `autoWaiter` to easily add waiter to dynamic
 Shiny-rendered elements from the UI.
 
-# waiter 0.2.2
+## waiter 0.2.2
 
 - Remove `console.log`
 - Add `image` argument to the waiter, allows using a background
 image on the waiter.
 - Fix `hide_on_render` [#94](https://github.com/JohnCoene/waiter/issues/94)
 
-# waiter 0.2.1.9000
+## waiter 0.2.1.9000
 
 - Fixed `waiter_hide_on_render` see [#79](https://github.com/JohnCoene/waiter/issues/79).
 - Added `waiter_preloader` shows the full page loading screen when the app is loaded and automatically removes it when all the UI is rendered: only runs once. [#82](https://github.com/JohnCoene/waiter/issues/82)
