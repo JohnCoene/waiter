@@ -62,7 +62,7 @@ var options = {
     filename: '[name].js',
     path: path.resolve(__dirname, JSON.parse(outputPath)),
     library: {
-      name: 'waiter',
+      name: '[name]',
       type: 'umd',
     }
   },

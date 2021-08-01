@@ -13,25 +13,12 @@ use_hostess <- function(){
 #' @rdname hostess
 #' @export
 useHostess <- function(){
-  singleton(
-    tags$head(
-      tags$link(
-        href = "waiter-assets/hostess/loading-bar.min.css",
-        rel="stylesheet",
-        type="text/css"
-      ),
-      tags$link(
-        href = "waiter-assets/hostess/custom-style.css",
-        rel="stylesheet",
-        type="text/css"
-      ),
-      tags$script(
-        src = "waiter-assets/hostess/loading-bar.min.js"
-      ),
-      tags$script(
-        src = "waiter-assets/hostess/custom.js"
-      )
-    )
+  htmltools::htmlDependency(
+    name = "hostess",
+    version = utils::packageVersion("waiter"),
+    src = "packer",
+    package = "waiter",
+    script = "hostess.js"
   )
 }
 

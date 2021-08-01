@@ -1,3 +1,4 @@
+import './exts/hostess.js';
 import waitress from './exts/waitress/waitress.js';
 import waiter from './exts/waiter/waiter.js';
 

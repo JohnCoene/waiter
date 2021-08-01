@@ -7,7 +7,9 @@
     "doc": "docs",
     "man": "man"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@loadingio/loading-bar": "^0.1.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.14.6",
     "babel-loader": "^8.2.2",
@@ -22,7 +24,7 @@
     "none": "webpack --config webpack.dev.js --mode=none",
     "development": "webpack --config webpack.dev.js",
     "production": "webpack --config webpack.prod.js",
-    "watch": "webpack --config webpack.config.js -d --watch"
+    "watch": "webpack --config webpack.dev.js -d --watch"
   },
   "repository": {
     "type": "git",

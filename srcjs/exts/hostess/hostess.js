@@ -1,7 +1,10 @@
+import { ldBar } from '@loadingio/loading-bar';
+import '@loadingio/loading-bar/dist/loading-bar.css';
+
 var hostesses = [];
 var intervals = [];
 
-Shiny.addCustomMessageHandler('hostess-init', function(opts) {
+Shiny.addCustomMessageHandler('hostess-init', (opts) => {
   hostesses[opts.id] = new ldBar("#" + opts.id);
   
   if(opts.infinite){
@@ -17,11 +20,11 @@ Shiny.addCustomMessageHandler('hostess-init', function(opts) {
   }
 });
 
-Shiny.addCustomMessageHandler('hostess-set', function(opts) {
+Shiny.addCustomMessageHandler('hostess-set', (opts) => {
   hostesses[opts.id].set(opts.value);
 
   if(opts.value == 100){
-    var notif = document.getElementById(opts.id);
+    let notif = document.getElementById(opts.id);
 
     if(notif != undefined)
       notif.remove();
@@ -29,13 +32,13 @@ Shiny.addCustomMessageHandler('hostess-set', function(opts) {
   }
 });
 
-Shiny.addCustomMessageHandler('hostess-notify', function(opts) {
+Shiny.addCustomMessageHandler('hostess-notify', (opts) => {
 
   // create div
-  var notification = document.createElement("DIV");
+  let notification = document.createElement("DIV");
 
   // position div
-  var pos = position_to_coords(opts.position);
+  let pos = position_to_coords(opts.position);
   notification.style.bottom = pos.bottom;
   notification.style.right = pos.right;
   notification.style.left = pos.left;
@@ -66,8 +69,8 @@ Shiny.addCustomMessageHandler('hostess-notify', function(opts) {
   }
 });
 
-Shiny.addCustomMessageHandler('hostess-end', function(opts) {
-  var bar = document.getElementById(opts.id);
+Shiny.addCustomMessageHandler('hostess-end', (opts) => {
+  let bar = document.getElementById(opts.id);
   
   if(opts.infinite){
     clearInterval(intervals[opts.id]);
@@ -82,12 +85,13 @@ Shiny.addCustomMessageHandler('hostess-end', function(opts) {
     }, 350)
 });
 
-function position_to_coords(position){
-  var pos = {};
+const position_to_coords = (position) => {
+  let pos = {};
 
-  var base_y = 100;
-  var current_notifications = document.getElementsByClassName("waitress-notification");
-  for(var n of current_notifications){
+  let base_y = 100;
+  let current_notifications = document.getElementsByClassName("waitress-notification");
+
+  for(let n of current_notifications){
     base_y = base_y + 100 + n.offsetHeight;
   }
 
