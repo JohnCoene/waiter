@@ -17,6 +17,7 @@ the server.
 - Improve documentation, new site.
 - Added function `autoWaiter` to easily add waiter to dynamic
 Shiny-rendered elements from the UI.
+- Use webpack and packer to minify and optimise hostess code.
 
 # waiter 0.2.2
 
