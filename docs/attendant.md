@@ -172,7 +172,62 @@ shinyApp(ui, server)
 
 ![](_assets/img/att.gif)
 
-## Use Case
+## With Waiter
+
+You can also use it with waiter, use `attendantBar` as `html`
+for the waiter, everything else works the same.
+
+<Note type="danger">
+When using the attendant with waiter, you <strong>must</strong>
+set the <code>width</code> to an absolute value in pixels
+(or numeric), a relative width (e.g.: in percentage) will
+not work.
+</Note>
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  useWaiter(), # include dependencies
+  useAttendant(),
+  actionButton("show", "Show loading bar")
+)
+
+server <- function(input, output, session){
+  # create a waiter
+  w <- Waiter$new(
+    color = "white",
+    html = attendantBar(
+      "the-bar", 
+      width = 200, # MUST be set with waiter
+      text = "loading stuff"
+    )
+  )
+
+  att <- Attendant$new("the-bar")
+
+  # on button click
+  observeEvent(input$show, {
+    w$show()
+    att$set(40)
+    att$auto()
+
+    on.exit({
+      att$done()
+      w$hide()
+    })
+
+    Sys.sleep(9)
+  })
+}
+
+shinyApp(ui, server)
+```
+
+![](_assets/img/att4.gif)
+
+## Use Cases
 
 You may have operations that take time, require a progress bar
 to keep the user in the know and patiently waiting but which
@@ -244,57 +299,57 @@ shinyApp(ui, server)
 This way the progress bar can be reused, even for other purposes
 (as long as these do not run at the same time).
 
-## With Waiter
+---
 
-You can also use it with waiter, use `attendantBar` as `html`
-for the waiter, everything else works the same.
-
-<Note type="danger">
-When using the attendant with waiter, you <strong>must</strong>
-set the <code>width</code> to an absolute value in pixels
-(or numeric), a relative width (e.g.: in percentage) will
-not work.
-</Note>
+Alternatively one could use a modal and place the progress bar
+in it.
 
 ```r
 library(shiny)
 library(waiter)
 
 ui <- fluidPage(
-  useWaiter(), # include dependencies
   useAttendant(),
-  actionButton("show", "Show loading bar")
+  br(),
+  actionButton("start", "Call API"),
+  verbatimTextOutput("response")
 )
 
-server <- function(input, output, session){
-  # create a waiter
-  w <- Waiter$new(
-    color = "white",
-    html = attendantBar(
-      "the-bar", 
-      width = 200, # MUST be set with waiter
-      text = "loading stuff"
+server <- function(input, output){
+  att <- Attendant$new("progress-bar", hide_on_max = TRUE)
+
+  response <- eventReactive(input$start, {
+
+    showModal(
+      modalDialog(
+        size = "s",
+        attendantBar(
+          "progress-bar",
+          class = "top-progress",
+          text = "Calling API",
+        ),
+        footer = NULL
+      )
     )
-  )
-
-  att <- Attendant$new("the-bar")
-
-  # on button click
-  observeEvent(input$show, {
-    w$show()
-    att$set(40)
+    # call the API here
+    att$set(25)
     att$auto()
 
     on.exit({
       att$done()
-      w$hide()
+      removeModal()
     })
 
-    Sys.sleep(9)
+    Sys.sleep(7)
+    "Response from the API!"
+  })
+
+  output$response <- renderPrint({
+    response()
   })
 }
 
 shinyApp(ui, server)
 ```
 
-![](_assets/img/att4.gif)
+![](_assets/img/att5.gif)
