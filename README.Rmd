@@ -35,13 +35,13 @@ yes <- ":heavy_check_mark:"
 no <- ":heavy_multiplication_x:"
 
 feat <- tibble::tribble(
-  ~"Feature",         ~"Waiter", ~"Waitress", ~"Hostess",
-  "Progress Bar",       yes,      yes,         yes,
-  "Full Screen",        yes,      yes,         no,
-  "Works with waiter",  yes,      no,          yes,
-  "Spinner",            yes,      no,          no,
-  "Updatable",          yes,      no,          no,
-  "Notifications",      no,      yes,          no
+  ~"Feature",         ~"Waiter", ~"Waitress", ~"Hostess", ~"Attendant",
+  "Progress Bar",       yes,      yes,         yes,       yes,
+  "Full Screen",        yes,      yes,         no,        no,
+  "Works with waiter",  yes,      no,          yes,       yes,
+  "Spinner",            yes,      no,          no,        no,
+  "Updatable",          yes,      no,          no,        yes,
+  "Notifications",      no,      yes,          no,        no 
 )
 
 knitr::kable(feat, align = "c")
