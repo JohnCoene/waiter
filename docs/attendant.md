@@ -1,11 +1,17 @@
 # Attendant
 
 <Badge type="warning">New</Badge> The attendant is not 
-currently on CRAN
+currently on CRAN.
 
 A new family of functions to display progress bars using 
 Bootstrap's built-in progress bars; waiter allows easily
 animating them.
+
+__Goal:__ The aim of the attendant is to fill a gap in progress
+reporting with shiny and waiter. While other families of functions
+in the waiter package allow displaying feedback on top of existing
+HTML elements, the attendant is permanently in the DOM (not 
+necessarily visible though).
 
 <Note>
 Works with both Bootstrap 3 and 4.
