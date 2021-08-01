@@ -58,22 +58,22 @@ attendantBar <- function(
 	height <- paste(height, style)
 
 	color <- match.arg(color)
-	cl <- sprintf("progress-bar bg-%s", color)
+	class_inner <- sprintf("progress-bar bg-%s", color)
 
 	if(striped)
-		cl <- paste(cl, "progress-bar-striped")
+		class_inner <- paste(class_inner, "progress-bar-striped")
 
 	if(animated)
-		cl <- paste(cl, "progress-bar-animated")
+		class_inner <- paste(class_inner, "progress-bar-animated")
 
-	cl <- paste(cl, class)
+	class_outer <- paste("progress", class)
 
 	shiny::tags$div(
-		class = "progress",
+		class = class_outer,
 		id = id,
 		style = height,
 		shiny::tags$div(
-			class = cl,
+			class = class_inner,
 			role = "progressbar",
 			`aria-valuenow` = as.character(value),
 			`aria-valuemin` = as.character(min),

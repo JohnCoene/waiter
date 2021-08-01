@@ -165,3 +165,77 @@ shinyApp(ui, server)
 ```
 
 ![](_assets/img/att.gif)
+
+## Use Case
+
+You may have operations that take time, require a progress bar
+to keep the user in the know and patiently waiting but which
+cannot/should not be layered on top of other elements (as do
+other waiter functions).
+
+Below we create an `attendantBar`, add a class of `top-progress`
+to it. Then with a bit of CSS make it such that this bar is
+
+1. Initialised as hidden with `display: none`.
+2. At the top of the page with `position: absolute;top:0;left:0;`
+3. Make sure it takes the whole width of the page with `width:100%`.
+
+Server-side we set `hide_on_max` to `TRUE` to make sure  that 1)
+the progress bar is hidden again once `done` and 2) made visible
+again when the progress bar is restarted.
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  tags$head(
+    tags$style(
+      ".top-progress{
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }"
+    )
+  ),
+  useAttendant(),
+  attendantBar(
+		"progress-bar",
+    height = 3,
+    class = 'top-progress'
+	),
+  br(),
+  actionButton("start", "Call API"),
+  verbatimTextOutput("response")
+)
+
+server <- function(input, output){
+  att <- Attendant$new("progress-bar", hide_on_max = TRUE)
+
+  response <- eventReactive(input$start, {
+    # call the API here
+    att$set(25)
+    att$auto()
+
+    on.exit({
+      att$done()
+    })
+
+    Sys.sleep(7)
+    "Response from the API!"
+  })
+
+  output$response <- renderPrint({
+    response()
+  })
+}
+
+shinyApp(ui, server)
+```
+
+![](_assets/img/att2.gif)
+
+This way the progress bar can be reused, even for other purposes
+(as long as these do not run at the same time).
