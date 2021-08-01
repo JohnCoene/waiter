@@ -1,35 +1,36 @@
 import { ldBar } from '@loadingio/loading-bar';
 import '@loadingio/loading-bar/dist/loading-bar.css';
 
-var hostesses = [];
-var intervals = [];
+let hostesses = [];
+let intervals = [];
 
 Shiny.addCustomMessageHandler('hostess-init', (opts) => {
   hostesses[opts.id] = new ldBar("#" + opts.id);
   
-  if(opts.infinite){
-    var value = 0,
-        inc = 0,
-        end = 100;
+  if(!opts.infinite)
+    return ;
 
-    intervals[opts.id] = setInterval(function(){
-      inc = ((end - value) / (end + value));
-      value = Math.round((value + inc + Number.EPSILON) * 1000) / 1000
-      hostesses[opts.id].set(value);
-    }, 350);
-  }
+  let value = 0,
+      inc = 0,
+      end = 100;
+
+  intervals[opts.id] = setInterval(function(){
+    inc = ((end - value) / (end + value));
+    value = Math.round((value + inc + Number.EPSILON) * 1000) / 1000
+    hostesses[opts.id].set(value);
+  }, 350);
 });
 
 Shiny.addCustomMessageHandler('hostess-set', (opts) => {
   hostesses[opts.id].set(opts.value);
 
-  if(opts.value == 100){
-    let notif = document.getElementById(opts.id);
+  if(opts.value != 100)
+    return ;
+  
+  let notif = document.getElementById(opts.id);
 
-    if(notif != undefined)
-      notif.remove();
-
-  }
+  if(notif != undefined)
+    notif.remove();
 });
 
 Shiny.addCustomMessageHandler('hostess-notify', (opts) => {
@@ -56,17 +57,18 @@ Shiny.addCustomMessageHandler('hostess-notify', (opts) => {
 
   hostesses[opts.id] = new ldBar("#" + opts.id);
   
-  if(opts.infinite){
-    var value = 0,
-        inc = 0,
-        end = 100;
+  if(!opts.infinite)
+    return ;
 
-    intervals[opts.id] = setInterval(function(){
-      inc = ((end - value) / (end + value));
-      value = Math.round((value + inc + Number.EPSILON) * 1000) / 1000
-      hostesses[opts.id].set(value);
-    }, 350);
-  }
+  let value = 0,
+      inc = 0,
+      end = 100;
+
+  intervals[opts.id] = setInterval(function(){
+    inc = ((end - value) / (end + value));
+    value = Math.round((value + inc + Number.EPSILON) * 1000) / 1000
+    hostesses[opts.id].set(value);
+  }, 350);
 });
 
 Shiny.addCustomMessageHandler('hostess-end', (opts) => {
@@ -76,13 +78,11 @@ Shiny.addCustomMessageHandler('hostess-end', (opts) => {
     clearInterval(intervals[opts.id]);
     hostesses[opts.id].set(95);
   }
-    
   
   if(bar != undefined)
-    // small delay to allow the loading bar to end
     setTimeout(function(){
       bar.remove();
-    }, 350)
+    }, 350);
 });
 
 const position_to_coords = (position) => {
