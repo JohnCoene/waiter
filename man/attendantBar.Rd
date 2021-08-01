@@ -14,6 +14,7 @@ attendantBar(
   striped = FALSE,
   animated = FALSE,
   height = 20,
+  width = "100\%",
   class = "",
   style = ""
 )
@@ -36,7 +37,11 @@ This can then be dynamically modified with \code{Attendant}.}
 bar.}
 
 \item{height}{Height of the progress bar, numerical values
-are converted to pixels (\code{px} CSS).}
+are converted to pixels (\code{px} CSS), any other valid CSS size
+is valid too.}
+
+\item{width}{Width of the bar, defaults to \verb{100\%}, numerical
+values (e.g.: \code{42}) are converted to pixels (\code{px}).}
 
 \item{class, style}{Additional style and class to pass to the
 parent wrapper of the progress bar.}

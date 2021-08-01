@@ -178,7 +178,6 @@ to it. Then with a bit of CSS make it such that this bar is
 
 1. Initialised as hidden with `display: none`.
 2. At the top of the page with `position: absolute;top:0;left:0;`
-3. Make sure it takes the whole width of the page with `width:100%`.
 
 Server-side we set `hide_on_max` to `TRUE` to make sure  that 1)
 the progress bar is hidden again once `done` and 2) made visible
@@ -196,7 +195,6 @@ ui <- fluidPage(
         position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
       }"
     )
   ),
@@ -239,3 +237,58 @@ shinyApp(ui, server)
 
 This way the progress bar can be reused, even for other purposes
 (as long as these do not run at the same time).
+
+## With Waiter
+
+You can also use it with waiter, use `attendantBar` as `html`
+for the waiter, everything else works the same.
+
+<Note type="danger">
+When using the attendant with waiter, you <strong>must</strong>
+set the <code>width</code> to an absolute value in pixels
+(or numeric), a relative width (e.g.: in percentage) will
+not work.
+</Note>
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  useWaiter(), # include dependencies
+  useAttendant(),
+  actionButton("show", "Show loading bar")
+)
+
+server <- function(input, output, session){
+  # create a waiter
+  w <- Waiter$new(
+    color = "white",
+    html = attendantBar(
+      "the-bar", 
+      width = 200, # MUST be set with waiter
+      text = "loading stuff"
+    )
+  )
+
+  att <- Attendant$new("the-bar")
+
+  # on button click
+  observeEvent(input$show, {
+    w$show()
+    att$set(40)
+    att$auto()
+
+    on.exit({
+      att$done()
+      w$hide()
+    })
+
+    Sys.sleep(9)
+  })
+}
+
+shinyApp(ui, server)
+```
+
+![](_assets/img/att4.gif)

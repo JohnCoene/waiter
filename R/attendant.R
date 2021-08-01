@@ -29,7 +29,10 @@ useAttendant <- function(){
 #' @param animated Whether to animate the stripe on the progress
 #' bar.
 #' @param height Height of the progress bar, numerical values
-#' are converted to pixels (`px` CSS).
+#' are converted to pixels (`px` CSS), any other valid CSS size
+#' is valid too.
+#' @param width Width of the bar, defaults to `100%`, numerical
+#' values (e.g.: `42`) are converted to pixels (`px`).
 #' @param class,style Additional style and class to pass to the
 #' parent wrapper of the progress bar.
 #' 
@@ -44,6 +47,7 @@ attendantBar <- function(
 	striped = FALSE,
 	animated = FALSE,
 	height = 20,
+	width = "100%",
 	class = "",
 	style = ""
 ){
@@ -54,8 +58,11 @@ attendantBar <- function(
 	if(is.numeric(height))
 		height <- sprintf("%spx", height)
 	
-	height <- sprintf("height: %s;", height)
-	height <- paste(height, style)
+	if(is.numeric(width))
+		width <- sprintf("%spx", width)
+	
+	height <- sprintf("height: %s;width:%s;", height, width)
+	style <- paste(style, height)
 
 	color <- match.arg(color)
 	class_inner <- sprintf("progress-bar bg-%s", color)
@@ -71,7 +78,7 @@ attendantBar <- function(
 	shiny::tags$div(
 		class = class_outer,
 		id = id,
-		style = height,
+		style = style,
 		shiny::tags$div(
 			class = class_inner,
 			role = "progressbar",
