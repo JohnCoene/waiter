@@ -107,6 +107,8 @@ server <- function(input, output){
 shinyApp(ui, server)
 ```
 
+![](_assets/img/att1.gif)
+
 ## Auto
 
 You can also use `auto` method to automatically increase the 
@@ -152,5 +154,6 @@ server <- function(input, output){
 }
 
 shinyApp(ui, server)
-
 ```
+
+![](_assets/img/att.gif)
