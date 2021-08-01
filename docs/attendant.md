@@ -106,3 +106,51 @@ server <- function(input, output){
 
 shinyApp(ui, server)
 ```
+
+## Auto
+
+You can also use `auto` method to automatically increase the 
+progress bar. Note that you will have to call the `done` method
+when this should be stopped.
+
+The `auto` method takes two arguments:
+
+- `ms`: The number of milliseconds between every increase of the 
+progress bar by `value` (see below).
+- `value`: The value to increase the progress bar at every `ms`.
+
+By default, it increases the progress bar by 1 every 400 ms. 
+
+Improtantly, this is not an infinite progress bar, it runs out
+at some point but can nonetheless be useful for long computations
+the length of which cannot be determined ahead of time.
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  useAttendant(),
+  actionButton("start", "start"),
+  attendantBar("progress-bar")
+)
+
+server <- function(input, output){
+  att <- Attendant$new("progress-bar", hide_on_max = TRUE)
+
+  observeEvent(input$start, {
+
+    att$set(80) # start at 80%
+    att$auto() # automatically increment
+
+    on.exit({
+      att$done() # after 4 seconds
+    })
+
+    Sys.sleep(4)
+  })
+}
+
+shinyApp(ui, server)
+
+```

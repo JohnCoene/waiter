@@ -116,7 +116,7 @@ Attendant <- R6::R6Class(
 #' @param text Text to display on the progress bar.
 		inc = function(value = 1, text = NULL){
 			private$.value = private$.value + value;
-			private$.sendMessage("attendant-set", value = value, text = text)
+			private$set(private$.value, text = text)
 			invisible(self)
 		},
 #' @details Decrease
@@ -124,7 +124,7 @@ Attendant <- R6::R6Class(
 #' @param text Text to display on the progress bar.
 		dec = function(value = 1, text = NULL){
 			private$.value = private$.value - value;
-			private$.sendMessage("attendant-set", value = value, text = text)
+			private$set(private$.value, text = text)
 			invisible(self)
 		},
 #' @details Set
@@ -138,6 +138,17 @@ Attendant <- R6::R6Class(
 
 			private$.sendMessage("attendant-set", value = value, text = text)
 			invisible(self)
+		},
+#' @details Done with progress
+#' @param text Text to display on the progress bar.
+		done = function(text = NULL){
+			private$.sendMessage("attendant-done", text = text)
+		},
+#' @details Automatically increase the progress bar until done
+#' @param ms Milliseconds between increment of `value`.
+#' @param value Value to increment by at every `ms`.
+		auto = function(ms = 400){
+			private$.sendMessage("attendant-auto", ms = ms, value = 1)
 		}
 	),
 	private = list(

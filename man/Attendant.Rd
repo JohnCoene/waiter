@@ -13,6 +13,8 @@ Manage the attendant loading bar with bootstrap 4.
 \item \href{#method-inc}{\code{Attendant$inc()}}
 \item \href{#method-dec}{\code{Attendant$dec()}}
 \item \href{#method-set}{\code{Attendant$set()}}
+\item \href{#method-done}{\code{Attendant$done()}}
+\item \href{#method-auto}{\code{Attendant$auto()}}
 \item \href{#method-clone}{\code{Attendant$clone()}}
 }
 }
@@ -110,6 +112,48 @@ Decrease
 }
 \subsection{Details}{
 Set
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-done"></a>}}
+\if{latex}{\out{\hypertarget{method-done}{}}}
+\subsection{Method \code{done()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Attendant$done(text = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{text}}{Text to display on the progress bar.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+Done with progress
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-auto"></a>}}
+\if{latex}{\out{\hypertarget{method-auto}{}}}
+\subsection{Method \code{auto()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Attendant$auto(ms = 400)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{ms}}{Milliseconds between increment of \code{value}.}
+
+\item{\code{value}}{Value to increment by at every \code{ms}.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+Automatically increase the progress bar until done
 }
 
 }
