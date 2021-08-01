@@ -16,7 +16,7 @@ Note the hostess can work with the waiter, see examples.
 See `?hostess` for the documentation.
 
 <Note type='tip'>
-Make sure you include the dependencies with `use_hostess`.
+Make sure you include the dependencies with `useHostess`.
 </Note>
 
 ## With Waiter

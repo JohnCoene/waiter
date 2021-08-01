@@ -27,6 +27,11 @@ state from the server.
 Place `attendantBar` in your UI where you would like the progress
 bar to be displayed. Then from the server control it's state.
 
+<Note type='tip'>
+Make sure you include the dependencies with
+<code>useAttendant</code>.
+</Note>
+
 Note that we give the progress bar in the UI an id and reference
 it server-side, ensure these are unique.
 
@@ -91,7 +96,8 @@ shinyApp(ui, server)
 
 ![](_assets/img/att3.gif)
 
-_You can also control the thickness of the progress bar._
+_You can also control the thickness of the progress bar as well as
+the background color._
 
 ## Text
 
@@ -282,7 +288,9 @@ server <- function(input, output){
       att$done()
     })
 
+    # call the API here
     Sys.sleep(7)
+
     "Response from the API!"
   })
 
@@ -331,16 +339,18 @@ server <- function(input, output){
         footer = NULL
       )
     )
-    # call the API here
+
     att$set(25)
     att$auto()
-
+    
     on.exit({
       att$done()
       removeModal()
     })
-
+    
+    # call the API here
     Sys.sleep(7)
+
     "Response from the API!"
   })
 

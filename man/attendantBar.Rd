@@ -16,7 +16,8 @@ attendantBar(
   height = 20,
   width = "100\%",
   class = "",
-  style = ""
+  style = "",
+  bg_color = "#f5f5f5"
 )
 }
 \arguments{
@@ -28,8 +29,6 @@ values the progress bar can take.}
 
 \item{text}{Optional text to display on the progress bar.
 This can then be dynamically modified with \code{Attendant}.}
-
-\item{color}{Color of the progress bar.}
 
 \item{striped}{Whether the progress bar should be striped.}
 
@@ -45,6 +44,9 @@ values (e.g.: \code{42}) are converted to pixels (\code{px}).}
 
 \item{class, style}{Additional style and class to pass to the
 parent wrapper of the progress bar.}
+
+\item{bg_color, color}{Color, and background color
+of the progress bar.}
 }
 \description{
 Create a Bootstrap 4 progress bar.

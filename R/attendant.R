@@ -24,7 +24,8 @@ useAttendant <- function(){
 #' values the progress bar can take.
 #' @param text Optional text to display on the progress bar.
 #' This can then be dynamically modified with `Attendant`.
-#' @param color Color of the progress bar.
+#' @param bg_color,color Color, and background color 
+#' of the progress bar.
 #' @param striped Whether the progress bar should be striped.
 #' @param animated Whether to animate the stripe on the progress
 #' bar.
@@ -49,7 +50,8 @@ attendantBar <- function(
 	height = 20,
 	width = "100%",
 	class = "",
-	style = ""
+	style = "",
+	bg_color = "#f5f5f5"
 ){
 
 	if(missing(id))
@@ -61,7 +63,7 @@ attendantBar <- function(
 	if(is.numeric(width))
 		width <- sprintf("%spx", width)
 	
-	height <- sprintf("height: %s;width:%s;", height, width)
+	height <- sprintf("height: %s;width:%s;background-color:%s;", height, width, bg_color)
 	style <- paste(style, height)
 
 	color <- match.arg(color)

@@ -14,7 +14,8 @@ Note that the waitress is a reference class.
 See `?waitress` for the documentation.
 
 <Note type='tip'>
-Make sure you include the dependencies with `use_waitress`.
+Make sure you include the dependencies with 
+<code>useWaitress</code>.
 </Note>
 
 ## Plot

@@ -68,7 +68,8 @@ It's fairly straightforward
 4. Hide the waiter
 
 <Note type='tip'>
-Always make sure you include the dependencies with `useWaiter` or nothing will work.
+Always make sure you include the dependencies with 
+<code>useWaiter</code> or nothing will work.
 </Note>
 
 
