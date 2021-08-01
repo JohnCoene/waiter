@@ -1,6 +1,6 @@
 # Combos
 
-The waiter works hand-in-hand with the `steward`, the `butler`, the `waitress` and the `hostess`. The former will let you animate the background of your loading screen while the latter will let you show loading bars on the loading screen.
+The waiter works hand-in-hand with the `steward`, the `waitress` and the `hostess`. The former will let you animate the background of your loading screen while the latter will let you show loading bars on the loading screen.
 
 There is an online demo with a list of all [100+ spinners](https://shiny.john-coene.com/waiter/) available, you can also see the list of available spinners in R with `?spinners`.
 
