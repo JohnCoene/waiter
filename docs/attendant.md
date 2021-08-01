@@ -48,19 +48,23 @@ shinyApp(ui, server)
 ## Customise
 
 The look of the progress bar is controled from the UI function.
-Below we create a thin, striped, and animated progress bar that
+Below we create a green, striped, and animated progress bar that
 goes up to 1000.
 
-```r {highlight: ['6-13']}
+<Note type="warning">
+The <code>animated</code> option will only work with bootstrap 4.
+</Note>
+
+```r {highlight: [5,'7-13']}
 library(shiny)
 library(waiter)
 
 ui <- fluidPage(
+  theme = bslib::bs_theme(version = 4),
   useAttendant(),
   attendantBar(
 		"progress-bar",
 		max = 1000,
-		height = 1,
 		color = "success",
 		striped = TRUE,
 		animated = TRUE
@@ -78,6 +82,10 @@ server <- function(input, output){
 
 shinyApp(ui, server)
 ```
+
+![](_assets/img/att3.gif)
+
+_You can also control the thickness of the progress bar._
 
 ## Text
 

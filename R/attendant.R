@@ -73,8 +73,8 @@ attendantBar <- function(
 		id = id,
 		style = height,
 		shiny::tags$div(
-			class = "progress-bar",
-			role = cl,
+			class = cl,
+			role = "progressbar",
 			`aria-valuenow` = as.character(value),
 			`aria-valuemin` = as.character(min),
 			`aria-valuemax` = as.character(max),
