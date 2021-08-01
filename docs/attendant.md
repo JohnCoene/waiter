@@ -51,7 +51,7 @@ The look of the progress bar is controled from the UI function.
 Below we create a thin, striped, and animated progress bar that
 goes up to 1000.
 
-```r {highlight: ['6-14']}
+```r {highlight: ['6-13']}
 library(shiny)
 library(waiter)
 
