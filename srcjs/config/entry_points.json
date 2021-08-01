@@ -1,5 +1,6 @@
 {
   "waiter": "./srcjs/exts/waiter/waiter.js",
   "waitress": "./srcjs/exts/waitress/waitress.js",
-  "hostess": "./srcjs/exts/hostess/hostess.js"
+  "hostess": "./srcjs/exts/hostess/hostess.js",
+  "attendant": "./srcjs/exts/attendant/attendant.js"
 }

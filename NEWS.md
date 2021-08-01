@@ -18,6 +18,8 @@ the server.
 - Added function `autoWaiter` to easily add waiter to dynamic
 Shiny-rendered elements from the UI.
 - Use webpack and packer to minify and optimise hostess code.
+- Added `attendant` progress bars, for easy progress display without
+bringing in additional dependencies.
 
 # waiter 0.2.2
 
