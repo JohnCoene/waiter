@@ -20,6 +20,7 @@ Shiny-rendered elements from the UI.
 - Use webpack and packer to minify and optimise hostess code.
 - Added `attendant` progress bars, for easy progress display without
 bringing in additional dependencies.
+- Document JavaScript [internals](https://waiter.john-coene.com/jsdoc/tutorial-waiter)
 
 # waiter 0.2.2
 

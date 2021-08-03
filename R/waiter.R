@@ -238,7 +238,7 @@ waiterPreloader <- function(
     "window.ran = false;",
     "$(document).on('shiny:idle', function(event){
       if(!window.ran)
-        waiter.hideWaiter(id = null);
+        waiter.hide(id = null);
 
       window.ran = true;
     });"
@@ -272,7 +272,7 @@ waiterHideOnRender <- function(id){
   script <- sprintf(
     "$(document).on('shiny:value', function(event) {
       if(event.name == '%s'){
-        waiter.hideWaiter(null);
+        waiter.hide(null);
       }
     });",
     id
@@ -316,7 +316,7 @@ waiterOnBusy <- function(html = spin_1(), color = "#333e48", logo = "", image = 
     });
     
     $(document).on('shiny:idle', function(event) {
-      waiter.hideWaiter(null);
+      waiter.hide(null);
     });"
   )
 

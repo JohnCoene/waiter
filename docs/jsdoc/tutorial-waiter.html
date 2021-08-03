@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: waiter/callbacks.js</title>
+    <title>JSDoc: Tutorial: waiter</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,45 +17,49 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: waiter/callbacks.js</h1>
+    <h1 class="page-title">Tutorial: waiter</h1>
 
-    
-
-
-
-    
     <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>/**
- * Callback function to set the waiter input on shown.
- * @function
- * @param  {string} id - Id of element to show.
- */
-export const setWaiterShownInput = (id) => {
-  let input = "waiter_shown";
-  if(id !== null)
-    input = id + "_" + input;
-  
-  Shiny.setInputValue(input, true, {priority: 'event'});
-};
-/**
- * Callback function to set the waiter input on hidden.
- * @function
- * @param  {string} id - Id of element to show.
- */
-export const setWaiterHiddenInput = (id) => {
-  let input = "waiter_hidden";
-  if(id !== null)
-    input = id + "_" + input;
-  
-  Shiny.setInputValue(input, true, {priority: 'event'});
-}
+
+<header>
+    
+
+    <h2>waiter</h2>
+</header>
+
+<article>
+    <h1>Waiter</h1>
+<p>Using waiter.</p>
+<h2>Show</h2>
+<p>Show a waiter with default options.
+If <code>id</code> is <code>null</code> then the waiter is full screen.</p>
+<pre class="prettyprint source lang-js"><code>// default
+waiter.show({
+  id: null, 
+  html: '&lt;div class=&quot;container--box&quot;>&lt;div class=&quot;boxxy&quot;>&lt;div class=&quot;spinner spinner--1&quot;>&lt;/div>&lt;/div>&lt;/div>', 
+  color: '#333e48', 
+  hideOnRender: false, 
+  hideOnError: false, 
+  hideOnSilentError: false, 
+  image: null,
+  fadeOut: false,
+  ns: null,
+  onShown: setWaiterShownInput,
+  onHidden: setWaiterHiddenInput
+});
 </code></pre>
-        </article>
-    </section>
+<h2>Hide</h2>
+<p>Hide the waiter, <code>onHidden</code> is a callback function to run when
+the waiter is hidden.</p>
+<pre class="prettyprint source lang-js"><code>waiter.hide(id, onHidden)
+</code></pre>
+<h2>Update</h2>
+<p>Update the <code>html</code> content of the waiter.</p>
+<pre class="prettyprint source lang-js"><code>waiter.update(id, html)
+</code></pre>
+</article>
 
-
-
+</section>
 
 </div>
 

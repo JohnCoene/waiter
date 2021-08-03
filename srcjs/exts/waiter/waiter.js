@@ -123,7 +123,7 @@ export const show = (params = defaultWaiter) => {
  * @param  {Function} onHidden - A callback function to call
  * when the waiter is hidden. Leave on 'null' to not use.
  */
-export const hideWaiter = (id, onHidden = null) => {
+export const hide = (id, onHidden = null) => {
 
   var selector = 'body';
   if(id !== null)
@@ -164,7 +164,7 @@ export const hideWaiter = (id, onHidden = null) => {
  * @param  {string} html - An html string content to replace
  * the waiter.
  */
-export const updateWaiter = (id, html) => {
+export const update = (id, html) => {
   var selector = 'body';
   if(id !== null)
     selector = '#' + id;
@@ -196,18 +196,18 @@ $(document).on('shiny:value', function(event) {
   if(!w.hideOnRender)
     return ;
   
-  hideWaiter(event.name, w.onHidden);
+  hide(event.name, w.onHidden);
 });
 
 // remove when output errors
 $(document).on('shiny:error', function(event) {
   if(event.error.type == null && waiterToHideOnError.get(event.name)){
-    hideWaiter(event.name, setWaiterHiddenInput);
+    hide(event.name, setWaiterHiddenInput);
     return
   } 
   
   if (event.error.type != null && waiterToHideOnSilentError.get(event.name)){
-    hideWaiter(event.name, setWaiterHiddenInput);
+    hide(event.name, setWaiterHiddenInput);
   }
 });
 
@@ -236,9 +236,9 @@ Shiny.addCustomMessageHandler('waiter-show', function(opts) {
 });
 
 Shiny.addCustomMessageHandler('waiter-update', function(opts) {
-  updateWaiter(opts.id, opts.html);
+  update(opts.id, opts.html);
 });
 
 Shiny.addCustomMessageHandler('waiter-hide', function(opts) {
-  hideWaiter(opts.id, setWaiterHiddenInput);
+  hide(opts.id, setWaiterHiddenInput);
 });

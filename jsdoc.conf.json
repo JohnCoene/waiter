@@ -1,6 +1,7 @@
 {
 	"opts" : {
-		"destination": "./docs/jsdoc"
+		"destination": "./docs/jsdoc",
+		"tutorials": "tutorials"
 	},
 	"source": {
 		"include": "srcjs/",

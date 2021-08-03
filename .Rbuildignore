@@ -28,3 +28,4 @@ demo
 ^jsdoc\.conf\.json$
 ^jsdoc$
 ^makefile$
+^tutorials$

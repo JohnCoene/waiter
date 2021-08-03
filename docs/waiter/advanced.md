@@ -105,7 +105,7 @@ One can also interact with the JavaScript API directly.
 
 After importing the dependency with `useWaiter` you can
 use the functions `waiter.showWaiter()` and 
-`waiter.hideWaiter()`.
+`waiter.hide()`.
 
 The function to show the waiter accepts a single argument, 
 a JSON object. The default values of the JSON are below.
@@ -129,5 +129,5 @@ a JSON object. The default values of the JSON are below.
 The `onShown` and `onHidden` arguments are callback functions.
 If `id` is `null` than a full-screen loading screen is shown.
 
-The function `waiter.hideWaiter` accepts two arguments, 1) the 
+The function `waiter.hide` accepts two arguments, 1) the 
 `id` and second the callback function.
