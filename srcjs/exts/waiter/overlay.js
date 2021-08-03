@@ -1,3 +1,9 @@
+/**
+ * Create the waiter overlay to place on top of an element.
+ * @function
+ * @param  {JSON} params - Parameters see 'defaultWaiter'.
+ * @param  {HTMLElement} el - Element to overlay.
+ */
 export const createOverlay = (params, el) => {
 	// create overlay
 	let overlay = document.createElement("DIV");

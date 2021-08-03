@@ -14,6 +14,8 @@
     "@babel/core": "^7.14.6",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.6",
+    "jsdoc": "^3.6.7",
+    "jsdoc-webpack-plugin": "^0.3.0",
     "style-loader": "^3.0.0",
     "webpack": "^5.41.1",
     "webpack-cli": "^4.7.2",

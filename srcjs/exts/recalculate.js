@@ -1,6 +1,11 @@
 // storage to avoid multiple CSS injections
 let hiddenRecalculating = new Map();
-
+/**
+ * Hide the recalculate effect from base shiny for a
+ * specific element.
+ * @param  {string} id - Id of element to hide the 
+ * recalculate.
+ */
 export const hideRecalculate = (id) => {
 
   if(id === null)

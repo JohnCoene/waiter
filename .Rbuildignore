@@ -25,3 +25,6 @@ demo
 ^webpack\.dev\.js$
 ^webpack\.prod\.js$
 ^webpack\.common\.js$
+^jsdoc\.conf\.json$
+^jsdoc$
+^makefile$

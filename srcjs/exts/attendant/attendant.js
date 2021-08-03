@@ -3,6 +3,12 @@ import 'jquery'
 
 let attendants = new Map();
 
+/**
+ * Handles messages from the shiny server to set the progress
+ * of the bar and optionally its text.
+ * @function
+ * @param  {JSON} msg - JSON object sent from shiny server.
+ */
 const handleProgress = (msg) => {
   let $el = $(`#${msg.id} .progress-bar`);
   let w = getWidth(msg.id, msg.value);
@@ -21,6 +27,11 @@ const handleProgress = (msg) => {
     $(`#${msg.id}`).hide();
 }
 
+/**
+ * Get the max value from a progress bar.
+ * @function
+ * @param  {string} id - Id of the progress bar.
+ */
 const getMax = (id) => {
   let max = $(`#${id} .progress-bar`)
     .attr('aria-valuemax');
@@ -28,6 +39,14 @@ const getMax = (id) => {
   return parseFloat(max);
 }
 
+/**
+ * Get the width the progress bar should be set to.
+ * @function
+ * @param  {string} id - Id of the progress bar.
+ * @param  {number} value - Value sent from the server
+ * must be more than the 'min' of the progress bar and less
+ * than the 'max'.
+ */
 const getWidth = (id, value) => {
   let max = getMax(id);
   return (value / max) * 100;
