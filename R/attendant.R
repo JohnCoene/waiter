@@ -156,7 +156,7 @@ Attendant <- R6::R6Class(
 #' @details Automatically increase the progress bar until done
 #' @param ms Milliseconds between increment of `value`.
 #' @param value Value to increment by at every `ms`.
-		auto = function(ms = 400){
+		auto = function(ms = 400, value = 1){
 			private$.sendMessage("attendant-auto", ms = ms, value = 1)
 		}
 	),

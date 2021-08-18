@@ -140,7 +140,7 @@ Done with progress
 \if{latex}{\out{\hypertarget{method-auto}{}}}
 \subsection{Method \code{auto()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Attendant$auto(ms = 400)}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Attendant$auto(ms = 400, value = 1)}\if{html}{\out{</div>}}
 }
 
 \subsection{Arguments}{
