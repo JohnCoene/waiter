@@ -133,6 +133,6 @@ shinyApp(ui, server)
 
 ![](_assets/img/waiter-text.gif)
 
-Visit the [full waiter documentation](/waiter) to learn how 
+Read the rest of the documentation to learn how 
 to further customise your waiting screen, have it appear 
 on parts of the application, show loading bars, and more.
