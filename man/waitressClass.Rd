@@ -58,6 +58,13 @@ its percentage, then hide it when done.
 
 \dontrun{Waitress$new("#plot")$hide()}
 }
+\section{Active bindings}{
+\if{html}{\out{<div class="r6-active-bindings">}}
+\describe{
+\item{\code{max}}{Maximum value of the bar.}
+}
+\if{html}{\out{</div>}}
+}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{

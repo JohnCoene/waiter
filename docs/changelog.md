@@ -2,6 +2,11 @@
 
 List of changes made to waiter.
 
+# waiter 0.2.4.9000
+
+- Added `httr_progress` function to use instead of 
+`httr::progress`.
+
 ## waiter 0.2.3
 
 - Fix [#95](https://github.com/JohnCoene/waiter/issues/95) with different CSS for full screen (`position: fixed`).

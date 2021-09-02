@@ -333,6 +333,15 @@ Waitress <- R6::R6Class(
 				cat("A waitress notification\n")
 		}
 	),
+	active = list(
+#' @field max Maximum value of the bar.
+		max = function(value) {
+			if(missing(value))
+				return(private$.max)
+
+			private$.max <- value
+		}
+	),
 	private = list(
 		.name = NULL,
 		.theme = NULL,

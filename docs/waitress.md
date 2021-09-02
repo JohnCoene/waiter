@@ -274,3 +274,43 @@ shinyApp(ui, server)
 ```
 
 ![](_assets/img/waitress-hide-on-render.gif)
+
+## httr
+
+Use instead of `httr::progress`, replace it with `httr_progress`.
+
+```r
+library(httr)
+library(shiny)
+library(waiter)
+
+cap_speed <- config(max_recv_speed_large = 10000)
+
+ui <- fluidPage(
+  useWaitress(),
+  actionButton(
+    "dl",
+    "Download"
+  ),
+  plotOutput("plot")
+)
+
+server <- function(input, output){
+  w <- Waitress$new("#plot")
+
+  dataset <- eventReactive(input$dl, {
+    x <- GET(
+      "http://httpbin.org/bytes/102400", 
+      httr_progress(w), 
+      cap_speed
+    )
+
+    runif(100)
+  })
+
+  output$plot <- renderPlot(plot(dataset()))
+}
+
+shinyApp(ui, server)
+
+```
