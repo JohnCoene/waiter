@@ -20,6 +20,8 @@
 #'   cap_speed
 #' )
 #' }
+#' 
+#' @export 
 httr_progress <- function(
 	waitress, 
 	type = c("down", "up"), 
