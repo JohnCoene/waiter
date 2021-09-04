@@ -312,5 +312,37 @@ server <- function(input, output){
 }
 
 shinyApp(ui, server)
+```
 
+## withProgress
+
+You can use `withProgressWaitress`, `setProgressWaitress`, and
+`incProgressWairess`, they are used in a similar fashion as
+`withProgress`, `setProgress`, and `incProgress` from shiny.
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  useWaitress(),
+  br(),
+  actionButton(
+    "load",
+    "Load stuff"
+  )
+)
+
+server <- function(input, output) {
+  observeEvent(input$load, {
+    withProgressWaitress({
+      for (i in 1:15) {
+        incProgressWaitress(1)
+        Sys.sleep(0.25)
+      }
+    }, selector = "#load", max = 15, theme = "overlay-percent")
+  })
+}
+
+shinyApp(ui, server)
 ```

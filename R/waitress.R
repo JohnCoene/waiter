@@ -246,7 +246,11 @@ Waitress <- R6::R6Class(
 #' @examples
 #' \dontrun{Waitress$new("#plot")$set(20)}
 		set = function(value){
+			if(missing(value))
+				stop("Missing `value`", call. = FALSE)
+
 			private$get_session()
+			private$.value <- value
 
 			if(!private$.started)
 				self <- self$start()
@@ -268,6 +272,7 @@ Waitress <- R6::R6Class(
 #' \dontrun{Waitress$new("#plot")$auto(20, 2000)}
 		auto = function(value, ms){
 			private$get_session()
+			private$.value <- value
 
 			if(!private$.started)
 				self <- self$start()
@@ -288,6 +293,7 @@ Waitress <- R6::R6Class(
 #' \dontrun{Waitress$new("#plot")$inc(30)}
 		inc = function(value){
 			private$get_session()
+			private$.value <- value
 			
 			if(!private$.started)
 				self <- self$start()
@@ -318,6 +324,18 @@ Waitress <- R6::R6Class(
 			private$get_session()
 			private$.session$sendCustomMessage("waitress-end", opts)
 			invisible(self)
+		},
+#' @details Get minimum value
+		getMin = function(){
+			private$.min
+		},
+#' @details Get maximum value
+		getMax = function(){
+			private$.max
+		},
+#' @details Get current value
+		getValue = function(){
+			private$.value
 		},
 #' @details
 #' Print the waitress.
@@ -352,6 +370,7 @@ Waitress <- R6::R6Class(
 		.initialised = FALSE,
 		.min = 0,
 		.max = 100,
+		.value = 0,
     .infinite = FALSE,
     .hide_on_render = FALSE,
 		.is_notification = FALSE,

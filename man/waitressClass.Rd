@@ -75,6 +75,9 @@ its percentage, then hide it when done.
 \item \href{#method-auto}{\code{Waitress$auto()}}
 \item \href{#method-inc}{\code{Waitress$inc()}}
 \item \href{#method-close}{\code{Waitress$close()}}
+\item \href{#method-getMin}{\code{Waitress$getMin()}}
+\item \href{#method-getMax}{\code{Waitress$getMax()}}
+\item \href{#method-getValue}{\code{Waitress$getValue()}}
 \item \href{#method-print}{\code{Waitress$print()}}
 \item \href{#method-clone}{\code{Waitress$clone()}}
 }
@@ -315,6 +318,45 @@ Close the waitress.
 }
 \if{html}{\out{</div>}}
 
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-getMin"></a>}}
+\if{latex}{\out{\hypertarget{method-getMin}{}}}
+\subsection{Method \code{getMin()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Waitress$getMin()}\if{html}{\out{</div>}}
+}
+
+\subsection{Details}{
+Get minimum value
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-getMax"></a>}}
+\if{latex}{\out{\hypertarget{method-getMax}{}}}
+\subsection{Method \code{getMax()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Waitress$getMax()}\if{html}{\out{</div>}}
+}
+
+\subsection{Details}{
+Get maximum value
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-getValue"></a>}}
+\if{latex}{\out{\hypertarget{method-getValue}{}}}
+\subsection{Method \code{getValue()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Waitress$getValue()}\if{html}{\out{</div>}}
+}
+
+\subsection{Details}{
+Get current value
 }
 
 }

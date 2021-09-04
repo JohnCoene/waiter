@@ -2,6 +2,8 @@
 
 - Added `httr_progress` function to use instead of 
 `httr::progress`.
+- Added `withProgressWaitress`, `setProgressWaitress`, and
+`incProgressWairess` analogous to the same functions in shiny.
 
 # waiter 0.2.3
 
