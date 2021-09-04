@@ -314,6 +314,8 @@ server <- function(input, output){
 shinyApp(ui, server)
 ```
 
+![](_assets/img/waitress-httr.gif)
+
 ## withProgress
 
 You can use `withProgressWaitress`, `setProgressWaitress`, and
