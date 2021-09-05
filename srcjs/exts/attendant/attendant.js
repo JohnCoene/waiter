@@ -52,6 +52,16 @@ const getWidth = (id, value) => {
   return (value / max) * 100;
 }
 
+Shiny.addCustomMessageHandler('attendant-set-min', (msg) => {
+  $(`#${msg.id} .progress-bar`)
+    .attr('aria-valuemin', msg.min);
+});
+
+Shiny.addCustomMessageHandler('attendant-set-max', (msg) => {
+  $(`#${msg.id} .progress-bar`)
+    .attr('aria-valuemax', msg.max);
+});
+
 Shiny.addCustomMessageHandler('attendant-set', handleProgress);
 
 Shiny.addCustomMessageHandler('attendant-done', (msg) => {

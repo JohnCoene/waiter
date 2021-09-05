@@ -14,7 +14,11 @@ Manage the attendant loading bar with bootstrap 4.
 \item \href{#method-dec}{\code{Attendant$dec()}}
 \item \href{#method-set}{\code{Attendant$set()}}
 \item \href{#method-done}{\code{Attendant$done()}}
+\item \href{#method-close}{\code{Attendant$close()}}
 \item \href{#method-auto}{\code{Attendant$auto()}}
+\item \href{#method-getMin}{\code{Attendant$getMin()}}
+\item \href{#method-getMax}{\code{Attendant$getMax()}}
+\item \href{#method-getValue}{\code{Attendant$getValue()}}
 \item \href{#method-clone}{\code{Attendant$clone()}}
 }
 }
@@ -25,6 +29,8 @@ Manage the attendant loading bar with bootstrap 4.
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Attendant$new(
   id,
+  min = NULL,
+  max = NULL,
   session = shiny::getDefaultReactiveDomain(),
   hide_on_max = FALSE
 )}\if{html}{\out{</div>}}
@@ -34,6 +40,8 @@ Manage the attendant loading bar with bootstrap 4.
 \if{html}{\out{<div class="arguments">}}
 \describe{
 \item{\code{id}}{Id of progress bar set with \link{attendantBar}.}
+
+\item{\code{min, max}}{Minimum and maximum value of the progress bar.}
 
 \item{\code{session}}{A valid shiny session.}
 
@@ -136,6 +144,26 @@ Done with progress
 
 }
 \if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-close"></a>}}
+\if{latex}{\out{\hypertarget{method-close}{}}}
+\subsection{Method \code{close()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Attendant$close(text = NULL)}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{text}}{Text to display on the progress bar.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+Done with progress
+}
+
+}
+\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-auto"></a>}}
 \if{latex}{\out{\hypertarget{method-auto}{}}}
 \subsection{Method \code{auto()}}{
@@ -154,6 +182,45 @@ Done with progress
 }
 \subsection{Details}{
 Automatically increase the progress bar until done
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-getMin"></a>}}
+\if{latex}{\out{\hypertarget{method-getMin}{}}}
+\subsection{Method \code{getMin()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Attendant$getMin()}\if{html}{\out{</div>}}
+}
+
+\subsection{Details}{
+Get minimum value
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-getMax"></a>}}
+\if{latex}{\out{\hypertarget{method-getMax}{}}}
+\subsection{Method \code{getMax()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Attendant$getMax()}\if{html}{\out{</div>}}
+}
+
+\subsection{Details}{
+Get maximum value
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-getValue"></a>}}
+\if{latex}{\out{\hypertarget{method-getValue}{}}}
+\subsection{Method \code{getValue()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Attendant$getValue()}\if{html}{\out{</div>}}
+}
+
+\subsection{Details}{
+Get current value
 }
 
 }

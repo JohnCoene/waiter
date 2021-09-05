@@ -316,7 +316,7 @@ shinyApp(ui, server)
 
 ![](_assets/img/waitress-httr.gif)
 
-## withProgress
+## Progress
 
 You can use `withProgressWaitress`, `setProgressWaitress`, and
 `incProgressWairess`, they are used in a similar fashion as

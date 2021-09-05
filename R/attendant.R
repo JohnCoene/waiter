@@ -107,8 +107,11 @@ Attendant <- R6::R6Class(
 #' it reaches its maximum value (defined in [attendantBar]).
 #' The progress bar automatically becomes visible again when
 #' it is set to a value below the maximum.
+#' @param min,max Minimum and maximum value of the progress bar.
 		initialize = function(
 			id, 
+			min = NULL,
+			max = NULL,
 			session = shiny::getDefaultReactiveDomain(),
 			hide_on_max = FALSE
 		){
@@ -116,16 +119,25 @@ Attendant <- R6::R6Class(
 			if(missing(id))
 				stop("Missing `id`", call. = FALSE)
 
+			private$.min <- min
+			private$.max <- max
+
 			private$.id <- id
 			private$.session <- session
 			private$.hideOnEnd <- hide_on_max
+			
+			if(!is.null(min))
+				private$.sendMessage('attendant-set-min', min = min)
+			
+			if(!is.null(max))
+				private$.sendMessage('attendant-set-max', max = max)
 		},
 #' @details Increase
 #' @param value Value to increase the progress bar.
 #' @param text Text to display on the progress bar.
 		inc = function(value = 1, text = NULL){
 			private$.value = private$.value + value;
-			private$set(private$.value, text = text)
+			self$set(private$.value, text = text)
 			invisible(self)
 		},
 #' @details Decrease
@@ -133,7 +145,7 @@ Attendant <- R6::R6Class(
 #' @param text Text to display on the progress bar.
 		dec = function(value = 1, text = NULL){
 			private$.value = private$.value - value;
-			private$set(private$.value, text = text)
+			self$set(private$.value, text = text)
 			invisible(self)
 		},
 #' @details Set
@@ -153,15 +165,34 @@ Attendant <- R6::R6Class(
 		done = function(text = NULL){
 			private$.sendMessage("attendant-done", text = text)
 		},
+#' @details Done with progress
+#' @param text Text to display on the progress bar.
+		close = function(text = NULL){
+			private$.sendMessage("attendant-done", text = text)
+		},
 #' @details Automatically increase the progress bar until done
 #' @param ms Milliseconds between increment of `value`.
 #' @param value Value to increment by at every `ms`.
 		auto = function(ms = 400, value = 1){
 			private$.sendMessage("attendant-auto", ms = ms, value = 1)
+		},
+#' @details Get minimum value
+		getMin = function(){
+			private$.min
+		},
+#' @details Get maximum value
+		getMax = function(){
+			private$.max
+		},
+#' @details Get current value
+		getValue = function(){
+			private$.value
 		}
 	),
 	private = list(
 		.value = 0,
+		.min = NULL,
+		.max = NULL,
 		.id = NULL,
 		.session = NULL,
 		.hideOnEnd = FALSE,
