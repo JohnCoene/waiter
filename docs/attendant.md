@@ -233,6 +233,39 @@ shinyApp(ui, server)
 
 ![](_assets/img/att4.gif)
 
+## Progress
+
+You can use `withProgressAttendant`, together with
+`incProgressAttendant`, and `setProgressAttendant`.
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  useAttendant(),
+  br(),
+  actionButton(
+    "load",
+    "Load stuff"
+  ),
+  attendantBar("main", max = 15)
+)
+
+server <- function(input, output) {
+  observeEvent(input$load, {
+    withProgressAttendant({
+      for (i in 1:15) {
+        incProgressAttendant(1)
+        Sys.sleep(0.25)
+      }
+    }, id = "main")
+  })
+}
+
+shinyApp(ui, server)
+```
+
 ## Use Cases
 
 You may have operations that take time, require a progress bar
@@ -363,36 +396,3 @@ shinyApp(ui, server)
 ```
 
 ![](_assets/img/att5.gif)
-
-## Progress
-
-You can use `withProgressAttendant`, together with
-`incProgressAttendant`, and `setProgressAttendant`.
-
-```r
-library(shiny)
-library(waiter)
-
-ui <- fluidPage(
-  useAttendant(),
-  br(),
-  actionButton(
-    "load",
-    "Load stuff"
-  ),
-  attendantBar("main", max = 15)
-)
-
-server <- function(input, output) {
-  observeEvent(input$load, {
-    withProgressAttendant({
-      for (i in 1:15) {
-        incProgressAttendant(1)
-        Sys.sleep(0.25)
-      }
-    }, id = "main")
-  })
-}
-
-shinyApp(ui, server)
-```
