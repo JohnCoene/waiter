@@ -4,7 +4,7 @@
 #' Simply use `httr_progress` where you would use
 #' [httr::progress].
 #' 
-#' @param waitress The waitress object.
+#' @param object The waitress or attendant object.
 #' @param type Type of progress to display: either number of 
 #' bytes uploaded or downloaded. Passed to [httr::progress].
 #' @param pre,post Pre and callback functions to run before
@@ -23,22 +23,22 @@
 #' 
 #' @export 
 httr_progress <- function(
-	waitress, 
+	object, 
 	type = c("down", "up"), 
 	pre = NULL, 
 	post = NULL
 ){
 	type <- match.arg(type)
 
-	if(missing(waitress))
-		stop("Missing `waitress` object", call. = FALSE)
+	if(missing(object))
+		stop("Missing `object`", call. = FALSE)
 	
 	httr_request <- utils::getFromNamespace("request", "httr")
 
   httr_request(
 		options = list(
     	noprogress = FALSE,
-    	progressfunction = progress_bar(waitress, type, pre, post)
+    	progressfunction = progress_bar(object, type, pre, post)
   	)
 	)
 }
@@ -57,8 +57,6 @@ progress_bar <- function(w, type, pre = NULL, post = NULL) {
     if (total == 0 && now == 0) {
 			if(!is.null(pre))
 				pre()
-      # Reset progress bar when seeing first byte
-			w$start()
       w$set(0)
     }  else {
 			w$max <- total

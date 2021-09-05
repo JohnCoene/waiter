@@ -356,3 +356,49 @@ server <- function(input, output) {
 
 shinyApp(ui, server)
 ```
+
+## httr
+
+Use `httr_progress` to use an attendant instead of a console
+text progress tracker for httr.
+
+<Note type="tip">
+Also works with the waitress.
+</Note>
+
+```r
+library(shiny)
+library(httr)
+library(waiter)
+
+cap_speed <- config(max_recv_speed_large = 10000)
+
+ui <- fluidPage(
+  useAttendant(),
+  br(),
+  attendantBar("main", hidden = TRUE),
+  actionButton(
+    "dl",
+    "Download"
+  ),
+  plotOutput("plot")
+)
+
+server <- function(input, output){
+  w <- Attendant$new("main")
+
+  dataset <- eventReactive(input$dl, {
+    x <- GET(
+      "http://httpbin.org/bytes/102400", 
+      httr_progress(w), 
+      cap_speed
+    )
+
+    runif(100)
+  })
+
+  output$plot <- renderPlot(plot(dataset()))
+}
+
+shinyApp(ui, server)
+```

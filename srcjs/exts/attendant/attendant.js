@@ -12,6 +12,7 @@ let attendants = new Map();
 const handleProgress = (msg) => {
   let $el = $(`#${msg.id} .progress-bar`);
   let w = getWidth(msg.id, msg.value);
+  $(`#${msg.id}`).show();
  
   $el
     .attr('aria-valuenow', msg.value)
@@ -19,9 +20,6 @@ const handleProgress = (msg) => {
 
   if(msg.text)
     $el.html(msg.text);
-
-  if(msg.hideOnEnd && getMax(msg.id) >= msg.value)
-    $(`#${msg.id}`).show();
 
   if(msg.hideOnEnd && getMax(msg.id) <= msg.value)
     $(`#${msg.id}`).hide();

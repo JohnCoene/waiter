@@ -36,6 +36,8 @@ useAttendant <- function(){
 #' values (e.g.: `42`) are converted to pixels (`px`).
 #' @param class,style Additional style and class to pass to the
 #' parent wrapper of the progress bar.
+#' @param hidden Set to `TRUE` to initialise the attendant as
+#' hidden, it will be made visible when set to a value.
 #' 
 #' @export 
 attendantBar <- function(
@@ -51,7 +53,8 @@ attendantBar <- function(
 	width = "100%",
 	class = "",
 	style = "",
-	bg_color = "#f5f5f5"
+	bg_color = "#f5f5f5",
+	hidden = FALSE
 ){
 
 	if(missing(id))
@@ -65,6 +68,9 @@ attendantBar <- function(
 	
 	height <- sprintf("height: %s;width:%s;background-color:%s;", height, width, bg_color)
 	style <- paste(style, height)
+
+	if(hidden)
+		style <- sprintf("%s;display:none;", style)
 
 	color <- match.arg(color)
 	class_inner <- sprintf("progress-bar bg-%s", color)
@@ -187,6 +193,16 @@ Attendant <- R6::R6Class(
 #' @details Get current value
 		getValue = function(){
 			private$.value
+		}
+	),
+	active = list(
+#' @field max Maximum value of the bar.
+		max = function(value) {
+			if(missing(value))
+				return(private$.max)
+
+			private$.sendMessage('attendant-set-max', max = value)
+			private$.max <- value
 		}
 	),
 	private = list(

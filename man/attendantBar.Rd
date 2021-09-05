@@ -17,7 +17,8 @@ attendantBar(
   width = "100\%",
   class = "",
   style = "",
-  bg_color = "#f5f5f5"
+  bg_color = "#f5f5f5",
+  hidden = FALSE
 )
 }
 \arguments{
@@ -47,6 +48,9 @@ parent wrapper of the progress bar.}
 
 \item{bg_color, color}{Color, and background color
 of the progress bar.}
+
+\item{hidden}{Set to \code{TRUE} to initialise the attendant as
+hidden, it will be made visible when set to a value.}
 }
 \description{
 Create a Bootstrap 4 progress bar.

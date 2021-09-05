@@ -4,10 +4,10 @@
 \alias{httr_progress}
 \title{Waitress with httr}
 \usage{
-httr_progress(waitress, type = c("down", "up"), pre = NULL, post = NULL)
+httr_progress(object, type = c("down", "up"), pre = NULL, post = NULL)
 }
 \arguments{
-\item{waitress}{The waitress object.}
+\item{object}{The waitress or attendant object.}
 
 \item{type}{Type of progress to display: either number of
 bytes uploaded or downloaded. Passed to \link[httr:progress]{httr::progress}.}
