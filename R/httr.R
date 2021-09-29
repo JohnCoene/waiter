@@ -58,7 +58,10 @@ progress_bar <- function(w, type, pre = NULL, post = NULL) {
 			if(!is.null(pre))
 				pre()
       w$set(0)
-    }  else {
+    } else if(total == 0) {
+			w$max <- 100
+			w$inc(1)
+		} else {
 			w$max <- total
 
 			# increment

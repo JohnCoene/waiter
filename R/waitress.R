@@ -358,6 +358,13 @@ Waitress <- R6::R6Class(
 				return(private$.max)
 
 			private$.max <- value
+		},
+#' @field min Minimum value of the bar.
+		min = function(value) {
+			if(missing(value))
+				return(private$.min)
+
+			private$.min <- value
 		}
 	),
 	private = list(

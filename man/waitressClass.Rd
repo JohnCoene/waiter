@@ -62,6 +62,8 @@ its percentage, then hide it when done.
 \if{html}{\out{<div class="r6-active-bindings">}}
 \describe{
 \item{\code{max}}{Maximum value of the bar.}
+
+\item{\code{min}}{Minimum value of the bar.}
 }
 \if{html}{\out{</div>}}
 }
