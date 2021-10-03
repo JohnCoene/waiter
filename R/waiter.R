@@ -799,3 +799,58 @@ autoWaiter <- function(
     HTML(sprintf("<script>%s</script>", script))
   )
 }
+
+#' With Waiter
+#' 
+#' Adds a waiter to a rective UI element.
+#' Thew waiter is displayed when the element is
+#' invalidated then is removed when the element 
+#' receives a new value.
+#' 
+#' @inheritParams waiter
+#' @param element A reactive element, e.g.: `uiOutput`,
+#' or `plotOutput`.
+#' 
+#' @export 
+withWaiter <- function(
+  element,
+  html = spin_1(), 
+  color = "#333e48",
+  image = ""
+){
+  if(missing(element))
+    stop("Missing `element`", call. = FALSE)
+
+  id <- element$attribs$id
+  html <- as.character(html)
+  html <- gsub("\n", "", html)
+
+  script <- paste0(
+    "$(document).on('shiny:outputinvalidated', function(event) {
+      if(event.target.id != '", id, "')
+        return;
+
+      waiter.show({
+        id: '", id, "',
+        html: '", html, "', 
+        color: '", color, "',
+        image: '", image, "'
+      });
+    });
+    
+    $(document).on('shiny:value shiny:error', function(event) {
+      if(event.target.id != '", id, "')
+        return;
+      waiter.hide('", id, "');
+    });"
+  )
+
+  tagList(
+    singleton(
+      HTML(
+        paste0("<script>", script, "</script>")
+      )
+    ),
+    element
+  )
+}
