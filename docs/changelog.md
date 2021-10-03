@@ -10,6 +10,11 @@ the attendant instead of `httr::progress`.
 `incProgressWairess` analogous to the same functions in shiny.
 - Added `withProgressAttendant`,
 `incProgressAttendant`, and `setProgressAttendant`.
+- Fix major issue with `Hostess`, it was basically broken
+[#108](https://github.com/JohnCoene/waiter/issues/108).
+- Add `withWaiter` as requested in 
+[#105](https://github.com/JohnCoene/waiter/issues/105)
+
 
 ## waiter 0.2.3
 
