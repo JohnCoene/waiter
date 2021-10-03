@@ -392,7 +392,10 @@ the `www` directory.
 library(shiny)
 library(waiter)
 
-url <- "https://www.freecodecamp.org/news/content/images/size/w2000/2020/04/w-qjCHPZbeXCQ-unsplash.jpg"
+url <- paste0(
+  "https://www.freecodecamp.org/news/content/",
+  "images/size/w2000/2020/04/w-qjCHPZbeXCQ-unsplash.jpg"
+)
 
 ui <- fluidPage(
 	useWaiter(),
@@ -415,6 +418,13 @@ shinyApp(ui, server)
 ![](_assets/img/waiter-image.png)
 
 ## withWaiter
+
+You can easily add a loading screen to any __reactive UI element__,
+the loading screen is shown when the input is invalidated and 
+removed when a new value is received.
+
+Importantly, this only works with reactive UI elements, e.g.:
+`uiOutput`, `plotOutput`, `echarts4rOutput`, etc.
 
 ```r
 library(shiny)
