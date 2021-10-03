@@ -413,3 +413,30 @@ shinyApp(ui, server)
 ```
 
 ![](_assets/img/waiter-image.png)
+
+## withWaiter
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  useWaiter(),
+  actionButton("draw", "plot"),
+  withWaiter(
+    plotOutput("plot")
+  )
+)
+
+server <- function(input, output, session){
+  output$plot <- renderPlot({
+    input$draw
+    Sys.sleep(5)
+    plot(cars)
+  })
+}
+
+shinyApp(ui, server)
+```
+
+![](_assets/img/with-waiter.gif)
