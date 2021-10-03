@@ -1,4 +1,4 @@
-import { ldBar } from '@loadingio/loading-bar';
+import ldBar from '@loadingio/loading-bar/lib/loading-bar.js';
 import '@loadingio/loading-bar/dist/loading-bar.css';
 
 let hostesses = [];
