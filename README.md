@@ -36,7 +36,7 @@ patiently waiting as you load or compute fancy things.
 
 ## Examples
 
-Below are simple examples of applications that use the package, consult
+Below are examples of applications that use the package. Consult
 the [website](https://waiter.john-coene.com) for more.
 
 ## Waiter
@@ -127,7 +127,7 @@ shinyApp(ui, server)
 ![](man/figures//waitress-basic.gif)
 
 There are more options to the waitress, you can have it overlay any
-element (such as the navbar), automagically increment it, etc.
+element (such as the navbar), automatically increment it, etc.
 
 ## Get it
 
