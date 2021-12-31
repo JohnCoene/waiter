@@ -742,6 +742,31 @@ spin_6 <- function(){
 }
 
 #' @rdname spinners
+#' @export 
+bs4_spinner <- function(
+  color = c(
+    "primary",
+    "secondary",
+    "success",
+    "danger",
+    "warning",
+    "info",
+    "light",
+    "dark"
+  )
+) {
+  color <- match.arg(color)
+  tags$div(
+    class = sprintf("spinner-border text-%s", color),
+    role = "status",
+    tags$span(
+      class = "sr-only",
+      "Loading..."
+    )
+  )
+}
+
+#' @rdname spinners
 #' @export
 spin_google <- function(){
   construct(div(class = "cm-spinner"), 7)
