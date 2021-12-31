@@ -199,6 +199,7 @@ spin_5()
 spin_6()
 
 bs4_spinner(
+  style = c("spin", "grow"),
   color = c("primary", "secondary", "success", "danger", "warning", "info", "light",
     "dark")
 )

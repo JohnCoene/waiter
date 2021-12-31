@@ -744,6 +744,7 @@ spin_6 <- function(){
 #' @rdname spinners
 #' @export 
 bs4_spinner <- function(
+  style = c("spin", "grow"),
   color = c(
     "primary",
     "secondary",
@@ -755,9 +756,15 @@ bs4_spinner <- function(
     "dark"
   )
 ) {
+  style <- match.arg(style)
   color <- match.arg(color)
+
+  cl <- "border"
+  if(style == "grow")
+    cl <- "grow"
+
   tags$div(
-    class = sprintf("spinner-border text-%s", color),
+    class = sprintf("spinner-%s text-%s", cl, color),
     role = "status",
     tags$span(
       class = "sr-only",
