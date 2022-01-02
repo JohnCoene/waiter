@@ -67,6 +67,7 @@
 \alias{spin_5}
 \alias{spin_6}
 \alias{bs4_spinner}
+\alias{bs5_spinner}
 \alias{spin_google}
 \title{Spinners}
 \usage{
@@ -199,6 +200,12 @@ spin_5()
 spin_6()
 
 bs4_spinner(
+  style = c("spin", "grow"),
+  color = c("primary", "secondary", "success", "danger", "warning", "info", "light",
+    "dark")
+)
+
+bs5_spinner(
   style = c("spin", "grow"),
   color = c("primary", "secondary", "success", "danger", "warning", "info", "light",
     "dark")

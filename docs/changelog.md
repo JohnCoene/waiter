@@ -2,7 +2,7 @@
 
 List of changes made to waiter.
 
-# waiter 0.2.4.9000
+## waiter 0.2.4.9000
 
 - Added `httr_progress` function to use  the waitress or
 the attendant instead of `httr::progress`.
@@ -13,8 +13,8 @@ the attendant instead of `httr::progress`.
 - Fix major issue with `Hostess`, it was basically broken
 [#108](https://github.com/JohnCoene/waiter/issues/108).
 - Add `withWaiter` as requested in 
-[#105](https://github.com/JohnCoene/waiter/issues/105)
-
+[#105](https://github.com/JohnCoene/waiter/issues/105).
+- Added `bs4_spinner` and `bs5_spinner`.
 
 ## waiter 0.2.3
 
