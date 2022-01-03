@@ -2,7 +2,7 @@
 
 List of changes made to waiter.
 
-## waiter 0.2.4.9000
+## waiter 0.2.5
 
 - Added `httr_progress` function to use  the waitress or
 the attendant instead of `httr::progress`.
