@@ -365,9 +365,11 @@ Hostess <- R6::R6Class(
 #'    input$draw
 #' 
 #'    hostess <- Hostess$new(min = 0, max = 10)
-#'    hostess$set_loader <- hostess_loader(
-#'      progress_type = "stroke",
-#'      stroke_color = hostess_stripe()
+#'    hostess$set_loader(
+#'      hostess_loader(
+#'        progress_type = "stroke",
+#'        stroke_color = hostess_stripe()
+#'      )
 #'    )
 #'    waiter <- Waiter$new(
 #'      "plot", 

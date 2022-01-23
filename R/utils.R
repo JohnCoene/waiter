@@ -49,7 +49,7 @@ hostess_presets <- c(
 .theme_or_value <- function(value, theme_var) {
   if(!is.null(value))
     return(value)
-  
+ 
   .get_waiter_option(theme_var)
 }
 
