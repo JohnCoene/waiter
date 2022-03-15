@@ -314,6 +314,10 @@ waiterOnBusy <- function(html = spin_1(), color = "#333e48", logo = "", image = 
         fadeOut: ", fadeout, "
       });
     });
+
+    $(document).on('shiny:disconnected', (e) => {
+      waiter.hide(null);
+    });
     
     $(document).on('shiny:idle', function(event) {
       waiter.hide(null);

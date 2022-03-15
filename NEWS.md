@@ -1,6 +1,7 @@
 # waiter 0.2.5.9000
 
 - Correct hostess example [#113](https://github.com/JohnCoene/waiter/issues/113)
+- Hide wiater on disconnect, fixes [#116](https://github.com/JohnCoene/waiter/issues/116)
 
 # waiter 0.2.5
 
