@@ -16,22 +16,22 @@ Manage the attendant loading bar with bootstrap 4.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Attendant$new()}}
-\item \href{#method-inc}{\code{Attendant$inc()}}
-\item \href{#method-dec}{\code{Attendant$dec()}}
-\item \href{#method-set}{\code{Attendant$set()}}
-\item \href{#method-done}{\code{Attendant$done()}}
-\item \href{#method-close}{\code{Attendant$close()}}
-\item \href{#method-auto}{\code{Attendant$auto()}}
-\item \href{#method-getMin}{\code{Attendant$getMin()}}
-\item \href{#method-getMax}{\code{Attendant$getMax()}}
-\item \href{#method-getValue}{\code{Attendant$getValue()}}
-\item \href{#method-clone}{\code{Attendant$clone()}}
+\item \href{#method-Attendant-new}{\code{Attendant$new()}}
+\item \href{#method-Attendant-inc}{\code{Attendant$inc()}}
+\item \href{#method-Attendant-dec}{\code{Attendant$dec()}}
+\item \href{#method-Attendant-set}{\code{Attendant$set()}}
+\item \href{#method-Attendant-done}{\code{Attendant$done()}}
+\item \href{#method-Attendant-close}{\code{Attendant$close()}}
+\item \href{#method-Attendant-auto}{\code{Attendant$auto()}}
+\item \href{#method-Attendant-getMin}{\code{Attendant$getMin()}}
+\item \href{#method-Attendant-getMax}{\code{Attendant$getMax()}}
+\item \href{#method-Attendant-getValue}{\code{Attendant$getValue()}}
+\item \href{#method-Attendant-clone}{\code{Attendant$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Attendant-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Attendant-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Attendant$new(
@@ -65,8 +65,8 @@ Initialise a progress bar
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-inc"></a>}}
-\if{latex}{\out{\hypertarget{method-inc}{}}}
+\if{html}{\out{<a id="method-Attendant-inc"></a>}}
+\if{latex}{\out{\hypertarget{method-Attendant-inc}{}}}
 \subsection{Method \code{inc()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Attendant$inc(value = 1, text = NULL)}\if{html}{\out{</div>}}
@@ -87,8 +87,8 @@ Increase
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-dec"></a>}}
-\if{latex}{\out{\hypertarget{method-dec}{}}}
+\if{html}{\out{<a id="method-Attendant-dec"></a>}}
+\if{latex}{\out{\hypertarget{method-Attendant-dec}{}}}
 \subsection{Method \code{dec()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Attendant$dec(value = 1, text = NULL)}\if{html}{\out{</div>}}
@@ -109,8 +109,8 @@ Decrease
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-set"></a>}}
-\if{latex}{\out{\hypertarget{method-set}{}}}
+\if{html}{\out{<a id="method-Attendant-set"></a>}}
+\if{latex}{\out{\hypertarget{method-Attendant-set}{}}}
 \subsection{Method \code{set()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Attendant$set(value, text = NULL)}\if{html}{\out{</div>}}
@@ -131,8 +131,8 @@ Set
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-done"></a>}}
-\if{latex}{\out{\hypertarget{method-done}{}}}
+\if{html}{\out{<a id="method-Attendant-done"></a>}}
+\if{latex}{\out{\hypertarget{method-Attendant-done}{}}}
 \subsection{Method \code{done()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Attendant$done(text = NULL)}\if{html}{\out{</div>}}
@@ -151,8 +151,8 @@ Done with progress
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-close"></a>}}
-\if{latex}{\out{\hypertarget{method-close}{}}}
+\if{html}{\out{<a id="method-Attendant-close"></a>}}
+\if{latex}{\out{\hypertarget{method-Attendant-close}{}}}
 \subsection{Method \code{close()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Attendant$close(text = NULL)}\if{html}{\out{</div>}}
@@ -171,8 +171,8 @@ Done with progress
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-auto"></a>}}
-\if{latex}{\out{\hypertarget{method-auto}{}}}
+\if{html}{\out{<a id="method-Attendant-auto"></a>}}
+\if{latex}{\out{\hypertarget{method-Attendant-auto}{}}}
 \subsection{Method \code{auto()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Attendant$auto(ms = 400, value = 1)}\if{html}{\out{</div>}}
@@ -193,8 +193,8 @@ Automatically increase the progress bar until done
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getMin"></a>}}
-\if{latex}{\out{\hypertarget{method-getMin}{}}}
+\if{html}{\out{<a id="method-Attendant-getMin"></a>}}
+\if{latex}{\out{\hypertarget{method-Attendant-getMin}{}}}
 \subsection{Method \code{getMin()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Attendant$getMin()}\if{html}{\out{</div>}}
@@ -206,8 +206,8 @@ Get minimum value
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getMax"></a>}}
-\if{latex}{\out{\hypertarget{method-getMax}{}}}
+\if{html}{\out{<a id="method-Attendant-getMax"></a>}}
+\if{latex}{\out{\hypertarget{method-Attendant-getMax}{}}}
 \subsection{Method \code{getMax()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Attendant$getMax()}\if{html}{\out{</div>}}
@@ -219,8 +219,8 @@ Get maximum value
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getValue"></a>}}
-\if{latex}{\out{\hypertarget{method-getValue}{}}}
+\if{html}{\out{<a id="method-Attendant-getValue"></a>}}
+\if{latex}{\out{\hypertarget{method-Attendant-getValue}{}}}
 \subsection{Method \code{getValue()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Attendant$getValue()}\if{html}{\out{</div>}}
@@ -232,8 +232,8 @@ Get current value
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-Attendant-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-Attendant-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

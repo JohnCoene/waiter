@@ -70,23 +70,23 @@ its percentage, then hide it when done.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Waitress$new()}}
-\item \href{#method-start}{\code{Waitress$start()}}
-\item \href{#method-notify}{\code{Waitress$notify()}}
-\item \href{#method-set}{\code{Waitress$set()}}
-\item \href{#method-auto}{\code{Waitress$auto()}}
-\item \href{#method-inc}{\code{Waitress$inc()}}
-\item \href{#method-close}{\code{Waitress$close()}}
-\item \href{#method-getMin}{\code{Waitress$getMin()}}
-\item \href{#method-getMax}{\code{Waitress$getMax()}}
-\item \href{#method-getValue}{\code{Waitress$getValue()}}
-\item \href{#method-print}{\code{Waitress$print()}}
-\item \href{#method-clone}{\code{Waitress$clone()}}
+\item \href{#method-waitress-new}{\code{Waitress$new()}}
+\item \href{#method-waitress-start}{\code{Waitress$start()}}
+\item \href{#method-waitress-notify}{\code{Waitress$notify()}}
+\item \href{#method-waitress-set}{\code{Waitress$set()}}
+\item \href{#method-waitress-auto}{\code{Waitress$auto()}}
+\item \href{#method-waitress-inc}{\code{Waitress$inc()}}
+\item \href{#method-waitress-close}{\code{Waitress$close()}}
+\item \href{#method-waitress-getMin}{\code{Waitress$getMin()}}
+\item \href{#method-waitress-getMax}{\code{Waitress$getMax()}}
+\item \href{#method-waitress-getValue}{\code{Waitress$getValue()}}
+\item \href{#method-waitress-print}{\code{Waitress$print()}}
+\item \href{#method-waitress-clone}{\code{Waitress$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-waitress-new"></a>}}
+\if{latex}{\out{\hypertarget{method-waitress-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waitress$new(
@@ -138,8 +138,8 @@ Create a waitress.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-start"></a>}}
-\if{latex}{\out{\hypertarget{method-start}{}}}
+\if{html}{\out{<a id="method-waitress-start"></a>}}
+\if{latex}{\out{\hypertarget{method-waitress-start}{}}}
 \subsection{Method \code{start()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waitress$start(
@@ -175,8 +175,8 @@ Start the waitress.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-notify"></a>}}
-\if{latex}{\out{\hypertarget{method-notify}{}}}
+\if{html}{\out{<a id="method-waitress-notify"></a>}}
+\if{latex}{\out{\hypertarget{method-waitress-notify}{}}}
 \subsection{Method \code{notify()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waitress$notify(
@@ -217,8 +217,8 @@ Show the waitress as a notification.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-set"></a>}}
-\if{latex}{\out{\hypertarget{method-set}{}}}
+\if{html}{\out{<a id="method-waitress-set"></a>}}
+\if{latex}{\out{\hypertarget{method-waitress-set}{}}}
 \subsection{Method \code{set()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waitress$set(value)}\if{html}{\out{</div>}}
@@ -245,8 +245,8 @@ Set the waitress to a specific percentage.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-auto"></a>}}
-\if{latex}{\out{\hypertarget{method-auto}{}}}
+\if{html}{\out{<a id="method-waitress-auto"></a>}}
+\if{latex}{\out{\hypertarget{method-waitress-auto}{}}}
 \subsection{Method \code{auto()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waitress$auto(value, ms)}\if{html}{\out{</div>}}
@@ -275,8 +275,8 @@ Automatically start and end the waitress.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-inc"></a>}}
-\if{latex}{\out{\hypertarget{method-inc}{}}}
+\if{html}{\out{<a id="method-waitress-inc"></a>}}
+\if{latex}{\out{\hypertarget{method-waitress-inc}{}}}
 \subsection{Method \code{inc()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waitress$inc(value)}\if{html}{\out{</div>}}
@@ -303,8 +303,8 @@ Increase the waitress by a percentage.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-close"></a>}}
-\if{latex}{\out{\hypertarget{method-close}{}}}
+\if{html}{\out{<a id="method-waitress-close"></a>}}
+\if{latex}{\out{\hypertarget{method-waitress-close}{}}}
 \subsection{Method \code{close()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waitress$close()}\if{html}{\out{</div>}}
@@ -324,8 +324,8 @@ Close the waitress.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getMin"></a>}}
-\if{latex}{\out{\hypertarget{method-getMin}{}}}
+\if{html}{\out{<a id="method-waitress-getMin"></a>}}
+\if{latex}{\out{\hypertarget{method-waitress-getMin}{}}}
 \subsection{Method \code{getMin()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waitress$getMin()}\if{html}{\out{</div>}}
@@ -337,8 +337,8 @@ Get minimum value
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getMax"></a>}}
-\if{latex}{\out{\hypertarget{method-getMax}{}}}
+\if{html}{\out{<a id="method-waitress-getMax"></a>}}
+\if{latex}{\out{\hypertarget{method-waitress-getMax}{}}}
 \subsection{Method \code{getMax()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waitress$getMax()}\if{html}{\out{</div>}}
@@ -350,8 +350,8 @@ Get maximum value
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-getValue"></a>}}
-\if{latex}{\out{\hypertarget{method-getValue}{}}}
+\if{html}{\out{<a id="method-waitress-getValue"></a>}}
+\if{latex}{\out{\hypertarget{method-waitress-getValue}{}}}
 \subsection{Method \code{getValue()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waitress$getValue()}\if{html}{\out{</div>}}
@@ -363,8 +363,8 @@ Get current value
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-print"></a>}}
-\if{latex}{\out{\hypertarget{method-print}{}}}
+\if{html}{\out{<a id="method-waitress-print"></a>}}
+\if{latex}{\out{\hypertarget{method-waitress-print}{}}}
 \subsection{Method \code{print()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waitress$print()}\if{html}{\out{</div>}}
@@ -384,8 +384,8 @@ Print the waitress.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-waitress-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-waitress-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

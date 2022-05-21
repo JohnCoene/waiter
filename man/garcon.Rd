@@ -55,19 +55,19 @@ Create a garcon to animate images on the waiter.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Garcon$new()}}
-\item \href{#method-set}{\code{Garcon$set()}}
-\item \href{#method-inc}{\code{Garcon$inc()}}
-\item \href{#method-reset}{\code{Garcon$reset()}}
-\item \href{#method-destroy}{\code{Garcon$destroy()}}
-\item \href{#method-print}{\code{Garcon$print()}}
-\item \href{#method-close}{\code{Garcon$close()}}
-\item \href{#method-clone}{\code{Garcon$clone()}}
+\item \href{#method-Garcon-new}{\code{Garcon$new()}}
+\item \href{#method-Garcon-set}{\code{Garcon$set()}}
+\item \href{#method-Garcon-inc}{\code{Garcon$inc()}}
+\item \href{#method-Garcon-reset}{\code{Garcon$reset()}}
+\item \href{#method-Garcon-destroy}{\code{Garcon$destroy()}}
+\item \href{#method-Garcon-print}{\code{Garcon$print()}}
+\item \href{#method-Garcon-close}{\code{Garcon$close()}}
+\item \href{#method-Garcon-clone}{\code{Garcon$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Garcon-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Garcon-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Garcon$new(
@@ -110,8 +110,8 @@ Initialise the garçon.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-set"></a>}}
-\if{latex}{\out{\hypertarget{method-set}{}}}
+\if{html}{\out{<a id="method-Garcon-set"></a>}}
+\if{latex}{\out{\hypertarget{method-Garcon-set}{}}}
 \subsection{Method \code{set()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Garcon$set(value)}\if{html}{\out{</div>}}
@@ -138,8 +138,8 @@ Value to set the garçon to.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-inc"></a>}}
-\if{latex}{\out{\hypertarget{method-inc}{}}}
+\if{html}{\out{<a id="method-Garcon-inc"></a>}}
+\if{latex}{\out{\hypertarget{method-Garcon-inc}{}}}
 \subsection{Method \code{inc()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Garcon$inc(value)}\if{html}{\out{</div>}}
@@ -166,8 +166,8 @@ Value to increase the garçon to.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-reset"></a>}}
-\if{latex}{\out{\hypertarget{method-reset}{}}}
+\if{html}{\out{<a id="method-Garcon-reset"></a>}}
+\if{latex}{\out{\hypertarget{method-Garcon-reset}{}}}
 \subsection{Method \code{reset()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Garcon$reset(value)}\if{html}{\out{</div>}}
@@ -194,8 +194,8 @@ Reset the garçon to.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-destroy"></a>}}
-\if{latex}{\out{\hypertarget{method-destroy}{}}}
+\if{html}{\out{<a id="method-Garcon-destroy"></a>}}
+\if{latex}{\out{\hypertarget{method-Garcon-destroy}{}}}
 \subsection{Method \code{destroy()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Garcon$destroy()}\if{html}{\out{</div>}}
@@ -215,8 +215,8 @@ Kill the garçon to.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-print"></a>}}
-\if{latex}{\out{\hypertarget{method-print}{}}}
+\if{html}{\out{<a id="method-Garcon-print"></a>}}
+\if{latex}{\out{\hypertarget{method-Garcon-print}{}}}
 \subsection{Method \code{print()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Garcon$print()}\if{html}{\out{</div>}}
@@ -228,8 +228,8 @@ print the garcon
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-close"></a>}}
-\if{latex}{\out{\hypertarget{method-close}{}}}
+\if{html}{\out{<a id="method-Garcon-close"></a>}}
+\if{latex}{\out{\hypertarget{method-Garcon-close}{}}}
 \subsection{Method \code{close()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Garcon$close()}\if{html}{\out{</div>}}
@@ -249,8 +249,8 @@ Close the garçon.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-Garcon-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-Garcon-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

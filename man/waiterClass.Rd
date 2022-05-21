@@ -38,17 +38,17 @@ then \code{hide} or meanwhile \code{update} the content of the waiter.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Waiter$new()}}
-\item \href{#method-show}{\code{Waiter$show()}}
-\item \href{#method-hide}{\code{Waiter$hide()}}
-\item \href{#method-update}{\code{Waiter$update()}}
-\item \href{#method-print}{\code{Waiter$print()}}
-\item \href{#method-clone}{\code{Waiter$clone()}}
+\item \href{#method-waiter-new}{\code{Waiter$new()}}
+\item \href{#method-waiter-show}{\code{Waiter$show()}}
+\item \href{#method-waiter-hide}{\code{Waiter$hide()}}
+\item \href{#method-waiter-update}{\code{Waiter$update()}}
+\item \href{#method-waiter-print}{\code{Waiter$print()}}
+\item \href{#method-waiter-clone}{\code{Waiter$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-waiter-new"></a>}}
+\if{latex}{\out{\hypertarget{method-waiter-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waiter$new(
@@ -106,8 +106,8 @@ Create a waiter.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-show"></a>}}
-\if{latex}{\out{\hypertarget{method-show}{}}}
+\if{html}{\out{<a id="method-waiter-show"></a>}}
+\if{latex}{\out{\hypertarget{method-waiter-show}{}}}
 \subsection{Method \code{show()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waiter$show()}\if{html}{\out{</div>}}
@@ -119,8 +119,8 @@ Show the waiter.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-hide"></a>}}
-\if{latex}{\out{\hypertarget{method-hide}{}}}
+\if{html}{\out{<a id="method-waiter-hide"></a>}}
+\if{latex}{\out{\hypertarget{method-waiter-hide}{}}}
 \subsection{Method \code{hide()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waiter$hide()}\if{html}{\out{</div>}}
@@ -132,8 +132,8 @@ Hide the waiter.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-update"></a>}}
-\if{latex}{\out{\hypertarget{method-update}{}}}
+\if{html}{\out{<a id="method-waiter-update"></a>}}
+\if{latex}{\out{\hypertarget{method-waiter-update}{}}}
 \subsection{Method \code{update()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waiter$update(html = NULL)}\if{html}{\out{</div>}}
@@ -152,8 +152,8 @@ Update the waiter's html content.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-print"></a>}}
-\if{latex}{\out{\hypertarget{method-print}{}}}
+\if{html}{\out{<a id="method-waiter-print"></a>}}
+\if{latex}{\out{\hypertarget{method-waiter-print}{}}}
 \subsection{Method \code{print()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Waiter$print()}\if{html}{\out{</div>}}
@@ -165,8 +165,8 @@ print the waiter
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-waiter-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-waiter-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

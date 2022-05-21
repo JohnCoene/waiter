@@ -424,6 +424,9 @@ hostess_loader <- function(id = "hostess", preset = NULL, text_color = "#FFFFFF"
     ...
   )
 
+  if(!is.null(preset))
+    return(loader)
+
   opts <- list()
   if(!is.null(svg)){
     # check if ends in .svg
