@@ -772,9 +772,8 @@ autoWaiter <- function(
   ids <- paste0("['", paste0(id, collapse = "','"), "']")
 
   script <- sprintf(
-    "let auto = %s;
-    $(document).on('shiny:recalculating', function(event) {
-
+    "$(document).on('shiny:recalculating', function(event) {
+      const auto = %s;
       if(!auto)
         if(!%s.includes(event.target.id))
           return ;
