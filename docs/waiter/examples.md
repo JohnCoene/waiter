@@ -7,7 +7,7 @@ add waiters to dynamically rendered Shiny content where
 "dynamic" means `render*` and `*output` function pair.
 
 This will display the waiter when the element is being 
-recalculated and hide it when it receives new data.
+recalculated and hid it when it received new data.
 
 You can place multiple `autoWaiter` functions in your UI.
 
@@ -44,8 +44,8 @@ server <- function(input, output){
 shinyApp(ui, server)
 ```
 
-Otherwise you can restrict the showing of waiting screens to 
-some elements by passing their `id` as first argument to the
+Otherwise, you can restrict the showing of waiting screens to 
+some elements by passing their `id` as the first argument to the
 function.
 
 ```r {highlight: [5]}
@@ -88,7 +88,7 @@ shinyApp(ui, server)
 
 ## On Load
 
-You can show a loading screen on app launch. The loading screen will launch prior to everything else, even the Shiny session. 
+You can show a loading screen on the app launch. The loading screen will launch prior to everything else, even the Shiny session. 
 
 Though this function is not programmatically launched it still has to be hidden with `waiter_hide`. Ensure you place `waiterShowOnLoad` after `useWaiter`.
 
@@ -209,7 +209,7 @@ shinyApp(ui, server)
 All the features of the full screen are also available on partial loading screens
 </Note>
 
-Let us demonstrate with a basic Shiny application that includes a single plot which is updated upon clicking an action button. The way we layer the waiter on top of an element is simply by specifying the `id` of said element when we initialise the waiter.
+Let us demonstrate with a basic Shiny application that includes a single plot which is updated upon clicking an action button. The way we layer the waiter on top of an element is simply by specifying the `id` of said element when we initialize the waiter.
 
 ```r {highlight: [5,13,18,'20-22']}
 library(shiny)
@@ -251,7 +251,7 @@ shinyApp(ui, server)
 
 ## On Render
 
-We can actually further simplify the application above: we do not in fact need to use the `hide` method. By default when specifying an `id` waiter will hide the waiting screen when the element, in our case a plot, is rendered. This applies to plots, tables, htmlwidgets, etc. Below we simplify the app, removing the `hide` method and demonstrate that it works on a `tableOutput` and `htmlwidgets` (a [highcharter](http://jkunst.com/highcharter/) chart in this case). We also show that we can pass multiple ids to the waiter to have it show over multiple elements at once.
+We can actually further simplify the application above: we do not in fact need to use the `hide` method. By default when specifying an `id` waiter will hide the waiting screen when the element, in our case a plot, is rendered. This applies to plots, tables, htmlwidgets, etc. Below we simplify the app, removing the `hide` method and demonstrating that it works on a `tableOutput` and `htmlwidgets` (a [highcharter](http://jkunst.com/highcharter/) chart in this case). We also show that we can pass multiple ids to the waiter to have it show over multiple elements at once.
 
 ```r {highlight: [5,16,21]}
 library(shiny)
@@ -342,7 +342,7 @@ shinyApp(ui, server)
 
 ## Custom Content
 
-Thus far we have been using built-in spinners but you are by no means restricted to them. Waiter will let you use any HTML content you like, either as a string (e.g.: `<p>Loading...</p>`) and more conveniently [htmltools](https://cran.r-project.org/web/packages/htmltools/index.html) or shiny tags such e.g.(`shiny::p("Loading...")`). You may thus use those to provide richer messages with images, gif, whatever you fancy.
+Thus far we have been using built-in spinners but you are by no means restricted to them. Waiter will let you use any HTML content you like, either as a string (e.g.: `<p>Loading...</p>`) and more conveniently [htmltools](https://cran.r-project.org/web/packages/htmltools/index.html) or shiny tags such e.g.(`shiny::p("Loading...")`). You may thus use those to provide richer messages with images, gifs, or whatever you fancy.
 
 ```r {highlight: ['5-6','8-11',14,20,24,26]}
 library(shiny)
