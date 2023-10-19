@@ -6,6 +6,10 @@
 
 Loading screens for Shiny; programmatically show and hide partial or full page loading screens with spinners or loading bars, see the [demo](https://shiny.john-coene.com/waiter) and the [cheat sheet](https://waiter.john-coene.com/#/cheatsheet).
 
+Introduction by [Veerle](https://www.youtube.com/@HypebrightBV)
+
+<iframe style="aspect-ratio: 16 / 9; width:100%;" src="https://www.youtube.com/embed/YrCX0FlXsW0?si=vNun7sG3Tm5VRBQc&amp;start=241" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ## The Staff
 
 The following staff members will help you keep your clients waiting:
