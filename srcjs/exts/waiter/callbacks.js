@@ -5,10 +5,9 @@
  */
 export const setWaiterShownInput = (id) => {
   let input = "waiter_shown";
-  if(id !== null)
-    input = id + "_" + input;
-  
-  Shiny.setInputValue(input, true, {priority: 'event'});
+  if (id !== null) input = id + "_" + input;
+
+  Shiny.setInputValue(input, true, { priority: "event" });
 };
 /**
  * Callback function to set the waiter input on hidden.
@@ -17,8 +16,7 @@ export const setWaiterShownInput = (id) => {
  */
 export const setWaiterHiddenInput = (id) => {
   let input = "waiter_hidden";
-  if(id !== null)
-    input = id + "_" + input;
-  
-  Shiny.setInputValue(input, true, {priority: 'event'});
-}
+  if (id !== null) input = id + "_" + input;
+
+  Shiny.setInputValue(input, true, { priority: "event" });
+};

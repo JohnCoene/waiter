@@ -3,6 +3,7 @@
 - Correct hostess example [#113](https://github.com/JohnCoene/waiter/issues/113)
 - Hide wiater on disconnect, fixes [#116](https://github.com/JohnCoene/waiter/issues/116)
 - Fix Hostess [#120](https://github.com/JohnCoene/waiter/issues/120)
+- Added `lottie` to include lottie animations.
 
 # waiter 0.2.5
 

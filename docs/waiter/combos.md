@@ -4,6 +4,56 @@ The waiter works hand-in-hand with the `steward`, the `waitress` and the `hostes
 
 There is an online demo with a list of all [100+ spinners](https://shiny.john-coene.com/waiter/) available, you can also see the list of available spinners in R with `?spinners`.
 
+## With Lottie
+
+<Badge type="warning">New</Badge> Lottie is not 
+currently on CRAN.
+
+This lets you use any of the [lottie](https://lottiefiles.com) community or 
+premium animations as spinners!
+
+#### Example
+
+```r
+library(shiny)
+library(waiter)
+
+ui <- fluidPage(
+  useWaiter(),
+  useLottie(),
+  h1("The title of the app")
+)
+
+server <- function(input, output, session){
+  w <- Waiter$new(
+    html = lottie("https://lottie.host/afe1a38d-c6b2-417a-8be2-fd2a3d4340a7/QklxaUdqgD.json"),
+    image = url
+  )$show()
+
+  Sys.sleep(10)
+  w$hide()
+}
+
+shinyApp(ui, server)
+```
+
+![](_assets/img/lottie.gif)
+
+Note, you can pass `style` to change the CSS, e.g.: `style = "width:150px;"`
+
+### Get Started
+
+First, head to [lottie](https://lottiefiles.com) and create a free account.
+
+Second, find an animation you like and click "Generate link" (bottom right).
+
+![](_assets/img/lottie-gen.png)
+
+Finnaly, obtain the JSON link and use it in the `lottie` function 
+as done in the example above.
+
+![](_assets/img/lottie-link.png)
+
 ## With Hostess
 
 The API of the hostess has been somewhat improved since its initial release; the "loader" can be created from the R6Class itself, which is the recommended approach as it simplifies much of the workflow.
@@ -186,3 +236,4 @@ shinyApp(ui, server)
 ![](_assets/img/waiter-garcon.gif)
 
 There are a number of filters available.
+

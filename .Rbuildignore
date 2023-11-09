@@ -30,3 +30,4 @@ demo
 ^makefile$
 ^tutorials$
 ^CRAN-SUBMISSION$
+^\.eslintrc\.js$

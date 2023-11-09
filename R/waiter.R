@@ -95,7 +95,6 @@ useWaiter <- function(spinners = NULL, include_js = TRUE){
     package = "waiter",
     script = "waiter.js"
   )
-
 }
 
 #' @rdname waiter
