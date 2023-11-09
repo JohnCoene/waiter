@@ -2,13 +2,10 @@
 % Please edit documentation in R/placeholders.R
 \name{Placeholder}
 \alias{Placeholder}
-\title{Placeholders}
+\title{Placeholder}
 \description{
-Placeholders
-
-Placeholders
+Toggle placeholders.
 }
-\keyword{internal}
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
@@ -24,10 +21,25 @@ Placeholders
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Placeholder$new(
-  target = ".waiter-placeholder",
+  targets,
   type = c("glow", "wave", "default"),
   session = shiny::getDefaultReactiveDomain()
 )}\if{html}{\out{</div>}}
+}
+
+\subsection{Arguments}{
+\if{html}{\out{<div class="arguments">}}
+\describe{
+\item{\code{targets}}{Vector or list of selectors to turn into placeholders.}
+
+\item{\code{type}}{Type of placeholder.}
+
+\item{\code{session}}{Valid shiny session.}
+}
+\if{html}{\out{</div>}}
+}
+\subsection{Details}{
+Initialize
 }
 
 }
@@ -39,6 +51,10 @@ Placeholders
 \if{html}{\out{<div class="r">}}\preformatted{Placeholder$show()}\if{html}{\out{</div>}}
 }
 
+\subsection{Details}{
+Show
+}
+
 }
 \if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-Placeholder-hide"></a>}}
@@ -46,6 +62,10 @@ Placeholders
 \subsection{Method \code{hide()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Placeholder$hide()}\if{html}{\out{</div>}}
+}
+
+\subsection{Details}{
+Hide
 }
 
 }
