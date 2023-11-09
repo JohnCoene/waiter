@@ -1,11 +1,14 @@
 install: check
-	Rscript -e "devtools::install()"
+	R -s -e "devtools::install()"
 
 check: document
-	Rscript -e "devtools::check()"
+	R -s -e "devtools::check()"
 
 document: packer
-	Rscript -e "devtools::document()"
+	R -s -e "devtools::document()"
 
 packer:
-	Rscript -e "packer::bundle_prod()"
+	R -s -e "packer::bundle_prod()"
+
+dev:
+	Rscript test.R

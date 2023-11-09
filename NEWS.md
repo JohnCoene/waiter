@@ -4,6 +4,7 @@
 - Hide wiater on disconnect, fixes [#116](https://github.com/JohnCoene/waiter/issues/116)
 - Fix Hostess [#120](https://github.com/JohnCoene/waiter/issues/120)
 - Added `lottie` to include lottie animations.
+- Added `Placeholder` to use palceholders.
 
 # waiter 0.2.5
 

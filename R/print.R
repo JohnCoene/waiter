@@ -1,6 +1,5 @@
 #' @export
 print.waitress <- function(x, ...) {
-
 	if(is.null(x$id))
 		x <- "A waitress on the whole screen."
 	else

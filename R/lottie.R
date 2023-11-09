@@ -2,7 +2,6 @@
 #' 
 #' Use [lottie](https://lottiefiles.com).
 #' 
-#' @name garcon
 #' @export
 useLottie <- function(){
   singleton(

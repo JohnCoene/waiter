@@ -1,4 +1,9 @@
-usePlaceholder <- function(){
+#' Placeholder Dependencies
+#' 
+#' Placeholder dependencies to place withing Shiny UI.
+#' 
+#' @export
+usePlaceholder <- function(){ # nolint
   htmltools::htmlDependency(
     name = "placeholder",
     version = utils::packageVersion("waiter"),
@@ -8,21 +13,29 @@ usePlaceholder <- function(){
   )
 }
 
-#' Placeholders
-#' @keywords internal
-Placeholder <- R6::R6Class(
+#' Placeholder
+#' 
+#' Toggle placeholders.
+#' 
+#' @export
+Placeholder <- R6::R6Class( # nolint
   "Placeholder",
   public = list(
+    #' @details Initialize
+    #' @param targets Vector or list of selectors to turn into placeholders.
+    #' @param type Type of placeholder.
+    #' @param session Valid shiny session.
     initialize = function(
-      target = ".waiter-placeholder",
+      targets,
       type = c("glow", "wave", "default"),
       session = shiny::getDefaultReactiveDomain()
     ) {
       private$.type <- match.arg(type)
-      private$.target <- paste0(target, collapse = ",")
+      private$.target <- as.list(targets)
       private$.session <- session
       invisible(self)
     },
+    #' @details Show
     show = function(){
       private$.session$sendCustomMessage(
         "placeholder-show",
@@ -33,6 +46,7 @@ Placeholder <- R6::R6Class(
       )
       invisible(self)
     },
+    #' @details Hide
     hide = function(){
       private$.session$sendCustomMessage(
         "placeholder-hide",
@@ -50,10 +64,3 @@ Placeholder <- R6::R6Class(
     .session = NULL
   )
 )
-
-withPlaceholder <- function(el){
-  htmltools::tagAppendAttributes(
-    el,
-    class = "waiter-placeholder"
-  )
-}
