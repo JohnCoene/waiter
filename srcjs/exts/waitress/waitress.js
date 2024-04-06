@@ -105,7 +105,7 @@ Shiny.addCustomMessageHandler("waitress-start", function (opts) {
     // get parent
     dom = document.getElementById(opts.id);
     if (dom == undefined) {
-      console.log("Cannot find", opts.id);
+      console.error("Cannot find", opts.id);
       return;
     }
 
@@ -117,7 +117,7 @@ Shiny.addCustomMessageHandler("waitress-start", function (opts) {
     });
 
     if (exists) {
-      console.log("waitress on", opts.id, "already exists");
+      console.error("waitress on", opts.id, "already exists");
       return;
     }
 
@@ -214,4 +214,3 @@ $(document).on("shiny:value shiny:error shiny:recalculated", function (event) {
     }, 400);
   }
 });
-

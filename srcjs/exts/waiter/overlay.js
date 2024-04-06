@@ -41,4 +41,3 @@ export const createOverlay = (params, el) => {
 
   return overlay;
 };
-

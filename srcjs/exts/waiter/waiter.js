@@ -65,7 +65,7 @@ export const show = (params = defaultWaiter) => {
 
   dom = document.querySelector(selector);
   if (dom == undefined) {
-    console.log("Cannot find", params.id);
+    console.error("Cannot find", params.id);
     return;
   }
 
@@ -79,6 +79,15 @@ export const show = (params = defaultWaiter) => {
   waiterToHideOnSilentError.set(params.id, params.hideOnSilentError);
 
   let el = getDimensions(dom); // get dimensions
+
+  // special case for leaflet, see issue #143
+  if (
+    dom.classList.contains("leaflet") &&
+    document.getElementById("map").children.length > 1
+  ) {
+    el.top = 0;
+    el.left = 0;
+  }
 
   // no id = fll screen
   if (params.id === null) {
@@ -97,7 +106,7 @@ export const show = (params = defaultWaiter) => {
   });
 
   if (exists) {
-    console.log("waiter on", params.id, "already exists");
+    console.error("waiter on", params.id, "already exists");
     return;
   }
 
