@@ -27,7 +27,6 @@
   <body>
     <div id="docute"></div>
     <script src="https://unpkg.com/docute@4/dist/docute.js"></script>
-    <script src="https://unpkg.com/docute-google-analytics@1/dist/index.min.js"></script>
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/sw.js')
@@ -45,9 +44,6 @@
             sidebarLinkActiveColor: "var(--accent-color)"
           }
         },
-        plugins: [
-          docuteGoogleAnalytics('UA-74544116-1')
-        ],
         detectSystemDarkTheme: true,
         darkThemeToggler: true,
         highlight: ['r', 'javascript', 'pug', 'vue', 'yaml'],
