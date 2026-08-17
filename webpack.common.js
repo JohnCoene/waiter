@@ -1,4 +1,3 @@
-const JsDocPlugin = require('jsdoc-webpack-plugin');
 const path = require('path');
 const fs = require('fs');
 
@@ -54,7 +53,6 @@ loaders.forEach((loader) => {
 
 // placeholder for plugins
 var plugins = [
-  new JsDocPlugin({conf: 'jsdoc.conf.json', cwd: '.', preserveTmpFile: false, recursive: true}),
 ];
 
 // define options

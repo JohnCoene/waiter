@@ -54,10 +54,13 @@ as done in the example above.
 
 ![](_assets/img/lottie-link.png)
 
+<Note>
+You may encounter issues if trying to generate a lottie animation using a json file stored in the local Shiny <code>www</code> static resources folder.
+A simple workaround is to add this folder (or subfolder) as a <href target="https://rdrr.io/cran/shiny/man/resourcePaths.html">resource path</href>.
+Doing so enables the Shiny web server to retrieve the lottie json file at the top level when sourced by functions in scripts stored elsewhere in the project folder tree.
+The example below demonstrates how a local lottie file (<strong>"MyLocalLottieFile.json"</strong>) can be used with <code>waiterPreloader</code> to animate a full page loading screen.
+</Note>
 
-| __Note:__  Using ***Local*** Lottie Files |
-| :--- |
-| You may encounter issues if trying to generate a lottie animation using a json file stored in the local Shiny `www` static resources folder. A simple workaround is to add this folder (or subfolder) as a [resource path](https://rdrr.io/cran/shiny/man/resourcePaths.html). Doing so enables the Shiny web server to retrieve the lottie json file at the top level when sourced by functions in scripts stored elsewhere in the project folder tree. The example below demonstrates how a local lottie file (__"MyLocalLottieFile.json"__) can be used with `waiterPreloader` to animate a full page loading screen. |
 ```r
 library(shiny)
 library(waiter)
@@ -76,7 +79,7 @@ ui <- fluidPage(
   # the resource path variable (LottieFiles) declared above.
   waiterPreloader(
     html = lottie('LottieFiles/MyLocalLottieFile.json')
-    ),
+  ),
   h1("The title of the app")
 )
 
@@ -87,10 +90,6 @@ server <- function(input, output, session){
 
 shinyApp(ui, server)
 ```
-
-
-
-
 
 ## With Hostess
 

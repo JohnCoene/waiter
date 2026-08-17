@@ -10,5 +10,8 @@ document: packer
 packer:
 	R -s -e "packer::bundle_prod()"
 
-dev: packer
+packer_dev:
+	R -s -e "packer::bundle_dev()"
+
+dev: packer_dev
 	Rscript test.R

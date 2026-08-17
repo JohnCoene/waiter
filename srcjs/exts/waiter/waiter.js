@@ -63,6 +63,9 @@ export const show = (params = defaultWaiter) => {
   // get parent
   if (params.id !== null) selector = "#" + params.id;
 
+  // set input
+  if (params.onShown != undefined) params.onShown(params.id);
+
   dom = document.querySelector(selector);
   if (dom == undefined) {
     console.error("Cannot find", params.id);
@@ -115,9 +118,6 @@ export const show = (params = defaultWaiter) => {
   let overlay = createOverlay(params, el);
   // append overlay to dom
   dom.appendChild(overlay);
-
-  // set input
-  if (params.onShown != undefined) params.onShown(params.id);
 };
 /**
  * @function
